@@ -6,9 +6,9 @@ import { Footer } from "@/components/site/Footer";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Podwash — Premium laundry pods for every load" },
+      { title: "SMOD — Premium laundry pods for every load" },
       { name: "description", content: "Pre-measured, plant-based laundry pods engineered for every fabric: regular, baby, intimates, socks, and sportswear." },
-      { property: "og:title", content: "Podwash — Premium laundry pods for every load" },
+      { property: "og:title", content: "SMOD — Premium laundry pods for every load" },
       { property: "og:description", content: "Five fabric-specific formulas. One smarter way to wash." },
     ],
   }),
@@ -42,7 +42,7 @@ function Home() {
             One pod. <span style={{ background: "linear-gradient(90deg,#1E5BFF,#7A3CFF)", WebkitBackgroundClip: "text", color: "transparent" }}>Five formulas.</span> Zero guesswork.
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg" style={{ color: "var(--v-ink-soft)" }}>
-            Podwash makes a precision detergent pod for every load — from delicate intimates to high-performance activewear.
+            SMOD makes a precision detergent pod for every load — from delicate intimates to high-performance activewear.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Link to="/regular" className="rounded-full bg-black px-6 py-3 text-sm font-bold text-white">Shop all variants</Link>

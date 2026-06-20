@@ -103,7 +103,7 @@ export function VariantLanding({ variant }: { variant: Variant }) {
                   ))}
                 </div>
                 <div className="text-center">
-                  <p className="text-xs font-bold uppercase tracking-[0.3em]" style={{ color: "var(--v-ink-soft)" }}>Podwash · {variant.name}</p>
+                  <p className="text-xs font-bold uppercase tracking-[0.3em]" style={{ color: "var(--v-ink-soft)" }}>SMOD · {variant.name}</p>
                   <p className="mt-1 text-2xl font-black" style={{ color: "var(--brand-deep)" }}>{variant.emoji} {variant.name}</p>
                 </div>
               </div>
