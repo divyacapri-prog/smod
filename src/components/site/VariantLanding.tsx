@@ -211,6 +211,28 @@ export function VariantLanding({ variant }: { variant: Variant }) {
           <PurchaseCard variant={variant} pack={p20} />
           <PurchaseCard variant={variant} pack={p40} featured />
         </div>
+        <div className="mx-auto mt-10 max-w-3xl text-center">
+          <p className="text-xs font-bold uppercase tracking-[0.3em]" style={{ color: "var(--v-ink-soft)" }}>Also available on</p>
+          <div className="mt-4 flex flex-wrap justify-center gap-3">
+            {variant.retailers.map((r) => (
+              <a
+                key={r.name}
+                href={r.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition-transform hover:-translate-y-0.5"
+                style={{
+                  borderColor: "color-mix(in oklab, var(--v-ink) 15%, transparent)",
+                  color: "var(--v-ink)",
+                  background: "var(--v-surface)",
+                }}
+              >
+                {r.name}
+                <ExternalLink size={14} style={{ color: "var(--brand)" }} />
+              </a>
+            ))}
+          </div>
+        </div>
       </Section>
 
       <Footer />
