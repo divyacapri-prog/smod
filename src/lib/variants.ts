@@ -1,3 +1,5 @@
+export type Retailer = { name: string; url: string };
+
 export type Variant = {
   slug: "regular" | "baby" | "womens-inners" | "socks" | "sports";
   name: string;
