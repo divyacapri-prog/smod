@@ -147,6 +147,14 @@ export const VARIANTS: Variant[] = [
       { sku: "WIN20", size: 20, price: 599, perWash: 29.95, bestFor: "Personal care loads", household: "1 person", buyPath: "/buy/womens-inners-20" },
       { sku: "WIN40", size: 40, price: 1099, perWash: 27.48, bestFor: "Weekly rotation", household: "1–2 people", buyPath: "/buy/womens-inners-40" },
     ],
+    retailers: [
+      { name: "Amazon", url: "#" },
+      { name: "Flipkart", url: "#" },
+      { name: "Myntra", url: "#" },
+      { name: "Zepto", url: "#" },
+      { name: "Blinkit", url: "#" },
+      { name: "Instamart", url: "#" },
+    ],
   },
   {
     slug: "socks",
