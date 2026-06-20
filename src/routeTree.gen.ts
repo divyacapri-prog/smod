@@ -13,6 +13,7 @@ import { Route as WomensInnersRouteImport } from './routes/womens-inners'
 import { Route as SportsRouteImport } from './routes/sports'
 import { Route as SocksRouteImport } from './routes/socks'
 import { Route as RegularRouteImport } from './routes/regular'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BabyRouteImport } from './routes/baby'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BuySkuRouteImport } from './routes/buy.$sku'
@@ -37,6 +38,11 @@ const RegularRoute = RegularRouteImport.update({
   path: '/regular',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BabyRoute = BabyRouteImport.update({
   id: '/baby',
   path: '/baby',
@@ -56,6 +62,7 @@ const BuySkuRoute = BuySkuRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/baby': typeof BabyRoute
+  '/contact': typeof ContactRoute
   '/regular': typeof RegularRoute
   '/socks': typeof SocksRoute
   '/sports': typeof SportsRoute
@@ -65,6 +72,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/baby': typeof BabyRoute
+  '/contact': typeof ContactRoute
   '/regular': typeof RegularRoute
   '/socks': typeof SocksRoute
   '/sports': typeof SportsRoute
@@ -75,6 +83,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/baby': typeof BabyRoute
+  '/contact': typeof ContactRoute
   '/regular': typeof RegularRoute
   '/socks': typeof SocksRoute
   '/sports': typeof SportsRoute
@@ -86,6 +95,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/baby'
+    | '/contact'
     | '/regular'
     | '/socks'
     | '/sports'
@@ -95,6 +105,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/baby'
+    | '/contact'
     | '/regular'
     | '/socks'
     | '/sports'
@@ -104,6 +115,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/baby'
+    | '/contact'
     | '/regular'
     | '/socks'
     | '/sports'
@@ -114,6 +126,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BabyRoute: typeof BabyRoute
+  ContactRoute: typeof ContactRoute
   RegularRoute: typeof RegularRoute
   SocksRoute: typeof SocksRoute
   SportsRoute: typeof SportsRoute
@@ -151,6 +164,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RegularRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/baby': {
       id: '/baby'
       path: '/baby'
@@ -178,6 +198,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BabyRoute: BabyRoute,
+  ContactRoute: ContactRoute,
   RegularRoute: RegularRoute,
   SocksRoute: SocksRoute,
   SportsRoute: SportsRoute,
