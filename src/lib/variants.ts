@@ -106,6 +106,14 @@ export const VARIANTS: Variant[] = [
       { sku: "BABY20", size: 20, price: 549, perWash: 27.45, bestFor: "New parents", household: "Baby only loads", buyPath: "/buy/baby-20" },
       { sku: "BABY40", size: 40, price: 999, perWash: 24.98, bestFor: "Daily baby laundry", household: "Family with infant", buyPath: "/buy/baby-40" },
     ],
+    retailers: [
+      { name: "Amazon", url: "#" },
+      { name: "Flipkart", url: "#" },
+      { name: "Myntra", url: "#" },
+      { name: "Zepto", url: "#" },
+      { name: "Blinkit", url: "#" },
+      { name: "Instamart", url: "#" },
+    ],
   },
   {
     slug: "womens-inners",
