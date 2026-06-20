@@ -229,6 +229,14 @@ export const VARIANTS: Variant[] = [
       { sku: "SPORT20", size: 20, price: 529, perWash: 26.45, bestFor: "Weekly trainers", household: "1 person", buyPath: "/buy/sports-20" },
       { sku: "SPORT40", size: 40, price: 949, perWash: 23.73, bestFor: "Daily athletes", household: "1–3 people", buyPath: "/buy/sports-40" },
     ],
+    retailers: [
+      { name: "Amazon", url: "#" },
+      { name: "Flipkart", url: "#" },
+      { name: "Myntra", url: "#" },
+      { name: "Zepto", url: "#" },
+      { name: "Blinkit", url: "#" },
+      { name: "Instamart", url: "#" },
+    ],
   },
 ];
 
