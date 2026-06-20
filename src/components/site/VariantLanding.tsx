@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
+import { ExternalLink } from "lucide-react";
 import type { Variant } from "@/lib/variants";
 import { paletteToCssVars } from "@/lib/variants";
 import { Header } from "./Header";
