@@ -12,8 +12,8 @@ export const Route = createFileRoute("/buy/$sku")({
   },
   head: ({ loaderData }) => {
     const item = loaderData?.item;
-    const title = item ? `Buy ${item.variant.name} — ${item.size} Pods` : "Buy Podwash";
-    return { meta: [{ title }, { name: "description", content: item?.variant.description ?? "Buy Podwash pods" }] };
+    const title = item ? `Buy ${item.variant.name} — ${item.size} Pods` : "Buy SMOD";
+    return { meta: [{ title }, { name: "description", content: item?.variant.description ?? "Buy SMOD pods" }] };
   },
   component: BuyPage,
   notFoundComponent: () => (
