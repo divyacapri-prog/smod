@@ -1,3 +1,5 @@
+export type Retailer = { name: string; url: string };
+
 export type Variant = {
   slug: "regular" | "baby" | "womens-inners" | "socks" | "sports";
   name: string;
@@ -27,6 +29,7 @@ export type Variant = {
     household: string;
     buyPath: string; // /buy/...
   }[];
+  retailers: Retailer[];
 };
 
 export const VARIANTS: Variant[] = [
@@ -62,6 +65,14 @@ export const VARIANTS: Variant[] = [
       { sku: "REG20", size: 20, price: 499, perWash: 24.95, bestFor: "Singles & couples", household: "1–2 people", buyPath: "/buy/regular-20" },
       { sku: "REG40", size: 40, price: 899, perWash: 22.48, bestFor: "Families", household: "3–5 people", buyPath: "/buy/regular-40" },
     ],
+    retailers: [
+      { name: "Amazon", url: "#" },
+      { name: "Flipkart", url: "#" },
+      { name: "Myntra", url: "#" },
+      { name: "Zepto", url: "#" },
+      { name: "Blinkit", url: "#" },
+      { name: "Instamart", url: "#" },
+    ],
   },
   {
     slug: "baby",
@@ -94,6 +105,14 @@ export const VARIANTS: Variant[] = [
     packs: [
       { sku: "BABY20", size: 20, price: 549, perWash: 27.45, bestFor: "New parents", household: "Baby only loads", buyPath: "/buy/baby-20" },
       { sku: "BABY40", size: 40, price: 999, perWash: 24.98, bestFor: "Daily baby laundry", household: "Family with infant", buyPath: "/buy/baby-40" },
+    ],
+    retailers: [
+      { name: "Amazon", url: "#" },
+      { name: "Flipkart", url: "#" },
+      { name: "Myntra", url: "#" },
+      { name: "Zepto", url: "#" },
+      { name: "Blinkit", url: "#" },
+      { name: "Instamart", url: "#" },
     ],
   },
   {
@@ -128,6 +147,14 @@ export const VARIANTS: Variant[] = [
       { sku: "WIN20", size: 20, price: 599, perWash: 29.95, bestFor: "Personal care loads", household: "1 person", buyPath: "/buy/womens-inners-20" },
       { sku: "WIN40", size: 40, price: 1099, perWash: 27.48, bestFor: "Weekly rotation", household: "1–2 people", buyPath: "/buy/womens-inners-40" },
     ],
+    retailers: [
+      { name: "Amazon", url: "#" },
+      { name: "Flipkart", url: "#" },
+      { name: "Myntra", url: "#" },
+      { name: "Zepto", url: "#" },
+      { name: "Blinkit", url: "#" },
+      { name: "Instamart", url: "#" },
+    ],
   },
   {
     slug: "socks",
@@ -161,6 +188,14 @@ export const VARIANTS: Variant[] = [
       { sku: "SOCK20", size: 20, price: 479, perWash: 23.95, bestFor: "Athletes & commuters", household: "1–2 people", buyPath: "/buy/socks-20" },
       { sku: "SOCK40", size: 40, price: 849, perWash: 21.23, bestFor: "Active households", household: "3–5 people", buyPath: "/buy/socks-40" },
     ],
+    retailers: [
+      { name: "Amazon", url: "#" },
+      { name: "Flipkart", url: "#" },
+      { name: "Myntra", url: "#" },
+      { name: "Zepto", url: "#" },
+      { name: "Blinkit", url: "#" },
+      { name: "Instamart", url: "#" },
+    ],
   },
   {
     slug: "sports",
@@ -193,6 +228,14 @@ export const VARIANTS: Variant[] = [
     packs: [
       { sku: "SPORT20", size: 20, price: 529, perWash: 26.45, bestFor: "Weekly trainers", household: "1 person", buyPath: "/buy/sports-20" },
       { sku: "SPORT40", size: 40, price: 949, perWash: 23.73, bestFor: "Daily athletes", household: "1–3 people", buyPath: "/buy/sports-40" },
+    ],
+    retailers: [
+      { name: "Amazon", url: "#" },
+      { name: "Flipkart", url: "#" },
+      { name: "Myntra", url: "#" },
+      { name: "Zepto", url: "#" },
+      { name: "Blinkit", url: "#" },
+      { name: "Instamart", url: "#" },
     ],
   },
 ];
