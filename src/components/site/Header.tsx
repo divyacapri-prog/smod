@@ -9,7 +9,7 @@ export function Header() {
           <span className="grid h-9 w-9 place-items-center rounded-xl text-white" style={{ background: "var(--brand, #111)" }}>
             <span aria-hidden>◐</span>
           </span>
-          <span className="text-lg" style={{ color: "var(--v-ink, #111)" }}>PODWASH</span>
+          <span className="text-lg" style={{ color: "var(--v-ink, #111)" }}>SMOD</span>
         </Link>
         <nav className="hidden items-center gap-1 md:flex">
           {VARIANTS.map((v) => (

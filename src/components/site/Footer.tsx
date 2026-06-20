@@ -8,7 +8,7 @@ export function Footer() {
         <div>
           <div className="flex items-center gap-2 font-black">
             <span className="grid h-9 w-9 place-items-center rounded-xl text-white" style={{ background: "var(--brand, #111)" }}>◐</span>
-            <span style={{ color: "var(--v-ink)" }}>PODWASH</span>
+            <span style={{ color: "var(--v-ink)" }}>SMOD</span>
           </div>
           <p className="mt-3 text-sm" style={{ color: "var(--v-ink-soft)" }}>
             Precision laundry pods, engineered for the way you actually wash.
@@ -40,7 +40,7 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t px-5 py-5 text-center text-xs" style={{ borderColor: "color-mix(in oklab, var(--v-ink, #000) 10%, transparent)", color: "var(--v-ink-soft)" }}>
-        © {new Date().getFullYear()} Podwash Labs. All rights reserved.
+        © {new Date().getFullYear()} SMOD. All rights reserved.
       </div>
     </footer>
   );
