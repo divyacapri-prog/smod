@@ -65,6 +65,14 @@ export const VARIANTS: Variant[] = [
       { sku: "REG20", size: 20, price: 499, perWash: 24.95, bestFor: "Singles & couples", household: "1–2 people", buyPath: "/buy/regular-20" },
       { sku: "REG40", size: 40, price: 899, perWash: 22.48, bestFor: "Families", household: "3–5 people", buyPath: "/buy/regular-40" },
     ],
+    retailers: [
+      { name: "Amazon", url: "#" },
+      { name: "Flipkart", url: "#" },
+      { name: "Myntra", url: "#" },
+      { name: "Zepto", url: "#" },
+      { name: "Blinkit", url: "#" },
+      { name: "Instamart", url: "#" },
+    ],
   },
   {
     slug: "baby",
