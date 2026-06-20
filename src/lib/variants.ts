@@ -188,6 +188,14 @@ export const VARIANTS: Variant[] = [
       { sku: "SOCK20", size: 20, price: 479, perWash: 23.95, bestFor: "Athletes & commuters", household: "1–2 people", buyPath: "/buy/socks-20" },
       { sku: "SOCK40", size: 40, price: 849, perWash: 21.23, bestFor: "Active households", household: "3–5 people", buyPath: "/buy/socks-40" },
     ],
+    retailers: [
+      { name: "Amazon", url: "#" },
+      { name: "Flipkart", url: "#" },
+      { name: "Myntra", url: "#" },
+      { name: "Zepto", url: "#" },
+      { name: "Blinkit", url: "#" },
+      { name: "Instamart", url: "#" },
+    ],
   },
   {
     slug: "sports",
