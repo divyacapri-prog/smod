@@ -29,6 +29,7 @@ export type Variant = {
     household: string;
     buyPath: string; // /buy/...
   }[];
+  retailers: Retailer[];
 };
 
 export const VARIANTS: Variant[] = [
