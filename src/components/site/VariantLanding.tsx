@@ -9,6 +9,7 @@ import { Footer } from "./Footer";
 import { StickyCTA } from "./StickyCTA";
 import { QRCode } from "./QRCode";
 import { ProductInformation } from "./ProductInformation";
+import { WavePattern } from "./WavePattern";
 
 const PURCHASE_BASE = typeof window !== "undefined" ? window.location.origin : "";
 
@@ -45,6 +46,7 @@ export function VariantLanding({ variant }: { variant: Variant }) {
 
       {/* HERO */}
       <section className="relative overflow-hidden">
+        <WavePattern variant="soft" className="opacity-70" />
         <div
           aria-hidden
           className="absolute -top-32 left-1/2 h-[600px] w-[900px] -translate-x-1/2 rounded-full opacity-60 blur-3xl"
