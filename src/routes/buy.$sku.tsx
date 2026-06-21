@@ -1,8 +1,10 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import { findSku, paletteToCssVars } from "@/lib/variants";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { QRCode } from "@/components/site/QRCode";
+import { track } from "@/lib/analytics";
 
 export const Route = createFileRoute("/buy/$sku")({
   loader: ({ params }) => {
@@ -30,6 +32,29 @@ function BuyPage() {
   const { item } = Route.useLoaderData();
   const { variant } = item;
   const fullUrl = typeof window !== "undefined" ? `${window.location.origin}${item.buyPath}` : item.buyPath;
+  const [purchased, setPurchased] = useState(false);
+
+  // Track QR scan on landing if ?src=qr is present
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("src") === "qr") {
+      track("qr_scan", { sku: item.sku, variant: variant.slug });
+    }
+  }, [item.sku, variant.slug]);
+
+  const onAddToCart = () => {
+    track("add_to_cart", { sku: item.sku, variant: variant.slug, price: item.price });
+  };
+
+  const onCheckout = () => {
+    track("checkout_started", { sku: item.sku, variant: variant.slug, price: item.price });
+    // Simulated purchase completion for analytics demo
+    setTimeout(() => {
+      track("purchase_completed", { sku: item.sku, variant: variant.slug, price: item.price });
+      setPurchased(true);
+    }, 600);
+  };
 
   return (
     <div style={{ ...paletteToCssVars(variant.palette), background: "var(--v-bg)", color: "var(--v-ink)" }} className="min-h-screen">
@@ -39,13 +64,22 @@ function BuyPage() {
 
         <div className="mt-6 grid gap-10 rounded-[2rem] border p-8 md:grid-cols-2 md:p-12" style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)", background: "var(--v-surface)", boxShadow: "0 40px 80px -40px var(--brand)" }}>
           <div>
-            <div
-              className="aspect-square w-full rounded-3xl"
-              style={{
-                background: `radial-gradient(circle at 30% 30%, var(--accent), var(--brand) 60%, var(--brand-deep))`,
-                boxShadow: "inset 0 -20px 40px rgba(0,0,0,0.25)",
-              }}
-            />
+            {variant.packaging.imageUrl ? (
+              <img
+                src={variant.packaging.imageUrl}
+                alt={`${variant.name} pack`}
+                className="aspect-square w-full rounded-3xl object-cover"
+                loading="lazy"
+              />
+            ) : (
+              <div
+                className="aspect-square w-full rounded-3xl"
+                style={{
+                  background: `radial-gradient(circle at 30% 30%, var(--accent), var(--brand) 60%, var(--brand-deep))`,
+                  boxShadow: "inset 0 -20px 40px rgba(0,0,0,0.25)",
+                }}
+              />
+            )}
           </div>
           <div className="flex flex-col justify-center">
             <p className="text-xs font-bold uppercase tracking-widest" style={{ color: "var(--brand)" }}>{variant.emoji} {variant.name}</p>
@@ -55,9 +89,18 @@ function BuyPage() {
               <span className="text-5xl font-black" style={{ color: "var(--brand-deep)" }}>₹{item.price}</span>
               <span className="text-sm" style={{ color: "var(--v-ink-soft)" }}>≈ ₹{item.perWash.toFixed(2)} / wash</span>
             </div>
-            <button className="mt-6 rounded-full px-6 py-3 text-sm font-bold text-white" style={{ background: "var(--brand)" }}>
-              Add to cart · ₹{item.price}
-            </button>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <button onClick={onAddToCart} className="rounded-full px-6 py-3 text-sm font-bold text-white" style={{ background: "var(--brand)" }}>
+                Add to cart · ₹{item.price}
+              </button>
+              <button
+                onClick={onCheckout}
+                className="rounded-full border px-6 py-3 text-sm font-bold"
+                style={{ borderColor: "var(--brand)", color: "var(--brand-deep)" }}
+              >
+                {purchased ? "✓ Order placed" : "Checkout"}
+              </button>
+            </div>
             <div className="mt-8 flex items-center gap-6 rounded-2xl border p-5" style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)", background: "var(--v-bg-soft)" }}>
               <QRCode value={fullUrl} sku={item.sku} size={140} fg={variant.palette.brandDeep} bg={variant.palette.surface} />
               <div className="text-xs" style={{ color: "var(--v-ink-soft)" }}>
