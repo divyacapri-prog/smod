@@ -7,10 +7,10 @@ import smodLogo from "@/assets/smod-logo.png.asset.json";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "SMOD — Smart Pods. Powerful Clean. Engineered for every load." },
-      { name: "description", content: "SMOD — the Smart Pod. Pre-measured, plant-based laundry pods built on four pillars: Smart dosing, Maximum clean, Optimised care, Dependable freshness." },
+      { title: "SMOD — Smart Pods. Powerful Clean." },
+      { name: "description", content: "SMOD — the Smart Pod. Smart dosing, Maximum clean, Optimised care, Dependable freshness." },
       { property: "og:title", content: "SMOD — Smart Pods for every load" },
-      { property: "og:description", content: "Smart. Maximum. Optimised. Dependable. One pod does it all." },
+      { property: "og:description", content: "Smart. Maximum. Optimised. Dependable." },
       { property: "og:url", content: "/" },
     ],
     links: [{ rel: "canonical", href: "/" }],
@@ -18,36 +18,58 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-// Four pillars — implicitly spell SMOD (Smart · Maximum · Optimised · Dependable)
+// Compact pillar tiles — icon-first, minimal copy
 const PILLARS = [
-  {
-    letter: "S",
-    word: "Smart",
-    title: "Smart Dosing",
-    body: "One pre-measured pod per load. No spills, no scoops, no over-pouring. Designed to take the guesswork out of laundry.",
-    icon: "🧠",
-  },
-  {
-    letter: "M",
-    word: "Maximum",
-    title: "Maximum Clean",
-    body: "Concentrated multi-chamber formula tackles tough stains, sweat and grime in a single cycle — even on a cold wash.",
-    icon: "💧",
-  },
-  {
-    letter: "O",
-    word: "Optimised",
-    title: "Optimised for Fabrics",
-    body: "Color-lock and fiber-safe chemistry tuned for every variant — regular cottons, performance polyester and delicate weaves.",
-    icon: "🧵",
-  },
-  {
-    letter: "D",
-    word: "Dependable",
-    title: "Dependable Freshness",
-    body: "Long-lasting fragrance and anti-microbial finish keep clothes fresh wash after wash. Top & front load safe.",
-    icon: "🌿",
-  },
+  { letter: "S", word: "Smart", tag: "Dosing", svg: <PodIcon /> },
+  { letter: "M", word: "Maximum", tag: "Clean", svg: <SplashIcon /> },
+  { letter: "O", word: "Optimised", tag: "Care", svg: <FabricIcon /> },
+  { letter: "D", word: "Dependable", tag: "Freshness", svg: <LeafIcon /> },
+];
+
+function PodIcon() {
+  return (
+    <svg viewBox="0 0 64 64" className="h-12 w-12">
+      <defs>
+        <linearGradient id="podg" x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0" stopColor="var(--accent)" />
+          <stop offset="1" stopColor="var(--brand)" />
+        </linearGradient>
+      </defs>
+      <rect x="10" y="10" width="44" height="44" rx="14" fill="url(#podg)" />
+      <circle cx="24" cy="26" r="6" fill="white" opacity=".9" />
+      <circle cx="42" cy="40" r="8" fill="white" opacity=".7" />
+    </svg>
+  );
+}
+function SplashIcon() {
+  return (
+    <svg viewBox="0 0 64 64" className="h-12 w-12" fill="var(--brand)">
+      <path d="M32 4c8 12 18 20 18 32a18 18 0 11-36 0c0-12 10-20 18-32z" />
+      <circle cx="26" cy="40" r="4" fill="white" opacity=".6" />
+    </svg>
+  );
+}
+function FabricIcon() {
+  return (
+    <svg viewBox="0 0 64 64" className="h-12 w-12" fill="none" stroke="var(--brand)" strokeWidth="3" strokeLinecap="round">
+      <path d="M8 20 Q16 12 24 20 T40 20 T56 20" />
+      <path d="M8 34 Q16 26 24 34 T40 34 T56 34" />
+      <path d="M8 48 Q16 40 24 48 T40 48 T56 48" />
+    </svg>
+  );
+}
+function LeafIcon() {
+  return (
+    <svg viewBox="0 0 64 64" className="h-12 w-12" fill="var(--brand)">
+      <path d="M52 8C28 8 12 24 12 44c0 5 1 9 3 12C18 38 32 24 52 20c-10 8-22 18-28 36 16 0 32-14 32-36V8z" />
+    </svg>
+  );
+}
+
+const STEPS = [
+  { n: "01", t: "Drop", b: "One pod in the drum." },
+  { n: "02", t: "Load", b: "Any cycle, any load." },
+  { n: "03", t: "Done", b: "Deep clean. Zero mess." },
 ];
 
 function Home() {
@@ -58,9 +80,8 @@ function Home() {
     >
       <Header />
 
-      {/* ============ HERO — Ariel / Surf-style split ============ */}
+      {/* ============ HERO ============ */}
       <section className="relative overflow-hidden" style={{ background: `linear-gradient(135deg, var(--brand) 0%, var(--brand-deep) 100%)` }}>
-        {/* decorative bubbles */}
         <div aria-hidden className="pointer-events-none absolute inset-0 opacity-30">
           <div className="absolute -left-20 top-10 h-72 w-72 rounded-full" style={{ background: "radial-gradient(circle at 30% 30%, color-mix(in oklab, white 60%, transparent), transparent 60%)" }} />
           <div className="absolute right-10 top-40 h-40 w-40 rounded-full" style={{ background: "radial-gradient(circle at 30% 30%, color-mix(in oklab, white 70%, transparent), transparent 60%)" }} />
@@ -69,16 +90,10 @@ function Home() {
 
         <div className="relative mx-auto flex max-w-7xl flex-col items-center px-5 py-16 text-center text-white md:py-24">
           <div className="relative">
-            <div
-              aria-hidden
-              className="absolute inset-0 -m-10 rounded-full blur-3xl"
-              style={{ background: "radial-gradient(circle, color-mix(in oklab, var(--accent) 60%, transparent), transparent 70%)" }}
-            />
+            <div aria-hidden className="absolute inset-0 -m-10 rounded-full blur-3xl" style={{ background: "radial-gradient(circle, color-mix(in oklab, var(--accent) 60%, transparent), transparent 70%)" }} />
             <div
               className="relative grid h-56 w-56 place-items-center rounded-full shadow-2xl md:h-72 md:w-72"
-              style={{
-                background: `conic-gradient(from 210deg, color-mix(in oklab, var(--accent) 80%, white), white 40%, color-mix(in oklab, var(--brand) 50%, white) 70%, var(--accent))`,
-              }}
+              style={{ background: `conic-gradient(from 210deg, color-mix(in oklab, var(--accent) 80%, white), white 40%, color-mix(in oklab, var(--brand) 50%, white) 70%, var(--accent))` }}
             >
               <div className="grid h-[80%] w-[80%] place-items-center rounded-full bg-white/20 backdrop-blur">
                 <div className="text-center">
@@ -89,178 +104,139 @@ function Home() {
             </div>
           </div>
 
-          <p className="mt-8 max-w-md text-base leading-relaxed opacity-90 md:text-lg">
-            SMOD is the smarter way to wash. Pre-measured pods built on four pillars — <strong>S</strong>mart dosing, <strong>M</strong>aximum clean, <strong>O</strong>ptimised care and <strong>D</strong>ependable freshness.
+          <p className="mt-8 max-w-sm text-base font-medium opacity-95 md:text-lg">
+            One pod. One wash. Powerful clean.
           </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <Link
-              to="/regular"
-              className="rounded-full bg-white px-6 py-3 text-sm font-bold shadow-lg transition-transform hover:scale-[1.03]"
-              style={{ color: "var(--brand)" }}
-            >
+          <div className="mt-6 flex flex-wrap justify-center gap-3">
+            <Link to="/regular" className="rounded-full bg-white px-6 py-3 text-sm font-bold shadow-lg transition-transform hover:scale-[1.03]" style={{ color: "var(--brand)" }}>
               Shop the range
             </Link>
-            <a
-              href="#pillars"
-              className="rounded-full border border-white/40 px-6 py-3 text-sm font-bold text-white hover:bg-white/10"
-            >
-              Discover the science
+            <a href="#pillars" className="rounded-full border border-white/40 px-6 py-3 text-sm font-bold text-white hover:bg-white/10">
+              How it works
             </a>
           </div>
         </div>
 
-        {/* trust strip */}
+        {/* trust strip — icon based */}
         <div className="relative border-t border-white/15 bg-black/10">
-          <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-10 gap-y-3 px-5 py-4 text-[11px] font-bold uppercase tracking-[0.25em] text-white/80">
-            <span>✓ Cruelty Free</span>
-            <span>✓ Recyclable Packaging</span>
-            <span>✓ Made in India</span>
-            <span>✓ Top & Front Load Safe</span>
+          <div className="mx-auto grid max-w-7xl grid-cols-2 gap-4 px-5 py-5 text-center text-[10px] font-bold uppercase tracking-[0.2em] text-white/85 md:grid-cols-4">
+            <div className="flex flex-col items-center gap-1"><span className="text-2xl">🐇</span>Cruelty Free</div>
+            <div className="flex flex-col items-center gap-1"><span className="text-2xl">♻️</span>Recyclable</div>
+            <div className="flex flex-col items-center gap-1"><span className="text-2xl">🇮🇳</span>Made in India</div>
+            <div className="flex flex-col items-center gap-1"><span className="text-2xl">🌀</span>Top + Front Load</div>
           </div>
         </div>
       </section>
 
-      {/* ============ WHAT IS SMOD — wordmark reveal ============ */}
-      <section className="mx-auto max-w-7xl px-5 py-20 text-center">
-        <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--brand)" }}>
-          What's in the name
-        </p>
-        <h2 className="mx-auto mt-3 max-w-3xl text-4xl font-black leading-tight md:text-6xl">
-          <span style={{ color: "var(--brand)" }}>SM</span>art p<span style={{ color: "var(--brand)" }}>OD</span>.
-          <br />
-          Engineered to outperform.
-        </h2>
-        <p className="mx-auto mt-5 max-w-2xl text-base" style={{ color: "var(--v-ink-soft)" }}>
-          Every SMOD pod is a tiny laboratory — multi-compartment chambers release the right detergent at the right moment of the wash cycle. No scooping. No leaking bottles. Just the smart way to clean.
+      {/* ============ SMOD WORDMARK INFOGRAPHIC ============ */}
+      <section className="mx-auto max-w-7xl px-5 py-16 text-center">
+        <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--brand)" }}>What it means</p>
+        <div className="mt-6 flex flex-wrap items-end justify-center gap-2 text-5xl font-black md:text-7xl">
+          <span style={{ color: "var(--brand)" }}>S</span>
+          <span className="text-base font-bold opacity-60 md:text-xl">mart</span>
+          <span style={{ color: "var(--brand)" }}>p</span>
+          <span style={{ color: "var(--brand)" }}>O</span>
+          <span style={{ color: "var(--brand)" }}>D</span>
+        </div>
+        <p className="mx-auto mt-4 max-w-md text-sm font-medium" style={{ color: "var(--v-ink-soft)" }}>
+          A tiny laboratory in every pod.
         </p>
       </section>
 
-      {/* ============ FOUR PILLARS ============ */}
-      <section id="pillars" className="relative py-20" style={{ background: "var(--v-bg-soft)" }}>
+      {/* ============ FOUR PILLARS — infographic tiles ============ */}
+      <section id="pillars" className="relative py-16" style={{ background: "var(--v-bg-soft)" }}>
         <div className="mx-auto max-w-7xl px-5">
-          <div className="mb-12 text-center">
-            <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--brand)" }}>
-              Four pillars
-            </p>
-            <h2 className="mt-3 text-4xl font-black md:text-5xl">The science behind every pod.</h2>
-            <p className="mx-auto mt-3 max-w-xl" style={{ color: "var(--v-ink-soft)" }}>
-              Each letter of SMOD stands for a promise we engineer into every wash.
-            </p>
+          <div className="mb-10 text-center">
+            <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--brand)" }}>Four pillars</p>
+            <h2 className="mt-2 text-3xl font-black md:text-4xl">Built on S · M · O · D</h2>
           </div>
 
-          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
             {PILLARS.map((p) => (
               <article
                 key={p.letter}
-                className="group relative overflow-hidden rounded-3xl border bg-white p-7 transition-all hover:-translate-y-1 hover:shadow-2xl"
+                className="group relative flex flex-col items-center overflow-hidden rounded-3xl border bg-white p-6 text-center transition-all hover:-translate-y-1 hover:shadow-2xl"
                 style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)" }}
               >
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute -right-6 -top-6 text-[8rem] font-black leading-none opacity-[0.07] transition-opacity group-hover:opacity-[0.12]"
-                  style={{ color: "var(--brand)" }}
-                >
+                <div aria-hidden className="pointer-events-none absolute -right-4 -top-6 text-[7rem] font-black leading-none opacity-[0.06]" style={{ color: "var(--brand)" }}>
                   {p.letter}
                 </div>
-                <div className="relative">
-                  <div className="text-3xl">{p.icon}</div>
-                  <div className="mt-4 text-[10px] font-bold uppercase tracking-[0.3em]" style={{ color: "var(--brand)" }}>
-                    {p.word}
-                  </div>
-                  <h3 className="mt-1 text-xl font-black">{p.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed" style={{ color: "var(--v-ink-soft)" }}>{p.body}</p>
-                </div>
+                <div className="relative">{p.svg}</div>
+                <div className="relative mt-4 text-[10px] font-bold uppercase tracking-[0.3em]" style={{ color: "var(--brand)" }}>{p.word}</div>
+                <h3 className="relative text-lg font-black">{p.tag}</h3>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ============ VARIANTS ============ */}
-      <section id="variants" className="mx-auto max-w-7xl px-5 py-20">
-        <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--brand)" }}>The range</p>
-            <h2 className="mt-3 text-4xl font-black md:text-5xl">One Smart Pod for every load.</h2>
-          </div>
-          <p className="max-w-sm text-sm" style={{ color: "var(--v-ink-soft)" }}>
-            Available in 20-pod and 40-pod packs. Choose by laundry need — every variant carries the full SMOD promise.
-          </p>
+      {/* ============ HOW IT WORKS — visual flow ============ */}
+      <section className="mx-auto max-w-7xl px-5 py-16">
+        <div className="mb-10 text-center">
+          <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--brand)" }}>How it works</p>
+          <h2 className="mt-2 text-3xl font-black md:text-4xl">Three steps. Zero mess.</h2>
         </div>
-
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {VARIANTS.map((v) => (
-            <Link
-              key={v.slug}
-              to={`/${v.slug}` as string}
-              className="group relative overflow-hidden rounded-3xl border p-8 transition-transform hover:-translate-y-1"
-              style={{
-                borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)",
-                background: `linear-gradient(150deg, var(--v-surface), var(--v-bg-soft))`,
-              }}
-            >
-              <div aria-hidden className="absolute -right-10 -top-10 h-48 w-48 rounded-full opacity-40 blur-2xl" style={{ background: "var(--brand)" }} />
-              <div className="relative">
-                <div className="text-4xl">{v.emoji}</div>
-                <h3 className="mt-4 text-2xl font-black" style={{ color: "var(--v-ink)" }}>{v.name}</h3>
-                <p className="mt-2 text-sm" style={{ color: "var(--v-ink-soft)" }}>{v.tagline}</p>
-                <div className="mt-6 flex flex-wrap gap-2 text-xs font-semibold">
-                  {v.packs.map((p) => (
-                    <span key={p.sku} className="rounded-full border px-2 py-1" style={{ borderColor: "color-mix(in oklab, var(--brand) 25%, transparent)", color: "var(--brand-deep)" }}>
-                      {p.size} pods · ₹{p.price}
-                    </span>
-                  ))}
-                </div>
-                <div className="mt-5 flex items-center justify-between">
-                  <span className="text-xs font-semibold" style={{ color: "var(--v-ink-soft)" }}>From ₹{v.packs[0].price}</span>
-                  <span className="rounded-full px-3 py-1 text-xs font-bold text-white transition-transform group-hover:translate-x-1" style={{ background: "var(--brand)" }}>
-                    Shop →
-                  </span>
-                </div>
+        <div className="relative grid gap-6 md:grid-cols-3">
+          <div aria-hidden className="pointer-events-none absolute left-[16%] right-[16%] top-12 hidden h-px md:block" style={{ background: `repeating-linear-gradient(90deg, var(--brand) 0 8px, transparent 8px 16px)` }} />
+          {STEPS.map((s) => (
+            <div key={s.n} className="relative flex flex-col items-center text-center">
+              <div className="grid h-24 w-24 place-items-center rounded-full text-2xl font-black text-white shadow-lg" style={{ background: `linear-gradient(135deg, var(--brand), var(--brand-deep))` }}>
+                {s.n}
               </div>
-            </Link>
+              <h3 className="mt-5 text-xl font-black">{s.t}</h3>
+              <p className="mt-1 text-sm" style={{ color: "var(--v-ink-soft)" }}>{s.b}</p>
+            </div>
           ))}
         </div>
       </section>
 
-      {/* ============ HOW IT WORKS ============ */}
-      <section className="py-20" style={{ background: "var(--v-bg-soft)" }}>
+      {/* ============ VARIANTS ============ */}
+      <section id="variants" className="py-16" style={{ background: "var(--v-bg-soft)" }}>
         <div className="mx-auto max-w-7xl px-5">
-          <div className="mb-12 text-center">
-            <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--brand)" }}>How it works</p>
-            <h2 className="mt-3 text-4xl font-black md:text-5xl">Three steps. Zero mess.</h2>
+          <div className="mb-8 text-center">
+            <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--brand)" }}>The range</p>
+            <h2 className="mt-2 text-3xl font-black md:text-4xl">One pod for every load.</h2>
           </div>
-          <div className="grid gap-6 md:grid-cols-3">
-            {[
-              { n: "01", t: "Drop the pod", b: "Place one SMOD pod directly into the empty drum before loading clothes." },
-              { n: "02", t: "Load & start", b: "Add your laundry and run any cycle — cold or warm, top or front load." },
-              { n: "03", t: "Pull out clean", b: "The biodegradable film dissolves completely. Deep clean, every time." },
-            ].map((s) => (
-              <div key={s.n} className="rounded-3xl bg-white p-8 shadow-sm">
-                <div className="text-5xl font-black" style={{ color: "var(--brand)" }}>{s.n}</div>
-                <h3 className="mt-4 text-xl font-black">{s.t}</h3>
-                <p className="mt-2 text-sm" style={{ color: "var(--v-ink-soft)" }}>{s.b}</p>
-              </div>
+
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {VARIANTS.map((v) => (
+              <Link
+                key={v.slug}
+                to={`/${v.slug}` as string}
+                className="group relative overflow-hidden rounded-3xl border bg-white p-6 transition-transform hover:-translate-y-1"
+                style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)" }}
+              >
+                <div aria-hidden className="absolute -right-10 -top-10 h-40 w-40 rounded-full opacity-30 blur-2xl" style={{ background: "var(--brand)" }} />
+                <div className="relative flex items-center gap-4">
+                  <div className="text-5xl">{v.emoji}</div>
+                  <div>
+                    <h3 className="text-xl font-black">{v.name}</h3>
+                    <p className="text-xs" style={{ color: "var(--v-ink-soft)" }}>From ₹{v.packs[0].price}</p>
+                  </div>
+                </div>
+                <div className="relative mt-5 flex items-center justify-between">
+                  <div className="flex gap-1 text-[10px] font-bold uppercase tracking-wider" style={{ color: "var(--brand-deep)" }}>
+                    {v.packs.map((p) => (
+                      <span key={p.sku} className="rounded-full border px-2 py-1" style={{ borderColor: "color-mix(in oklab, var(--brand) 25%, transparent)" }}>
+                        {p.size}
+                      </span>
+                    ))}
+                  </div>
+                  <span className="rounded-full px-3 py-1 text-xs font-bold text-white transition-transform group-hover:translate-x-1" style={{ background: "var(--brand)" }}>Shop →</span>
+                </div>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
       {/* ============ FINAL CTA ============ */}
-      <section className="mx-auto max-w-7xl px-5 py-20">
-        <div
-          className="relative overflow-hidden rounded-[2.5rem] p-12 text-center text-white md:p-20"
-          style={{ background: `linear-gradient(135deg, var(--brand), var(--brand-deep))` }}
-        >
+      <section className="mx-auto max-w-7xl px-5 py-16">
+        <div className="relative overflow-hidden rounded-[2.5rem] p-10 text-center text-white md:p-16" style={{ background: `linear-gradient(135deg, var(--brand), var(--brand-deep))` }}>
           <div aria-hidden className="absolute -right-20 -top-20 h-80 w-80 rounded-full opacity-30" style={{ background: "var(--accent)" }} />
           <div className="relative">
-            <h2 className="text-4xl font-black md:text-6xl">Ready for a smarter wash?</h2>
-            <p className="mx-auto mt-4 max-w-xl opacity-90">Try the SMOD range today. One pod, one wash, no compromises.</p>
-            <Link
-              to="/regular"
-              className="mt-8 inline-block rounded-full bg-white px-8 py-4 text-sm font-bold shadow-lg transition-transform hover:scale-[1.03]"
-              style={{ color: "var(--brand)" }}
-            >
+            <h2 className="text-3xl font-black md:text-5xl">Smarter wash. Starts here.</h2>
+            <Link to="/regular" className="mt-6 inline-block rounded-full bg-white px-8 py-4 text-sm font-bold shadow-lg transition-transform hover:scale-[1.03]" style={{ color: "var(--brand)" }}>
               Shop SMOD pods →
             </Link>
           </div>
