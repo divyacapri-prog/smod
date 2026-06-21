@@ -1,15 +1,13 @@
 import { Link } from "@tanstack/react-router";
 import { VARIANTS } from "@/lib/variants";
+import smodLogo from "@/assets/smod-logo.png.asset.json";
 
 export function Footer() {
   return (
     <footer className="mt-24 border-t" style={{ borderColor: "color-mix(in oklab, var(--v-ink, #000) 10%, transparent)", background: "var(--v-bg-soft, #f4f4f4)" }}>
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 md:grid-cols-4">
         <div>
-          <div className="flex items-center gap-2 font-black">
-            <span className="grid h-9 w-9 place-items-center rounded-xl text-white" style={{ background: "var(--brand, #111)" }}>◐</span>
-            <span style={{ color: "var(--v-ink)" }}>SMOD</span>
-          </div>
+          <img src={smodLogo.url} alt="SMOD" className="h-8 w-auto" />
           <p className="mt-3 text-sm" style={{ color: "var(--v-ink-soft)" }}>
             Precision laundry pods, engineered for the way you actually wash.
           </p>
