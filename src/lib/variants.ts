@@ -138,14 +138,14 @@ export const VARIANTS: Variant[] = [
       "An enzyme-loaded pod engineered for the toughest sweat odors and ground-in grime. Bring tired socks back to life.",
     emoji: "🧦",
     palette: {
-      brand: "#3A2368",       // Deep Indigo/Purple (dominant)
-      brandDeep: "#2A4B9B",   // Cobalt Blue
+      brand: "#2A4B9B",       // Cobalt Blue (logo)
+      brandDeep: "#3A2368",   // Deep Indigo/Purple
       accent: "#897BAA",      // Soft Violet
-      bg: "#F4F1EA",          // Pale Cream/Beige (warm bg)
-      bgSoft: "#E5DDD1",      // Cream Beige
-      surface: "#FFFFFF",
+      bg: "#6E7176",          // Medium-Dark Grey (jar body)
+      bgSoft: "#85878C",      // Lighter grey for soft sections
+      surface: "#ECECEE",     // Tinted White (label)
       ink: "#2C2D31",         // Charcoal
-      inkSoft: "#606A88",     // Muted Blue-Grey
+      inkSoft: "#4A4C52",     // Darker for contrast on grey
     },
     benefits: [
       { title: "Deep Odor Removal", description: "Bio-enzymes break down sweat residue at the molecular level." },
