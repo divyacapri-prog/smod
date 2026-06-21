@@ -212,14 +212,14 @@ export const VARIANTS: Variant[] = [
       "A technical pod tuned for moisture-wicking polyester, spandex and merino. Removes sweat, salts and odor without damaging fibers.",
     emoji: "🏃",
     palette: {
-      brand: "#0074E1",       // Deep Cobalt Blue (graphic mid-tones)
-      brandDeep: "#6C2492",   // Rich Violet
-      accent: "#00BFFF",      // Electric Cyan
-      bg: "#1A1A1A",          // Matte Black
-      bgSoft: "#252528",
-      surface: "#2A2A2D",
+      brand: "#00BFFF",       // Electric Cyan (primary highlight)
+      brandDeep: "#0074E1",   // Deep Cobalt Blue
+      accent: "#E14DCA",      // Vibrant Fuchsia
+      bg: "#1A1A1A",          // Matte Black (jar body)
+      bgSoft: "#0F0F12",      // Deeper black for sections
+      surface: "#222226",     // Lifted black for cards
       ink: "#F2F2F2",         // Off-White
-      inkSoft: "#A8A8AC",
+      inkSoft: "#9B9BA0",
     },
     benefits: [
       { title: "Activewear Protection", description: "Preserves stretch, shape and wicking performance." },
