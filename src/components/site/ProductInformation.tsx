@@ -1,0 +1,133 @@
+import type { Variant } from "@/lib/variants";
+
+export function ProductInformation({ variant }: { variant: Variant }) {
+  const p = variant.packaging;
+  return (
+    <section id="product-information" className="mx-auto max-w-7xl px-5 py-16 md:py-24">
+      <div className="mx-auto mb-10 max-w-3xl text-center">
+        <p className="text-xs font-bold uppercase tracking-[0.3em]" style={{ color: "var(--brand)" }}>
+          Product Information
+        </p>
+        <h2 className="mt-3 text-balance text-4xl font-black tracking-tight md:text-5xl" style={{ color: "var(--v-ink)" }}>
+          {p.productName}
+        </h2>
+        <p className="mt-3 text-base" style={{ color: "var(--v-ink-soft)" }}>{p.subtitle}</p>
+      </div>
+
+      <div className="grid gap-6 md:grid-cols-12">
+        {/* Pack image / hero card */}
+        <div
+          className="overflow-hidden rounded-3xl border md:col-span-5"
+          style={{
+            borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)",
+            background: "var(--v-surface)",
+          }}
+        >
+          {p.imageUrl ? (
+            <img src={p.imageUrl} alt={`${p.productName} packaging`} className="h-full w-full object-cover" loading="lazy" />
+          ) : (
+            <div className="grid aspect-square place-items-center" style={{ background: "var(--v-bg-soft)", color: "var(--v-ink-soft)" }}>
+              <span className="text-sm font-semibold uppercase tracking-widest">Packaging artwork coming soon</span>
+            </div>
+          )}
+        </div>
+
+        {/* Quick facts */}
+        <div className="grid gap-4 md:col-span-7 md:grid-cols-2">
+          <FactCard label="Wash count" value={variant.packs.map((x) => `${x.size} pods`).join(" · ")} />
+          <FactCard label="Net weight" value={p.weight} />
+          <FactCard label="Fragrance" value={p.fragrance} />
+          <FactCard label="Suitable for" value={p.machines.join(" · ")} />
+
+          <div className="rounded-3xl border p-5 md:col-span-2" style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)", background: "var(--v-surface)" }}>
+            <p className="text-xs font-bold uppercase tracking-widest" style={{ color: "var(--v-ink-soft)" }}>Marketing highlights</p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {p.highlights.map((h) => (
+                <span key={h} className="rounded-full px-3 py-1 text-xs font-bold text-white" style={{ background: "var(--brand)" }}>
+                  {h}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Key benefits grid */}
+      <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {p.benefits.map((b) => (
+          <div key={b.title} className="rounded-3xl border p-6" style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)", background: "var(--v-surface)" }}>
+            <div className="grid h-11 w-11 place-items-center rounded-xl text-xl" style={{ background: "color-mix(in oklab, var(--brand) 12%, transparent)" }}>
+              <span>{b.icon}</span>
+            </div>
+            <h3 className="mt-3 text-base font-bold" style={{ color: "var(--v-ink)" }}>{b.title}</h3>
+            <p className="mt-1 text-sm" style={{ color: "var(--v-ink-soft)" }}>{b.body}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Directions + dosage */}
+      <div className="mt-10 grid gap-6 md:grid-cols-2">
+        <div className="rounded-3xl border p-6" style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)", background: "var(--v-surface)" }}>
+          <p className="text-xs font-bold uppercase tracking-widest" style={{ color: "var(--brand)" }}>Directions for use</p>
+          <ol className="mt-4 space-y-3">
+            {p.directions.map((d) => (
+              <li key={d.step} className="flex gap-3">
+                <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full text-xs font-bold text-white" style={{ background: "var(--brand)" }}>{d.step}</span>
+                <span className="text-sm leading-relaxed" style={{ color: "var(--v-ink)" }}>{d.body}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
+
+        <div className="rounded-3xl border p-6" style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)", background: "var(--v-surface)" }}>
+          <p className="text-xs font-bold uppercase tracking-widest" style={{ color: "var(--brand)" }}>Dosage guide</p>
+          <div className="mt-4 divide-y" style={{ borderColor: "color-mix(in oklab, var(--v-ink) 8%, transparent)" }}>
+            {p.dosage.map((d) => (
+              <div key={d.load} className="flex items-center justify-between py-3">
+                <span className="text-sm" style={{ color: "var(--v-ink-soft)" }}>{d.load}</span>
+                <span className="text-sm font-bold" style={{ color: "var(--brand-deep)" }}>{d.pods}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Caution + certifications */}
+      <div className="mt-6 grid gap-6 md:grid-cols-2">
+        <div className="rounded-3xl border p-6" style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)", background: "var(--v-surface)" }}>
+          <p className="text-xs font-bold uppercase tracking-widest" style={{ color: "var(--brand)" }}>Caution & safety</p>
+          <ul className="mt-4 space-y-2 text-sm" style={{ color: "var(--v-ink)" }}>
+            {p.caution.map((c) => (
+              <li key={c} className="flex gap-2">
+                <span style={{ color: "var(--brand)" }}>•</span>
+                <span>{c}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="rounded-3xl border p-6" style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)", background: "var(--v-surface)" }}>
+          <p className="text-xs font-bold uppercase tracking-widest" style={{ color: "var(--brand)" }}>Certifications</p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {p.certifications.map((c) => (
+              <span key={c} className="rounded-full border px-3 py-1 text-xs font-semibold" style={{ borderColor: "color-mix(in oklab, var(--brand) 30%, transparent)", color: "var(--brand-deep)", background: "color-mix(in oklab, var(--brand) 8%, transparent)" }}>
+                ✓ {c}
+              </span>
+            ))}
+          </div>
+          <p className="mt-6 text-xs font-bold uppercase tracking-widest" style={{ color: "var(--brand)" }}>Claim</p>
+          <p className="mt-2 text-sm font-semibold" style={{ color: "var(--v-ink)" }}>{p.claim}</p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FactCard({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-3xl border p-5" style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)", background: "var(--v-surface)" }}>
+      <p className="text-xs font-bold uppercase tracking-widest" style={{ color: "var(--v-ink-soft)" }}>{label}</p>
+      <p className="mt-2 text-base font-bold" style={{ color: "var(--v-ink)" }}>{value}</p>
+    </div>
+  );
+}
