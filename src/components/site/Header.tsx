@@ -1,15 +1,13 @@
 import { Link } from "@tanstack/react-router";
 import { VARIANTS } from "@/lib/variants";
+import smodLogo from "@/assets/smod-logo.png.asset.json";
 
 export function Header() {
   return (
     <header className="sticky top-0 z-40 backdrop-blur-xl" style={{ background: "color-mix(in oklab, var(--v-bg, #fff) 75%, transparent)", borderBottom: "1px solid color-mix(in oklab, var(--v-ink, #000) 8%, transparent)" }}>
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
-        <Link to="/" className="flex items-center gap-2 font-black tracking-tight">
-          <span className="grid h-9 w-9 place-items-center rounded-xl text-white" style={{ background: "var(--brand, #111)" }}>
-            <span aria-hidden>◐</span>
-          </span>
-          <span className="text-lg" style={{ color: "var(--v-ink, #111)" }}>SMOD</span>
+        <Link to="/" className="flex items-center gap-2 font-black tracking-tight" aria-label="SMOD home">
+          <img src={smodLogo.url} alt="SMOD" className="h-8 w-auto" />
         </Link>
         <nav className="hidden items-center gap-1 md:flex">
           {VARIANTS.map((v) => (
