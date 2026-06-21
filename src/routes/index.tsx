@@ -165,9 +165,12 @@ function Home() {
             </div>
 
             <div className="relative order-1 flex justify-center md:order-2">
-              <div aria-hidden className="absolute inset-0 -m-8 rounded-full blur-3xl" style={{ background: "radial-gradient(circle, color-mix(in oklab, var(--accent) 45%, transparent), transparent 70%)" }} />
-              <img src={packFront.url} alt="SMOD pack" className="relative h-[280px] w-auto drop-shadow-2xl md:h-[440px]" />
+              <div aria-hidden className="absolute inset-0 -m-10 rounded-full blur-3xl" style={{ background: "radial-gradient(circle, color-mix(in oklab, var(--accent) 40%, transparent), transparent 70%)" }} />
+              <div className="relative rounded-[2rem] bg-white p-6 shadow-2xl ring-1 ring-black/5 md:p-8">
+                <img src={packFront.url} alt="SMOD pack" className="block h-[280px] w-auto md:h-[420px]" />
+              </div>
             </div>
+
 
             <div className="order-3 grid grid-cols-2 gap-4 md:grid-cols-1">
               {PILLARS.slice(2).map((p) => (
