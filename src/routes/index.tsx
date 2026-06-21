@@ -109,7 +109,7 @@ function Home() {
 
         <div className="relative mx-auto flex max-w-7xl flex-col items-center gap-6 px-5 py-16 text-center text-white md:py-24">
           <img src={smodLogo.url} alt="SMOD" className="h-20 w-auto md:h-28" />
-          <div className="text-[11px] font-bold uppercase tracking-[0.5em] text-white/85">Smart Pod · One Wash</div>
+          <div className="text-[11px] font-bold uppercase tracking-[0.5em] text-white/85">No mess, zero guesswork</div>
           <h1 className="max-w-3xl text-4xl font-black leading-[1.05] md:text-6xl">
             One pod. <span className="opacity-80">One wash.</span> <span style={{ color: "var(--accent)" }}>Powerful clean.</span>
           </h1>
