@@ -102,6 +102,7 @@ function Home() {
 
       {/* ============ HERO ============ */}
       <section className="relative overflow-hidden" style={{ background: `linear-gradient(135deg, var(--brand) 0%, var(--brand-deep) 100%)` }}>
+        <WavePattern edge="bottom" color="rgba(255,255,255,0.12)" height={140} />
         <div aria-hidden className="pointer-events-none absolute inset-0 opacity-30">
           <div className="absolute -left-20 top-10 h-72 w-72 rounded-full" style={{ background: "radial-gradient(circle at 30% 30%, color-mix(in oklab, white 60%, transparent), transparent 60%)" }} />
           <div className="absolute right-10 top-40 h-40 w-40 rounded-full" style={{ background: "radial-gradient(circle at 30% 30%, color-mix(in oklab, white 70%, transparent), transparent 60%)" }} />
@@ -150,7 +151,7 @@ function Home() {
 
       {/* ============ FOUR PILLARS — pack at center, pillars radiating ============ */}
       <section id="pillars" className="relative overflow-hidden py-20" style={{ background: "var(--v-bg-soft)" }}>
-        <WavePattern variant="soft" />
+        <WavePattern />
         <div className="relative mx-auto max-w-7xl px-5">
           <div className="mb-12 text-center">
             <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--brand)" }}>S · M · O · D</p>
@@ -204,7 +205,7 @@ function Home() {
 
       {/* ============ VARIANTS ============ */}
       <section id="variants" className="relative overflow-hidden py-16" style={{ background: "var(--v-bg-soft)" }}>
-        <WavePattern variant="soft" />
+        <WavePattern />
         <div className="relative mx-auto max-w-7xl px-5">
           <div className="mb-8 text-center">
             <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--brand)" }}>The range</p>
@@ -246,7 +247,7 @@ function Home() {
       {/* ============ FINAL CTA ============ */}
       <section className="mx-auto max-w-7xl px-5 py-16">
         <div className="relative overflow-hidden rounded-[2.5rem] p-10 text-center text-white md:p-16" style={{ background: `linear-gradient(135deg, var(--brand), var(--brand-deep))` }}>
-          <WavePattern variant="bold" className="opacity-30" />
+          <WavePattern color="rgba(255,255,255,0.18)" />
           <div aria-hidden className="absolute -right-20 -top-20 h-80 w-80 rounded-full opacity-30" style={{ background: "var(--accent)" }} />
           <div className="relative">
             <h2 className="text-3xl font-black md:text-5xl">Smarter wash. Starts here.</h2>
