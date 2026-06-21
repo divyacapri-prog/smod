@@ -8,7 +8,6 @@ export function Footer() {
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 md:grid-cols-4">
         <div>
           <img src={smodLogo.url} alt="SMOD" className="h-8 w-auto" />
-        </div>
           <p className="mt-3 text-sm" style={{ color: "var(--v-ink-soft)" }}>
             Precision laundry pods, engineered for the way you actually wash.
           </p>
