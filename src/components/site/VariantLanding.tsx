@@ -3,10 +3,12 @@ import { useState } from "react";
 import { ExternalLink } from "lucide-react";
 import type { Variant } from "@/lib/variants";
 import { paletteToCssVars } from "@/lib/variants";
+import { track } from "@/lib/analytics";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { StickyCTA } from "./StickyCTA";
 import { QRCode } from "./QRCode";
+import { ProductInformation } from "./ProductInformation";
 
 const PURCHASE_BASE = typeof window !== "undefined" ? window.location.origin : "";
 
