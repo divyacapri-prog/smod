@@ -46,7 +46,7 @@ export function VariantLanding({ variant }: { variant: Variant }) {
 
       {/* HERO */}
       <section className="relative overflow-hidden">
-        <WavePattern variant="soft" className="opacity-70" />
+        <WavePattern />
         <div
           aria-hidden
           className="absolute -top-32 left-1/2 h-[600px] w-[900px] -translate-x-1/2 rounded-full opacity-60 blur-3xl"

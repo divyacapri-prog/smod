@@ -150,7 +150,7 @@ function Home() {
 
       {/* ============ FOUR PILLARS — pack at center, pillars radiating ============ */}
       <section id="pillars" className="relative overflow-hidden py-20" style={{ background: "var(--v-bg-soft)" }}>
-        <WavePattern variant="soft" />
+        <WavePattern />
         <div className="relative mx-auto max-w-7xl px-5">
           <div className="mb-12 text-center">
             <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--brand)" }}>S · M · O · D</p>
@@ -204,7 +204,7 @@ function Home() {
 
       {/* ============ VARIANTS ============ */}
       <section id="variants" className="relative overflow-hidden py-16" style={{ background: "var(--v-bg-soft)" }}>
-        <WavePattern variant="soft" />
+        <WavePattern />
         <div className="relative mx-auto max-w-7xl px-5">
           <div className="mb-8 text-center">
             <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--brand)" }}>The range</p>
@@ -246,7 +246,7 @@ function Home() {
       {/* ============ FINAL CTA ============ */}
       <section className="mx-auto max-w-7xl px-5 py-16">
         <div className="relative overflow-hidden rounded-[2.5rem] p-10 text-center text-white md:p-16" style={{ background: `linear-gradient(135deg, var(--brand), var(--brand-deep))` }}>
-          <WavePattern variant="bold" className="opacity-30" />
+          <WavePattern color="rgba(255,255,255,0.18)" />
           <div aria-hidden className="absolute -right-20 -top-20 h-80 w-80 rounded-full opacity-30" style={{ background: "var(--accent)" }} />
           <div className="relative">
             <h2 className="text-3xl font-black md:text-5xl">Smarter wash. Starts here.</h2>
