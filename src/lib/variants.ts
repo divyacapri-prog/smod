@@ -138,11 +138,11 @@ export const VARIANTS: Variant[] = [
       "An enzyme-loaded pod engineered for the toughest sweat odors and ground-in grime. Bring tired socks back to life.",
     emoji: "🧦",
     palette: {
-      brand: "#2A4B9B",       // Cobalt Blue (smod logo)
-      brandDeep: "#3A2368",   // Deep Indigo/Purple
+      brand: "#3A2368",       // Deep Indigo/Purple (dominant)
+      brandDeep: "#2A4B9B",   // Cobalt Blue
       accent: "#897BAA",      // Soft Violet
-      bg: "#ECECEE",          // Tinted White
-      bgSoft: "#E5DDD1",      // Pale Cream/Beige
+      bg: "#F4F1EA",          // Pale Cream/Beige (warm bg)
+      bgSoft: "#E5DDD1",      // Cream Beige
       surface: "#FFFFFF",
       ink: "#2C2D31",         // Charcoal
       inkSoft: "#606A88",     // Muted Blue-Grey
