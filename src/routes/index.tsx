@@ -67,6 +67,24 @@ function LeafIcon() {
   );
 }
 
+function PillarCard({ p }: { p: typeof PILLARS[number] }) {
+  return (
+    <article
+      className="group relative flex items-center gap-4 overflow-hidden rounded-2xl border bg-white p-4 transition-all hover:-translate-y-0.5 hover:shadow-xl"
+      style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)" }}
+    >
+      <div aria-hidden className="pointer-events-none absolute -right-3 -top-5 text-[5rem] font-black leading-none opacity-[0.07]" style={{ color: "var(--brand)" }}>
+        {p.letter}
+      </div>
+      <div className="relative shrink-0">{p.svg}</div>
+      <div className="relative min-w-0">
+        <div className="text-[10px] font-bold uppercase tracking-[0.25em]" style={{ color: "var(--brand)" }}>{p.word}</div>
+        <h3 className="text-base font-black leading-tight">{p.tag}</h3>
+      </div>
+    </article>
+  );
+}
+
 const STEPS = [
   { n: "01", t: "Drop", b: "One pod in the drum." },
   { n: "02", t: "Load", b: "Any cycle, any load." },
@@ -89,32 +107,19 @@ function Home() {
           <div className="absolute bottom-10 left-1/3 h-56 w-56 rounded-full" style={{ background: "radial-gradient(circle at 30% 30%, color-mix(in oklab, var(--accent) 70%, transparent), transparent 60%)" }} />
         </div>
 
-        <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-5 py-16 text-white md:grid-cols-2 md:py-24">
-          {/* Product image */}
-          <div className="relative flex justify-center md:justify-end">
-            <div aria-hidden className="absolute inset-0 -m-6 rounded-full blur-3xl" style={{ background: "radial-gradient(circle, color-mix(in oklab, var(--accent) 50%, transparent), transparent 70%)" }} />
-            <img
-              src={packFront.url}
-              alt="SMOD Laundry Washing Pods — 20 pack"
-              className="relative h-[420px] w-auto drop-shadow-2xl md:h-[520px]"
-            />
-          </div>
-
-          {/* Brand + CTA */}
-          <div className="relative text-center md:text-left">
-            <img src={smodLogo.url} alt="SMOD" className="mx-auto h-16 w-auto md:mx-0 md:h-24" />
-            <div className="mt-3 text-[11px] font-bold uppercase tracking-[0.4em] text-white/85">Smart Pod · One Wash</div>
-            <p className="mt-5 text-xl font-bold leading-tight md:text-3xl">
-              One pod. <br className="hidden md:block" />One wash. <br className="hidden md:block" />Powerful clean.
-            </p>
-            <div className="mt-7 flex flex-wrap justify-center gap-3 md:justify-start">
-              <Link to="/regular" className="rounded-full bg-white px-6 py-3 text-sm font-bold shadow-lg transition-transform hover:scale-[1.03]" style={{ color: "var(--brand)" }}>
-                Shop the range
-              </Link>
-              <a href="#pillars" className="rounded-full border border-white/40 px-6 py-3 text-sm font-bold text-white hover:bg-white/10">
-                How it works
-              </a>
-            </div>
+        <div className="relative mx-auto flex max-w-7xl flex-col items-center gap-6 px-5 py-16 text-center text-white md:py-24">
+          <img src={smodLogo.url} alt="SMOD" className="h-20 w-auto md:h-28" />
+          <div className="text-[11px] font-bold uppercase tracking-[0.5em] text-white/85">Smart Pod · One Wash</div>
+          <h1 className="max-w-3xl text-4xl font-black leading-[1.05] md:text-6xl">
+            One pod. <span className="opacity-80">One wash.</span> <span style={{ color: "var(--accent)" }}>Powerful clean.</span>
+          </h1>
+          <div className="mt-2 flex flex-wrap justify-center gap-3">
+            <Link to="/regular" className="rounded-full bg-white px-7 py-3 text-sm font-bold shadow-lg transition-transform hover:scale-[1.03]" style={{ color: "var(--brand)" }}>
+              Shop the range
+            </Link>
+            <a href="#pillars" className="rounded-full border border-white/40 px-7 py-3 text-sm font-bold text-white hover:bg-white/10">
+              How it works
+            </a>
           </div>
         </div>
 
@@ -144,29 +149,31 @@ function Home() {
         </p>
       </section>
 
-      {/* ============ FOUR PILLARS — infographic tiles ============ */}
-      <section id="pillars" className="relative py-16" style={{ background: "var(--v-bg-soft)" }}>
+      {/* ============ FOUR PILLARS — pack at center, pillars radiating ============ */}
+      <section id="pillars" className="relative overflow-hidden py-20" style={{ background: "var(--v-bg-soft)" }}>
         <div className="mx-auto max-w-7xl px-5">
-          <div className="mb-10 text-center">
-            <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--brand)" }}>Four pillars</p>
-            <h2 className="mt-2 text-3xl font-black md:text-4xl">Built on S · M · O · D</h2>
+          <div className="mb-12 text-center">
+            <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--brand)" }}>S · M · O · D</p>
+            <h2 className="mt-2 text-3xl font-black md:text-4xl">Four pillars. One pod.</h2>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-            {PILLARS.map((p) => (
-              <article
-                key={p.letter}
-                className="group relative flex flex-col items-center overflow-hidden rounded-3xl border bg-white p-6 text-center transition-all hover:-translate-y-1 hover:shadow-2xl"
-                style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)" }}
-              >
-                <div aria-hidden className="pointer-events-none absolute -right-4 -top-6 text-[7rem] font-black leading-none opacity-[0.06]" style={{ color: "var(--brand)" }}>
-                  {p.letter}
-                </div>
-                <div className="relative">{p.svg}</div>
-                <div className="relative mt-4 text-[10px] font-bold uppercase tracking-[0.3em]" style={{ color: "var(--brand)" }}>{p.word}</div>
-                <h3 className="relative text-lg font-black">{p.tag}</h3>
-              </article>
-            ))}
+          <div className="grid items-center gap-6 md:grid-cols-[1fr_auto_1fr]">
+            <div className="order-2 grid grid-cols-2 gap-4 md:order-1 md:grid-cols-1">
+              {PILLARS.slice(0, 2).map((p) => (
+                <PillarCard key={p.letter} p={p} />
+              ))}
+            </div>
+
+            <div className="relative order-1 flex justify-center md:order-2">
+              <div aria-hidden className="absolute inset-0 -m-8 rounded-full blur-3xl" style={{ background: "radial-gradient(circle, color-mix(in oklab, var(--accent) 45%, transparent), transparent 70%)" }} />
+              <img src={packFront.url} alt="SMOD pack" className="relative h-[280px] w-auto drop-shadow-2xl md:h-[440px]" />
+            </div>
+
+            <div className="order-3 grid grid-cols-2 gap-4 md:grid-cols-1">
+              {PILLARS.slice(2).map((p) => (
+                <PillarCard key={p.letter} p={p} />
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -190,6 +197,7 @@ function Home() {
           ))}
         </div>
       </section>
+
 
       {/* ============ VARIANTS ============ */}
       <section id="variants" className="py-16" style={{ background: "var(--v-bg-soft)" }}>
