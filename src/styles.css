@@ -142,3 +142,43 @@
     color: var(--color-foreground);
   }
 }
+
+/* ============ Route transition ripple ============ */
+.ripple-burst {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  margin-left: -5px;
+  margin-top: -5px;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle,
+    color-mix(in oklab, var(--brand, #2A3A86) 85%, transparent) 0%,
+    color-mix(in oklab, var(--brand-deep, #1D2029) 70%, transparent) 45%,
+    transparent 70%
+  );
+  transform: scale(0);
+  opacity: 0.85;
+  animation: ripple-expand 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  mix-blend-mode: normal;
+}
+
+@keyframes ripple-expand {
+  0% {
+    transform: scale(0);
+    opacity: 0.9;
+  }
+  60% {
+    opacity: 0.55;
+  }
+  100% {
+    /* big enough to cover any viewport diagonal */
+    transform: scale(400);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ripple-burst { display: none; }
+}
+
