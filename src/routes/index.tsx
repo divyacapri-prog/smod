@@ -124,7 +124,7 @@ function Home() {
 
         {/* trust strip — icon based */}
         <div className="relative border-t border-white/15 bg-black/10">
-          <div className="mx-auto grid max-w-7xl grid-cols-2 gap-4 px-5 py-5 text-center text-[10px] font-bold uppercase tracking-[0.2em] text-white/85 md:grid-cols-4">
+          <div className="mx-auto grid max-w-7xl grid-cols-3 gap-4 px-5 py-5 text-center text-[10px] font-bold uppercase tracking-[0.2em] text-white/85">
             <div className="flex flex-col items-center gap-1"><span className="text-2xl">🐇</span>Cruelty Free</div>
             <div className="flex flex-col items-center gap-1"><span className="text-2xl">♻️</span>Recyclable</div>
             <div className="flex flex-col items-center gap-1"><span className="text-2xl">🌀</span>Top + Front Load</div>
