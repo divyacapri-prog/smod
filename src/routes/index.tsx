@@ -144,29 +144,31 @@ function Home() {
         </p>
       </section>
 
-      {/* ============ FOUR PILLARS — infographic tiles ============ */}
-      <section id="pillars" className="relative py-16" style={{ background: "var(--v-bg-soft)" }}>
+      {/* ============ FOUR PILLARS — pack at center, pillars radiating ============ */}
+      <section id="pillars" className="relative overflow-hidden py-20" style={{ background: "var(--v-bg-soft)" }}>
         <div className="mx-auto max-w-7xl px-5">
-          <div className="mb-10 text-center">
-            <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--brand)" }}>Four pillars</p>
-            <h2 className="mt-2 text-3xl font-black md:text-4xl">Built on S · M · O · D</h2>
+          <div className="mb-12 text-center">
+            <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--brand)" }}>S · M · O · D</p>
+            <h2 className="mt-2 text-3xl font-black md:text-4xl">Four pillars. One pod.</h2>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-            {PILLARS.map((p) => (
-              <article
-                key={p.letter}
-                className="group relative flex flex-col items-center overflow-hidden rounded-3xl border bg-white p-6 text-center transition-all hover:-translate-y-1 hover:shadow-2xl"
-                style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)" }}
-              >
-                <div aria-hidden className="pointer-events-none absolute -right-4 -top-6 text-[7rem] font-black leading-none opacity-[0.06]" style={{ color: "var(--brand)" }}>
-                  {p.letter}
-                </div>
-                <div className="relative">{p.svg}</div>
-                <div className="relative mt-4 text-[10px] font-bold uppercase tracking-[0.3em]" style={{ color: "var(--brand)" }}>{p.word}</div>
-                <h3 className="relative text-lg font-black">{p.tag}</h3>
-              </article>
-            ))}
+          <div className="grid items-center gap-6 md:grid-cols-[1fr_auto_1fr]">
+            <div className="order-2 grid grid-cols-2 gap-4 md:order-1 md:grid-cols-1">
+              {PILLARS.slice(0, 2).map((p) => (
+                <PillarCard key={p.letter} p={p} />
+              ))}
+            </div>
+
+            <div className="relative order-1 flex justify-center md:order-2">
+              <div aria-hidden className="absolute inset-0 -m-8 rounded-full blur-3xl" style={{ background: "radial-gradient(circle, color-mix(in oklab, var(--accent) 45%, transparent), transparent 70%)" }} />
+              <img src={packFront.url} alt="SMOD pack" className="relative h-[280px] w-auto drop-shadow-2xl md:h-[440px]" />
+            </div>
+
+            <div className="order-3 grid grid-cols-2 gap-4 md:grid-cols-1">
+              {PILLARS.slice(2).map((p) => (
+                <PillarCard key={p.letter} p={p} />
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -190,6 +192,7 @@ function Home() {
           ))}
         </div>
       </section>
+
 
       {/* ============ VARIANTS ============ */}
       <section id="variants" className="py-16" style={{ background: "var(--v-bg-soft)" }}>
