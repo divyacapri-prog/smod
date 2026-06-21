@@ -115,6 +115,9 @@ export function VariantLanding({ variant }: { variant: Variant }) {
         </div>
       </section>
 
+      {/* PRODUCT INFORMATION — auto-rendered from packaging artwork data */}
+      <ProductInformation variant={variant} />
+
       {/* WHY PODS */}
       <Section eyebrow="Why pods" title="Detergent, redesigned." subtitle="Six reasons our customers never go back to bottles or boxes.">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
