@@ -21,7 +21,7 @@ export const Route = createFileRoute("/")({
 
 // Compact pillar tiles — icon-first, minimal copy
 const PILLARS = [
-  { letter: "S", word: "Smart", tag: "Dosing", svg: <PodIcon /> },
+  { letter: "S", word: "Smart", tag: "Dosage", svg: <PodIcon /> },
   { letter: "M", word: "Maximum", tag: "Clean", svg: <SplashIcon /> },
   { letter: "O", word: "Optimised", tag: "Care", svg: <FabricIcon /> },
   { letter: "D", word: "Dependable", tag: "Freshness", svg: <LeafIcon /> },
@@ -109,9 +109,8 @@ function Home() {
 
         <div className="relative mx-auto flex max-w-7xl flex-col items-center gap-6 px-5 py-16 text-center text-white md:py-24">
           <img src={smodLogo.url} alt="SMOD" className="h-20 w-auto md:h-28" />
-          <div className="text-[11px] font-bold uppercase tracking-[0.5em] text-white/85">No mess, zero guesswork</div>
           <h1 className="max-w-3xl text-4xl font-black leading-[1.05] md:text-6xl">
-            One pod. <span className="opacity-80">One wash.</span> <span style={{ color: "var(--accent)" }}>Powerful clean.</span>
+            No mess, <span style={{ color: "var(--accent)" }}>zero guesswork.</span>
           </h1>
           <div className="mt-2 flex flex-wrap justify-center gap-3">
             <Link to="/regular" className="rounded-full bg-white px-7 py-3 text-sm font-bold shadow-lg transition-transform hover:scale-[1.03]" style={{ color: "var(--brand)" }}>
@@ -128,7 +127,6 @@ function Home() {
           <div className="mx-auto grid max-w-7xl grid-cols-2 gap-4 px-5 py-5 text-center text-[10px] font-bold uppercase tracking-[0.2em] text-white/85 md:grid-cols-4">
             <div className="flex flex-col items-center gap-1"><span className="text-2xl">🐇</span>Cruelty Free</div>
             <div className="flex flex-col items-center gap-1"><span className="text-2xl">♻️</span>Recyclable</div>
-            <div className="flex flex-col items-center gap-1"><span className="text-2xl">🇮🇳</span>Made in India</div>
             <div className="flex flex-col items-center gap-1"><span className="text-2xl">🌀</span>Top + Front Load</div>
           </div>
         </div>
