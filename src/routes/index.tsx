@@ -67,6 +67,24 @@ function LeafIcon() {
   );
 }
 
+function PillarCard({ p }: { p: typeof PILLARS[number] }) {
+  return (
+    <article
+      className="group relative flex items-center gap-4 overflow-hidden rounded-2xl border bg-white p-4 transition-all hover:-translate-y-0.5 hover:shadow-xl"
+      style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)" }}
+    >
+      <div aria-hidden className="pointer-events-none absolute -right-3 -top-5 text-[5rem] font-black leading-none opacity-[0.07]" style={{ color: "var(--brand)" }}>
+        {p.letter}
+      </div>
+      <div className="relative shrink-0">{p.svg}</div>
+      <div className="relative min-w-0">
+        <div className="text-[10px] font-bold uppercase tracking-[0.25em]" style={{ color: "var(--brand)" }}>{p.word}</div>
+        <h3 className="text-base font-black leading-tight">{p.tag}</h3>
+      </div>
+    </article>
+  );
+}
+
 const STEPS = [
   { n: "01", t: "Drop", b: "One pod in the drum." },
   { n: "02", t: "Load", b: "Any cycle, any load." },
