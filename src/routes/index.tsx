@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { VARIANTS, BRAND_PALETTE, paletteToCssVars } from "@/lib/variants";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
+import smodLogo from "@/assets/smod-logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -66,63 +67,45 @@ function Home() {
           <div className="absolute bottom-10 left-1/3 h-56 w-56 rounded-full" style={{ background: "radial-gradient(circle at 30% 30%, color-mix(in oklab, var(--accent) 70%, transparent), transparent 60%)" }} />
         </div>
 
-        <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-5 py-16 text-white md:grid-cols-2 md:py-24">
-          <div>
-            <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.25em] backdrop-blur">
-              ◐ The Smart Pod
-            </span>
-            <h1 className="mt-5 text-5xl font-black leading-[0.95] tracking-tight md:text-7xl">
-              <span className="block opacity-90">Meet</span>
-              <span className="block">
-                <span className="underline decoration-white/40 underline-offset-4">SM</span>art p
-                <span className="underline decoration-white/40 underline-offset-4">OD</span>
-              </span>
-              <span className="block text-2xl font-semibold tracking-normal opacity-90 md:text-3xl">
-                Powerful clean in a single pod.
-              </span>
-            </h1>
-            <p className="mt-6 max-w-md text-base leading-relaxed opacity-90 md:text-lg">
-              SMOD is the smarter way to wash. Pre-measured pods built on four pillars — <strong>S</strong>mart dosing, <strong>M</strong>aximum clean, <strong>O</strong>ptimised care and <strong>D</strong>ependable freshness.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link
-                to="/regular"
-                className="rounded-full bg-white px-6 py-3 text-sm font-bold shadow-lg transition-transform hover:scale-[1.03]"
-                style={{ color: "var(--brand)" }}
-              >
-                Shop the range
-              </Link>
-              <a
-                href="#pillars"
-                className="rounded-full border border-white/40 px-6 py-3 text-sm font-bold text-white hover:bg-white/10"
-              >
-                Discover the science
-              </a>
-            </div>
-          </div>
-
-          {/* Pod visual */}
-          <div className="relative flex justify-center md:justify-end">
-            <div className="relative">
-              <div
-                aria-hidden
-                className="absolute inset-0 -m-10 rounded-full blur-3xl"
-                style={{ background: "radial-gradient(circle, color-mix(in oklab, var(--accent) 60%, transparent), transparent 70%)" }}
-              />
-              <div
-                className="relative grid h-72 w-72 place-items-center rounded-full shadow-2xl md:h-96 md:w-96"
-                style={{
-                  background: `conic-gradient(from 210deg, color-mix(in oklab, var(--accent) 80%, white), white 40%, color-mix(in oklab, var(--brand) 50%, white) 70%, var(--accent))`,
-                }}
-              >
-                <div className="grid h-[80%] w-[80%] place-items-center rounded-full bg-white/20 backdrop-blur">
-                  <div className="text-center">
-                    <div className="text-7xl font-black tracking-tighter md:text-8xl" style={{ color: "var(--brand-deep)" }}>SMOD</div>
-                    <div className="mt-1 text-[10px] font-bold uppercase tracking-[0.35em] text-white/90">Smart Pod · One Wash</div>
-                  </div>
+        <div className="relative mx-auto flex max-w-7xl flex-col items-center px-5 py-16 text-center text-white md:py-24">
+          <div className="relative">
+            <div
+              aria-hidden
+              className="absolute inset-0 -m-10 rounded-full blur-3xl"
+              style={{ background: "radial-gradient(circle, color-mix(in oklab, var(--accent) 60%, transparent), transparent 70%)" }}
+            />
+            <div
+              className="relative grid h-56 w-56 place-items-center rounded-full shadow-2xl md:h-72 md:w-72"
+              style={{
+                background: `conic-gradient(from 210deg, color-mix(in oklab, var(--accent) 80%, white), white 40%, color-mix(in oklab, var(--brand) 50%, white) 70%, var(--accent))`,
+              }}
+            >
+              <div className="grid h-[80%] w-[80%] place-items-center rounded-full bg-white/20 backdrop-blur">
+                <div className="text-center">
+                  <img src={smodLogo.url} alt="SMOD" className="mx-auto h-14 w-auto md:h-20" />
+                  <div className="mt-1 text-[10px] font-bold uppercase tracking-[0.35em] text-white/90">Smart Pod · One Wash</div>
                 </div>
               </div>
             </div>
+          </div>
+
+          <p className="mt-8 max-w-md text-base leading-relaxed opacity-90 md:text-lg">
+            SMOD is the smarter way to wash. Pre-measured pods built on four pillars — <strong>S</strong>mart dosing, <strong>M</strong>aximum clean, <strong>O</strong>ptimised care and <strong>D</strong>ependable freshness.
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <Link
+              to="/regular"
+              className="rounded-full bg-white px-6 py-3 text-sm font-bold shadow-lg transition-transform hover:scale-[1.03]"
+              style={{ color: "var(--brand)" }}
+            >
+              Shop the range
+            </Link>
+            <a
+              href="#pillars"
+              className="rounded-full border border-white/40 px-6 py-3 text-sm font-bold text-white hover:bg-white/10"
+            >
+              Discover the science
+            </a>
           </div>
         </div>
 
