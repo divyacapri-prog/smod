@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { VARIANTS, BRAND_PALETTE, paletteToCssVars } from "@/lib/variants";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
-import smodLogo from "@/assets/smod-logo.png.asset.json";
+import smodLogo from "@/assets/smod-logo-white.png.asset.json";
 import packFront from "@/assets/smod-pack-front.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
