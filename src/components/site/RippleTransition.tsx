@@ -20,6 +20,7 @@ export function RippleTransition() {
 
   useEffect(() => {
     const fire = () => {
+      console.log("[ripple] fire", originRef.current);
       const o = originRef.current ?? {
         x: window.innerWidth / 2,
         y: window.innerHeight / 2,
