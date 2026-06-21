@@ -137,7 +137,16 @@ export const VARIANTS: Variant[] = [
     description:
       "An enzyme-loaded pod engineered for the toughest sweat odors and ground-in grime. Bring tired socks back to life.",
     emoji: "🧦",
-    palette: BRAND_PALETTE,
+    palette: {
+      brand: "#2A4B9B",       // Cobalt Blue (smod logo)
+      brandDeep: "#3A2368",   // Deep Indigo/Purple
+      accent: "#897BAA",      // Soft Violet
+      bg: "#ECECEE",          // Tinted White
+      bgSoft: "#E5DDD1",      // Pale Cream/Beige
+      surface: "#FFFFFF",
+      ink: "#2C2D31",         // Charcoal
+      inkSoft: "#606A88",     // Muted Blue-Grey
+    },
     benefits: [
       { title: "Deep Odor Removal", description: "Bio-enzymes break down sweat residue at the molecular level." },
       { title: "Sweat Stain Reduction", description: "Lifts yellowing from heels, toes and arches." },
@@ -202,7 +211,16 @@ export const VARIANTS: Variant[] = [
     description:
       "A technical pod tuned for moisture-wicking polyester, spandex and merino. Removes sweat, salts and odor without damaging fibers.",
     emoji: "🏃",
-    palette: BRAND_PALETTE,
+    palette: {
+      brand: "#0074E1",       // Deep Cobalt Blue (graphic mid-tones)
+      brandDeep: "#6C2492",   // Rich Violet
+      accent: "#00BFFF",      // Electric Cyan
+      bg: "#1A1A1A",          // Matte Black
+      bgSoft: "#252528",
+      surface: "#2A2A2D",
+      ink: "#F2F2F2",         // Off-White
+      inkSoft: "#A8A8AC",
+    },
     benefits: [
       { title: "Activewear Protection", description: "Preserves stretch, shape and wicking performance." },
       { title: "Sweat & Odor Control", description: "Neutralises bacterial odor without masking it." },
