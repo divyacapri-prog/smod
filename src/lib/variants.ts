@@ -138,14 +138,14 @@ export const VARIANTS: Variant[] = [
       "An enzyme-loaded pod engineered for the toughest sweat odors and ground-in grime. Bring tired socks back to life.",
     emoji: "🧦",
     palette: {
-      brand: "#3A2368",       // Deep Indigo/Purple (dominant)
-      brandDeep: "#2A4B9B",   // Cobalt Blue
+      brand: "#2A4B9B",       // Cobalt Blue (logo)
+      brandDeep: "#3A2368",   // Deep Indigo/Purple
       accent: "#897BAA",      // Soft Violet
-      bg: "#F4F1EA",          // Pale Cream/Beige (warm bg)
-      bgSoft: "#E5DDD1",      // Cream Beige
-      surface: "#FFFFFF",
+      bg: "#6E7176",          // Medium-Dark Grey (jar body)
+      bgSoft: "#85878C",      // Lighter grey for soft sections
+      surface: "#ECECEE",     // Tinted White (label)
       ink: "#2C2D31",         // Charcoal
-      inkSoft: "#606A88",     // Muted Blue-Grey
+      inkSoft: "#4A4C52",     // Darker for contrast on grey
     },
     benefits: [
       { title: "Deep Odor Removal", description: "Bio-enzymes break down sweat residue at the molecular level." },
@@ -212,14 +212,14 @@ export const VARIANTS: Variant[] = [
       "A technical pod tuned for moisture-wicking polyester, spandex and merino. Removes sweat, salts and odor without damaging fibers.",
     emoji: "🏃",
     palette: {
-      brand: "#0074E1",       // Deep Cobalt Blue (graphic mid-tones)
-      brandDeep: "#6C2492",   // Rich Violet
-      accent: "#00BFFF",      // Electric Cyan
-      bg: "#1A1A1A",          // Matte Black
-      bgSoft: "#252528",
-      surface: "#2A2A2D",
+      brand: "#00BFFF",       // Electric Cyan (primary highlight)
+      brandDeep: "#0074E1",   // Deep Cobalt Blue
+      accent: "#E14DCA",      // Vibrant Fuchsia
+      bg: "#1A1A1A",          // Matte Black (jar body)
+      bgSoft: "#0F0F12",      // Deeper black for sections
+      surface: "#222226",     // Lifted black for cards
       ink: "#F2F2F2",         // Off-White
-      inkSoft: "#A8A8AC",
+      inkSoft: "#9B9BA0",
     },
     benefits: [
       { title: "Activewear Protection", description: "Preserves stretch, shape and wicking performance." },
