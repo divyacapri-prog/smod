@@ -225,6 +225,7 @@ export function VariantLanding({ variant }: { variant: Variant }) {
                 href={r.url}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => track("retailer_click", { retailer: r.name, variant: variant.slug })}
                 className="inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition-transform hover:-translate-y-0.5"
                 style={{
                   borderColor: "color-mix(in oklab, var(--v-ink) 15%, transparent)",
