@@ -107,32 +107,19 @@ function Home() {
           <div className="absolute bottom-10 left-1/3 h-56 w-56 rounded-full" style={{ background: "radial-gradient(circle at 30% 30%, color-mix(in oklab, var(--accent) 70%, transparent), transparent 60%)" }} />
         </div>
 
-        <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-5 py-16 text-white md:grid-cols-2 md:py-24">
-          {/* Product image */}
-          <div className="relative flex justify-center md:justify-end">
-            <div aria-hidden className="absolute inset-0 -m-6 rounded-full blur-3xl" style={{ background: "radial-gradient(circle, color-mix(in oklab, var(--accent) 50%, transparent), transparent 70%)" }} />
-            <img
-              src={packFront.url}
-              alt="SMOD Laundry Washing Pods — 20 pack"
-              className="relative h-[420px] w-auto drop-shadow-2xl md:h-[520px]"
-            />
-          </div>
-
-          {/* Brand + CTA */}
-          <div className="relative text-center md:text-left">
-            <img src={smodLogo.url} alt="SMOD" className="mx-auto h-16 w-auto md:mx-0 md:h-24" />
-            <div className="mt-3 text-[11px] font-bold uppercase tracking-[0.4em] text-white/85">Smart Pod · One Wash</div>
-            <p className="mt-5 text-xl font-bold leading-tight md:text-3xl">
-              One pod. <br className="hidden md:block" />One wash. <br className="hidden md:block" />Powerful clean.
-            </p>
-            <div className="mt-7 flex flex-wrap justify-center gap-3 md:justify-start">
-              <Link to="/regular" className="rounded-full bg-white px-6 py-3 text-sm font-bold shadow-lg transition-transform hover:scale-[1.03]" style={{ color: "var(--brand)" }}>
-                Shop the range
-              </Link>
-              <a href="#pillars" className="rounded-full border border-white/40 px-6 py-3 text-sm font-bold text-white hover:bg-white/10">
-                How it works
-              </a>
-            </div>
+        <div className="relative mx-auto flex max-w-7xl flex-col items-center gap-6 px-5 py-16 text-center text-white md:py-24">
+          <img src={smodLogo.url} alt="SMOD" className="h-20 w-auto md:h-28" />
+          <div className="text-[11px] font-bold uppercase tracking-[0.5em] text-white/85">Smart Pod · One Wash</div>
+          <h1 className="max-w-3xl text-4xl font-black leading-[1.05] md:text-6xl">
+            One pod. <span className="opacity-80">One wash.</span> <span style={{ color: "var(--accent)" }}>Powerful clean.</span>
+          </h1>
+          <div className="mt-2 flex flex-wrap justify-center gap-3">
+            <Link to="/regular" className="rounded-full bg-white px-7 py-3 text-sm font-bold shadow-lg transition-transform hover:scale-[1.03]" style={{ color: "var(--brand)" }}>
+              Shop the range
+            </Link>
+            <a href="#pillars" className="rounded-full border border-white/40 px-7 py-3 text-sm font-bold text-white hover:bg-white/10">
+              How it works
+            </a>
           </div>
         </div>
 
