@@ -3,6 +3,7 @@ import { VARIANTS, BRAND_PALETTE, paletteToCssVars } from "@/lib/variants";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import smodLogo from "@/assets/smod-logo.png.asset.json";
+import packFront from "@/assets/smod-pack-front.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -88,32 +89,32 @@ function Home() {
           <div className="absolute bottom-10 left-1/3 h-56 w-56 rounded-full" style={{ background: "radial-gradient(circle at 30% 30%, color-mix(in oklab, var(--accent) 70%, transparent), transparent 60%)" }} />
         </div>
 
-        <div className="relative mx-auto flex max-w-7xl flex-col items-center px-5 py-16 text-center text-white md:py-24">
-          <div className="relative">
-            <div aria-hidden className="absolute inset-0 -m-10 rounded-full blur-3xl" style={{ background: "radial-gradient(circle, color-mix(in oklab, var(--accent) 60%, transparent), transparent 70%)" }} />
-            <div
-              className="relative grid h-56 w-56 place-items-center rounded-full shadow-2xl md:h-72 md:w-72"
-              style={{ background: `conic-gradient(from 210deg, color-mix(in oklab, var(--accent) 80%, white), white 40%, color-mix(in oklab, var(--brand) 50%, white) 70%, var(--accent))` }}
-            >
-              <div className="grid h-[80%] w-[80%] place-items-center rounded-full bg-white/20 backdrop-blur">
-                <div className="text-center">
-                  <img src={smodLogo.url} alt="SMOD" className="mx-auto h-14 w-auto md:h-20" />
-                  <div className="mt-1 text-[10px] font-bold uppercase tracking-[0.35em] text-white/90">Smart Pod · One Wash</div>
-                </div>
-              </div>
-            </div>
+        <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-5 py-16 text-white md:grid-cols-2 md:py-24">
+          {/* Product image */}
+          <div className="relative flex justify-center md:justify-end">
+            <div aria-hidden className="absolute inset-0 -m-6 rounded-full blur-3xl" style={{ background: "radial-gradient(circle, color-mix(in oklab, var(--accent) 50%, transparent), transparent 70%)" }} />
+            <img
+              src={packFront.url}
+              alt="SMOD Laundry Washing Pods — 20 pack"
+              className="relative h-[420px] w-auto drop-shadow-2xl md:h-[520px]"
+            />
           </div>
 
-          <p className="mt-8 max-w-sm text-base font-medium opacity-95 md:text-lg">
-            One pod. One wash. Powerful clean.
-          </p>
-          <div className="mt-6 flex flex-wrap justify-center gap-3">
-            <Link to="/regular" className="rounded-full bg-white px-6 py-3 text-sm font-bold shadow-lg transition-transform hover:scale-[1.03]" style={{ color: "var(--brand)" }}>
-              Shop the range
-            </Link>
-            <a href="#pillars" className="rounded-full border border-white/40 px-6 py-3 text-sm font-bold text-white hover:bg-white/10">
-              How it works
-            </a>
+          {/* Brand + CTA */}
+          <div className="relative text-center md:text-left">
+            <img src={smodLogo.url} alt="SMOD" className="mx-auto h-16 w-auto md:mx-0 md:h-24" />
+            <div className="mt-3 text-[11px] font-bold uppercase tracking-[0.4em] text-white/85">Smart Pod · One Wash</div>
+            <p className="mt-5 text-xl font-bold leading-tight md:text-3xl">
+              One pod. <br className="hidden md:block" />One wash. <br className="hidden md:block" />Powerful clean.
+            </p>
+            <div className="mt-7 flex flex-wrap justify-center gap-3 md:justify-start">
+              <Link to="/regular" className="rounded-full bg-white px-6 py-3 text-sm font-bold shadow-lg transition-transform hover:scale-[1.03]" style={{ color: "var(--brand)" }}>
+                Shop the range
+              </Link>
+              <a href="#pillars" className="rounded-full border border-white/40 px-6 py-3 text-sm font-bold text-white hover:bg-white/10">
+                How it works
+              </a>
+            </div>
           </div>
         </div>
 
