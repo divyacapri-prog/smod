@@ -372,7 +372,7 @@ export const VARIANTS: Variant[] = [
     slug: "innerwear",
     name: "Intimate Wear",
     tagline: "Gentle care for delicates",
-    headline: "Made by women, for women.",
+    headline: "Made for women, by women.",
     description:
       "Smod Intimate Wear Cleaning Pods are specially formulated to remove tough stains, odor & bacteria while being gentle on delicate fabrics. Ideal for bras, panties and other intimate wear.",
     emoji: "🌸",
