@@ -1,29 +1,38 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useRouter, useRouterState } from "@tanstack/react-router";
+import { VARIANTS, BRAND_PALETTE } from "@/lib/variants";
+
+type BloomColors = { brand: string; deep: string };
+
+function colorsForPath(pathname: string): BloomColors {
+  // Match /sports, /socks, /regular, /buy/<slug>-..., etc.
+  const seg = pathname.split("/").filter(Boolean);
+  const slug = seg[0] === "buy" ? seg[1]?.split("-")[0] : seg[0];
+  const v = VARIANTS.find((x) => x.slug === slug);
+  const p = v?.palette;
+  return {
+    brand: p?.brand ?? BRAND_PALETTE.brand,
+    deep: p?.brandDeep ?? BRAND_PALETTE.brandDeep,
+  };
+}
 
 /**
- * Liquid Bloom transition — a detergent pod dissolves outward.
- *
- *  1. A tiny pod appears at the centre of the viewport
- *  2. It expands organically with soft blurred edges
- *  3. Deep cobalt (#2A3A86) and soft violet (#756CA1) bloom outward
- *  4. The bloom fills the viewport; new page fades in from within
- *  5. Bloom gently dissipates into the page background
- *
- * Total duration ~650ms.
+ * Liquid Bloom transition — a subtle detergent pod dissolves outward
+ * using the destination page's brand colors.
  */
 export function PageTransition({ children }: { children: ReactNode }) {
   const router = useRouter();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const reduce = useReducedMotion();
-  const [blooms, setBlooms] = useState<{ id: number; x: number; y: number }[]>([]);
+  const [blooms, setBlooms] = useState<{ id: number; x: number; y: number; colors: BloomColors }[]>([]);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => setMounted(true), []);
 
   useEffect(() => {
-    const unsub = router.subscribe("onBeforeNavigate", () => {
+    const unsub = router.subscribe("onBeforeNavigate", (evt: any) => {
+      const toPath: string = evt?.toLocation?.pathname ?? evt?.to?.pathname ?? window.location.pathname;
       const id = Date.now() + Math.random();
       setBlooms((b) => [
         ...b,
@@ -31,6 +40,7 @@ export function PageTransition({ children }: { children: ReactNode }) {
           id,
           x: window.innerWidth / 2,
           y: window.innerHeight / 2,
+          colors: colorsForPath(toPath),
         },
       ]);
       window.setTimeout(() => {
@@ -56,7 +66,7 @@ export function PageTransition({ children }: { children: ReactNode }) {
       <div aria-hidden className="pointer-events-none fixed inset-0 z-[9999] overflow-hidden">
         <AnimatePresence>
           {blooms.map((b) => (
-            <LiquidBloom key={b.id} x={b.x} y={b.y} />
+            <LiquidBloom key={b.id} x={b.x} y={b.y} colors={b.colors} />
           ))}
         </AnimatePresence>
       </div>
