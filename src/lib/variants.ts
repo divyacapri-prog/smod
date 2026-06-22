@@ -410,7 +410,23 @@ export const VARIANTS: Variant[] = [
         { icon: "🌿", title: "Eco Friendly", body: "Biodegradable film" },
         { icon: "✨", title: "Safe for Colors", body: "Gentle on fabrics" },
       ],
-...
+      directions: [
+        { step: 1, body: "Add 1 pod to empty drum." },
+        { step: 2, body: "Add your baby clothes." },
+        { step: 3, body: "Select cycle & start washing." },
+      ],
+      dosage: [
+        { load: "0–5 kg", pods: "1 pod" },
+        { load: "5–8 kg", pods: "2 pods" },
+        { load: "8 kg or more", pods: "3 pods" },
+      ],
+      caution: [
+        "Keep out of reach of children.",
+        "Avoid contact with eyes.",
+        "Do not ingest. If swallowed, seek medical advice immediately.",
+        "Store in a cool, dry place.",
+        "Do not handle pods with wet hands.",
+      ],
       certifications: ["Cruelty Free", "Antimicrobial", "Recyclable Packaging", "Dermatologically Tested"],
       machines: ["Top Load", "Front Load"],
       highlights: ["Antimicrobial", "Safe for Colors & Fabrics"],
