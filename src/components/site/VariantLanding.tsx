@@ -47,7 +47,7 @@ export function VariantLanding({ variant }: { variant: Variant }) {
           className="absolute -top-32 left-1/2 h-[600px] w-[900px] -translate-x-1/2 rounded-full opacity-60 blur-3xl"
           style={{ background: `radial-gradient(closest-side, var(--brand), transparent 70%)` }}
         />
-        <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-5 py-16 md:grid-cols-2 md:py-24">
+        <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-5 pt-32 pb-16 md:grid-cols-2 md:pt-40 md:pb-24">
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-widest backdrop-blur-md" style={{ borderColor: "color-mix(in oklab, var(--v-ink) 15%, transparent)", color: "var(--v-ink)", background: "color-mix(in oklab, var(--v-surface) 60%, transparent)" }}>
               <span>{variant.emoji}</span> {variant.tagline}

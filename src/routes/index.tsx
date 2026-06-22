@@ -160,11 +160,11 @@ function Home() {
       </section>
 
       {/* ============ FOUR PILLARS — pack at center, pillars radiating ============ */}
-      <section id="pillars" className="relative overflow-hidden py-20" style={{ background: "var(--v-bg-soft)" }}>
+      <section id="pillars" className="relative overflow-hidden pt-32 pb-20" style={{ background: "var(--v-bg-soft)" }}>
         <WavePattern />
         <div className="relative mx-auto max-w-7xl px-5">
           <div className="mb-12 text-center">
-            <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--brand)" }}>S · M · O · D</p>
+            <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--v-ink)" }}>S · M · O · D</p>
             <h2 className="mt-2 text-3xl font-black md:text-4xl">Four pillars. One pod.</h2>
           </div>
 
@@ -269,7 +269,7 @@ function Home() {
         <div className="relative overflow-hidden rounded-[2.5rem] p-10 text-center text-white md:p-16" style={{ background: `linear-gradient(135deg, var(--brand), var(--brand-deep))` }}>
           <WavePattern color="rgba(255,255,255,0.18)" />
           <div aria-hidden className="absolute -right-20 -top-20 h-80 w-80 rounded-full opacity-30" style={{ background: "var(--accent)" }} />
-          <div className="relative">
+          <div className="relative pt-24 pb-8">
             <h2 className="text-3xl font-black md:text-5xl">Smarter wash. Starts here.</h2>
             <Link to="/regular" className="mt-6 inline-block rounded-full bg-white px-8 py-4 text-sm font-bold shadow-lg transition-transform hover:scale-[1.03]" style={{ color: "var(--brand)" }}>
               Shop SMOD pods →
