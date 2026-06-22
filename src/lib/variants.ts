@@ -57,14 +57,14 @@ export type Variant = {
 
 // Master SMOD brand palette (extracted from Regular packaging artwork)
 export const BRAND_PALETTE = {
-  brand: "#2A3A86",       // Deep Cobalt Blue
-  brandDeep: "#1D2029",   // Charcoal Navy
-  accent: "#756CA1",      // Soft Violet Blue
-  bg: "#FFFFFF",          // White
-  bgSoft: "#E4DED3",      // Pale Cream Beige
+  brand: "#2A3A86", // Deep Cobalt Blue
+  brandDeep: "#1D2029", // Charcoal Navy
+  accent: "#756CA1", // Soft Violet Blue
+  bg: "#FFFFFF", // White
+  bgSoft: "#E4DED3", // Pale Cream Beige
   surface: "#FFFFFF",
   ink: "#1D2029",
-  inkSoft: "#728198",     // Muted Blue Grey
+  inkSoft: "#728198", // Muted Blue Grey
 };
 
 export const VARIANTS: Variant[] = [
@@ -83,13 +83,44 @@ export const VARIANTS: Variant[] = [
       { title: "Safe for Colors", description: "Gentle on fabrics, brilliant on whites." },
     ],
     testimonials: [
-      { name: "Aarav S.", location: "Mumbai", quote: "Genuinely the cleanest my whites have looked in years. No more scooping powder.", rating: 5 },
-      { name: "Priya N.", location: "Bengaluru", quote: "One pod per load and done. The fragrance is subtle and premium.", rating: 5 },
-      { name: "Rohan K.", location: "Delhi", quote: "Switched the whole family over. Even tough stains rinse out clean.", rating: 4 },
+      {
+        name: "Aarav S.",
+        location: "Mumbai",
+        quote: "Genuinely the cleanest my whites have looked in years. No more scooping powder.",
+        rating: 5,
+      },
+      {
+        name: "Priya N.",
+        location: "Bengaluru",
+        quote: "One pod per load and done. The fragrance is subtle and premium.",
+        rating: 5,
+      },
+      {
+        name: "Rohan K.",
+        location: "Delhi",
+        quote: "Switched the whole family over. Even tough stains rinse out clean.",
+        rating: 4,
+      },
     ],
     packs: [
-      { sku: "REG20", size: 20, price: 499, perWash: 24.95, bestFor: "Singles & couples", household: "1–2 people", buyPath: "/buy/regular-20" },
-      { sku: "REG40", size: 40, price: 899, perWash: 22.48, bestFor: "Families", household: "3–5 people", buyPath: "/buy/regular-40" },
+      {
+        sku: "REG20",
+        size: 20,
+        price: 499,
+        perWash: 24.95,
+        bestFor: "Singles & couples",
+        household: "1–2 people",
+        buyPath: "/buy/regular-20",
+      },
+      {
+        sku: "REG40",
+        size: 40,
+        price: 899,
+        perWash: 22.48,
+        bestFor: "Families",
+        household: "3–5 people",
+        buyPath: "/buy/regular-40",
+      },
     ],
     retailers: [
       { name: "Amazon", url: "#" },
@@ -114,7 +145,10 @@ export const VARIANTS: Variant[] = [
       directions: [
         { step: 1, body: "Put pod(s) in the drum before adding clothes." },
         { step: 2, body: "Add clothes." },
-        { step: 3, body: "Select cycle & start washing. No need to cut or tear the pod. The film dissolves completely in water." },
+        {
+          step: 3,
+          body: "Select cycle & start washing. No need to cut or tear the pod. The film dissolves completely in water.",
+        },
       ],
       dosage: [
         { load: "0–5 kg", pods: "1 pod" },
@@ -144,14 +178,14 @@ export const VARIANTS: Variant[] = [
       "An enzyme-loaded pod engineered for the toughest sweat odors and ground-in grime. Bring tired socks back to life.",
     emoji: "🧦",
     palette: {
-      brand: "#2A4B9B",       // Cobalt Blue (logo)
-      brandDeep: "#1E3870",   // Rich dark cobalt
-      accent: "#897BAA",      // Soft Violet
-      bg: "#B5B8BE",          // Medium-light grey — clearly grey, readable
-      bgSoft: "#A6A9AF",      // Slightly darker section grey
-      surface: "#FFFFFF",     // White cards for crisp contrast
-      ink: "#000000",         // Pure black for maximum readability
-      inkSoft: "#3A3C42",     // Dark grey for secondary text
+      brand: "#2A4B9B", // Cobalt Blue (logo)
+      brandDeep: "#1E3870", // Rich dark cobalt
+      accent: "#897BAA", // Soft Violet
+      bg: "#B5B8BE", // Medium-light grey — clearly grey, readable
+      bgSoft: "#A6A9AF", // Slightly darker section grey
+      surface: "#FFFFFF", // White cards for crisp contrast
+      ink: "#000000", // Pure black for maximum readability
+      inkSoft: "#3A3C42", // Dark grey for secondary text
     },
     benefits: [
       { title: "Deep Odor Removal", description: "Bio-enzymes break down sweat residue at the molecular level." },
@@ -161,11 +195,32 @@ export const VARIANTS: Variant[] = [
     testimonials: [
       { name: "Vikram T.", location: "Pune", quote: "My gym socks smell like socks again. Not biohazards.", rating: 5 },
       { name: "Arjun P.", location: "Delhi", quote: "Worth it just for the white sneakers' inner liners.", rating: 4 },
-      { name: "Neel C.", location: "Mumbai", quote: "Did not believe pods could fix this. Stand corrected.", rating: 5 },
+      {
+        name: "Neel C.",
+        location: "Mumbai",
+        quote: "Did not believe pods could fix this. Stand corrected.",
+        rating: 5,
+      },
     ],
     packs: [
-      { sku: "SOCK20", size: 20, price: 479, perWash: 23.95, bestFor: "Athletes & commuters", household: "1–2 people", buyPath: "/buy/socks-20" },
-      { sku: "SOCK40", size: 40, price: 849, perWash: 21.23, bestFor: "Active households", household: "3–5 people", buyPath: "/buy/socks-40" },
+      {
+        sku: "SOCK20",
+        size: 20,
+        price: 479,
+        perWash: 23.95,
+        bestFor: "Athletes & commuters",
+        household: "1–2 people",
+        buyPath: "/buy/socks-20",
+      },
+      {
+        sku: "SOCK40",
+        size: 40,
+        price: 849,
+        perWash: 21.23,
+        bestFor: "Active households",
+        household: "3–5 people",
+        buyPath: "/buy/socks-40",
+      },
     ],
     retailers: [
       { name: "Amazon", url: "#" },
@@ -218,14 +273,14 @@ export const VARIANTS: Variant[] = [
       "A technical pod tuned for moisture-wicking polyester, spandex and merino. Removes sweat, salts and odor without damaging fibers.",
     emoji: "🏃",
     palette: {
-      brand: "#0074E1",       // Deep Cobalt Blue — graphic mid-tones
-      brandDeep: "#1A1A1A",   // Matte Black — container body & text panel
-      accent: "#E14DCA",      // Vibrant Fuchsia — swirl highlights
-      bg: "#0A0A0A",          // Near black page background
-      bgSoft: "#141414",      // Slightly lighter dark sections
-      surface: "#1A1A1A",     // Matte black cards
-      ink: "#F2F2F2",         // Clean Off-White — all text & icons
-      inkSoft: "#B0B0B0",     // Muted grey for secondary text
+      brand: "#0074E1", // Deep Cobalt Blue — graphic mid-tones
+      brandDeep: "#1A1A1A", // Matte Black — container body & text panel
+      accent: "#E14DCA", // Vibrant Fuchsia — swirl highlights
+      bg: "#0A0A0A", // Near black page background
+      bgSoft: "#141414", // Slightly lighter dark sections
+      surface: "#1A1A1A", // Matte black cards
+      ink: "#F2F2F2", // Clean Off-White — all text & icons
+      inkSoft: "#B0B0B0", // Muted grey for secondary text
     },
     benefits: [
       { title: "Activewear Protection", description: "Preserves stretch, shape and wicking performance." },
@@ -233,13 +288,39 @@ export const VARIANTS: Variant[] = [
       { title: "Performance Fabric Safe", description: "Tested on Lycra, Dri-FIT, merino and recycled poly." },
     ],
     testimonials: [
-      { name: "Karan B.", location: "Bengaluru", quote: "My running tees feel new again. No more stink after one wear.", rating: 5 },
-      { name: "Isha L.", location: "Mumbai", quote: "Yoga sets stay soft and stretchy. Love the citrus note.", rating: 5 },
+      {
+        name: "Karan B.",
+        location: "Bengaluru",
+        quote: "My running tees feel new again. No more stink after one wear.",
+        rating: 5,
+      },
+      {
+        name: "Isha L.",
+        location: "Mumbai",
+        quote: "Yoga sets stay soft and stretchy. Love the citrus note.",
+        rating: 5,
+      },
       { name: "Dev M.", location: "Hyderabad", quote: "Cycling kit washes have been transformed.", rating: 4 },
     ],
     packs: [
-      { sku: "SPORT20", size: 20, price: 529, perWash: 26.45, bestFor: "Weekly trainers", household: "1 person", buyPath: "/buy/sports-20" },
-      { sku: "SPORT40", size: 40, price: 949, perWash: 23.73, bestFor: "Daily athletes", household: "1–3 people", buyPath: "/buy/sports-40" },
+      {
+        sku: "SPORT20",
+        size: 20,
+        price: 529,
+        perWash: 26.45,
+        bestFor: "Weekly trainers",
+        household: "1 person",
+        buyPath: "/buy/sports-20",
+      },
+      {
+        sku: "SPORT40",
+        size: 40,
+        price: 949,
+        perWash: 23.73,
+        bestFor: "Daily athletes",
+        household: "1–3 people",
+        buyPath: "/buy/sports-40",
+      },
     ],
     retailers: [
       { name: "Amazon", url: "#" },
@@ -258,7 +339,11 @@ export const VARIANTS: Variant[] = [
       benefits: [
         { icon: "💨", title: "Sweat & Odour Removal", body: "Breaks down sweat and eliminates odour at the source." },
         { icon: "🧬", title: "Active Enzyme Formula", body: "Targets tough stains and trapped body oils." },
-        { icon: "⚡", title: "Quick Fresh Technology", body: "Keeps your activewear feeling fresh and ready for your next move." },
+        {
+          icon: "⚡",
+          title: "Quick Fresh Technology",
+          body: "Keeps your activewear feeling fresh and ready for your next move.",
+        },
         { icon: "🛡️", title: "Protects Fabric Performance", body: "Maintains stretch, breathability & colour." },
       ],
       directions: [
@@ -287,16 +372,16 @@ export const VARIANTS: Variant[] = [
     slug: "innerwear",
     name: "Intimate Wear",
     tagline: "Gentle care for delicates",
-    headline: "Made with women care, for you.",
+    headline: "Made by women, for women.",
     description:
       "Smod Intimate Wear Cleaning Pods are specially formulated to remove tough stains, odor & bacteria while being gentle on delicate fabrics. Ideal for bras, panties and other intimate wear.",
     emoji: "🌸",
     palette: {
-      brand: "#F5398E",       // Vibrant pink (kept for buttons/accents)
-      brandDeep: "#DF8CB3",   // Soft rose
-      accent: "#F899C1",      // Soft pink accent
-      bg: "#FDEEF4",          // Very light blush page bg
-      bgSoft: "#FBDCE7",      // Soft pink sections
+      brand: "#F5398E", // Vibrant pink (kept for buttons/accents)
+      brandDeep: "#DF8CB3", // Soft rose
+      accent: "#F899C1", // Soft pink accent
+      bg: "#FDEEF4", // Very light blush page bg
+      bgSoft: "#FBDCE7", // Soft pink sections
       surface: "#FFFFFF",
       ink: "#2A3A86",
       inkSoft: "#A77192",
@@ -307,13 +392,44 @@ export const VARIANTS: Variant[] = [
       { title: "Antimicrobial", description: "Fights odor and bacteria, all day fresh." },
     ],
     testimonials: [
-      { name: "Meera J.", location: "Mumbai", quote: "Finally a pod that doesn't shred my lace bras. Game changer.", rating: 5 },
-      { name: "Ananya R.", location: "Bengaluru", quote: "Smells lovely and my whites actually stay white.", rating: 5 },
-      { name: "Sneha P.", location: "Delhi", quote: "pH balanced and gentle — exactly what delicates need.", rating: 4 },
+      {
+        name: "Meera J.",
+        location: "Mumbai",
+        quote: "Finally a pod that doesn't shred my lace bras. Game changer.",
+        rating: 5,
+      },
+      {
+        name: "Ananya R.",
+        location: "Bengaluru",
+        quote: "Smells lovely and my whites actually stay white.",
+        rating: 5,
+      },
+      {
+        name: "Sneha P.",
+        location: "Delhi",
+        quote: "pH balanced and gentle — exactly what delicates need.",
+        rating: 4,
+      },
     ],
     packs: [
-      { sku: "INNER20", size: 20, price: 519, perWash: 25.95, bestFor: "Solo wardrobes", household: "1 person", buyPath: "/buy/innerwear-20" },
-      { sku: "INNER40", size: 40, price: 929, perWash: 23.23, bestFor: "Shared households", household: "2–4 people", buyPath: "/buy/innerwear-40" },
+      {
+        sku: "INNER20",
+        size: 20,
+        price: 519,
+        perWash: 25.95,
+        bestFor: "Solo wardrobes",
+        household: "1 person",
+        buyPath: "/buy/innerwear-20",
+      },
+      {
+        sku: "INNER40",
+        size: 40,
+        price: 929,
+        perWash: 23.23,
+        bestFor: "Shared households",
+        household: "2–4 people",
+        buyPath: "/buy/innerwear-40",
+      },
     ],
     retailers: [
       { name: "Amazon", url: "#" },
@@ -338,7 +454,10 @@ export const VARIANTS: Variant[] = [
       directions: [
         { step: 1, body: "Put 1 pod in the drum before adding innerwear." },
         { step: 2, body: "Add your innerwear." },
-        { step: 3, body: "Select cycle & start washing. No need to cut or tear the pod. The film dissolves completely in water." },
+        {
+          step: 3,
+          body: "Select cycle & start washing. No need to cut or tear the pod. The film dissolves completely in water.",
+        },
       ],
       dosage: [
         { load: "0–5 kg", pods: "1 pod" },
@@ -367,11 +486,11 @@ export const VARIANTS: Variant[] = [
       "Smod Baby Laundry Pods are designed to deliver a powerful clean while being extra gentle on baby's skin and clothes. Our pre-measured pods dissolve quickly in water to remove tough stains and odors, keeping fabrics soft, fresh and safe for your little one.",
     emoji: "👶",
     palette: {
-      brand: "#F5A9C5",       // Soft pink
-      brandDeep: "#E89BB5",   // Slightly deeper soft pink
-      accent: "#FBDCE7",      // Pale blush accent
-      bg: "#FDEFF3",          // Very light blush bg
-      bgSoft: "#FBE3EC",      // Soft pink sections
+      brand: "#F5A9C5", // Soft pink
+      brandDeep: "#E89BB5", // Slightly deeper soft pink
+      accent: "#FBDCE7", // Pale blush accent
+      bg: "#FDEFF3", // Very light blush bg
+      bgSoft: "#FBE3EC", // Soft pink sections
       surface: "#FFFFFF",
       ink: "#2A3A86",
       inkSoft: "#B58AA0",
@@ -382,13 +501,39 @@ export const VARIANTS: Variant[] = [
       { title: "Antimicrobial & Safe", description: "Free from bleach, parabens and harsh dyes." },
     ],
     testimonials: [
-      { name: "Riya M.", location: "Pune", quote: "No rashes, no fuss. My baby's clothes come out beautifully soft.", rating: 5 },
-      { name: "Tanvi S.", location: "Hyderabad", quote: "Even the stubborn pureed-carrot stains rinse right out.", rating: 5 },
+      {
+        name: "Riya M.",
+        location: "Pune",
+        quote: "No rashes, no fuss. My baby's clothes come out beautifully soft.",
+        rating: 5,
+      },
+      {
+        name: "Tanvi S.",
+        location: "Hyderabad",
+        quote: "Even the stubborn pureed-carrot stains rinse right out.",
+        rating: 5,
+      },
       { name: "Aparna K.", location: "Chennai", quote: "Peace of mind in a little pod. Highly recommend.", rating: 5 },
     ],
     packs: [
-      { sku: "BABY20", size: 20, price: 549, perWash: 27.45, bestFor: "New parents", household: "1 baby", buyPath: "/buy/baby-20" },
-      { sku: "BABY40", size: 40, price: 979, perWash: 24.48, bestFor: "Growing families", household: "1–2 kids", buyPath: "/buy/baby-40" },
+      {
+        sku: "BABY20",
+        size: 20,
+        price: 549,
+        perWash: 27.45,
+        bestFor: "New parents",
+        household: "1 baby",
+        buyPath: "/buy/baby-20",
+      },
+      {
+        sku: "BABY40",
+        size: 40,
+        price: 979,
+        perWash: 24.48,
+        bestFor: "Growing families",
+        household: "1–2 kids",
+        buyPath: "/buy/baby-40",
+      },
     ],
     retailers: [
       { name: "Amazon", url: "#" },
@@ -437,12 +582,9 @@ export const VARIANTS: Variant[] = [
 
 export const getVariant = (slug: string) => VARIANTS.find((v) => v.slug === slug);
 
-export const ALL_SKUS = VARIANTS.flatMap((v) =>
-  v.packs.map((p) => ({ ...p, variant: v }))
-);
+export const ALL_SKUS = VARIANTS.flatMap((v) => v.packs.map((p) => ({ ...p, variant: v })));
 
-export const findSku = (skuPath: string) =>
-  ALL_SKUS.find((p) => p.buyPath === `/buy/${skuPath}`);
+export const findSku = (skuPath: string) => ALL_SKUS.find((p) => p.buyPath === `/buy/${skuPath}`);
 
 export const paletteToCssVars = (p: Variant["palette"]): React.CSSProperties =>
   ({
@@ -454,4 +596,4 @@ export const paletteToCssVars = (p: Variant["palette"]): React.CSSProperties =>
     "--v-surface": p.surface,
     "--v-ink": p.ink,
     "--v-ink-soft": p.inkSoft,
-  } as React.CSSProperties);
+  }) as React.CSSProperties;
