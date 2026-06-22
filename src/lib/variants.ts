@@ -141,11 +141,11 @@ export const VARIANTS: Variant[] = [
       brand: "#2A4B9B",       // Cobalt Blue (logo)
       brandDeep: "#1E3870",   // Rich dark cobalt
       accent: "#897BAA",      // Soft Violet
-      bg: "#F2F3F5",          // Very light cool grey — clean label feel
-      bgSoft: "#E6E7EB",      // Soft section grey
-      surface: "#FFFFFF",     // White cards for crisp readability
-      ink: "#18191D",         // Near-black for maximum contrast
-      inkSoft: "#5A5C62",     // Medium grey, easy on the eyes
+      bg: "#B5B8BE",          // Medium-light grey — clearly grey, readable
+      bgSoft: "#A6A9AF",      // Slightly darker section grey
+      surface: "#FFFFFF",     // White cards for crisp contrast
+      ink: "#000000",         // Pure black for maximum readability
+      inkSoft: "#3A3C42",     // Dark grey for secondary text
     },
     benefits: [
       { title: "Deep Odor Removal", description: "Bio-enzymes break down sweat residue at the molecular level." },
