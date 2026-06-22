@@ -1,92 +1,142 @@
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useRouter, useRouterState } from "@tanstack/react-router";
 
 /**
- * Premium page transition:
- * 1. Current page fades out
- * 2. A soft liquid gradient overlay (deep indigo → lavender) sweeps across
- * 3. New page fades in with a subtle upward movement
+ * Liquid Bloom transition — a detergent pod dissolves outward.
  *
- * Duration target: ~450ms total.
+ *  1. A tiny pod appears at the click origin (or screen center)
+ *  2. It expands organically with soft blurred edges
+ *  3. Deep cobalt (#2A3A86) and soft violet (#756CA1) bloom outward
+ *  4. The bloom fills the viewport; new page fades in from within
+ *  5. Bloom gently dissipates into the page background
+ *
+ * Total duration ~650ms.
  */
 export function PageTransition({ children }: { children: ReactNode }) {
   const router = useRouter();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const reduce = useReducedMotion();
-  const [sweepKey, setSweepKey] = useState(0);
+  const originRef = useRef<{ x: number; y: number } | null>(null);
+  const [blooms, setBlooms] = useState<{ id: number; x: number; y: number }[]>([]);
   const [mounted, setMounted] = useState(false);
 
+  useEffect(() => setMounted(true), []);
+
   useEffect(() => {
-    setMounted(true);
+    const onDown = (e: PointerEvent) => {
+      originRef.current = { x: e.clientX, y: e.clientY };
+    };
+    window.addEventListener("pointerdown", onDown, true);
+    return () => window.removeEventListener("pointerdown", onDown, true);
   }, []);
 
   useEffect(() => {
     const unsub = router.subscribe("onBeforeNavigate", () => {
-      setSweepKey((k) => k + 1);
+      const o = originRef.current ?? {
+        x: window.innerWidth / 2,
+        y: window.innerHeight * 0.4,
+      };
+      const id = Date.now() + Math.random();
+      setBlooms((b) => [...b, { id, x: o.x, y: o.y }]);
+      window.setTimeout(() => {
+        setBlooms((b) => b.filter((bl) => bl.id !== id));
+      }, 750);
     });
     return () => unsub();
   }, [router]);
 
-  // SSR / first paint: render children plainly so server HTML matches.
-  if (!mounted) return <>{children}</>;
-
-  if (reduce) return <>{children}</>;
+  if (!mounted || reduce) return <>{children}</>;
 
   return (
     <>
       <motion.div
         key={pathname}
-        initial={{ opacity: 0, y: 14 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.18 }}
+        initial={{ opacity: 0, y: 12, filter: "blur(6px)" }}
+        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: 0.22 }}
       >
         {children}
       </motion.div>
 
-      <AnimatePresence>
-        {sweepKey > 0 && (
-          <SweepOverlay key={sweepKey} onDone={() => { /* GC handled by AnimatePresence */ }} />
-        )}
-      </AnimatePresence>
+      <div aria-hidden className="pointer-events-none fixed inset-0 z-[9999] overflow-hidden">
+        <AnimatePresence>
+          {blooms.map((b) => (
+            <LiquidBloom key={b.id} x={b.x} y={b.y} />
+          ))}
+        </AnimatePresence>
+      </div>
     </>
   );
 }
 
-function SweepOverlay({ onDone }: { onDone: () => void }) {
-  const [phase, setPhase] = useState<"in" | "out">("in");
-
-  useEffect(() => {
-    const t1 = setTimeout(() => setPhase("out"), 220);
-    const t2 = setTimeout(onDone, 520);
-    return () => {
-      clearTimeout(t1);
-      clearTimeout(t2);
-    };
-  }, [onDone]);
+function LiquidBloom({ x, y }: { x: number; y: number }) {
+  // Diameter needed to cover the viewport from origin (x, y)
+  const w = typeof window !== "undefined" ? window.innerWidth : 1440;
+  const h = typeof window !== "undefined" ? window.innerHeight : 900;
+  const dx = Math.max(x, w - x);
+  const dy = Math.max(y, h - y);
+  const cover = Math.ceil(Math.hypot(dx, dy) * 2.2);
 
   return (
     <motion.div
-      aria-hidden
-      className="pointer-events-none fixed inset-0 z-[9999]"
-      initial={{ x: "-105%" }}
-      animate={{ x: phase === "in" ? "0%" : "105%" }}
-      transition={{ duration: 0.3, ease: [0.65, 0, 0.35, 1] }}
+      className="absolute"
       style={{
+        left: x,
+        top: y,
+        width: cover,
+        height: cover,
+        marginLeft: -cover / 2,
+        marginTop: -cover / 2,
+        borderRadius: "9999px",
         background:
-          "linear-gradient(120deg, #2A3A86 0%, #4A4E97 45%, #756CA1 100%)",
-        boxShadow: "0 0 80px rgba(42,58,134,0.45)",
-        filter: "saturate(1.05)",
+          "radial-gradient(circle at 38% 35%, rgba(255,255,255,0.55) 0%, rgba(178,196,235,0.55) 12%, #756CA1 38%, #2A3A86 72%, #1d2a66 100%)",
+        filter: "blur(14px) saturate(115%)",
+        mixBlendMode: "normal",
+        willChange: "transform, opacity, filter",
+      }}
+      initial={{ scale: 0.02, opacity: 0, filter: "blur(24px) saturate(120%)" }}
+      animate={{
+        scale: [0.02, 0.18, 1],
+        opacity: [0, 1, 1, 0],
+        filter: [
+          "blur(24px) saturate(120%)",
+          "blur(18px) saturate(115%)",
+          "blur(14px) saturate(110%)",
+          "blur(28px) saturate(105%)",
+        ],
+      }}
+      transition={{
+        duration: 0.75,
+        times: [0, 0.18, 0.62, 1],
+        ease: [0.22, 1, 0.36, 1],
       }}
     >
-      {/* soft liquid highlight */}
-      <div
-        className="absolute inset-0 opacity-60"
+      {/* secondary inner bloom — softer violet swirl */}
+      <motion.div
+        className="absolute inset-[8%] rounded-full"
         style={{
           background:
-            "radial-gradient(60% 80% at 30% 40%, rgba(255,255,255,0.18), transparent 60%), radial-gradient(50% 70% at 75% 65%, rgba(255,255,255,0.12), transparent 65%)",
+            "radial-gradient(circle at 60% 55%, rgba(255,255,255,0.35) 0%, rgba(117,108,161,0.6) 35%, transparent 70%)",
+          filter: "blur(18px)",
           mixBlendMode: "screen",
         }}
+        initial={{ scale: 0.6, opacity: 0 }}
+        animate={{ scale: [0.6, 1.1, 1], opacity: [0, 0.9, 0] }}
+        transition={{ duration: 0.75, ease: "easeOut" }}
+      />
+      {/* diffusion specks — like detergent particles dispersing */}
+      <motion.div
+        className="absolute inset-0 rounded-full"
+        style={{
+          background:
+            "radial-gradient(circle at 20% 70%, rgba(255,255,255,0.25), transparent 18%), radial-gradient(circle at 78% 30%, rgba(255,255,255,0.18), transparent 16%), radial-gradient(circle at 55% 80%, rgba(178,196,235,0.25), transparent 22%)",
+          filter: "blur(10px)",
+          mixBlendMode: "screen",
+        }}
+        initial={{ scale: 0.4, opacity: 0 }}
+        animate={{ scale: [0.4, 1.05, 1.15], opacity: [0, 0.85, 0] }}
+        transition={{ duration: 0.75, ease: "easeOut", delay: 0.05 }}
       />
     </motion.div>
   );
