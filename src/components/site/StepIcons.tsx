@@ -64,7 +64,7 @@ export function HandDropPodIcon({ className = "" }: { className?: string }) {
       </g>
       {/* pod being dropped — plays once on mount */}
       <g>
-        <animateTransform attributeName="transform" type="translate" values="0 -8; 0 36; 0 -8" keyTimes="0; 0.6; 1" dur="2.4s" />
+        <animateTransform attributeName="transform" type="translate" values="0 -8; 0 36" keyTimes="0; 0.6" dur="2.4s" fill="freeze" />
         <rect x="88" y="86" width="34" height="26" rx="11" fill="var(--brand)" />
         <circle cx="98" cy="96" r="5" fill="var(--accent)" opacity="0.95" />
         <circle cx="113" cy="103" r="3" fill="#fff" opacity="0.9" />
