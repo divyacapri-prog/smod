@@ -4,7 +4,7 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { WavePattern } from "@/components/site/WavePattern";
 import { AbstractArt } from "@/components/site/AbstractArt";
-import { HandDropPodIcon, LoadClothesIcon, SpinWashIcon } from "@/components/site/StepIcons";
+import { HandDropPodIcon, LoadClothesIcon, SpinWashIcon, ScrollReplayIcon } from "@/components/site/StepIcons";
 import smodLogo from "@/assets/smod-logo-white.png.asset.json";
 import packFront from "@/assets/smod-pack-front.png.asset.json";
 
