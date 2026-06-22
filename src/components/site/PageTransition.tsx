@@ -5,7 +5,7 @@ import { useRouter, useRouterState } from "@tanstack/react-router";
 /**
  * Liquid Bloom transition — a detergent pod dissolves outward.
  *
- *  1. A tiny pod appears at the click origin (or screen center)
+ *  1. A tiny pod appears at the centre of the viewport
  *  2. It expands organically with soft blurred edges
  *  3. Deep cobalt (#2A3A86) and soft violet (#756CA1) bloom outward
  *  4. The bloom fills the viewport; new page fades in from within
