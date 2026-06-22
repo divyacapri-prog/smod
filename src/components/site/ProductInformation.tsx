@@ -19,7 +19,7 @@ function PackCarousel({ images, alt }: { images: string[]; alt: string }) {
       style={{
         borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)",
         background: "var(--v-surface)",
-        minHeight: "clamp(360px, 55vw, 560px)",
+        minHeight: "clamp(220px, 28vw, 320px)",
       }}
     >
       <AnimatePresence mode="wait">
