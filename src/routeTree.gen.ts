@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SubscriptionsRouteImport } from './routes/subscriptions'
 import { Route as SportsRouteImport } from './routes/sports'
 import { Route as SocksRouteImport } from './routes/socks'
 import { Route as ShippingRouteImport } from './routes/shipping'
@@ -19,6 +20,11 @@ import { Route as CartRouteImport } from './routes/cart'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BuySkuRouteImport } from './routes/buy.$sku'
 
+const SubscriptionsRoute = SubscriptionsRouteImport.update({
+  id: '/subscriptions',
+  path: '/subscriptions',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SportsRoute = SportsRouteImport.update({
   id: '/sports',
   path: '/sports',
@@ -74,6 +80,7 @@ export interface FileRoutesByFullPath {
   '/shipping': typeof ShippingRoute
   '/socks': typeof SocksRoute
   '/sports': typeof SportsRoute
+  '/subscriptions': typeof SubscriptionsRoute
   '/buy/$sku': typeof BuySkuRoute
 }
 export interface FileRoutesByTo {
@@ -85,6 +92,7 @@ export interface FileRoutesByTo {
   '/shipping': typeof ShippingRoute
   '/socks': typeof SocksRoute
   '/sports': typeof SportsRoute
+  '/subscriptions': typeof SubscriptionsRoute
   '/buy/$sku': typeof BuySkuRoute
 }
 export interface FileRoutesById {
@@ -97,6 +105,7 @@ export interface FileRoutesById {
   '/shipping': typeof ShippingRoute
   '/socks': typeof SocksRoute
   '/sports': typeof SportsRoute
+  '/subscriptions': typeof SubscriptionsRoute
   '/buy/$sku': typeof BuySkuRoute
 }
 export interface FileRouteTypes {
@@ -110,6 +119,7 @@ export interface FileRouteTypes {
     | '/shipping'
     | '/socks'
     | '/sports'
+    | '/subscriptions'
     | '/buy/$sku'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -121,6 +131,7 @@ export interface FileRouteTypes {
     | '/shipping'
     | '/socks'
     | '/sports'
+    | '/subscriptions'
     | '/buy/$sku'
   id:
     | '__root__'
@@ -132,6 +143,7 @@ export interface FileRouteTypes {
     | '/shipping'
     | '/socks'
     | '/sports'
+    | '/subscriptions'
     | '/buy/$sku'
   fileRoutesById: FileRoutesById
 }
@@ -144,11 +156,19 @@ export interface RootRouteChildren {
   ShippingRoute: typeof ShippingRoute
   SocksRoute: typeof SocksRoute
   SportsRoute: typeof SportsRoute
+  SubscriptionsRoute: typeof SubscriptionsRoute
   BuySkuRoute: typeof BuySkuRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/subscriptions': {
+      id: '/subscriptions'
+      path: '/subscriptions'
+      fullPath: '/subscriptions'
+      preLoaderRoute: typeof SubscriptionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sports': {
       id: '/sports'
       path: '/sports'
@@ -224,6 +244,7 @@ const rootRouteChildren: RootRouteChildren = {
   ShippingRoute: ShippingRoute,
   SocksRoute: SocksRoute,
   SportsRoute: SportsRoute,
+  SubscriptionsRoute: SubscriptionsRoute,
   BuySkuRoute: BuySkuRoute,
 }
 export const routeTree = rootRouteImport
