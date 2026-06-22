@@ -98,7 +98,7 @@ function Home() {
   return (
     <div
       style={{ ...paletteToCssVars(BRAND_PALETTE), background: "var(--v-bg)", color: "var(--v-ink)" }}
-      className="min-h-screen"
+      className="min-h-screen scroll-smooth"
     >
       <Header />
 
@@ -117,9 +117,17 @@ function Home() {
             No mess, <span style={{ color: "var(--accent)" }}>zero guesswork.</span>
           </h1>
           <div className="mt-2 flex flex-wrap justify-center gap-3">
-            <Link to="/regular" className="rounded-full bg-white px-7 py-3 text-sm font-bold shadow-lg transition-transform hover:scale-[1.03]" style={{ color: "var(--brand)" }}>
+            <a
+              href="#variants"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById("variants")?.scrollIntoView({ behavior: "smooth", block: "start" });
+              }}
+              className="rounded-full bg-white px-7 py-3 text-sm font-bold shadow-lg transition-transform hover:scale-[1.03]"
+              style={{ color: "var(--brand)" }}
+            >
               Shop the range
-            </Link>
+            </a>
             <a href="#pillars" className="rounded-full border border-white/40 px-7 py-3 text-sm font-bold text-white hover:bg-white/10">
               How it works
             </a>

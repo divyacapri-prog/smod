@@ -1,5 +1,7 @@
 import frontAsset from "@/assets/smod-regular-front.jpg.asset.json";
 import backAsset from "@/assets/smod-regular-back.jpg.asset.json";
+import innerwearPack from "@/assets/smod-innerwear-pack.jpg.asset.json";
+import babyPack from "@/assets/smod-baby-pack.jpg.asset.json";
 
 export type Retailer = { name: string; url: string };
 
@@ -22,7 +24,7 @@ export type Packaging = {
 };
 
 export type Variant = {
-  slug: "regular" | "socks" | "sports";
+  slug: "regular" | "socks" | "sports" | "innerwear" | "baby";
   name: string;
   tagline: string;
   headline: string;
@@ -279,6 +281,156 @@ export const VARIANTS: Variant[] = [
       certifications: ["Cruelty Free", "Recyclable Packaging"],
       machines: ["Top Load", "Front Load"],
       highlights: ["Performance Clean", "Fiber Safe", "Smart Detergent"],
+    },
+  },
+  {
+    slug: "innerwear",
+    name: "Women's Innerwear",
+    tagline: "Gentle care for delicates",
+    headline: "Made with women care, for you.",
+    description:
+      "Smod Women's Innerwear Cleaning Pods are specially formulated to remove tough stains, odor & bacteria while being gentle on delicate fabrics. Ideal for bras, panties and other intimate wear.",
+    emoji: "🌸",
+    palette: {
+      brand: "#1D2A6B",       // Smod navy logo
+      brandDeep: "#0F1B4D",   // Deeper navy
+      accent: "#EC4D8F",      // Hot pink accent from packaging
+      bg: "#FFF4F8",          // Pale blush page bg
+      bgSoft: "#FBE3EC",      // Soft rose sections
+      surface: "#FFFFFF",
+      ink: "#1D2A6B",
+      inkSoft: "#7A5C6E",
+    },
+    benefits: [
+      { title: "Deep Clean", description: "Removes tough stains and odor from intimate fabrics." },
+      { title: "Gentle Care", description: "Safe on lace, mesh and delicate elastics." },
+      { title: "Odor Control", description: "Fights odor and bacteria, all day fresh." },
+    ],
+    testimonials: [
+      { name: "Meera J.", location: "Mumbai", quote: "Finally a pod that doesn't shred my lace bras. Game changer.", rating: 5 },
+      { name: "Ananya R.", location: "Bengaluru", quote: "Smells lovely and my whites actually stay white.", rating: 5 },
+      { name: "Sneha P.", location: "Delhi", quote: "pH balanced and gentle — exactly what delicates need.", rating: 4 },
+    ],
+    packs: [
+      { sku: "INNER20", size: 20, price: 519, perWash: 25.95, bestFor: "Solo wardrobes", household: "1 person", buyPath: "/buy/innerwear-20" },
+      { sku: "INNER40", size: 40, price: 929, perWash: 23.23, bestFor: "Shared households", household: "2–4 people", buyPath: "/buy/innerwear-40" },
+    ],
+    retailers: [
+      { name: "Amazon", url: "#" },
+      { name: "Flipkart", url: "#" },
+      { name: "Myntra", url: "#" },
+      { name: "Zepto", url: "#" },
+      { name: "Blinkit", url: "#" },
+      { name: "Instamart", url: "#" },
+    ],
+    packaging: {
+      productName: "smod Women's Innerwear Cleaning Pods",
+      subtitle: "For Your Delicate Innerwear",
+      claim: "Powerful Clean Every Time · pH Balanced Gentle Formula",
+      weight: "250 g",
+      fragrance: "Soft floral freshness",
+      benefits: [
+        { icon: "✨", title: "Deep Clean", body: "Removes tough stains & odor" },
+        { icon: "🌸", title: "Gentle Care", body: "Safe on delicate fabrics" },
+        { icon: "🍃", title: "Odor Control", body: "Fights odor & bacteria" },
+        { icon: "💧", title: "Fresh & Hygienic", body: "Long lasting freshness" },
+      ],
+      directions: [
+        { step: 1, body: "Put 1 pod in the drum before adding innerwear." },
+        { step: 2, body: "Add your innerwear." },
+        { step: 3, body: "Select cycle & start washing. No need to cut or tear the pod. The film dissolves completely in water." },
+      ],
+      dosage: [
+        { load: "0–5 kg", pods: "1 pod" },
+        { load: "5–8 kg", pods: "2 pods" },
+        { load: "8 kg or more", pods: "3 pods" },
+      ],
+      caution: [
+        "Keep out of reach of children.",
+        "Avoid contact with eyes.",
+        "Do not ingest. If swallowed, seek medical advice immediately.",
+        "Store in a cool, dry place.",
+        "Do not handle pods with wet hands.",
+      ],
+      certifications: ["Cruelty Free", "Vegan Friendly", "Recyclable Packaging"],
+      machines: ["Top Load", "Front Load"],
+      highlights: ["For Bras", "For Panties", "pH Balanced"],
+      imageUrl: innerwearPack.url,
+    },
+  },
+  {
+    slug: "baby",
+    name: "Baby",
+    tagline: "Made with mom love",
+    headline: "Deep Clean. Gentle Care.",
+    description:
+      "Smod Baby Laundry Pods are designed to deliver a powerful clean while being extra gentle on baby's skin and clothes. Our pre-measured pods dissolve quickly in water to remove tough stains and odors, keeping fabrics soft, fresh and safe for your little one.",
+    emoji: "👶",
+    palette: {
+      brand: "#1D2A6B",       // Navy logo
+      brandDeep: "#0F1B4D",   // Deeper navy
+      accent: "#B79BE0",      // Soft lavender accent (from baby pods)
+      bg: "#FFF7FB",          // Very pale blush bg
+      bgSoft: "#FCE4EE",      // Soft baby pink sections
+      surface: "#FFFFFF",
+      ink: "#1D2A6B",
+      inkSoft: "#8A6E80",
+    },
+    benefits: [
+      { title: "Gentle on Sensitive Skin", description: "Dermatologically tested, hypoallergenic formula." },
+      { title: "Powerful Stain Removal", description: "Tackles milk, food and play stains in one wash." },
+      { title: "Plant-Based & Safe", description: "Free from bleach, parabens and harsh dyes." },
+    ],
+    testimonials: [
+      { name: "Riya M.", location: "Pune", quote: "No rashes, no fuss. My baby's clothes come out beautifully soft.", rating: 5 },
+      { name: "Tanvi S.", location: "Hyderabad", quote: "Even the stubborn pureed-carrot stains rinse right out.", rating: 5 },
+      { name: "Aparna K.", location: "Chennai", quote: "Peace of mind in a little pod. Highly recommend.", rating: 5 },
+    ],
+    packs: [
+      { sku: "BABY20", size: 20, price: 549, perWash: 27.45, bestFor: "New parents", household: "1 baby", buyPath: "/buy/baby-20" },
+      { sku: "BABY40", size: 40, price: 979, perWash: 24.48, bestFor: "Growing families", household: "1–2 kids", buyPath: "/buy/baby-40" },
+    ],
+    retailers: [
+      { name: "Amazon", url: "#" },
+      { name: "Flipkart", url: "#" },
+      { name: "Myntra", url: "#" },
+      { name: "Zepto", url: "#" },
+      { name: "Blinkit", url: "#" },
+      { name: "Instamart", url: "#" },
+    ],
+    packaging: {
+      productName: "smod Baby Laundry Pods",
+      subtitle: "For your baby. For your peace of mind.",
+      claim: "Deep Clean. Gentle Care.",
+      weight: "250 g",
+      fragrance: "Soft, baby-safe scent",
+      benefits: [
+        { icon: "👕", title: "Deep Clean", body: "Powerful stain removal" },
+        { icon: "🌸", title: "Fresh Scent", body: "Long lasting freshness" },
+        { icon: "🌿", title: "Plant Based", body: "Naturally derived ingredients" },
+        { icon: "💧", title: "Safe & Gentle", body: "Free from bleach, parabens & dyes" },
+      ],
+      directions: [
+        { step: 1, body: "Add 1 pod to empty drum." },
+        { step: 2, body: "Add your baby clothes." },
+        { step: 3, body: "Select cycle & start washing." },
+      ],
+      dosage: [
+        { load: "0–5 kg", pods: "1 pod" },
+        { load: "5–8 kg", pods: "2 pods" },
+        { load: "8 kg or more", pods: "3 pods" },
+      ],
+      caution: [
+        "Keep out of reach of children.",
+        "Avoid contact with eyes.",
+        "Do not ingest. If swallowed, seek medical advice immediately.",
+        "Store in a cool, dry place.",
+        "Do not handle pods with wet hands.",
+      ],
+      certifications: ["Cruelty Free", "Vegan Friendly", "Recyclable Packaging", "Hypoallergenic", "Dermatologically Tested"],
+      machines: ["Top Load", "Front Load"],
+      highlights: ["Hypoallergenic", "Plant Based", "Safe for Colors & Fabrics"],
+      imageUrl: babyPack.url,
     },
   },
 ];
