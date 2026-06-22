@@ -4,6 +4,44 @@
  * with var(--brand) / var(--accent) for fills.
  */
 
+import { useEffect, useRef, useState, type ComponentType } from "react";
+
+export function ScrollReplayIcon({
+  Icon,
+  className,
+}: {
+  Icon: ComponentType<{ className?: string }>;
+  className?: string;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [replayKey, setReplayKey] = useState(0);
+  const wasVisible = useRef(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !wasVisible.current) {
+          setReplayKey((k) => k + 1);
+          wasVisible.current = true;
+        } else if (!entry.isIntersecting) {
+          wasVisible.current = false;
+        }
+      },
+      { threshold: 0.2 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={ref}>
+      <Icon key={replayKey} className={className} />
+    </div>
+  );
+}
+
 const stroke = {
   fill: "none",
   stroke: "currentColor",
