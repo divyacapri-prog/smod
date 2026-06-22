@@ -70,38 +70,15 @@ export function ProductInformation({ variant }: { variant: Variant }) {
       </div>
 
       <div className="grid gap-6 md:grid-cols-12">
-        {/* Pack images — front + back, sized to match the fact-card column */}
+        {/* Pack images — carousel that auto-advances */}
         <div className="md:col-span-5">
           {p.imageFrontUrl || p.imageBackUrl ? (
-            <div className="grid h-full grid-cols-2 gap-3">
-              {[p.imageFrontUrl, p.imageBackUrl].filter(Boolean).map((src, i) => (
-                <div
-                  key={i}
-                  className="flex aspect-[3/4] items-center justify-center overflow-hidden rounded-3xl border p-3"
-                  style={{
-                    borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)",
-                    background: "var(--v-surface)",
-                  }}
-                >
-                  <img
-                    src={src as string}
-                    alt={`${p.productName} packaging ${i === 0 ? "front" : "back"}`}
-                    className="max-h-full max-w-full object-contain"
-                    loading="lazy"
-                  />
-                </div>
-              ))}
-            </div>
+            <PackCarousel
+              images={[p.imageFrontUrl, p.imageBackUrl].filter(Boolean) as string[]}
+              alt={`${p.productName} packaging`}
+            />
           ) : p.imageUrl ? (
-            <div
-              className="flex aspect-square items-center justify-center overflow-hidden rounded-3xl border p-4"
-              style={{
-                borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)",
-                background: "var(--v-surface)",
-              }}
-            >
-              <img src={p.imageUrl} alt={`${p.productName} packaging`} className="max-h-full max-w-full object-contain" loading="lazy" />
-            </div>
+            <PackCarousel images={[p.imageUrl]} alt={`${p.productName} packaging`} />
           ) : (
             <div
               className="grid aspect-square place-items-center overflow-hidden rounded-3xl border"
@@ -115,6 +92,7 @@ export function ProductInformation({ variant }: { variant: Variant }) {
             </div>
           )}
         </div>
+
 
         {/* Quick facts */}
         <div className="grid gap-4 md:col-span-7 md:grid-cols-2">
