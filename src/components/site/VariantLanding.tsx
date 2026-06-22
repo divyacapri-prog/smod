@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { useState, type ReactElement } from "react";
+import { useState } from "react";
 import { ExternalLink } from "lucide-react";
 import type { Variant } from "@/lib/variants";
 import { paletteToCssVars } from "@/lib/variants";
@@ -10,7 +10,7 @@ import { StickyCTA } from "./StickyCTA";
 import { QRCode } from "./QRCode";
 import { ProductInformation } from "./ProductInformation";
 import { WavePattern } from "./WavePattern";
-import { HandDropPodIcon, LoadClothesIcon, SpinWashIcon } from "./StepIcons";
+
 
 const PURCHASE_BASE = typeof window !== "undefined" ? window.location.origin : "";
 
@@ -23,11 +23,6 @@ const WHY_PODS = [
   { icon: "⭐", title: "Premium clean", body: "Triple-action enzymes per pod." },
 ];
 
-const HOW: { title: string; body: string; Icon: (p: { className?: string }) => ReactElement }[] = [
-  { title: "Drop a pod", body: "One pod into the empty drum.", Icon: HandDropPodIcon },
-  { title: "Load clothes", body: "Add laundry directly on top.", Icon: LoadClothesIcon },
-  { title: "Start the wash", body: "Any cycle. The film dissolves cleanly.", Icon: SpinWashIcon },
-];
 
 const FAQS = [
   { q: "How many clothes per pod?", a: "One pod is calibrated for a standard load of up to 5 kg. For very large loads, use two." },
@@ -71,9 +66,9 @@ export function VariantLanding({ variant }: { variant: Variant }) {
               >
                 Buy Now
               </a>
-              <a href="#how" className="rounded-full border px-6 py-3 text-sm font-bold transition-colors" style={{ borderColor: "color-mix(in oklab, var(--v-ink) 20%, transparent)", color: "var(--v-ink)" }}>
-                How it works
-              </a>
+              <Link to="/cart" className="rounded-full border px-6 py-3 text-sm font-bold transition-colors" style={{ borderColor: "color-mix(in oklab, var(--v-ink) 20%, transparent)", color: "var(--v-ink)" }}>
+                View cart
+              </Link>
             </div>
             <div className="mt-8 flex gap-3">
               <PackPill label="20 Pods" price={p20.price} to={p20.buyPath} />
@@ -153,24 +148,6 @@ export function VariantLanding({ variant }: { variant: Variant }) {
         </div>
       </Section>
 
-      {/* HOW IT WORKS */}
-      <Section id="how" eyebrow="How it works" title="Three steps. Three minutes." subtitle="Less thinking, more clean clothes.">
-        <div className="relative grid gap-8 sm:grid-cols-3">
-          <div aria-hidden className="pointer-events-none absolute left-[16%] right-[16%] top-24 hidden h-px sm:block" style={{ background: `repeating-linear-gradient(90deg, var(--brand) 0 8px, transparent 8px 16px)` }} />
-          {HOW.map((s, i) => (
-            <div key={s.title} className="relative flex flex-col items-center text-center">
-              <div className="relative grid h-44 w-44 place-items-center rounded-full shadow-xl ring-1 ring-black/5" style={{ background: "var(--v-surface)", color: "var(--brand-deep)" }}>
-                <span aria-hidden className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em] text-white" style={{ background: `linear-gradient(135deg, var(--brand), var(--brand-deep))` }}>
-                  Step {i + 1}
-                </span>
-                <s.Icon className="h-28 w-28" />
-              </div>
-              <h3 className="mt-5 text-xl font-black" style={{ color: "var(--v-ink)" }}>{s.title}</h3>
-              <p className="mt-1 text-sm" style={{ color: "var(--v-ink-soft)" }}>{s.body}</p>
-            </div>
-          ))}
-        </div>
-      </Section>
 
       {/* COMPARISON */}
       <Section eyebrow="Compare packs" title="20 Pods vs 40 Pods" subtitle="Same formula. Different commitment.">
@@ -349,7 +326,7 @@ function PurchaseCard({ variant, pack, featured }: { variant: Variant; pack: Var
           </div>
         </div>
         <div className="flex flex-col items-center justify-center">
-          <QRCode value={fullUrl} sku={pack.sku} fg={variant.palette.brandDeep} bg={variant.palette.surface} />
+          <QRCode value={fullUrl} sku={pack.sku} fg="#000000" bg="#FFFFFF" />
           <p className="mt-3 text-center text-xs" style={{ color: "var(--v-ink-soft)" }}>
             Scan to buy<br />
             <span className="font-mono">{pack.buyPath}</span>
