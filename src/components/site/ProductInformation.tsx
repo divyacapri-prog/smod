@@ -71,7 +71,7 @@ export function ProductInformation({ variant }: { variant: Variant }) {
 
       <div className="grid gap-6 md:grid-cols-12">
         {/* Pack images — carousel that auto-advances */}
-        <div className="md:col-span-5">
+        <div className="flex h-full md:col-span-5">
           {p.imageFrontUrl || p.imageBackUrl ? (
             <PackCarousel
               images={[p.imageFrontUrl, p.imageBackUrl].filter(Boolean) as string[]}
