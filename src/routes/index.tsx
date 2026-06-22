@@ -224,11 +224,11 @@ function Home() {
 
 
       {/* ============ VARIANTS ============ */}
-      <section id="variants" className="relative overflow-hidden py-16" style={{ background: "var(--v-bg-soft)" }}>
+      <section id="variants" className="relative overflow-hidden pt-32 pb-16" style={{ background: "var(--v-bg-soft)" }}>
         <WavePattern />
         <div className="relative mx-auto max-w-7xl px-5">
           <div className="mb-8 text-center">
-            <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--brand)" }}>The range</p>
+            <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--v-ink)" }}>The range</p>
             <h2 className="mt-2 text-3xl font-black md:text-4xl">One pod for every load.</h2>
           </div>
 
