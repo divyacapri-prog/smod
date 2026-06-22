@@ -326,7 +326,7 @@ function Home() {
               },
               { n: "02", icon: "👕", title: "Comforter", body: "Restores softness and a cozy feel to every fibre." },
               { n: "03", icon: "🌸", title: "Softener", body: "Long-lasting fresh scent woven into your laundry." },
-              { n: "04", icon: "🛡️", title: "Antimicrobial", body: "Fights odor-causing bacteria, wash after wash." },
+              { n: "04", icon: "🛡️", title: "Anti-microbial", body: "Fights odor-causing bacteria, wash after wash." },
             ].map((f) => (
               <div
                 key={f.title}
