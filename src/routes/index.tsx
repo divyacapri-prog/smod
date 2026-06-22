@@ -152,14 +152,11 @@ function Home() {
           <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, color-mix(in oklab, var(--v-bg) 70%, transparent) 0%, color-mix(in oklab, var(--v-bg) 30%, transparent) 50%, color-mix(in oklab, var(--v-bg) 80%, transparent) 100%)" }} />
         </div>
         <div className="relative mx-auto max-w-7xl px-5 py-20 text-center">
-          <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--brand)" }}>What it means</p>
-          <div className="mt-6 flex flex-wrap items-end justify-center gap-2 text-5xl font-black md:text-7xl">
-            <span style={{ color: "var(--brand)" }}>S</span>
-            <span style={{ color: "var(--brand)" }}>M</span>
-            <span className="text-base font-bold opacity-60 md:text-xl">art</span>
-            <span className="text-base font-bold opacity-60 md:text-xl">p</span>
-            <span style={{ color: "var(--brand)" }}>O</span>
-            <span style={{ color: "var(--brand)" }}>D</span>
+          <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--brand)" }}>Who we are</p>
+          <div className="mt-6 flex flex-wrap items-center justify-center text-5xl font-black md:text-7xl">
+            <span style={{ color: "var(--brand)" }}>SM</span>
+            <span style={{ color: "#728198" }}>ART&nbsp;P</span>
+            <span style={{ color: "var(--brand)" }}>OD</span>
           </div>
           <p className="mx-auto mt-4 max-w-md text-sm font-medium" style={{ color: "var(--v-ink-soft)" }}>
             A tiny laboratory in every pod.
@@ -225,6 +222,31 @@ function Home() {
               </div>
               <h3 className="mt-6 text-xl font-black">{s.t}</h3>
               <p className="mt-1 text-sm" style={{ color: "var(--v-ink-soft)" }}>{s.b}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ============ WHY PODS ============ */}
+      <section className="mx-auto max-w-7xl px-5 py-16">
+        <div className="mb-10 text-center">
+          <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--brand)" }}>Why pods</p>
+          <h2 className="mt-2 text-3xl font-black md:text-4xl">Detergent, redesigned.</h2>
+          <p className="mt-3 text-base" style={{ color: "var(--v-ink-soft)" }}>Six reasons our customers never go back to bottles or boxes.</p>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {[
+            { icon: "⚖️", title: "Pre-measured", body: "Exactly one pod per load. No guesswork." },
+            { icon: "🧴", title: "No spills", body: "Sealed film dissolves only in water." },
+            { icon: "📦", title: "Easy storage", body: "Resealable ziplock pack, fits any laundry shelf." },
+            { icon: "✈️", title: "Travel friendly", body: "TSA-friendly. Hotel-ready." },
+            { icon: "🌿", title: "Eco conscious", body: "Antimicrobial, biodegradable formula." },
+            { icon: "⭐", title: "Premium clean", body: "Triple-action enzymes per pod." },
+          ].map((w) => (
+            <div key={w.title} className="rounded-3xl border bg-white p-6 transition-transform hover:-translate-y-1" style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)" }}>
+              <div className="text-3xl">{w.icon}</div>
+              <h3 className="mt-3 text-lg font-bold">{w.title}</h3>
+              <p className="mt-1 text-sm" style={{ color: "var(--v-ink-soft)" }}>{w.body}</p>
             </div>
           ))}
         </div>

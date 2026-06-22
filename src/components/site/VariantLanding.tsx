@@ -19,7 +19,7 @@ const WHY_PODS = [
   { icon: "🧴", title: "No spills", body: "Sealed film dissolves only in water." },
   { icon: "📦", title: "Easy storage", body: "Resealable ziplock pack, fits any laundry shelf." },
   { icon: "✈️", title: "Travel friendly", body: "TSA-friendly. Hotel-ready." },
-  { icon: "🌿", title: "Eco conscious", body: "Plant-based, biodegradable formula." },
+  { icon: "🌿", title: "Eco conscious", body: "Antimicrobial, biodegradable formula." },
   { icon: "⭐", title: "Premium clean", body: "Triple-action enzymes per pod." },
 ];
 
