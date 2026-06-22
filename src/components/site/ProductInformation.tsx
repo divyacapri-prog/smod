@@ -78,7 +78,7 @@ export function ProductInformation({ variant }: { variant: Variant }) {
               return (
                 <div key={d.step} className="flex flex-col items-center text-center">
                   <div className="grid h-24 w-24 place-items-center rounded-full ring-1" style={{ background: "color-mix(in oklab, var(--brand) 14%, var(--v-surface))", color: "var(--brand)", borderColor: "var(--brand)", boxShadow: "inset 0 0 0 1px color-mix(in oklab, var(--brand) 35%, transparent)" }}>
-                    <Icon className="h-16 w-16" />
+                    {i < 2 ? <ScrollReplayIcon Icon={Icon} className="h-16 w-16" /> : <Icon className="h-16 w-16" />}
                   </div>
                   <p className="mt-2 text-[10px] font-black uppercase tracking-[0.2em]" style={{ color: "var(--brand)" }}>Step {d.step}</p>
                   <p className="mt-1 text-xs leading-relaxed" style={{ color: "var(--v-ink-soft)" }}>{d.body}</p>
