@@ -77,7 +77,7 @@ export function ProductInformation({ variant }: { variant: Variant }) {
               const Icon = STEP_ICONS[i] ?? STEP_ICONS[STEP_ICONS.length - 1];
               return (
                 <div key={d.step} className="flex flex-col items-center text-center">
-                  <div className="grid h-24 w-24 place-items-center rounded-full ring-1 ring-black/5" style={{ background: "var(--v-bg-soft)", color: "var(--brand-deep)" }}>
+                  <div className="grid h-24 w-24 place-items-center rounded-full ring-1" style={{ background: "color-mix(in oklab, var(--brand) 14%, var(--v-surface))", color: "var(--brand)", borderColor: "var(--brand)", boxShadow: "inset 0 0 0 1px color-mix(in oklab, var(--brand) 35%, transparent)" }}>
                     <Icon className="h-16 w-16" />
                   </div>
                   <p className="mt-2 text-[10px] font-black uppercase tracking-[0.2em]" style={{ color: "var(--brand)" }}>Step {d.step}</p>
