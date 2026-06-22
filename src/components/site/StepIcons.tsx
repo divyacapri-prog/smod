@@ -62,9 +62,9 @@ export function HandDropPodIcon({ className = "" }: { className?: string }) {
         <path d="M110 56 L100 64" />
         <path d="M118 50 L108 58" />
       </g>
-      {/* pod being dropped — animated */}
+      {/* pod being dropped — plays once on mount */}
       <g>
-        <animateTransform attributeName="transform" type="translate" values="0 -8; 0 36; 0 -8" keyTimes="0; 0.6; 1" dur="2.4s" repeatCount="indefinite" />
+        <animateTransform attributeName="transform" type="translate" values="0 -8; 0 36; 0 -8" keyTimes="0; 0.6; 1" dur="2.4s" />
         <rect x="88" y="86" width="34" height="26" rx="11" fill="var(--brand)" />
         <circle cx="98" cy="96" r="5" fill="var(--accent)" opacity="0.95" />
         <circle cx="113" cy="103" r="3" fill="#fff" opacity="0.9" />
@@ -72,13 +72,13 @@ export function HandDropPodIcon({ className = "" }: { className?: string }) {
       {/* motion lines + drum opening below */}
       <g {...stroke} opacity="0.55">
         <path d="M76 120 L72 130">
-          <animate attributeName="opacity" values="0.2; 0.8; 0.2" dur="2.4s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="0.2; 0.8; 0.2" dur="2.4s" />
         </path>
         <path d="M134 120 L138 130">
-          <animate attributeName="opacity" values="0.2; 0.8; 0.2" dur="2.4s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="0.2; 0.8; 0.2" dur="2.4s" />
         </path>
         <path d="M105 120 L105 132">
-          <animate attributeName="opacity" values="0.2; 0.8; 0.2" dur="2.4s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="0.2; 0.8; 0.2" dur="2.4s" />
         </path>
       </g>
       {/* washing-machine top w/ open door */}
