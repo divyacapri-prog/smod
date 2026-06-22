@@ -11,7 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import { RippleTransition } from "../components/site/RippleTransition";
+import { PageTransition } from "../components/site/PageTransition";
 import { CartProvider } from "../lib/cart";
 
 function NotFoundComponent() {
@@ -122,8 +122,9 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <CartProvider>
         {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-        <Outlet />
-        <RippleTransition />
+        <PageTransition>
+          <Outlet />
+        </PageTransition>
       </CartProvider>
     </QueryClientProvider>
   );
