@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SportsRouteImport } from './routes/sports'
 import { Route as SocksRouteImport } from './routes/socks'
+import { Route as ShippingRouteImport } from './routes/shipping'
 import { Route as RegularRouteImport } from './routes/regular'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CheckoutRouteImport } from './routes/checkout'
@@ -26,6 +27,11 @@ const SportsRoute = SportsRouteImport.update({
 const SocksRoute = SocksRouteImport.update({
   id: '/socks',
   path: '/socks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShippingRoute = ShippingRouteImport.update({
+  id: '/shipping',
+  path: '/shipping',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RegularRoute = RegularRouteImport.update({
@@ -65,6 +71,7 @@ export interface FileRoutesByFullPath {
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/regular': typeof RegularRoute
+  '/shipping': typeof ShippingRoute
   '/socks': typeof SocksRoute
   '/sports': typeof SportsRoute
   '/buy/$sku': typeof BuySkuRoute
@@ -75,6 +82,7 @@ export interface FileRoutesByTo {
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/regular': typeof RegularRoute
+  '/shipping': typeof ShippingRoute
   '/socks': typeof SocksRoute
   '/sports': typeof SportsRoute
   '/buy/$sku': typeof BuySkuRoute
@@ -86,6 +94,7 @@ export interface FileRoutesById {
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/regular': typeof RegularRoute
+  '/shipping': typeof ShippingRoute
   '/socks': typeof SocksRoute
   '/sports': typeof SportsRoute
   '/buy/$sku': typeof BuySkuRoute
@@ -98,6 +107,7 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/contact'
     | '/regular'
+    | '/shipping'
     | '/socks'
     | '/sports'
     | '/buy/$sku'
@@ -108,6 +118,7 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/contact'
     | '/regular'
+    | '/shipping'
     | '/socks'
     | '/sports'
     | '/buy/$sku'
@@ -118,6 +129,7 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/contact'
     | '/regular'
+    | '/shipping'
     | '/socks'
     | '/sports'
     | '/buy/$sku'
@@ -129,6 +141,7 @@ export interface RootRouteChildren {
   CheckoutRoute: typeof CheckoutRoute
   ContactRoute: typeof ContactRoute
   RegularRoute: typeof RegularRoute
+  ShippingRoute: typeof ShippingRoute
   SocksRoute: typeof SocksRoute
   SportsRoute: typeof SportsRoute
   BuySkuRoute: typeof BuySkuRoute
@@ -148,6 +161,13 @@ declare module '@tanstack/react-router' {
       path: '/socks'
       fullPath: '/socks'
       preLoaderRoute: typeof SocksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shipping': {
+      id: '/shipping'
+      path: '/shipping'
+      fullPath: '/shipping'
+      preLoaderRoute: typeof ShippingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/regular': {
@@ -201,6 +221,7 @@ const rootRouteChildren: RootRouteChildren = {
   CheckoutRoute: CheckoutRoute,
   ContactRoute: ContactRoute,
   RegularRoute: RegularRoute,
+  ShippingRoute: ShippingRoute,
   SocksRoute: SocksRoute,
   SportsRoute: SportsRoute,
   BuySkuRoute: BuySkuRoute,
