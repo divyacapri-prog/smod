@@ -9,8 +9,10 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SubscriptionsRouteImport } from './routes/subscriptions'
 import { Route as SportsRouteImport } from './routes/sports'
 import { Route as SocksRouteImport } from './routes/socks'
+import { Route as ShippingRouteImport } from './routes/shipping'
 import { Route as RegularRouteImport } from './routes/regular'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CheckoutRouteImport } from './routes/checkout'
@@ -18,6 +20,11 @@ import { Route as CartRouteImport } from './routes/cart'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BuySkuRouteImport } from './routes/buy.$sku'
 
+const SubscriptionsRoute = SubscriptionsRouteImport.update({
+  id: '/subscriptions',
+  path: '/subscriptions',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SportsRoute = SportsRouteImport.update({
   id: '/sports',
   path: '/sports',
@@ -26,6 +33,11 @@ const SportsRoute = SportsRouteImport.update({
 const SocksRoute = SocksRouteImport.update({
   id: '/socks',
   path: '/socks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShippingRoute = ShippingRouteImport.update({
+  id: '/shipping',
+  path: '/shipping',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RegularRoute = RegularRouteImport.update({
@@ -65,8 +77,10 @@ export interface FileRoutesByFullPath {
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/regular': typeof RegularRoute
+  '/shipping': typeof ShippingRoute
   '/socks': typeof SocksRoute
   '/sports': typeof SportsRoute
+  '/subscriptions': typeof SubscriptionsRoute
   '/buy/$sku': typeof BuySkuRoute
 }
 export interface FileRoutesByTo {
@@ -75,8 +89,10 @@ export interface FileRoutesByTo {
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/regular': typeof RegularRoute
+  '/shipping': typeof ShippingRoute
   '/socks': typeof SocksRoute
   '/sports': typeof SportsRoute
+  '/subscriptions': typeof SubscriptionsRoute
   '/buy/$sku': typeof BuySkuRoute
 }
 export interface FileRoutesById {
@@ -86,8 +102,10 @@ export interface FileRoutesById {
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/regular': typeof RegularRoute
+  '/shipping': typeof ShippingRoute
   '/socks': typeof SocksRoute
   '/sports': typeof SportsRoute
+  '/subscriptions': typeof SubscriptionsRoute
   '/buy/$sku': typeof BuySkuRoute
 }
 export interface FileRouteTypes {
@@ -98,8 +116,10 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/contact'
     | '/regular'
+    | '/shipping'
     | '/socks'
     | '/sports'
+    | '/subscriptions'
     | '/buy/$sku'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -108,8 +128,10 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/contact'
     | '/regular'
+    | '/shipping'
     | '/socks'
     | '/sports'
+    | '/subscriptions'
     | '/buy/$sku'
   id:
     | '__root__'
@@ -118,8 +140,10 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/contact'
     | '/regular'
+    | '/shipping'
     | '/socks'
     | '/sports'
+    | '/subscriptions'
     | '/buy/$sku'
   fileRoutesById: FileRoutesById
 }
@@ -129,13 +153,22 @@ export interface RootRouteChildren {
   CheckoutRoute: typeof CheckoutRoute
   ContactRoute: typeof ContactRoute
   RegularRoute: typeof RegularRoute
+  ShippingRoute: typeof ShippingRoute
   SocksRoute: typeof SocksRoute
   SportsRoute: typeof SportsRoute
+  SubscriptionsRoute: typeof SubscriptionsRoute
   BuySkuRoute: typeof BuySkuRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/subscriptions': {
+      id: '/subscriptions'
+      path: '/subscriptions'
+      fullPath: '/subscriptions'
+      preLoaderRoute: typeof SubscriptionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sports': {
       id: '/sports'
       path: '/sports'
@@ -148,6 +181,13 @@ declare module '@tanstack/react-router' {
       path: '/socks'
       fullPath: '/socks'
       preLoaderRoute: typeof SocksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shipping': {
+      id: '/shipping'
+      path: '/shipping'
+      fullPath: '/shipping'
+      preLoaderRoute: typeof ShippingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/regular': {
@@ -201,8 +241,10 @@ const rootRouteChildren: RootRouteChildren = {
   CheckoutRoute: CheckoutRoute,
   ContactRoute: ContactRoute,
   RegularRoute: RegularRoute,
+  ShippingRoute: ShippingRoute,
   SocksRoute: SocksRoute,
   SportsRoute: SportsRoute,
+  SubscriptionsRoute: SubscriptionsRoute,
   BuySkuRoute: BuySkuRoute,
 }
 export const routeTree = rootRouteImport

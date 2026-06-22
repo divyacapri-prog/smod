@@ -23,8 +23,8 @@ export function Footer() {
         <div>
           <p className="mb-3 text-xs font-bold uppercase tracking-widest" style={{ color: "var(--v-ink)" }}>Help</p>
           <ul className="space-y-2 text-sm" style={{ color: "var(--v-ink-soft)" }}>
-            <li>Shipping & returns</li>
-            <li>Subscriptions</li>
+            <li><Link to="/shipping" className="hover:underline">Shipping & returns</Link></li>
+            <li><Link to="/subscriptions" className="hover:underline">Subscriptions</Link></li>
             <li><Link to="/contact" className="hover:underline">Contact</Link></li>
           </ul>
         </div>

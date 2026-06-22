@@ -1,4 +1,7 @@
 import type { Variant } from "@/lib/variants";
+import { HandDropPodIcon, LoadClothesIcon, SpinWashIcon } from "./StepIcons";
+
+const STEP_ICONS = [HandDropPodIcon, LoadClothesIcon, SpinWashIcon];
 
 export function ProductInformation({ variant }: { variant: Variant }) {
   const p = variant.packaging;
@@ -69,14 +72,20 @@ export function ProductInformation({ variant }: { variant: Variant }) {
       <div className="mt-10 grid gap-6 md:grid-cols-2">
         <div className="rounded-3xl border p-6" style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)", background: "var(--v-surface)" }}>
           <p className="text-xs font-bold uppercase tracking-widest" style={{ color: "var(--brand)" }}>Directions for use</p>
-          <ol className="mt-4 space-y-3">
-            {p.directions.map((d) => (
-              <li key={d.step} className="flex gap-3">
-                <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full text-xs font-bold text-white" style={{ background: "var(--brand)" }}>{d.step}</span>
-                <span className="text-sm leading-relaxed" style={{ color: "var(--v-ink)" }}>{d.body}</span>
-              </li>
-            ))}
-          </ol>
+          <div className="mt-5 grid gap-4 sm:grid-cols-3">
+            {p.directions.map((d, i) => {
+              const Icon = STEP_ICONS[i] ?? STEP_ICONS[STEP_ICONS.length - 1];
+              return (
+                <div key={d.step} className="flex flex-col items-center text-center">
+                  <div className="grid h-24 w-24 place-items-center rounded-full ring-1 ring-black/5" style={{ background: "var(--v-bg-soft)", color: "var(--brand-deep)" }}>
+                    <Icon className="h-16 w-16" />
+                  </div>
+                  <p className="mt-2 text-[10px] font-black uppercase tracking-[0.2em]" style={{ color: "var(--brand)" }}>Step {d.step}</p>
+                  <p className="mt-1 text-xs leading-relaxed" style={{ color: "var(--v-ink-soft)" }}>{d.body}</p>
+                </div>
+              );
+            })}
+          </div>
         </div>
 
         <div className="rounded-3xl border p-6" style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)", background: "var(--v-surface)" }}>

@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useState, type ReactElement } from "react";
 import { ExternalLink } from "lucide-react";
 import type { Variant } from "@/lib/variants";
 import { paletteToCssVars } from "@/lib/variants";
@@ -10,23 +10,23 @@ import { StickyCTA } from "./StickyCTA";
 import { QRCode } from "./QRCode";
 import { ProductInformation } from "./ProductInformation";
 import { WavePattern } from "./WavePattern";
+import { HandDropPodIcon, LoadClothesIcon, SpinWashIcon } from "./StepIcons";
 
 const PURCHASE_BASE = typeof window !== "undefined" ? window.location.origin : "";
 
 const WHY_PODS = [
   { icon: "⚖️", title: "Pre-measured", body: "Exactly one pod per load. No guesswork." },
   { icon: "🧴", title: "No spills", body: "Sealed film dissolves only in water." },
-  { icon: "📦", title: "Easy storage", body: "Compact tub, fits any laundry shelf." },
+  { icon: "📦", title: "Easy storage", body: "Resealable ziplock pack, fits any laundry shelf." },
   { icon: "✈️", title: "Travel friendly", body: "TSA-friendly. Hotel-ready." },
   { icon: "🌿", title: "Eco conscious", body: "Plant-based, biodegradable formula." },
   { icon: "⭐", title: "Premium clean", body: "Triple-action enzymes per pod." },
 ];
 
-const HOW = [
-  { step: "01", title: "Place pod", body: "Drop one pod into the empty drum." },
-  { step: "02", title: "Add clothes", body: "Load laundry directly on top." },
-  { step: "03", title: "Start wash", body: "Run any cycle, any temperature." },
-  { step: "04", title: "Enjoy fresh", body: "Hang or tumble dry. That's it." },
+const HOW: { title: string; body: string; Icon: (p: { className?: string }) => ReactElement }[] = [
+  { title: "Drop a pod", body: "One pod into the empty drum.", Icon: HandDropPodIcon },
+  { title: "Load clothes", body: "Add laundry directly on top.", Icon: LoadClothesIcon },
+  { title: "Start the wash", body: "Any cycle. The film dissolves cleanly.", Icon: SpinWashIcon },
 ];
 
 const FAQS = [
@@ -34,7 +34,7 @@ const FAQS = [
   { q: "Is it suitable for front load machines?", a: "Yes. The film dissolves cleanly at all front-load temperatures." },
   { q: "Is it suitable for top load machines?", a: "Yes. Place the pod into the empty drum before adding clothes for best results." },
   { q: "Are pods safe for fabrics?", a: "Absolutely. Each variant is tuned to its target fabric type — never abrasive." },
-  { q: "How should pods be stored?", a: "Keep the tub closed, dry, and out of reach of children. Do not handle with wet hands." },
+  { q: "How should pods be stored?", a: "Keep the resealable pouch zipped, dry, and out of reach of children. Do not handle with wet hands." },
 ];
 
 export function VariantLanding({ variant }: { variant: Variant }) {
@@ -154,12 +154,18 @@ export function VariantLanding({ variant }: { variant: Variant }) {
       </Section>
 
       {/* HOW IT WORKS */}
-      <Section id="how" eyebrow="How it works" title="Four steps. Three minutes." subtitle="Less thinking, more clean clothes.">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {HOW.map((s) => (
-            <div key={s.step} className="rounded-3xl border p-6" style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)", background: "var(--v-surface)" }}>
-              <div className="font-mono text-sm font-bold" style={{ color: "var(--brand)" }}>STEP {s.step}</div>
-              <h3 className="mt-2 text-xl font-bold" style={{ color: "var(--v-ink)" }}>{s.title}</h3>
+      <Section id="how" eyebrow="How it works" title="Three steps. Three minutes." subtitle="Less thinking, more clean clothes.">
+        <div className="relative grid gap-8 sm:grid-cols-3">
+          <div aria-hidden className="pointer-events-none absolute left-[16%] right-[16%] top-24 hidden h-px sm:block" style={{ background: `repeating-linear-gradient(90deg, var(--brand) 0 8px, transparent 8px 16px)` }} />
+          {HOW.map((s, i) => (
+            <div key={s.title} className="relative flex flex-col items-center text-center">
+              <div className="relative grid h-44 w-44 place-items-center rounded-full shadow-xl ring-1 ring-black/5" style={{ background: "var(--v-surface)", color: "var(--brand-deep)" }}>
+                <span aria-hidden className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em] text-white" style={{ background: `linear-gradient(135deg, var(--brand), var(--brand-deep))` }}>
+                  Step {i + 1}
+                </span>
+                <s.Icon className="h-28 w-28" />
+              </div>
+              <h3 className="mt-5 text-xl font-black" style={{ color: "var(--v-ink)" }}>{s.title}</h3>
               <p className="mt-1 text-sm" style={{ color: "var(--v-ink-soft)" }}>{s.body}</p>
             </div>
           ))}
