@@ -139,13 +139,13 @@ export const VARIANTS: Variant[] = [
     emoji: "🧦",
     palette: {
       brand: "#2A4B9B",       // Cobalt Blue (logo)
-      brandDeep: "#3A2368",   // Deep Indigo/Purple
+      brandDeep: "#1E3870",   // Rich dark cobalt
       accent: "#897BAA",      // Soft Violet
-      bg: "#6E7176",          // Medium-Dark Grey (jar body)
-      bgSoft: "#85878C",      // Lighter grey for soft sections
-      surface: "#ECECEE",     // Tinted White (label)
-      ink: "#2C2D31",         // Charcoal
-      inkSoft: "#4A4C52",     // Darker for contrast on grey
+      bg: "#F2F3F5",          // Very light cool grey — clean label feel
+      bgSoft: "#E6E7EB",      // Soft section grey
+      surface: "#FFFFFF",     // White cards for crisp readability
+      ink: "#18191D",         // Near-black for maximum contrast
+      inkSoft: "#5A5C62",     // Medium grey, easy on the eyes
     },
     benefits: [
       { title: "Deep Odor Removal", description: "Bio-enzymes break down sweat residue at the molecular level." },
