@@ -15,10 +15,11 @@ function PackCarousel({ images, alt }: { images: string[]; alt: string }) {
   const go = (n: number) => setI(((n % images.length) + images.length) % images.length);
   return (
     <div
-      className="relative flex aspect-square w-full items-center justify-center overflow-hidden rounded-3xl border p-6"
+      className="relative flex w-full items-center justify-center overflow-hidden rounded-3xl border p-4 md:p-5"
       style={{
         borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)",
         background: "var(--v-surface)",
+        minHeight: "clamp(360px, 55vw, 560px)",
       }}
     >
       <AnimatePresence mode="wait">
@@ -26,7 +27,7 @@ function PackCarousel({ images, alt }: { images: string[]; alt: string }) {
           key={i}
           src={images[i]}
           alt={`${alt} ${i === 0 ? "front" : "back"}`}
-          className="max-h-full max-w-full cursor-pointer object-contain"
+          className="h-full w-full cursor-pointer object-contain"
           onClick={() => go(i + 1)}
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
