@@ -137,19 +137,26 @@ function Home() {
       </section>
 
       {/* ============ SMOD WORDMARK INFOGRAPHIC ============ */}
-      <section className="mx-auto max-w-7xl px-5 py-16 text-center">
-        <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--brand)" }}>What it means</p>
-        <div className="mt-6 flex flex-wrap items-end justify-center gap-2 text-5xl font-black md:text-7xl">
-          <span style={{ color: "var(--brand)" }}>S</span>
-          <span style={{ color: "var(--brand)" }}>M</span>
-          <span className="text-base font-bold opacity-60 md:text-xl">art</span>
-          <span style={{ color: "var(--brand)" }}>p</span>
-          <span style={{ color: "var(--brand)" }}>O</span>
-          <span style={{ color: "var(--brand)" }}>D</span>
+      <section className="relative overflow-hidden">
+        {/* Abstract packaging-inspired artwork as backdrop */}
+        <div aria-hidden className="absolute inset-0 -z-0">
+          <AbstractArt opacity={0.55} />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, color-mix(in oklab, var(--v-bg) 70%, transparent) 0%, color-mix(in oklab, var(--v-bg) 30%, transparent) 50%, color-mix(in oklab, var(--v-bg) 80%, transparent) 100%)" }} />
         </div>
-        <p className="mx-auto mt-4 max-w-md text-sm font-medium" style={{ color: "var(--v-ink-soft)" }}>
-          A tiny laboratory in every pod.
-        </p>
+        <div className="relative mx-auto max-w-7xl px-5 py-20 text-center">
+          <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--brand)" }}>What it means</p>
+          <div className="mt-6 flex flex-wrap items-end justify-center gap-2 text-5xl font-black md:text-7xl">
+            <span style={{ color: "var(--brand)" }}>S</span>
+            <span style={{ color: "var(--brand)" }}>M</span>
+            <span className="text-base font-bold opacity-60 md:text-xl">art</span>
+            <span style={{ color: "var(--brand)" }}>p</span>
+            <span style={{ color: "var(--brand)" }}>O</span>
+            <span style={{ color: "var(--brand)" }}>D</span>
+          </div>
+          <p className="mx-auto mt-4 max-w-md text-sm font-medium" style={{ color: "var(--v-ink-soft)" }}>
+            A tiny laboratory in every pod.
+          </p>
+        </div>
       </section>
 
       {/* ============ FOUR PILLARS — pack at center, pillars radiating ============ */}
@@ -191,14 +198,24 @@ function Home() {
           <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--brand)" }}>How it works</p>
           <h2 className="mt-2 text-3xl font-black md:text-4xl">Three steps. Zero mess.</h2>
         </div>
-        <div className="relative grid gap-6 md:grid-cols-3">
-          <div aria-hidden className="pointer-events-none absolute left-[16%] right-[16%] top-12 hidden h-px md:block" style={{ background: `repeating-linear-gradient(90deg, var(--brand) 0 8px, transparent 8px 16px)` }} />
-          {STEPS.map((s) => (
+        <div className="relative grid gap-10 md:grid-cols-3">
+          <div aria-hidden className="pointer-events-none absolute left-[16%] right-[16%] top-24 hidden h-px md:block" style={{ background: `repeating-linear-gradient(90deg, var(--brand) 0 8px, transparent 8px 16px)` }} />
+          {STEPS.map((s, i) => (
             <div key={s.n} className="relative flex flex-col items-center text-center">
-              <div className="grid h-24 w-24 place-items-center rounded-full text-2xl font-black text-white shadow-lg" style={{ background: `linear-gradient(135deg, var(--brand), var(--brand-deep))` }}>
-                {s.n}
+              <div
+                className="relative grid h-48 w-48 place-items-center rounded-full shadow-xl ring-1 ring-black/5"
+                style={{ background: "var(--v-surface)", color: "var(--brand-deep)" }}
+              >
+                <span
+                  aria-hidden
+                  className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em] text-white"
+                  style={{ background: `linear-gradient(135deg, var(--brand), var(--brand-deep))` }}
+                >
+                  Step {i + 1}
+                </span>
+                <s.Icon className="h-32 w-32" />
               </div>
-              <h3 className="mt-5 text-xl font-black">{s.t}</h3>
+              <h3 className="mt-6 text-xl font-black">{s.t}</h3>
               <p className="mt-1 text-sm" style={{ color: "var(--v-ink-soft)" }}>{s.b}</p>
             </div>
           ))}
