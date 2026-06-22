@@ -34,7 +34,7 @@ const FAQS = [
   { q: "Is it suitable for front load machines?", a: "Yes. The film dissolves cleanly at all front-load temperatures." },
   { q: "Is it suitable for top load machines?", a: "Yes. Place the pod into the empty drum before adding clothes for best results." },
   { q: "Are pods safe for fabrics?", a: "Absolutely. Each variant is tuned to its target fabric type — never abrasive." },
-  { q: "How should pods be stored?", a: "Keep the tub closed, dry, and out of reach of children. Do not handle with wet hands." },
+  { q: "How should pods be stored?", a: "Keep the resealable pouch zipped, dry, and out of reach of children. Do not handle with wet hands." },
 ];
 
 export function VariantLanding({ variant }: { variant: Variant }) {
