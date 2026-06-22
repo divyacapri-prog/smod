@@ -69,7 +69,7 @@ export function ProductInformation({ variant }: { variant: Variant }) {
         <p className="mt-3 text-base" style={{ color: "var(--v-ink-soft)" }}>{p.subtitle}</p>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-12">
+      <div className="grid items-start gap-6 md:grid-cols-12">
         {/* Pack images — carousel that auto-advances */}
         <div className="flex h-full md:col-span-5">
           {p.imageFrontUrl || p.imageBackUrl ? (
