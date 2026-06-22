@@ -1,7 +1,59 @@
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import type { Variant } from "@/lib/variants";
 import { HandDropPodIcon, LoadClothesIcon, SpinWashIcon, ScrollReplayIcon } from "./StepIcons";
 
 const STEP_ICONS = [HandDropPodIcon, LoadClothesIcon, SpinWashIcon];
+
+function PackCarousel({ images, alt }: { images: string[]; alt: string }) {
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    if (images.length < 2) return;
+    const id = setInterval(() => setI((v) => (v + 1) % images.length), 4500);
+    return () => clearInterval(id);
+  }, [images.length]);
+  const go = (n: number) => setI(((n % images.length) + images.length) % images.length);
+  return (
+    <div
+      className="relative flex aspect-square w-full items-center justify-center overflow-hidden rounded-3xl border p-6"
+      style={{
+        borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)",
+        background: "var(--v-surface)",
+      }}
+    >
+      <AnimatePresence mode="wait">
+        <motion.img
+          key={i}
+          src={images[i]}
+          alt={`${alt} ${i === 0 ? "front" : "back"}`}
+          className="max-h-full max-w-full cursor-pointer object-contain"
+          onClick={() => go(i + 1)}
+          initial={{ opacity: 0, scale: 0.98 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 1.02 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          loading="lazy"
+        />
+      </AnimatePresence>
+      {images.length > 1 && (
+        <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2">
+          {images.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => go(idx)}
+              aria-label={`Show image ${idx + 1}`}
+              className="h-2 rounded-full transition-all"
+              style={{
+                width: idx === i ? 22 : 8,
+                background: idx === i ? "var(--brand)" : "color-mix(in oklab, var(--v-ink) 25%, transparent)",
+              }}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export function ProductInformation({ variant }: { variant: Variant }) {
   const p = variant.packaging;
@@ -18,38 +70,15 @@ export function ProductInformation({ variant }: { variant: Variant }) {
       </div>
 
       <div className="grid gap-6 md:grid-cols-12">
-        {/* Pack images — front + back, sized to match the fact-card column */}
+        {/* Pack images — carousel that auto-advances */}
         <div className="md:col-span-5">
           {p.imageFrontUrl || p.imageBackUrl ? (
-            <div className="grid h-full grid-cols-2 gap-3">
-              {[p.imageFrontUrl, p.imageBackUrl].filter(Boolean).map((src, i) => (
-                <div
-                  key={i}
-                  className="flex aspect-[3/4] items-center justify-center overflow-hidden rounded-3xl border p-3"
-                  style={{
-                    borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)",
-                    background: "var(--v-surface)",
-                  }}
-                >
-                  <img
-                    src={src as string}
-                    alt={`${p.productName} packaging ${i === 0 ? "front" : "back"}`}
-                    className="max-h-full max-w-full object-contain"
-                    loading="lazy"
-                  />
-                </div>
-              ))}
-            </div>
+            <PackCarousel
+              images={[p.imageFrontUrl, p.imageBackUrl].filter(Boolean) as string[]}
+              alt={`${p.productName} packaging`}
+            />
           ) : p.imageUrl ? (
-            <div
-              className="flex aspect-square items-center justify-center overflow-hidden rounded-3xl border p-4"
-              style={{
-                borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)",
-                background: "var(--v-surface)",
-              }}
-            >
-              <img src={p.imageUrl} alt={`${p.productName} packaging`} className="max-h-full max-w-full object-contain" loading="lazy" />
-            </div>
+            <PackCarousel images={[p.imageUrl]} alt={`${p.productName} packaging`} />
           ) : (
             <div
               className="grid aspect-square place-items-center overflow-hidden rounded-3xl border"
@@ -63,6 +92,7 @@ export function ProductInformation({ variant }: { variant: Variant }) {
             </div>
           )}
         </div>
+
 
         {/* Quick facts */}
         <div className="grid gap-4 md:col-span-7 md:grid-cols-2">
