@@ -466,13 +466,17 @@ function Home() {
           />
           <div className="relative pt-24 pb-8">
             <h2 className="text-3xl font-black md:text-5xl">Smarter wash. Starts here.</h2>
-            <Link
-              to="/regular"
+            <a
+              href="#variants"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById("variants")?.scrollIntoView({ behavior: "smooth", block: "start" });
+              }}
               className="mt-6 inline-block rounded-full bg-white px-8 py-4 text-sm font-bold shadow-lg transition-transform hover:scale-[1.03]"
               style={{ color: "var(--brand)" }}
             >
               Shop SMOD pods →
-            </Link>
+            </a>
           </div>
         </div>
       </section>
