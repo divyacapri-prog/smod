@@ -377,7 +377,7 @@ export const VARIANTS: Variant[] = [
       inkSoft: "#B58AA0",
     },
     benefits: [
-      { title: "Gentle on Sensitive Skin", description: "Dermatologically tested, antimicrobial formula." },
+      { title: "Gentle on Sensitive Skin", description: "Antimicrobial formula, kind to delicate skin." },
       { title: "Powerful Stain Removal", description: "Tackles milk, food and play stains in one wash." },
       { title: "Antimicrobial & Safe", description: "Free from bleach, parabens and harsh dyes." },
     ],
