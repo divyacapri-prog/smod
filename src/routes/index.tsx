@@ -231,7 +231,7 @@ function Home() {
       <section className="relative overflow-hidden py-20" style={{ background: `linear-gradient(135deg, var(--v-bg-soft), var(--v-surface))` }}>
         <div className="mx-auto max-w-7xl px-5">
           <div className="mb-10 text-center">
-            <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--brand)" }}>One pod. Four powers.</p>
+            <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--brand)" }}>One pod. Four actions.</p>
             <h2 className="mt-2 text-3xl font-black md:text-5xl">4-in-1 laundry care.</h2>
             <p className="mt-3 text-base" style={{ color: "var(--v-ink-soft)" }}>
               Detergent, comforter, softener and antimicrobial — all sealed into a single pod.
@@ -240,7 +240,7 @@ function Home() {
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {[
               { n: "01", icon: "🧼", title: "Detergent", body: "Triple-enzyme deep clean lifts dirt and tough stains." },
-              { n: "02", icon: "🛏️", title: "Comforter", body: "Restores softness and a cozy feel to every fibre." },
+              { n: "02", icon: "👕", title: "Comforter", body: "Restores softness and a cozy feel to every fibre." },
               { n: "03", icon: "🌸", title: "Softener", body: "Long-lasting fresh scent woven into your laundry." },
               { n: "04", icon: "🛡️", title: "Antimicrobial", body: "Fights odor-causing bacteria, wash after wash." },
             ].map((f) => (
