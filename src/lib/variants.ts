@@ -15,7 +15,7 @@ export type Packaging = {
   directions: { step: number; body: string }[];
   dosage: { load: string; pods: string }[];
   caution: string[];
-  certifications: string[]; // e.g. "Cruelty Free", "Recyclable Packaging"
+  certifications: string[]; // e.g. "Recyclable Packaging"
   machines: string[];
   highlights: string[]; // marketing badges
   imageUrl?: string;
@@ -128,7 +128,7 @@ export const VARIANTS: Variant[] = [
         "Store in a cool, dry place.",
         "Do not handle pods with wet hands.",
       ],
-      certifications: ["Cruelty Free", "Recyclable Packaging"],
+      certifications: ["Recyclable Packaging"],
       machines: ["Top Load", "Front Load"],
       highlights: ["Powerful Clean", "Smart Detergent", "20 Wash Pods"],
       imageFrontUrl: frontAsset.url,
@@ -204,7 +204,7 @@ export const VARIANTS: Variant[] = [
         "Store in a cool, dry place.",
         "Do not handle pods with wet hands.",
       ],
-      certifications: ["Cruelty Free", "Recyclable Packaging"],
+      certifications: ["Recyclable Packaging"],
       machines: ["Top Load", "Front Load"],
       highlights: ["Odor Destroyer", "Anti-Microbial", "Smart Detergent"],
     },
@@ -256,10 +256,10 @@ export const VARIANTS: Variant[] = [
       weight: "250 g",
       fragrance: "Cool citrus & marine",
       benefits: [
-        { icon: "👕", title: "Deep Clean", body: "Powerful stain removal" },
-        { icon: "🌸", title: "Fresh Scent", body: "Long lasting freshness" },
-        { icon: "🌿", title: "Eco Friendly", body: "Biodegradable film" },
-        { icon: "✨", title: "Safe for Colors", body: "Gentle on fabrics" },
+        { icon: "💨", title: "Sweat & Odour Removal", body: "Breaks down sweat and eliminates odour at the source." },
+        { icon: "🧬", title: "Active Enzyme Formula", body: "Targets tough stains and trapped body oils." },
+        { icon: "⚡", title: "Quick Fresh Technology", body: "Keeps your activewear feeling fresh and ready for your next move." },
+        { icon: "🛡️", title: "Protects Fabric Performance", body: "Maintains stretch, breathability & colour." },
       ],
       directions: [
         { step: 1, body: "Put pod(s) in the drum before adding clothes." },
@@ -278,7 +278,7 @@ export const VARIANTS: Variant[] = [
         "Store in a cool, dry place.",
         "Do not handle pods with wet hands.",
       ],
-      certifications: ["Cruelty Free", "Recyclable Packaging"],
+      certifications: ["Recyclable Packaging"],
       machines: ["Top Load", "Front Load"],
       highlights: ["Performance Clean", "Fiber Safe", "Smart Detergent"],
     },
@@ -292,14 +292,14 @@ export const VARIANTS: Variant[] = [
       "Smod Intimate Wear Cleaning Pods are specially formulated to remove tough stains, odor & bacteria while being gentle on delicate fabrics. Ideal for bras, panties and other intimate wear.",
     emoji: "🌸",
     palette: {
-      brand: "#F5398E",       // Vibrant pink
-      brandDeep: "#8E527F",   // Deep mauve
+      brand: "#F5398E",       // Vibrant pink (kept for buttons/accents)
+      brandDeep: "#DF8CB3",   // Soft rose
       accent: "#F899C1",      // Soft pink accent
-      bg: "#FBDCE7",          // Pale blush page bg
-      bgSoft: "#F5E8D8",      // Warm cream sections
+      bg: "#FDEEF4",          // Very light blush page bg
+      bgSoft: "#FBDCE7",      // Soft pink sections
       surface: "#FFFFFF",
-      ink: "#1D2A6B",
-      inkSoft: "#8E527F",
+      ink: "#2A3A86",
+      inkSoft: "#A77192",
     },
     benefits: [
       { title: "Deep Clean", description: "Removes tough stains and odor from intimate fabrics." },
@@ -352,7 +352,7 @@ export const VARIANTS: Variant[] = [
         "Store in a cool, dry place.",
         "Do not handle pods with wet hands.",
       ],
-      certifications: ["Cruelty Free", "Antimicrobial", "Recyclable Packaging"],
+      certifications: ["Antimicrobial", "Recyclable Packaging"],
       machines: ["Top Load", "Front Load"],
       highlights: ["For Bras", "For Panties", "pH Balanced"],
       imageUrl: innerwearPack.url,
@@ -367,17 +367,17 @@ export const VARIANTS: Variant[] = [
       "Smod Baby Laundry Pods are designed to deliver a powerful clean while being extra gentle on baby's skin and clothes. Our pre-measured pods dissolve quickly in water to remove tough stains and odors, keeping fabrics soft, fresh and safe for your little one.",
     emoji: "👶",
     palette: {
-      brand: "#8E527F",       // Deep mauve
-      brandDeep: "#905579",   // Plum
-      accent: "#B78AD8",      // Soft lavender accent (from baby pods)
-      bg: "#E9E2E5",          // Soft warm grey bg
-      bgSoft: "#D8D3D9",      // Cool dove sections
+      brand: "#F5A9C5",       // Soft pink
+      brandDeep: "#E89BB5",   // Slightly deeper soft pink
+      accent: "#FBDCE7",      // Pale blush accent
+      bg: "#FDEFF3",          // Very light blush bg
+      bgSoft: "#FBE3EC",      // Soft pink sections
       surface: "#FFFFFF",
-      ink: "#1D2A6B",
-      inkSoft: "#8E527F",
+      ink: "#2A3A86",
+      inkSoft: "#B58AA0",
     },
     benefits: [
-      { title: "Gentle on Sensitive Skin", description: "Dermatologically tested, antimicrobial formula." },
+      { title: "Gentle on Sensitive Skin", description: "Antimicrobial formula, kind to delicate skin." },
       { title: "Powerful Stain Removal", description: "Tackles milk, food and play stains in one wash." },
       { title: "Antimicrobial & Safe", description: "Free from bleach, parabens and harsh dyes." },
     ],
@@ -427,7 +427,7 @@ export const VARIANTS: Variant[] = [
         "Store in a cool, dry place.",
         "Do not handle pods with wet hands.",
       ],
-      certifications: ["Cruelty Free", "Antimicrobial", "Recyclable Packaging", "Dermatologically Tested"],
+      certifications: ["Antimicrobial", "Recyclable Packaging"],
       machines: ["Top Load", "Front Load"],
       highlights: ["Antimicrobial", "Safe for Colors & Fabrics"],
       imageUrl: babyPack.url,

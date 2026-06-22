@@ -101,16 +101,6 @@ export function ProductInformation({ variant }: { variant: Variant }) {
           <FactCard label="Fragrance" value={p.fragrance} />
           <FactCard label="Suitable for" value={p.machines.join(" · ")} />
 
-          <div className="rounded-3xl border p-5 md:col-span-2" style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)", background: "var(--v-surface)" }}>
-            <p className="text-xs font-bold uppercase tracking-widest" style={{ color: "var(--v-ink-soft)" }}>Marketing highlights</p>
-            <div className="mt-3 flex flex-wrap gap-2">
-              {p.highlights.map((h) => (
-                <span key={h} className="rounded-full px-3 py-1 text-xs font-bold text-white" style={{ background: "var(--brand)" }}>
-                  {h}
-                </span>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
 

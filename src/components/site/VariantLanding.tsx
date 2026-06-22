@@ -16,10 +16,10 @@ const PURCHASE_BASE = typeof window !== "undefined" ? window.location.origin : "
 
 const WHY_PODS = [
   { icon: "⚖️", title: "Pre-measured", body: "Exactly one pod per load. No guesswork." },
-  { icon: "🧴", title: "No spills", body: "Sealed film dissolves only in water." },
+  { icon: "✈️", title: "Travel friendly", body: "No spills — sealed film dissolves only in water." },
   { icon: "📦", title: "Easy storage", body: "Resealable ziplock pack, fits any laundry shelf." },
-  { icon: "✈️", title: "Travel friendly", body: "TSA-friendly. Hotel-ready." },
-  { icon: "🌿", title: "Eco conscious", body: "Antimicrobial, biodegradable formula." },
+  { icon: "🛡️", title: "Antimicrobial", body: "Fights odor-causing bacteria, every wash." },
+  { icon: "🌿", title: "Biodegradable", body: "Plant-derived film breaks down cleanly." },
   { icon: "⭐", title: "Premium clean", body: "Triple-action enzymes per pod." },
 ];
 
