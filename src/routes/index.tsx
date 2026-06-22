@@ -139,7 +139,8 @@ function Home() {
         <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--brand)" }}>What it means</p>
         <div className="mt-6 flex flex-wrap items-end justify-center gap-2 text-5xl font-black md:text-7xl">
           <span style={{ color: "var(--brand)" }}>S</span>
-          <span className="text-base font-bold opacity-60 md:text-xl">mart</span>
+          <span style={{ color: "var(--brand)" }}>M</span>
+          <span className="text-base font-bold opacity-60 md:text-xl">art</span>
           <span style={{ color: "var(--brand)" }}>p</span>
           <span style={{ color: "var(--brand)" }}>O</span>
           <span style={{ color: "var(--brand)" }}>D</span>
