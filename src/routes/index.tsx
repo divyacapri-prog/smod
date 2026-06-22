@@ -3,6 +3,8 @@ import { VARIANTS, BRAND_PALETTE, paletteToCssVars } from "@/lib/variants";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { WavePattern } from "@/components/site/WavePattern";
+import { AbstractArt } from "@/components/site/AbstractArt";
+import { HandDropPodIcon, LoadClothesIcon, SpinWashIcon } from "@/components/site/StepIcons";
 import smodLogo from "@/assets/smod-logo-white.png.asset.json";
 import packFront from "@/assets/smod-pack-front.png.asset.json";
 
@@ -87,9 +89,9 @@ function PillarCard({ p }: { p: typeof PILLARS[number] }) {
 }
 
 const STEPS = [
-  { n: "01", t: "Drop", b: "One pod in the drum." },
-  { n: "02", t: "Load", b: "Any cycle, any load." },
-  { n: "03", t: "Done", b: "Deep clean. Zero mess." },
+  { n: "01", t: "Drop", b: "One pod in the drum.", Icon: HandDropPodIcon },
+  { n: "02", t: "Load", b: "Any cycle, any load.", Icon: LoadClothesIcon },
+  { n: "03", t: "Done", b: "Deep clean. Zero mess.", Icon: SpinWashIcon },
 ];
 
 function Home() {
