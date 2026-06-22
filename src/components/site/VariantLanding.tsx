@@ -66,9 +66,9 @@ export function VariantLanding({ variant }: { variant: Variant }) {
               >
                 Buy Now
               </a>
-              <a href="#how" className="rounded-full border px-6 py-3 text-sm font-bold transition-colors" style={{ borderColor: "color-mix(in oklab, var(--v-ink) 20%, transparent)", color: "var(--v-ink)" }}>
-                How it works
-              </a>
+              <Link to="/cart" className="rounded-full border px-6 py-3 text-sm font-bold transition-colors" style={{ borderColor: "color-mix(in oklab, var(--v-ink) 20%, transparent)", color: "var(--v-ink)" }}>
+                View cart
+              </Link>
             </div>
             <div className="mt-8 flex gap-3">
               <PackPill label="20 Pods" price={p20.price} to={p20.buyPath} />
