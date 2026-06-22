@@ -105,7 +105,7 @@ function BuyPage() {
               </button>
             </div>
             <div className="mt-8 flex items-center gap-6 rounded-2xl border p-5" style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)", background: "var(--v-bg-soft)" }}>
-              <QRCode value={fullUrl} sku={item.sku} size={140} fg={variant.palette.brandDeep} bg={variant.palette.surface} />
+              <QRCode value={fullUrl} sku={item.sku} size={140} fg={variant.palette.ink} bg={variant.palette.surface} />
               <div className="text-xs" style={{ color: "var(--v-ink-soft)" }}>
                 <p className="font-bold" style={{ color: "var(--v-ink)" }}>Scan to share</p>
                 <p className="mt-1 font-mono">{item.buyPath}</p>
