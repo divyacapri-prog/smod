@@ -84,53 +84,39 @@ function LiquidBloom({ x, y }: { x: number; y: number }) {
         marginTop: -cover / 2,
         borderRadius: "9999px",
         background:
-          "radial-gradient(circle at 38% 35%, rgba(255,255,255,0.55) 0%, rgba(178,196,235,0.55) 12%, #756CA1 38%, #2A3A86 72%, #1d2a66 100%)",
-        filter: "blur(14px) saturate(115%)",
-        mixBlendMode: "normal",
+          "radial-gradient(circle at 40% 38%, color-mix(in oklab, var(--brand) 20%, transparent) 0%, color-mix(in oklab, var(--brand) 45%, transparent) 40%, color-mix(in oklab, var(--brand-deep) 55%, transparent) 75%, color-mix(in oklab, var(--brand-deep) 35%, transparent) 100%)",
+        filter: "blur(22px) saturate(108%)",
         willChange: "transform, opacity, filter",
       }}
-      initial={{ scale: 0.02, opacity: 0, filter: "blur(24px) saturate(120%)" }}
+      initial={{ scale: 0.04, opacity: 0, filter: "blur(28px) saturate(110%)" }}
       animate={{
-        scale: [0.02, 0.18, 1],
-        opacity: [0, 1, 1, 0],
+        scale: [0.04, 0.22, 1],
+        opacity: [0, 0.55, 0.55, 0],
         filter: [
-          "blur(24px) saturate(120%)",
-          "blur(18px) saturate(115%)",
-          "blur(14px) saturate(110%)",
-          "blur(28px) saturate(105%)",
+          "blur(28px) saturate(110%)",
+          "blur(24px) saturate(108%)",
+          "blur(20px) saturate(105%)",
+          "blur(32px) saturate(102%)",
         ],
       }}
       transition={{
         duration: 0.75,
-        times: [0, 0.18, 0.62, 1],
+        times: [0, 0.2, 0.62, 1],
         ease: [0.22, 1, 0.36, 1],
       }}
     >
-      {/* secondary inner bloom — softer violet swirl */}
+      {/* secondary inner bloom — softer brand-tinted swirl */}
       <motion.div
-        className="absolute inset-[8%] rounded-full"
+        className="absolute inset-[10%] rounded-full"
         style={{
           background:
-            "radial-gradient(circle at 60% 55%, rgba(255,255,255,0.35) 0%, rgba(117,108,161,0.6) 35%, transparent 70%)",
-          filter: "blur(18px)",
+            "radial-gradient(circle at 58% 52%, color-mix(in oklab, var(--brand) 30%, transparent) 0%, color-mix(in oklab, var(--brand) 18%, transparent) 45%, transparent 75%)",
+          filter: "blur(22px)",
           mixBlendMode: "screen",
         }}
         initial={{ scale: 0.6, opacity: 0 }}
-        animate={{ scale: [0.6, 1.1, 1], opacity: [0, 0.9, 0] }}
+        animate={{ scale: [0.6, 1.1, 1], opacity: [0, 0.45, 0] }}
         transition={{ duration: 0.75, ease: "easeOut" }}
-      />
-      {/* diffusion specks — like detergent particles dispersing */}
-      <motion.div
-        className="absolute inset-0 rounded-full"
-        style={{
-          background:
-            "radial-gradient(circle at 20% 70%, rgba(255,255,255,0.25), transparent 18%), radial-gradient(circle at 78% 30%, rgba(255,255,255,0.18), transparent 16%), radial-gradient(circle at 55% 80%, rgba(178,196,235,0.25), transparent 22%)",
-          filter: "blur(10px)",
-          mixBlendMode: "screen",
-        }}
-        initial={{ scale: 0.4, opacity: 0 }}
-        animate={{ scale: [0.4, 1.05, 1.15], opacity: [0, 0.85, 0] }}
-        transition={{ duration: 0.75, ease: "easeOut", delay: 0.05 }}
       />
     </motion.div>
   );
