@@ -139,7 +139,7 @@ export const VARIANTS: Variant[] = [
     slug: "socks",
     name: "Socks",
     tagline: "Odor, defeated",
-    headline: "Sock-specific science. Seriously.",
+    headline: "Serious Sock-Specific Science",
     description:
       "An enzyme-loaded pod engineered for the toughest sweat odors and ground-in grime. Bring tired socks back to life.",
     emoji: "🧦",
@@ -182,10 +182,10 @@ export const VARIANTS: Variant[] = [
       weight: "250 g",
       fragrance: "Fresh mint & eucalyptus",
       benefits: [
-        { icon: "🧦", title: "Odor Removal", body: "Neutralises sweat odor" },
-        { icon: "💪", title: "Stain Lift", body: "Removes ground-in grime" },
-        { icon: "🛡️", title: "Anti-Microbial", body: "Long-lasting freshness" },
+        { icon: "👕", title: "Deep Clean", body: "Powerful stain removal" },
+        { icon: "🌸", title: "Fresh Scent", body: "Long lasting freshness" },
         { icon: "🌿", title: "Eco Friendly", body: "Biodegradable film" },
+        { icon: "✨", title: "Safe for Colors", body: "Gentle on fabrics" },
       ],
       directions: [
         { step: 1, body: "Put pod(s) in the drum before adding clothes." },
@@ -256,10 +256,10 @@ export const VARIANTS: Variant[] = [
       weight: "250 g",
       fragrance: "Cool citrus & marine",
       benefits: [
-        { icon: "🏃", title: "Activewear Safe", body: "Preserves stretch & shape" },
-        { icon: "💧", title: "Sweat Lift", body: "Removes salt residues" },
-        { icon: "🛡️", title: "Odor Control", body: "Neutralises bacteria" },
+        { icon: "👕", title: "Deep Clean", body: "Powerful stain removal" },
+        { icon: "🌸", title: "Fresh Scent", body: "Long lasting freshness" },
         { icon: "🌿", title: "Eco Friendly", body: "Biodegradable film" },
+        { icon: "✨", title: "Safe for Colors", body: "Gentle on fabrics" },
       ],
       directions: [
         { step: 1, body: "Put pod(s) in the drum before adding clothes." },
@@ -285,26 +285,26 @@ export const VARIANTS: Variant[] = [
   },
   {
     slug: "innerwear",
-    name: "Women's Innerwear",
+    name: "Intimate Wear",
     tagline: "Gentle care for delicates",
     headline: "Made with women care, for you.",
     description:
-      "Smod Women's Innerwear Cleaning Pods are specially formulated to remove tough stains, odor & bacteria while being gentle on delicate fabrics. Ideal for bras, panties and other intimate wear.",
+      "Smod Intimate Wear Cleaning Pods are specially formulated to remove tough stains, odor & bacteria while being gentle on delicate fabrics. Ideal for bras, panties and other intimate wear.",
     emoji: "🌸",
     palette: {
-      brand: "#1D2A6B",       // Smod navy logo
-      brandDeep: "#0F1B4D",   // Deeper navy
-      accent: "#EC4D8F",      // Hot pink accent from packaging
-      bg: "#FFF4F8",          // Pale blush page bg
-      bgSoft: "#FBE3EC",      // Soft rose sections
+      brand: "#F5398E",       // Vibrant pink
+      brandDeep: "#8E527F",   // Deep mauve
+      accent: "#F899C1",      // Soft pink accent
+      bg: "#FBDCE7",          // Pale blush page bg
+      bgSoft: "#F5E8D8",      // Warm cream sections
       surface: "#FFFFFF",
       ink: "#1D2A6B",
-      inkSoft: "#7A5C6E",
+      inkSoft: "#8E527F",
     },
     benefits: [
       { title: "Deep Clean", description: "Removes tough stains and odor from intimate fabrics." },
       { title: "Gentle Care", description: "Safe on lace, mesh and delicate elastics." },
-      { title: "Odor Control", description: "Fights odor and bacteria, all day fresh." },
+      { title: "Antimicrobial", description: "Fights odor and bacteria, all day fresh." },
     ],
     testimonials: [
       { name: "Meera J.", location: "Mumbai", quote: "Finally a pod that doesn't shred my lace bras. Game changer.", rating: 5 },
@@ -324,16 +324,16 @@ export const VARIANTS: Variant[] = [
       { name: "Instamart", url: "#" },
     ],
     packaging: {
-      productName: "smod Women's Innerwear Cleaning Pods",
+      productName: "smod Intimate Wear Cleaning Pods",
       subtitle: "For Your Delicate Innerwear",
       claim: "Powerful Clean Every Time · pH Balanced Gentle Formula",
       weight: "250 g",
       fragrance: "Soft floral freshness",
       benefits: [
-        { icon: "✨", title: "Deep Clean", body: "Removes tough stains & odor" },
-        { icon: "🌸", title: "Gentle Care", body: "Safe on delicate fabrics" },
-        { icon: "🍃", title: "Odor Control", body: "Fights odor & bacteria" },
-        { icon: "💧", title: "Fresh & Hygienic", body: "Long lasting freshness" },
+        { icon: "👕", title: "Deep Clean", body: "Powerful stain removal" },
+        { icon: "🌸", title: "Fresh Scent", body: "Long lasting freshness" },
+        { icon: "🌿", title: "Eco Friendly", body: "Biodegradable film" },
+        { icon: "✨", title: "Safe for Colors", body: "Gentle on fabrics" },
       ],
       directions: [
         { step: 1, body: "Put 1 pod in the drum before adding innerwear." },
@@ -352,7 +352,7 @@ export const VARIANTS: Variant[] = [
         "Store in a cool, dry place.",
         "Do not handle pods with wet hands.",
       ],
-      certifications: ["Cruelty Free", "Vegan Friendly", "Recyclable Packaging"],
+      certifications: ["Cruelty Free", "Antimicrobial", "Recyclable Packaging"],
       machines: ["Top Load", "Front Load"],
       highlights: ["For Bras", "For Panties", "pH Balanced"],
       imageUrl: innerwearPack.url,
@@ -367,19 +367,19 @@ export const VARIANTS: Variant[] = [
       "Smod Baby Laundry Pods are designed to deliver a powerful clean while being extra gentle on baby's skin and clothes. Our pre-measured pods dissolve quickly in water to remove tough stains and odors, keeping fabrics soft, fresh and safe for your little one.",
     emoji: "👶",
     palette: {
-      brand: "#1D2A6B",       // Navy logo
-      brandDeep: "#0F1B4D",   // Deeper navy
-      accent: "#B79BE0",      // Soft lavender accent (from baby pods)
-      bg: "#FFF7FB",          // Very pale blush bg
-      bgSoft: "#FCE4EE",      // Soft baby pink sections
+      brand: "#8E527F",       // Deep mauve
+      brandDeep: "#905579",   // Plum
+      accent: "#B78AD8",      // Soft lavender accent (from baby pods)
+      bg: "#E9E2E5",          // Soft warm grey bg
+      bgSoft: "#D8D3D9",      // Cool dove sections
       surface: "#FFFFFF",
       ink: "#1D2A6B",
-      inkSoft: "#8A6E80",
+      inkSoft: "#8E527F",
     },
     benefits: [
-      { title: "Gentle on Sensitive Skin", description: "Dermatologically tested, hypoallergenic formula." },
+      { title: "Gentle on Sensitive Skin", description: "Dermatologically tested, antimicrobial formula." },
       { title: "Powerful Stain Removal", description: "Tackles milk, food and play stains in one wash." },
-      { title: "Plant-Based & Safe", description: "Free from bleach, parabens and harsh dyes." },
+      { title: "Antimicrobial & Safe", description: "Free from bleach, parabens and harsh dyes." },
     ],
     testimonials: [
       { name: "Riya M.", location: "Pune", quote: "No rashes, no fuss. My baby's clothes come out beautifully soft.", rating: 5 },
@@ -407,29 +407,13 @@ export const VARIANTS: Variant[] = [
       benefits: [
         { icon: "👕", title: "Deep Clean", body: "Powerful stain removal" },
         { icon: "🌸", title: "Fresh Scent", body: "Long lasting freshness" },
-        { icon: "🌿", title: "Plant Based", body: "Naturally derived ingredients" },
-        { icon: "💧", title: "Safe & Gentle", body: "Free from bleach, parabens & dyes" },
+        { icon: "🌿", title: "Eco Friendly", body: "Biodegradable film" },
+        { icon: "✨", title: "Safe for Colors", body: "Gentle on fabrics" },
       ],
-      directions: [
-        { step: 1, body: "Add 1 pod to empty drum." },
-        { step: 2, body: "Add your baby clothes." },
-        { step: 3, body: "Select cycle & start washing." },
-      ],
-      dosage: [
-        { load: "0–5 kg", pods: "1 pod" },
-        { load: "5–8 kg", pods: "2 pods" },
-        { load: "8 kg or more", pods: "3 pods" },
-      ],
-      caution: [
-        "Keep out of reach of children.",
-        "Avoid contact with eyes.",
-        "Do not ingest. If swallowed, seek medical advice immediately.",
-        "Store in a cool, dry place.",
-        "Do not handle pods with wet hands.",
-      ],
-      certifications: ["Cruelty Free", "Vegan Friendly", "Recyclable Packaging", "Hypoallergenic", "Dermatologically Tested"],
+...
+      certifications: ["Cruelty Free", "Antimicrobial", "Recyclable Packaging", "Dermatologically Tested"],
       machines: ["Top Load", "Front Load"],
-      highlights: ["Hypoallergenic", "Plant Based", "Safe for Colors & Fabrics"],
+      highlights: ["Antimicrobial", "Safe for Colors & Fabrics"],
       imageUrl: babyPack.url,
     },
   },
