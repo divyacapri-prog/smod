@@ -182,3 +182,28 @@
   .ripple-burst { display: none; }
 }
 
+/* ===== Premium scroll fade-up ===== */
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 600ms cubic-bezier(0.22, 1, 0.36, 1),
+              transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.fade-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .fade-up { opacity: 1; transform: none; transition: none; }
+}
+
+/* ===== Card micro-interactions ===== */
+.card-lift {
+  transition: box-shadow 250ms ease-out, border-color 250ms ease-out, transform 250ms ease-out;
+}
+.card-lift:hover {
+  box-shadow: 0 18px 40px -20px color-mix(in oklab, #2A3A86 45%, transparent);
+  border-color: color-mix(in oklab, #756CA1 55%, transparent);
+}
+
