@@ -1,4 +1,7 @@
 import type { Variant } from "@/lib/variants";
+import { HandDropPodIcon, LoadClothesIcon, SpinWashIcon } from "./StepIcons";
+
+const STEP_ICONS = [HandDropPodIcon, LoadClothesIcon, SpinWashIcon];
 
 export function ProductInformation({ variant }: { variant: Variant }) {
   const p = variant.packaging;
