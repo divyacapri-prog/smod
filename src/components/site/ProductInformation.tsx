@@ -15,11 +15,10 @@ function PackCarousel({ images, alt }: { images: string[]; alt: string }) {
   const go = (n: number) => setI(((n % images.length) + images.length) % images.length);
   return (
     <div
-      className="relative flex w-full items-center justify-center overflow-hidden rounded-3xl border p-4 md:p-5"
+      className="relative flex aspect-square w-full items-center justify-center overflow-hidden rounded-3xl border p-4 md:p-5"
       style={{
         borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)",
         background: "var(--v-surface)",
-        minHeight: "clamp(220px, 28vw, 320px)",
       }}
     >
       <AnimatePresence mode="wait">
