@@ -1,11 +1,11 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useRouter, useRouterState } from "@tanstack/react-router";
 
 /**
  * Liquid Bloom transition — a detergent pod dissolves outward.
  *
- *  1. A tiny pod appears at the click origin (or screen center)
+ *  1. A tiny pod appears at the centre of the viewport
  *  2. It expands organically with soft blurred edges
  *  3. Deep cobalt (#2A3A86) and soft violet (#756CA1) bloom outward
  *  4. The bloom fills the viewport; new page fades in from within
@@ -17,28 +17,22 @@ export function PageTransition({ children }: { children: ReactNode }) {
   const router = useRouter();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const reduce = useReducedMotion();
-  const originRef = useRef<{ x: number; y: number } | null>(null);
   const [blooms, setBlooms] = useState<{ id: number; x: number; y: number }[]>([]);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => setMounted(true), []);
 
   useEffect(() => {
-    const onDown = (e: PointerEvent) => {
-      originRef.current = { x: e.clientX, y: e.clientY };
-    };
-    window.addEventListener("pointerdown", onDown, true);
-    return () => window.removeEventListener("pointerdown", onDown, true);
-  }, []);
-
-  useEffect(() => {
     const unsub = router.subscribe("onBeforeNavigate", () => {
-      const o = originRef.current ?? {
-        x: window.innerWidth / 2,
-        y: window.innerHeight * 0.4,
-      };
       const id = Date.now() + Math.random();
-      setBlooms((b) => [...b, { id, x: o.x, y: o.y }]);
+      setBlooms((b) => [
+        ...b,
+        {
+          id,
+          x: window.innerWidth / 2,
+          y: window.innerHeight / 2,
+        },
+      ]);
       window.setTimeout(() => {
         setBlooms((b) => b.filter((bl) => bl.id !== id));
       }, 750);
