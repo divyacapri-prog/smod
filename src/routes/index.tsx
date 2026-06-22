@@ -237,10 +237,10 @@ function Home() {
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {[
             { icon: "⚖️", title: "Pre-measured", body: "Exactly one pod per load. No guesswork." },
-            { icon: "🧴", title: "No spills", body: "Sealed film dissolves only in water." },
+            { icon: "✈️", title: "Travel friendly", body: "No spills — sealed film dissolves only in water." },
             { icon: "📦", title: "Easy storage", body: "Resealable ziplock pack, fits any laundry shelf." },
-            { icon: "✈️", title: "Travel friendly", body: "TSA-friendly. Hotel-ready." },
-            { icon: "🌿", title: "Eco conscious", body: "Antimicrobial, biodegradable formula." },
+            { icon: "🛡️", title: "Anti-microbial", body: "Fights odor-causing bacteria, every wash." },
+            { icon: "🌿", title: "Bio-degradable", body: "Plant-derived film breaks down cleanly." },
             { icon: "⭐", title: "Premium clean", body: "Triple-action enzymes per pod." },
           ].map((w) => (
             <div key={w.title} className="rounded-3xl border bg-white p-6 transition-transform hover:-translate-y-1" style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)" }}>
