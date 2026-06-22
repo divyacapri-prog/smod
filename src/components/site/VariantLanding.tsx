@@ -23,11 +23,6 @@ const WHY_PODS = [
   { icon: "⭐", title: "Premium clean", body: "Triple-action enzymes per pod." },
 ];
 
-const HOW: { title: string; body: string; Icon: (p: { className?: string }) => ReactElement }[] = [
-  { title: "Drop a pod", body: "One pod into the empty drum.", Icon: HandDropPodIcon },
-  { title: "Load clothes", body: "Add laundry directly on top.", Icon: LoadClothesIcon },
-  { title: "Start the wash", body: "Any cycle. The film dissolves cleanly.", Icon: SpinWashIcon },
-];
 
 const FAQS = [
   { q: "How many clothes per pod?", a: "One pod is calibrated for a standard load of up to 5 kg. For very large loads, use two." },
