@@ -1,29 +1,38 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useRouter, useRouterState } from "@tanstack/react-router";
+import { VARIANTS, BRAND_PALETTE } from "@/lib/variants";
+
+type BloomColors = { brand: string; deep: string };
+
+function colorsForPath(pathname: string): BloomColors {
+  // Match /sports, /socks, /regular, /buy/<slug>-..., etc.
+  const seg = pathname.split("/").filter(Boolean);
+  const slug = seg[0] === "buy" ? seg[1]?.split("-")[0] : seg[0];
+  const v = VARIANTS.find((x) => x.slug === slug);
+  const p = v?.palette;
+  return {
+    brand: p?.brand ?? BRAND_PALETTE.brand,
+    deep: p?.brandDeep ?? BRAND_PALETTE.brandDeep,
+  };
+}
 
 /**
- * Liquid Bloom transition — a detergent pod dissolves outward.
- *
- *  1. A tiny pod appears at the centre of the viewport
- *  2. It expands organically with soft blurred edges
- *  3. Deep cobalt (#2A3A86) and soft violet (#756CA1) bloom outward
- *  4. The bloom fills the viewport; new page fades in from within
- *  5. Bloom gently dissipates into the page background
- *
- * Total duration ~650ms.
+ * Liquid Bloom transition — a subtle detergent pod dissolves outward
+ * using the destination page's brand colors.
  */
 export function PageTransition({ children }: { children: ReactNode }) {
   const router = useRouter();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const reduce = useReducedMotion();
-  const [blooms, setBlooms] = useState<{ id: number; x: number; y: number }[]>([]);
+  const [blooms, setBlooms] = useState<{ id: number; x: number; y: number; colors: BloomColors }[]>([]);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => setMounted(true), []);
 
   useEffect(() => {
-    const unsub = router.subscribe("onBeforeNavigate", () => {
+    const unsub = router.subscribe("onBeforeNavigate", (evt: any) => {
+      const toPath: string = evt?.toLocation?.pathname ?? evt?.to?.pathname ?? window.location.pathname;
       const id = Date.now() + Math.random();
       setBlooms((b) => [
         ...b,
@@ -31,6 +40,7 @@ export function PageTransition({ children }: { children: ReactNode }) {
           id,
           x: window.innerWidth / 2,
           y: window.innerHeight / 2,
+          colors: colorsForPath(toPath),
         },
       ]);
       window.setTimeout(() => {
@@ -56,7 +66,7 @@ export function PageTransition({ children }: { children: ReactNode }) {
       <div aria-hidden className="pointer-events-none fixed inset-0 z-[9999] overflow-hidden">
         <AnimatePresence>
           {blooms.map((b) => (
-            <LiquidBloom key={b.id} x={b.x} y={b.y} />
+            <LiquidBloom key={b.id} x={b.x} y={b.y} colors={b.colors} />
           ))}
         </AnimatePresence>
       </div>
@@ -64,13 +74,13 @@ export function PageTransition({ children }: { children: ReactNode }) {
   );
 }
 
-function LiquidBloom({ x, y }: { x: number; y: number }) {
-  // Diameter needed to cover the viewport from origin (x, y)
+function LiquidBloom({ x, y, colors }: { x: number; y: number; colors: BloomColors }) {
   const w = typeof window !== "undefined" ? window.innerWidth : 1440;
   const h = typeof window !== "undefined" ? window.innerHeight : 900;
   const dx = Math.max(x, w - x);
   const dy = Math.max(y, h - y);
   const cover = Math.ceil(Math.hypot(dx, dy) * 2.2);
+  const { brand, deep } = colors;
 
   return (
     <motion.div
@@ -83,54 +93,37 @@ function LiquidBloom({ x, y }: { x: number; y: number }) {
         marginLeft: -cover / 2,
         marginTop: -cover / 2,
         borderRadius: "9999px",
-        background:
-          "radial-gradient(circle at 38% 35%, rgba(255,255,255,0.55) 0%, rgba(178,196,235,0.55) 12%, #756CA1 38%, #2A3A86 72%, #1d2a66 100%)",
-        filter: "blur(14px) saturate(115%)",
-        mixBlendMode: "normal",
+        background: `radial-gradient(circle at 40% 38%, color-mix(in oklab, ${brand} 20%, transparent) 0%, color-mix(in oklab, ${brand} 45%, transparent) 40%, color-mix(in oklab, ${deep} 55%, transparent) 75%, color-mix(in oklab, ${deep} 35%, transparent) 100%)`,
+        filter: "blur(22px) saturate(108%)",
         willChange: "transform, opacity, filter",
       }}
-      initial={{ scale: 0.02, opacity: 0, filter: "blur(24px) saturate(120%)" }}
+      initial={{ scale: 0.04, opacity: 0, filter: "blur(28px) saturate(110%)" }}
       animate={{
-        scale: [0.02, 0.18, 1],
-        opacity: [0, 1, 1, 0],
+        scale: [0.04, 0.22, 1],
+        opacity: [0, 0.55, 0.55, 0],
         filter: [
-          "blur(24px) saturate(120%)",
-          "blur(18px) saturate(115%)",
-          "blur(14px) saturate(110%)",
-          "blur(28px) saturate(105%)",
+          "blur(28px) saturate(110%)",
+          "blur(24px) saturate(108%)",
+          "blur(20px) saturate(105%)",
+          "blur(32px) saturate(102%)",
         ],
       }}
       transition={{
         duration: 0.75,
-        times: [0, 0.18, 0.62, 1],
+        times: [0, 0.2, 0.62, 1],
         ease: [0.22, 1, 0.36, 1],
       }}
     >
-      {/* secondary inner bloom — softer violet swirl */}
       <motion.div
-        className="absolute inset-[8%] rounded-full"
+        className="absolute inset-[10%] rounded-full"
         style={{
-          background:
-            "radial-gradient(circle at 60% 55%, rgba(255,255,255,0.35) 0%, rgba(117,108,161,0.6) 35%, transparent 70%)",
-          filter: "blur(18px)",
+          background: `radial-gradient(circle at 58% 52%, color-mix(in oklab, ${brand} 30%, transparent) 0%, color-mix(in oklab, ${brand} 18%, transparent) 45%, transparent 75%)`,
+          filter: "blur(22px)",
           mixBlendMode: "screen",
         }}
         initial={{ scale: 0.6, opacity: 0 }}
-        animate={{ scale: [0.6, 1.1, 1], opacity: [0, 0.9, 0] }}
+        animate={{ scale: [0.6, 1.1, 1], opacity: [0, 0.45, 0] }}
         transition={{ duration: 0.75, ease: "easeOut" }}
-      />
-      {/* diffusion specks — like detergent particles dispersing */}
-      <motion.div
-        className="absolute inset-0 rounded-full"
-        style={{
-          background:
-            "radial-gradient(circle at 20% 70%, rgba(255,255,255,0.25), transparent 18%), radial-gradient(circle at 78% 30%, rgba(255,255,255,0.18), transparent 16%), radial-gradient(circle at 55% 80%, rgba(178,196,235,0.25), transparent 22%)",
-          filter: "blur(10px)",
-          mixBlendMode: "screen",
-        }}
-        initial={{ scale: 0.4, opacity: 0 }}
-        animate={{ scale: [0.4, 1.05, 1.15], opacity: [0, 0.85, 0] }}
-        transition={{ duration: 0.75, ease: "easeOut", delay: 0.05 }}
       />
     </motion.div>
   );
