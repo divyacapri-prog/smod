@@ -152,14 +152,11 @@ function Home() {
           <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, color-mix(in oklab, var(--v-bg) 70%, transparent) 0%, color-mix(in oklab, var(--v-bg) 30%, transparent) 50%, color-mix(in oklab, var(--v-bg) 80%, transparent) 100%)" }} />
         </div>
         <div className="relative mx-auto max-w-7xl px-5 py-20 text-center">
-          <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--brand)" }}>What it means</p>
-          <div className="mt-6 flex flex-wrap items-end justify-center gap-2 text-5xl font-black md:text-7xl">
-            <span style={{ color: "var(--brand)" }}>S</span>
-            <span style={{ color: "var(--brand)" }}>M</span>
-            <span className="text-base font-bold opacity-60 md:text-xl">art</span>
-            <span className="text-base font-bold opacity-60 md:text-xl">p</span>
-            <span style={{ color: "var(--brand)" }}>O</span>
-            <span style={{ color: "var(--brand)" }}>D</span>
+          <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--brand)" }}>Who we are</p>
+          <div className="mt-6 flex flex-wrap items-center justify-center text-5xl font-black md:text-7xl">
+            <span style={{ color: "var(--brand)" }}>SM</span>
+            <span style={{ color: "#728198" }}>ART&nbsp;P</span>
+            <span style={{ color: "var(--brand)" }}>OD</span>
           </div>
           <p className="mx-auto mt-4 max-w-md text-sm font-medium" style={{ color: "var(--v-ink-soft)" }}>
             A tiny laboratory in every pod.
