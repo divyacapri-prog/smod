@@ -18,18 +18,47 @@ export function ProductInformation({ variant }: { variant: Variant }) {
       </div>
 
       <div className="grid gap-6 md:grid-cols-12">
-        {/* Pack image / hero card */}
-        <div
-          className="overflow-hidden rounded-3xl border md:col-span-5"
-          style={{
-            borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)",
-            background: "var(--v-surface)",
-          }}
-        >
-          {p.imageUrl ? (
-            <img src={p.imageUrl} alt={`${p.productName} packaging`} className="h-full w-full object-cover" loading="lazy" />
+        {/* Pack images — front + back, sized to match the fact-card column */}
+        <div className="md:col-span-5">
+          {p.imageFrontUrl || p.imageBackUrl ? (
+            <div className="grid h-full grid-cols-2 gap-3">
+              {[p.imageFrontUrl, p.imageBackUrl].filter(Boolean).map((src, i) => (
+                <div
+                  key={i}
+                  className="flex aspect-[3/4] items-center justify-center overflow-hidden rounded-3xl border p-3"
+                  style={{
+                    borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)",
+                    background: "var(--v-surface)",
+                  }}
+                >
+                  <img
+                    src={src as string}
+                    alt={`${p.productName} packaging ${i === 0 ? "front" : "back"}`}
+                    className="max-h-full max-w-full object-contain"
+                    loading="lazy"
+                  />
+                </div>
+              ))}
+            </div>
+          ) : p.imageUrl ? (
+            <div
+              className="flex aspect-square items-center justify-center overflow-hidden rounded-3xl border p-4"
+              style={{
+                borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)",
+                background: "var(--v-surface)",
+              }}
+            >
+              <img src={p.imageUrl} alt={`${p.productName} packaging`} className="max-h-full max-w-full object-contain" loading="lazy" />
+            </div>
           ) : (
-            <div className="grid aspect-square place-items-center" style={{ background: "var(--v-bg-soft)", color: "var(--v-ink-soft)" }}>
+            <div
+              className="grid aspect-square place-items-center overflow-hidden rounded-3xl border"
+              style={{
+                borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)",
+                background: "var(--v-bg-soft)",
+                color: "var(--v-ink-soft)",
+              }}
+            >
               <span className="text-sm font-semibold uppercase tracking-widest">Packaging artwork coming soon</span>
             </div>
           )}

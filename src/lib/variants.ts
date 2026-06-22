@@ -1,4 +1,5 @@
-import packAsset from "@/assets/smod-regular-pack.jpeg.asset.json";
+import frontAsset from "@/assets/smod-regular-front.jpg.asset.json";
+import backAsset from "@/assets/smod-regular-back.jpg.asset.json";
 
 export type Retailer = { name: string; url: string };
 
@@ -16,6 +17,8 @@ export type Packaging = {
   machines: string[];
   highlights: string[]; // marketing badges
   imageUrl?: string;
+  imageFrontUrl?: string;
+  imageBackUrl?: string;
 };
 
 export type Variant = {
@@ -126,7 +129,8 @@ export const VARIANTS: Variant[] = [
       certifications: ["Cruelty Free", "Recyclable Packaging"],
       machines: ["Top Load", "Front Load"],
       highlights: ["Powerful Clean", "Smart Detergent", "20 Wash Pods"],
-      imageUrl: packAsset.url,
+      imageFrontUrl: frontAsset.url,
+      imageBackUrl: backAsset.url,
     },
   },
   {
