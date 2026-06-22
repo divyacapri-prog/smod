@@ -117,11 +117,11 @@ function SubscriptionsPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden py-16" style={{ background: "var(--v-bg-soft)" }}>
+      <section className="relative overflow-hidden pt-32 pb-16" style={{ background: "var(--v-bg-soft)" }}>
         <WavePattern />
         <div className="relative mx-auto max-w-6xl px-5">
           <div className="mb-10 text-center">
-            <p className="text-xs font-bold uppercase tracking-[0.3em]" style={{ color: "var(--brand)" }}>Why subscribe</p>
+            <p className="text-xs font-bold uppercase tracking-[0.3em]" style={{ color: "var(--v-ink)" }}>Why subscribe</p>
             <h2 className="mt-2 text-3xl font-black md:text-4xl">Smarter than re-ordering.</h2>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
