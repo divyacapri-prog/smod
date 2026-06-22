@@ -1,7 +1,59 @@
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import type { Variant } from "@/lib/variants";
 import { HandDropPodIcon, LoadClothesIcon, SpinWashIcon, ScrollReplayIcon } from "./StepIcons";
 
 const STEP_ICONS = [HandDropPodIcon, LoadClothesIcon, SpinWashIcon];
+
+function PackCarousel({ images, alt }: { images: string[]; alt: string }) {
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    if (images.length < 2) return;
+    const id = setInterval(() => setI((v) => (v + 1) % images.length), 4500);
+    return () => clearInterval(id);
+  }, [images.length]);
+  const go = (n: number) => setI(((n % images.length) + images.length) % images.length);
+  return (
+    <div
+      className="relative flex aspect-square w-full items-center justify-center overflow-hidden rounded-3xl border p-6"
+      style={{
+        borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)",
+        background: "var(--v-surface)",
+      }}
+    >
+      <AnimatePresence mode="wait">
+        <motion.img
+          key={i}
+          src={images[i]}
+          alt={`${alt} ${i === 0 ? "front" : "back"}`}
+          className="max-h-full max-w-full cursor-pointer object-contain"
+          onClick={() => go(i + 1)}
+          initial={{ opacity: 0, scale: 0.98 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 1.02 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          loading="lazy"
+        />
+      </AnimatePresence>
+      {images.length > 1 && (
+        <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2">
+          {images.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => go(idx)}
+              aria-label={`Show image ${idx + 1}`}
+              className="h-2 rounded-full transition-all"
+              style={{
+                width: idx === i ? 22 : 8,
+                background: idx === i ? "var(--brand)" : "color-mix(in oklab, var(--v-ink) 25%, transparent)",
+              }}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export function ProductInformation({ variant }: { variant: Variant }) {
   const p = variant.packaging;
