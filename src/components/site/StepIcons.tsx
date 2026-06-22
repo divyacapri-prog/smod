@@ -107,9 +107,9 @@ export function LoadClothesIcon({ className = "" }: { className?: string }) {
       <circle cx="100" cy="124" r="46" fill="var(--v-bg-soft)" stroke="currentColor" strokeWidth="4" />
       <circle cx="100" cy="124" r="34" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="3 4" opacity="0.6" />
 
-      {/* shirt being loaded — drops into drum, plays once on mount */}
+      {/* shirt being loaded — drops into drum and settles */}
       <g>
-        <animateTransform attributeName="transform" type="translate" values="0 -40; 0 0; 0 -40" keyTimes="0; 0.55; 1" dur="2.8s" />
+        <animateTransform attributeName="transform" type="translate" values="0 -40; 0 0" keyTimes="0; 0.55" dur="2.8s" fill="freeze" />
         <path
           d="M80 108 L92 100 L100 106 L108 100 L120 108 L116 124 L110 122 L110 142 L90 142 L90 122 L84 124 Z"
           fill="var(--brand)"
@@ -118,9 +118,10 @@ export function LoadClothesIcon({ className = "" }: { className?: string }) {
         <path d="M92 100 Q100 96 108 100" {...stroke} stroke="#fff" strokeWidth="2" opacity="0.6" />
       </g>
 
-      {/* sock floating in — drops slightly offset, plays once on mount */}
-      <g>
-        <animateTransform attributeName="transform" type="translate" values="50 100; 58 138; 50 100" keyTimes="0; 0.65; 1" dur="2.8s" begin="0.4s" />
+      {/* sock floating in — drops slightly offset and settles in drum */}
+      <g opacity="0">
+        <animate attributeName="opacity" values="0;1;1" keyTimes="0; 0.15; 1" dur="2.8s" begin="0.4s" fill="freeze" />
+        <animateTransform attributeName="transform" type="translate" values="90 90; 58 138" keyTimes="0; 1" dur="2.8s" begin="0.4s" fill="freeze" />
         <g transform="rotate(-18)">
           <path d="M0 0 H14 V18 Q14 24 8 24 H0 Z" fill="var(--accent)" />
           <path d="M0 0 H14" {...stroke} stroke="#fff" strokeWidth="2" opacity="0.6" />
