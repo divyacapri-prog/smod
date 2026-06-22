@@ -269,7 +269,7 @@ function Home() {
         <div className="relative overflow-hidden rounded-[2.5rem] p-10 text-center text-white md:p-16" style={{ background: `linear-gradient(135deg, var(--brand), var(--brand-deep))` }}>
           <WavePattern color="rgba(255,255,255,0.18)" />
           <div aria-hidden className="absolute -right-20 -top-20 h-80 w-80 rounded-full opacity-30" style={{ background: "var(--accent)" }} />
-          <div className="relative">
+          <div className="relative pt-24 pb-8">
             <h2 className="text-3xl font-black md:text-5xl">Smarter wash. Starts here.</h2>
             <Link to="/regular" className="mt-6 inline-block rounded-full bg-white px-8 py-4 text-sm font-bold shadow-lg transition-transform hover:scale-[1.03]" style={{ color: "var(--brand)" }}>
               Shop SMOD pods →
