@@ -2,7 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
-import { paletteToCssVars } from "@/lib/variants";
+import { WavePattern } from "@/components/site/WavePattern";
+import { BRAND_PALETTE, paletteToCssVars } from "@/lib/variants";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -16,32 +17,25 @@ export const Route = createFileRoute("/contact")({
   component: ContactPage,
 });
 
-const PALETTE = {
-  brand: "#111111",
-  brandDeep: "#000000",
-  accent: "#1E5BFF",
-  bg: "#FAFAF7",
-  bgSoft: "#F0F0EA",
-  surface: "#FFFFFF",
-  ink: "#0A0A0A",
-  inkSoft: "#52525B",
-};
-
 function ContactPage() {
   const [sent, setSent] = useState(false);
 
   return (
-    <div style={{ ...paletteToCssVars(PALETTE), background: "var(--v-bg)", color: "var(--v-ink)" }} className="min-h-screen">
+    <div style={{ ...paletteToCssVars(BRAND_PALETTE), background: "var(--v-bg)", color: "var(--v-ink)" }} className="min-h-screen">
       <Header />
 
-      <section className="relative overflow-hidden">
-        <div aria-hidden className="absolute inset-x-0 top-0 -z-0 h-[420px]" style={{ background: "radial-gradient(60% 60% at 50% 0%, #E6EEFF, transparent 70%)" }} />
-        <div className="relative mx-auto max-w-5xl px-5 pt-20 pb-10 text-center md:pt-28">
-          <p className="text-xs font-bold uppercase tracking-[0.3em]" style={{ color: "#1E5BFF" }}>Get in touch</p>
+      <section className="relative overflow-hidden" style={{ background: `linear-gradient(135deg, var(--brand) 0%, var(--brand-deep) 100%)` }}>
+        <WavePattern edge="bottom" height={140} />
+        <div aria-hidden className="pointer-events-none absolute inset-0 opacity-30">
+          <div className="absolute -left-20 top-10 h-72 w-72 rounded-full" style={{ background: "radial-gradient(circle at 30% 30%, color-mix(in oklab, white 60%, transparent), transparent 60%)" }} />
+          <div className="absolute right-10 top-40 h-40 w-40 rounded-full" style={{ background: "radial-gradient(circle at 30% 30%, color-mix(in oklab, var(--accent) 70%, transparent), transparent 60%)" }} />
+        </div>
+        <div className="relative mx-auto max-w-5xl px-5 pt-20 pb-28 text-center text-white md:pt-28">
+          <p className="text-xs font-bold uppercase tracking-[0.3em]" style={{ color: "var(--accent)" }}>Get in touch</p>
           <h1 className="mx-auto mt-4 max-w-3xl text-5xl font-black leading-[1.05] tracking-tight md:text-7xl">
             Talk to the humans behind the pods.
           </h1>
-          <p className="mx-auto mt-5 max-w-2xl text-lg" style={{ color: "var(--v-ink-soft)" }}>
+          <p className="mx-auto mt-5 max-w-2xl text-lg text-white/85">
             Questions about a load, a fabric, a subscription, or a wholesale order — we read every message.
           </p>
         </div>

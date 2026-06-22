@@ -1,10 +1,11 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate, notFound } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { findSku, paletteToCssVars } from "@/lib/variants";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { QRCode } from "@/components/site/QRCode";
 import { track } from "@/lib/analytics";
+import { useCart } from "@/lib/cart";
 
 export const Route = createFileRoute("/buy/$sku")({
   loader: ({ params }) => {
@@ -32,7 +33,9 @@ function BuyPage() {
   const { item } = Route.useLoaderData();
   const { variant } = item;
   const fullUrl = typeof window !== "undefined" ? `${window.location.origin}${item.buyPath}` : item.buyPath;
-  const [purchased, setPurchased] = useState(false);
+  const [added, setAdded] = useState(false);
+  const { add } = useCart();
+  const navigate = useNavigate();
 
   // Track QR scan on landing if ?src=qr is present
   useEffect(() => {
@@ -45,15 +48,15 @@ function BuyPage() {
 
   const onAddToCart = () => {
     track("add_to_cart", { sku: item.sku, variant: variant.slug, price: item.price });
+    add(item.sku, 1);
+    setAdded(true);
+    setTimeout(() => setAdded(false), 1800);
   };
 
   const onCheckout = () => {
     track("checkout_started", { sku: item.sku, variant: variant.slug, price: item.price });
-    // Simulated purchase completion for analytics demo
-    setTimeout(() => {
-      track("purchase_completed", { sku: item.sku, variant: variant.slug, price: item.price });
-      setPurchased(true);
-    }, 600);
+    add(item.sku, 1);
+    navigate({ to: "/checkout" });
   };
 
   return (
@@ -91,14 +94,14 @@ function BuyPage() {
             </div>
             <div className="mt-6 flex flex-wrap gap-3">
               <button onClick={onAddToCart} className="rounded-full px-6 py-3 text-sm font-bold text-white" style={{ background: "var(--brand)" }}>
-                Add to cart · ₹{item.price}
+                {added ? "✓ Added to cart" : `Add to cart · ₹${item.price}`}
               </button>
               <button
                 onClick={onCheckout}
                 className="rounded-full border px-6 py-3 text-sm font-bold"
                 style={{ borderColor: "var(--brand)", color: "var(--brand-deep)" }}
               >
-                {purchased ? "✓ Order placed" : "Checkout"}
+                Checkout
               </button>
             </div>
             <div className="mt-8 flex items-center gap-6 rounded-2xl border p-5" style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)", background: "var(--v-bg-soft)" }}>
