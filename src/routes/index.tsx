@@ -213,7 +213,7 @@ function Home() {
                 >
                   Step {i + 1}
                 </span>
-                <s.Icon className="h-32 w-32" />
+                {s.n === "03" ? <s.Icon className="h-32 w-32" /> : <ScrollReplayIcon Icon={s.Icon} className="h-32 w-32" />}
               </div>
               <h3 className="mt-6 text-xl font-black">{s.t}</h3>
               <p className="mt-1 text-sm" style={{ color: "var(--v-ink-soft)" }}>{s.b}</p>

@@ -1,5 +1,5 @@
 import type { Variant } from "@/lib/variants";
-import { HandDropPodIcon, LoadClothesIcon, SpinWashIcon } from "./StepIcons";
+import { HandDropPodIcon, LoadClothesIcon, SpinWashIcon, ScrollReplayIcon } from "./StepIcons";
 
 const STEP_ICONS = [HandDropPodIcon, LoadClothesIcon, SpinWashIcon];
 
