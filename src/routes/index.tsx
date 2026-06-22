@@ -227,7 +227,42 @@ function Home() {
         </div>
       </section>
 
+      {/* ============ 4-IN-1 CONCEPT ============ */}
+      <section className="relative overflow-hidden py-20" style={{ background: `linear-gradient(135deg, var(--v-bg-soft), var(--v-surface))` }}>
+        <div className="mx-auto max-w-7xl px-5">
+          <div className="mb-10 text-center">
+            <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--brand)" }}>One pod. Four powers.</p>
+            <h2 className="mt-2 text-3xl font-black md:text-5xl">4-in-1 laundry care.</h2>
+            <p className="mt-3 text-base" style={{ color: "var(--v-ink-soft)" }}>
+              Detergent, comforter, softener and antimicrobial — all sealed into a single pod.
+            </p>
+          </div>
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { n: "01", icon: "🧼", title: "Detergent", body: "Triple-enzyme deep clean lifts dirt and tough stains." },
+              { n: "02", icon: "🛏️", title: "Comforter", body: "Restores softness and a cozy feel to every fibre." },
+              { n: "03", icon: "🌸", title: "Softener", body: "Long-lasting fresh scent woven into your laundry." },
+              { n: "04", icon: "🛡️", title: "Antimicrobial", body: "Fights odor-causing bacteria, wash after wash." },
+            ].map((f) => (
+              <div
+                key={f.title}
+                className="relative overflow-hidden rounded-3xl border bg-white p-6 transition-transform hover:-translate-y-1"
+                style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)" }}
+              >
+                <div aria-hidden className="absolute -right-2 -top-4 text-[4rem] font-black leading-none opacity-[0.08]" style={{ color: "var(--brand)" }}>
+                  {f.n}
+                </div>
+                <div className="relative text-3xl">{f.icon}</div>
+                <h3 className="relative mt-3 text-lg font-black">{f.title}</h3>
+                <p className="relative mt-1 text-sm" style={{ color: "var(--v-ink-soft)" }}>{f.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ============ WHY PODS ============ */}
+
       <section className="mx-auto max-w-7xl px-5 py-16">
         <div className="mb-10 text-center">
           <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--brand)" }}>Why pods</p>
