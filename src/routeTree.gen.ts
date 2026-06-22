@@ -14,9 +14,11 @@ import { Route as SportsRouteImport } from './routes/sports'
 import { Route as SocksRouteImport } from './routes/socks'
 import { Route as ShippingRouteImport } from './routes/shipping'
 import { Route as RegularRouteImport } from './routes/regular'
+import { Route as InnerwearRouteImport } from './routes/innerwear'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as CartRouteImport } from './routes/cart'
+import { Route as BabyRouteImport } from './routes/baby'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BuySkuRouteImport } from './routes/buy.$sku'
 
@@ -45,6 +47,11 @@ const RegularRoute = RegularRouteImport.update({
   path: '/regular',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InnerwearRoute = InnerwearRouteImport.update({
+  id: '/innerwear',
+  path: '/innerwear',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
@@ -60,6 +67,11 @@ const CartRoute = CartRouteImport.update({
   path: '/cart',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BabyRoute = BabyRouteImport.update({
+  id: '/baby',
+  path: '/baby',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -73,9 +85,11 @@ const BuySkuRoute = BuySkuRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/baby': typeof BabyRoute
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
+  '/innerwear': typeof InnerwearRoute
   '/regular': typeof RegularRoute
   '/shipping': typeof ShippingRoute
   '/socks': typeof SocksRoute
@@ -85,9 +99,11 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/baby': typeof BabyRoute
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
+  '/innerwear': typeof InnerwearRoute
   '/regular': typeof RegularRoute
   '/shipping': typeof ShippingRoute
   '/socks': typeof SocksRoute
@@ -98,9 +114,11 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/baby': typeof BabyRoute
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
+  '/innerwear': typeof InnerwearRoute
   '/regular': typeof RegularRoute
   '/shipping': typeof ShippingRoute
   '/socks': typeof SocksRoute
@@ -112,9 +130,11 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/baby'
     | '/cart'
     | '/checkout'
     | '/contact'
+    | '/innerwear'
     | '/regular'
     | '/shipping'
     | '/socks'
@@ -124,9 +144,11 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/baby'
     | '/cart'
     | '/checkout'
     | '/contact'
+    | '/innerwear'
     | '/regular'
     | '/shipping'
     | '/socks'
@@ -136,9 +158,11 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/baby'
     | '/cart'
     | '/checkout'
     | '/contact'
+    | '/innerwear'
     | '/regular'
     | '/shipping'
     | '/socks'
@@ -149,9 +173,11 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BabyRoute: typeof BabyRoute
   CartRoute: typeof CartRoute
   CheckoutRoute: typeof CheckoutRoute
   ContactRoute: typeof ContactRoute
+  InnerwearRoute: typeof InnerwearRoute
   RegularRoute: typeof RegularRoute
   ShippingRoute: typeof ShippingRoute
   SocksRoute: typeof SocksRoute
@@ -197,6 +223,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RegularRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/innerwear': {
+      id: '/innerwear'
+      path: '/innerwear'
+      fullPath: '/innerwear'
+      preLoaderRoute: typeof InnerwearRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
@@ -218,6 +251,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CartRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/baby': {
+      id: '/baby'
+      path: '/baby'
+      fullPath: '/baby'
+      preLoaderRoute: typeof BabyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -237,9 +277,11 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BabyRoute: BabyRoute,
   CartRoute: CartRoute,
   CheckoutRoute: CheckoutRoute,
   ContactRoute: ContactRoute,
+  InnerwearRoute: InnerwearRoute,
   RegularRoute: RegularRoute,
   ShippingRoute: ShippingRoute,
   SocksRoute: SocksRoute,

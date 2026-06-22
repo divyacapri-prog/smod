@@ -98,7 +98,7 @@ function Home() {
   return (
     <div
       style={{ ...paletteToCssVars(BRAND_PALETTE), background: "var(--v-bg)", color: "var(--v-ink)" }}
-      className="min-h-screen"
+      className="min-h-screen scroll-smooth"
     >
       <Header />
 
