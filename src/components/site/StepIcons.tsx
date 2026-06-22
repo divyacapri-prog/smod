@@ -4,6 +4,44 @@
  * with var(--brand) / var(--accent) for fills.
  */
 
+import { useEffect, useRef, useState, type ComponentType } from "react";
+
+export function ScrollReplayIcon({
+  Icon,
+  className,
+}: {
+  Icon: ComponentType<{ className?: string }>;
+  className?: string;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [replayKey, setReplayKey] = useState(0);
+  const wasVisible = useRef(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !wasVisible.current) {
+          setReplayKey((k) => k + 1);
+          wasVisible.current = true;
+        } else if (!entry.isIntersecting) {
+          wasVisible.current = false;
+        }
+      },
+      { threshold: 0.2 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={ref}>
+      <Icon key={replayKey} className={className} />
+    </div>
+  );
+}
+
 const stroke = {
   fill: "none",
   stroke: "currentColor",
@@ -24,9 +62,9 @@ export function HandDropPodIcon({ className = "" }: { className?: string }) {
         <path d="M110 56 L100 64" />
         <path d="M118 50 L108 58" />
       </g>
-      {/* pod being dropped — animated */}
+      {/* pod being dropped — plays once on mount */}
       <g>
-        <animateTransform attributeName="transform" type="translate" values="0 -8; 0 36; 0 -8" keyTimes="0; 0.6; 1" dur="2.4s" repeatCount="indefinite" />
+        <animateTransform attributeName="transform" type="translate" values="0 -8; 0 36; 0 -8" keyTimes="0; 0.6; 1" dur="2.4s" />
         <rect x="88" y="86" width="34" height="26" rx="11" fill="var(--brand)" />
         <circle cx="98" cy="96" r="5" fill="var(--accent)" opacity="0.95" />
         <circle cx="113" cy="103" r="3" fill="#fff" opacity="0.9" />
@@ -34,13 +72,13 @@ export function HandDropPodIcon({ className = "" }: { className?: string }) {
       {/* motion lines + drum opening below */}
       <g {...stroke} opacity="0.55">
         <path d="M76 120 L72 130">
-          <animate attributeName="opacity" values="0.2; 0.8; 0.2" dur="2.4s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="0.2; 0.8; 0.2" dur="2.4s" />
         </path>
         <path d="M134 120 L138 130">
-          <animate attributeName="opacity" values="0.2; 0.8; 0.2" dur="2.4s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="0.2; 0.8; 0.2" dur="2.4s" />
         </path>
         <path d="M105 120 L105 132">
-          <animate attributeName="opacity" values="0.2; 0.8; 0.2" dur="2.4s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="0.2; 0.8; 0.2" dur="2.4s" />
         </path>
       </g>
       {/* washing-machine top w/ open door */}
@@ -69,9 +107,9 @@ export function LoadClothesIcon({ className = "" }: { className?: string }) {
       <circle cx="100" cy="124" r="46" fill="var(--v-bg-soft)" stroke="currentColor" strokeWidth="4" />
       <circle cx="100" cy="124" r="34" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="3 4" opacity="0.6" />
 
-      {/* shirt being loaded — drops into drum */}
+      {/* shirt being loaded — drops into drum, plays once on mount */}
       <g>
-        <animateTransform attributeName="transform" type="translate" values="0 -40; 0 0; 0 -40" keyTimes="0; 0.55; 1" dur="2.8s" repeatCount="indefinite" />
+        <animateTransform attributeName="transform" type="translate" values="0 -40; 0 0; 0 -40" keyTimes="0; 0.55; 1" dur="2.8s" />
         <path
           d="M80 108 L92 100 L100 106 L108 100 L120 108 L116 124 L110 122 L110 142 L90 142 L90 122 L84 124 Z"
           fill="var(--brand)"
@@ -80,18 +118,18 @@ export function LoadClothesIcon({ className = "" }: { className?: string }) {
         <path d="M92 100 Q100 96 108 100" {...stroke} stroke="#fff" strokeWidth="2" opacity="0.6" />
       </g>
 
-      {/* sock floating in — drops slightly offset */}
+      {/* sock floating in — drops slightly offset, plays once on mount */}
       <g>
-        <animateTransform attributeName="transform" type="translate" values="50 100; 58 138; 50 100" keyTimes="0; 0.65; 1" dur="2.8s" begin="0.4s" repeatCount="indefinite" />
+        <animateTransform attributeName="transform" type="translate" values="50 100; 58 138; 50 100" keyTimes="0; 0.65; 1" dur="2.8s" begin="0.4s" />
         <g transform="rotate(-18)">
           <path d="M0 0 H14 V18 Q14 24 8 24 H0 Z" fill="var(--accent)" />
           <path d="M0 0 H14" {...stroke} stroke="#fff" strokeWidth="2" opacity="0.6" />
         </g>
       </g>
 
-      {/* motion / drop arrows above the drum — pulse */}
+      {/* motion / drop arrows above the drum — pulse once */}
       <g {...stroke} opacity="0.7">
-        <animate attributeName="opacity" values="0.3; 0.9; 0.3" dur="2.8s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values="0.3; 0.9; 0.3" dur="2.8s" />
         <path d="M70 76 L70 92" />
         <path d="M66 86 L70 92 L74 86" />
         <path d="M130 76 L130 92" />
