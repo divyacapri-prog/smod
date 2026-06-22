@@ -15,7 +15,7 @@ function PackCarousel({ images, alt }: { images: string[]; alt: string }) {
   const go = (n: number) => setI(((n % images.length) + images.length) % images.length);
   return (
     <div
-      className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-3xl border p-4 md:p-5"
+      className="relative flex aspect-[3/4] w-full items-center justify-center overflow-hidden rounded-3xl border p-4 md:p-5"
       style={{
         borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)",
         background: "var(--v-surface)",
@@ -69,9 +69,9 @@ export function ProductInformation({ variant }: { variant: Variant }) {
         <p className="mt-3 text-base" style={{ color: "var(--v-ink-soft)" }}>{p.subtitle}</p>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-12">
+      <div className="grid items-start gap-6 md:grid-cols-12">
         {/* Pack images — carousel that auto-advances */}
-        <div className="flex h-full md:col-span-5">
+        <div className="md:col-span-5">
           {p.imageFrontUrl || p.imageBackUrl ? (
             <PackCarousel
               images={[p.imageFrontUrl, p.imageBackUrl].filter(Boolean) as string[]}
@@ -81,7 +81,7 @@ export function ProductInformation({ variant }: { variant: Variant }) {
             <PackCarousel images={[p.imageUrl]} alt={`${p.productName} packaging`} />
           ) : (
             <div
-              className="grid h-full place-items-center overflow-hidden rounded-3xl border"
+              className="grid aspect-[3/4] place-items-center overflow-hidden rounded-3xl border"
               style={{
                 borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)",
                 background: "var(--v-bg-soft)",
