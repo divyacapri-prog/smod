@@ -23,7 +23,7 @@ const WHY_PODS = [
   { icon: "⭐", title: "Premium clean", body: "Triple-action enzymes per pod." },
 ];
 
-const HOW: { title: string; body: string; Icon: (p: { className?: string }) => JSX.Element }[] = [
+const HOW: { title: string; body: string; Icon: (p: { className?: string }) => ReactElement }[] = [
   { title: "Drop a pod", body: "One pod into the empty drum.", Icon: HandDropPodIcon },
   { title: "Load clothes", body: "Add laundry directly on top.", Icon: LoadClothesIcon },
   { title: "Start the wash", body: "Any cycle. The film dissolves cleanly.", Icon: SpinWashIcon },
