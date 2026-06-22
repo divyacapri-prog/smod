@@ -326,7 +326,7 @@ function PurchaseCard({ variant, pack, featured }: { variant: Variant; pack: Var
           </div>
         </div>
         <div className="flex flex-col items-center justify-center">
-          <QRCode value={fullUrl} sku={pack.sku} fg={variant.palette.brandDeep} bg={variant.palette.surface} />
+          <QRCode value={fullUrl} sku={pack.sku} fg="#000000" bg="#FFFFFF" />
           <p className="mt-3 text-center text-xs" style={{ color: "var(--v-ink-soft)" }}>
             Scan to buy<br />
             <span className="font-mono">{pack.buyPath}</span>
