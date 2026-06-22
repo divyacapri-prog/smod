@@ -130,7 +130,7 @@ export function LoadClothesIcon({ className = "" }: { className?: string }) {
 
       {/* motion / drop arrows above the drum — pulse once */}
       <g {...stroke} opacity="0.7">
-        <animate attributeName="opacity" values="0.3; 0.9; 0.3" dur="2.8s" />
+        <animate attributeName="opacity" values="0.3; 0.9" dur="2.8s" fill="freeze" />
         <path d="M70 76 L70 92" />
         <path d="M66 86 L70 92 L74 86" />
         <path d="M130 76 L130 92" />
