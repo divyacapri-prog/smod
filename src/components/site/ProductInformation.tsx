@@ -85,7 +85,7 @@ export function ProductInformation({ variant }: { variant: Variant }) {
             {p.dosage.map((d) => (
               <div key={d.load} className="flex items-center justify-between py-3">
                 <span className="text-sm" style={{ color: "var(--v-ink-soft)" }}>{d.load}</span>
-                <span className="text-sm font-bold" style={{ color: "var(--brand-deep)" }}>{d.pods}</span>
+                <span className="text-sm font-bold" style={{ color: "var(--v-ink)" }}>{d.pods}</span>
               </div>
             ))}
           </div>
@@ -110,7 +110,7 @@ export function ProductInformation({ variant }: { variant: Variant }) {
           <p className="text-xs font-bold uppercase tracking-widest" style={{ color: "var(--brand)" }}>Certifications</p>
           <div className="mt-4 flex flex-wrap gap-2">
             {p.certifications.map((c) => (
-              <span key={c} className="rounded-full border px-3 py-1 text-xs font-semibold" style={{ borderColor: "color-mix(in oklab, var(--brand) 30%, transparent)", color: "var(--brand-deep)", background: "color-mix(in oklab, var(--brand) 8%, transparent)" }}>
+              <span key={c} className="rounded-full border px-3 py-1 text-xs font-semibold" style={{ borderColor: "color-mix(in oklab, var(--brand) 30%, transparent)", color: "var(--v-ink)", background: "color-mix(in oklab, var(--brand) 8%, transparent)" }}>
                 ✓ {c}
               </span>
             ))}

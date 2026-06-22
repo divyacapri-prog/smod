@@ -19,7 +19,7 @@ export function StickyCTA({ variant }: { variant: Variant }) {
         <Link
           to={p20.buyPath}
           className="flex-1 rounded-full px-4 py-2 text-center text-sm font-semibold transition-transform hover:scale-[1.02]"
-          style={{ background: "var(--v-bg-soft)", color: "var(--brand-deep)" }}
+          style={{ background: "var(--v-bg-soft)", color: "var(--v-ink)" }}
         >
           20 Pods · ₹{p20.price}
         </Link>

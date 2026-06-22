@@ -18,7 +18,7 @@ export function Header() {
               to={`/${v.slug}` as string}
               className="rounded-full px-3 py-2 text-sm font-medium transition-colors hover:bg-black/5"
               style={{ color: "var(--v-ink-soft, #444)" }}
-              activeProps={{ style: { color: "var(--brand-deep, #000)", background: "color-mix(in oklab, var(--brand, #000) 12%, transparent)" } }}
+              activeProps={{ style: { color: "var(--v-ink, #000)", background: "color-mix(in oklab, var(--brand, #000) 12%, transparent)" } }}
             >
               {v.name}
             </Link>
@@ -27,7 +27,7 @@ export function Header() {
             to="/contact"
             className="rounded-full px-3 py-2 text-sm font-medium transition-colors hover:bg-black/5"
             style={{ color: "var(--v-ink-soft, #444)" }}
-            activeProps={{ style: { color: "var(--brand-deep, #000)", background: "color-mix(in oklab, var(--brand, #000) 12%, transparent)" } }}
+            activeProps={{ style: { color: "var(--v-ink, #000)", background: "color-mix(in oklab, var(--brand, #000) 12%, transparent)" } }}
           >
             Contact
           </Link>

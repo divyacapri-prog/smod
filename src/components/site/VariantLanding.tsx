@@ -54,7 +54,7 @@ export function VariantLanding({ variant }: { variant: Variant }) {
         />
         <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-5 py-16 md:grid-cols-2 md:py-24">
           <div>
-            <div className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-widest backdrop-blur-md" style={{ borderColor: "color-mix(in oklab, var(--v-ink) 15%, transparent)", color: "var(--brand-deep)", background: "color-mix(in oklab, var(--v-surface) 60%, transparent)" }}>
+            <div className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-widest backdrop-blur-md" style={{ borderColor: "color-mix(in oklab, var(--v-ink) 15%, transparent)", color: "var(--v-ink)", background: "color-mix(in oklab, var(--v-surface) 60%, transparent)" }}>
               <span>{variant.emoji}</span> {variant.tagline}
             </div>
             <h1 className="mt-5 text-balance text-5xl font-black leading-[1.02] tracking-tight md:text-7xl" style={{ color: "var(--v-ink)" }}>
@@ -109,7 +109,7 @@ export function VariantLanding({ variant }: { variant: Variant }) {
                 </div>
                 <div className="text-center">
                   <p className="text-xs font-bold uppercase tracking-[0.3em]" style={{ color: "var(--v-ink-soft)" }}>SMOD · {variant.name}</p>
-                  <p className="mt-1 text-2xl font-black" style={{ color: "var(--brand-deep)" }}>{variant.emoji} {variant.name}</p>
+                  <p className="mt-1 text-2xl font-black" style={{ color: "var(--v-ink)" }}>{variant.emoji} {variant.name}</p>
                 </div>
               </div>
             </div>
@@ -174,7 +174,7 @@ export function VariantLanding({ variant }: { variant: Variant }) {
               <tr style={{ background: "var(--v-bg-soft)" }}>
                 <th className="p-5 font-bold" style={{ color: "var(--v-ink)" }}>Feature</th>
                 <th className="p-5 font-bold" style={{ color: "var(--v-ink)" }}>20 Pods</th>
-                <th className="p-5 font-bold" style={{ color: "var(--brand-deep)" }}>40 Pods · Best value</th>
+                <th className="p-5 font-bold" style={{ color: "var(--v-ink)" }}>40 Pods · Best value</th>
               </tr>
             </thead>
             <tbody className="divide-y" style={{ borderColor: "color-mix(in oklab, var(--v-ink) 8%, transparent)" }}>
@@ -268,7 +268,7 @@ function Row({ label, a, b }: { label: string; a: string; b: string }) {
     <tr>
       <td className="p-5 font-semibold" style={{ color: "var(--v-ink)" }}>{label}</td>
       <td className="p-5" style={{ color: "var(--v-ink-soft)" }}>{a}</td>
-      <td className="p-5 font-semibold" style={{ color: "var(--brand-deep)" }}>{b}</td>
+      <td className="p-5 font-semibold" style={{ color: "var(--v-ink)" }}>{b}</td>
     </tr>
   );
 }
@@ -331,7 +331,7 @@ function PurchaseCard({ variant, pack, featured }: { variant: Variant; pack: Var
           <div className="mt-4">
             <p className="text-xs font-bold uppercase tracking-widest" style={{ color: "var(--v-ink-soft)" }}>{variant.name}</p>
             <p className="mt-1 text-2xl font-black" style={{ color: "var(--v-ink)" }}>{pack.size} Pods</p>
-            <p className="mt-1 text-3xl font-black" style={{ color: "var(--brand-deep)" }}>₹{pack.price}</p>
+            <p className="mt-1 text-3xl font-black" style={{ color: "var(--v-ink)" }}>₹{pack.price}</p>
             <p className="text-xs" style={{ color: "var(--v-ink-soft)" }}>≈ ₹{pack.perWash.toFixed(2)} per wash</p>
             <Link
               to={pack.buyPath}
