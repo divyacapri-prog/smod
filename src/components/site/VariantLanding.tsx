@@ -154,12 +154,18 @@ export function VariantLanding({ variant }: { variant: Variant }) {
       </Section>
 
       {/* HOW IT WORKS */}
-      <Section id="how" eyebrow="How it works" title="Four steps. Three minutes." subtitle="Less thinking, more clean clothes.">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {HOW.map((s) => (
-            <div key={s.step} className="rounded-3xl border p-6" style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)", background: "var(--v-surface)" }}>
-              <div className="font-mono text-sm font-bold" style={{ color: "var(--brand)" }}>STEP {s.step}</div>
-              <h3 className="mt-2 text-xl font-bold" style={{ color: "var(--v-ink)" }}>{s.title}</h3>
+      <Section id="how" eyebrow="How it works" title="Three steps. Three minutes." subtitle="Less thinking, more clean clothes.">
+        <div className="relative grid gap-8 sm:grid-cols-3">
+          <div aria-hidden className="pointer-events-none absolute left-[16%] right-[16%] top-24 hidden h-px sm:block" style={{ background: `repeating-linear-gradient(90deg, var(--brand) 0 8px, transparent 8px 16px)` }} />
+          {HOW.map((s, i) => (
+            <div key={s.title} className="relative flex flex-col items-center text-center">
+              <div className="relative grid h-44 w-44 place-items-center rounded-full shadow-xl ring-1 ring-black/5" style={{ background: "var(--v-surface)", color: "var(--brand-deep)" }}>
+                <span aria-hidden className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em] text-white" style={{ background: `linear-gradient(135deg, var(--brand), var(--brand-deep))` }}>
+                  Step {i + 1}
+                </span>
+                <s.Icon className="h-28 w-28" />
+              </div>
+              <h3 className="mt-5 text-xl font-black" style={{ color: "var(--v-ink)" }}>{s.title}</h3>
               <p className="mt-1 text-sm" style={{ color: "var(--v-ink-soft)" }}>{s.body}</p>
             </div>
           ))}
