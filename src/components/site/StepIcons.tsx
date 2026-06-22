@@ -72,13 +72,13 @@ export function HandDropPodIcon({ className = "" }: { className?: string }) {
       {/* motion lines + drum opening below */}
       <g {...stroke} opacity="0.55">
         <path d="M76 120 L72 130">
-          <animate attributeName="opacity" values="0.2; 0.8; 0.2" dur="2.4s" />
+          <animate attributeName="opacity" values="0.2; 0.8" dur="2.4s" fill="freeze" />
         </path>
         <path d="M134 120 L138 130">
-          <animate attributeName="opacity" values="0.2; 0.8; 0.2" dur="2.4s" />
+          <animate attributeName="opacity" values="0.2; 0.8" dur="2.4s" fill="freeze" />
         </path>
         <path d="M105 120 L105 132">
-          <animate attributeName="opacity" values="0.2; 0.8; 0.2" dur="2.4s" />
+          <animate attributeName="opacity" values="0.2; 0.8" dur="2.4s" fill="freeze" />
         </path>
       </g>
       {/* washing-machine top w/ open door */}
