@@ -15,7 +15,7 @@ export type Packaging = {
   directions: { step: number; body: string }[];
   dosage: { load: string; pods: string }[];
   caution: string[];
-  certifications: string[]; // e.g. "Cruelty Free", "Recyclable Packaging"
+  certifications: string[]; // e.g. "Recyclable Packaging"
   machines: string[];
   highlights: string[]; // marketing badges
   imageUrl?: string;
@@ -128,7 +128,7 @@ export const VARIANTS: Variant[] = [
         "Store in a cool, dry place.",
         "Do not handle pods with wet hands.",
       ],
-      certifications: ["Cruelty Free", "Recyclable Packaging"],
+      certifications: ["Recyclable Packaging"],
       machines: ["Top Load", "Front Load"],
       highlights: ["Powerful Clean", "Smart Detergent", "20 Wash Pods"],
       imageFrontUrl: frontAsset.url,
@@ -204,7 +204,7 @@ export const VARIANTS: Variant[] = [
         "Store in a cool, dry place.",
         "Do not handle pods with wet hands.",
       ],
-      certifications: ["Cruelty Free", "Recyclable Packaging"],
+      certifications: ["Recyclable Packaging"],
       machines: ["Top Load", "Front Load"],
       highlights: ["Odor Destroyer", "Anti-Microbial", "Smart Detergent"],
     },
@@ -278,7 +278,7 @@ export const VARIANTS: Variant[] = [
         "Store in a cool, dry place.",
         "Do not handle pods with wet hands.",
       ],
-      certifications: ["Cruelty Free", "Recyclable Packaging"],
+      certifications: ["Recyclable Packaging"],
       machines: ["Top Load", "Front Load"],
       highlights: ["Performance Clean", "Fiber Safe", "Smart Detergent"],
     },
@@ -352,7 +352,7 @@ export const VARIANTS: Variant[] = [
         "Store in a cool, dry place.",
         "Do not handle pods with wet hands.",
       ],
-      certifications: ["Cruelty Free", "Antimicrobial", "Recyclable Packaging"],
+      certifications: ["Antimicrobial", "Recyclable Packaging"],
       machines: ["Top Load", "Front Load"],
       highlights: ["For Bras", "For Panties", "pH Balanced"],
       imageUrl: innerwearPack.url,
@@ -427,7 +427,7 @@ export const VARIANTS: Variant[] = [
         "Store in a cool, dry place.",
         "Do not handle pods with wet hands.",
       ],
-      certifications: ["Cruelty Free", "Antimicrobial", "Recyclable Packaging", "Dermatologically Tested"],
+      certifications: ["Antimicrobial", "Recyclable Packaging"],
       machines: ["Top Load", "Front Load"],
       highlights: ["Antimicrobial", "Safe for Colors & Fabrics"],
       imageUrl: babyPack.url,
