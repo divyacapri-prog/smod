@@ -160,11 +160,11 @@ function Home() {
       </section>
 
       {/* ============ FOUR PILLARS — pack at center, pillars radiating ============ */}
-      <section id="pillars" className="relative overflow-hidden py-20" style={{ background: "var(--v-bg-soft)" }}>
+      <section id="pillars" className="relative overflow-hidden pt-32 pb-20" style={{ background: "var(--v-bg-soft)" }}>
         <WavePattern />
         <div className="relative mx-auto max-w-7xl px-5">
           <div className="mb-12 text-center">
-            <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--brand)" }}>S · M · O · D</p>
+            <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--v-ink)" }}>S · M · O · D</p>
             <h2 className="mt-2 text-3xl font-black md:text-4xl">Four pillars. One pod.</h2>
           </div>
 
