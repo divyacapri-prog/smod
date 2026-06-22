@@ -71,7 +71,7 @@ export function ProductInformation({ variant }: { variant: Variant }) {
 
       <div className="grid items-start gap-6 md:grid-cols-12">
         {/* Pack images — carousel that auto-advances */}
-        <div className="flex h-full md:col-span-5">
+        <div className="md:col-span-5">
           {p.imageFrontUrl || p.imageBackUrl ? (
             <PackCarousel
               images={[p.imageFrontUrl, p.imageBackUrl].filter(Boolean) as string[]}
@@ -81,7 +81,7 @@ export function ProductInformation({ variant }: { variant: Variant }) {
             <PackCarousel images={[p.imageUrl]} alt={`${p.productName} packaging`} />
           ) : (
             <div
-              className="grid h-full place-items-center overflow-hidden rounded-3xl border"
+              className="grid aspect-[3/4] place-items-center overflow-hidden rounded-3xl border"
               style={{
                 borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)",
                 background: "var(--v-bg-soft)",
