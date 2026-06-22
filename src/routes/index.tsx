@@ -149,7 +149,7 @@ function Home() {
             <span style={{ color: "var(--brand)" }}>S</span>
             <span style={{ color: "var(--brand)" }}>M</span>
             <span className="text-base font-bold opacity-60 md:text-xl">art</span>
-            <span style={{ color: "var(--brand)" }}>p</span>
+            <span className="text-base font-bold opacity-60 md:text-xl">p</span>
             <span style={{ color: "var(--brand)" }}>O</span>
             <span style={{ color: "var(--brand)" }}>D</span>
           </div>
