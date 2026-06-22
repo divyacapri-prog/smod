@@ -81,7 +81,7 @@ export function ProductInformation({ variant }: { variant: Variant }) {
             <PackCarousel images={[p.imageUrl]} alt={`${p.productName} packaging`} />
           ) : (
             <div
-              className="grid aspect-square place-items-center overflow-hidden rounded-3xl border"
+              className="grid h-full place-items-center overflow-hidden rounded-3xl border"
               style={{
                 borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)",
                 background: "var(--v-bg-soft)",
