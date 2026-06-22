@@ -17,17 +17,16 @@ const PURCHASE_BASE = typeof window !== "undefined" ? window.location.origin : "
 const WHY_PODS = [
   { icon: "⚖️", title: "Pre-measured", body: "Exactly one pod per load. No guesswork." },
   { icon: "🧴", title: "No spills", body: "Sealed film dissolves only in water." },
-  { icon: "📦", title: "Easy storage", body: "Compact tub, fits any laundry shelf." },
+  { icon: "📦", title: "Easy storage", body: "Resealable ziplock pack, fits any laundry shelf." },
   { icon: "✈️", title: "Travel friendly", body: "TSA-friendly. Hotel-ready." },
   { icon: "🌿", title: "Eco conscious", body: "Plant-based, biodegradable formula." },
   { icon: "⭐", title: "Premium clean", body: "Triple-action enzymes per pod." },
 ];
 
-const HOW = [
-  { step: "01", title: "Place pod", body: "Drop one pod into the empty drum." },
-  { step: "02", title: "Add clothes", body: "Load laundry directly on top." },
-  { step: "03", title: "Start wash", body: "Run any cycle, any temperature." },
-  { step: "04", title: "Enjoy fresh", body: "Hang or tumble dry. That's it." },
+const HOW: { title: string; body: string; Icon: (p: { className?: string }) => JSX.Element }[] = [
+  { title: "Drop a pod", body: "One pod into the empty drum.", Icon: HandDropPodIcon },
+  { title: "Load clothes", body: "Add laundry directly on top.", Icon: LoadClothesIcon },
+  { title: "Start the wash", body: "Any cycle. The film dissolves cleanly.", Icon: SpinWashIcon },
 ];
 
 const FAQS = [
