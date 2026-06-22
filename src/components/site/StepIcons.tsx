@@ -107,9 +107,9 @@ export function LoadClothesIcon({ className = "" }: { className?: string }) {
       <circle cx="100" cy="124" r="46" fill="var(--v-bg-soft)" stroke="currentColor" strokeWidth="4" />
       <circle cx="100" cy="124" r="34" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="3 4" opacity="0.6" />
 
-      {/* shirt being loaded — drops into drum */}
+      {/* shirt being loaded — drops into drum, plays once on mount */}
       <g>
-        <animateTransform attributeName="transform" type="translate" values="0 -40; 0 0; 0 -40" keyTimes="0; 0.55; 1" dur="2.8s" repeatCount="indefinite" />
+        <animateTransform attributeName="transform" type="translate" values="0 -40; 0 0; 0 -40" keyTimes="0; 0.55; 1" dur="2.8s" />
         <path
           d="M80 108 L92 100 L100 106 L108 100 L120 108 L116 124 L110 122 L110 142 L90 142 L90 122 L84 124 Z"
           fill="var(--brand)"
@@ -118,18 +118,18 @@ export function LoadClothesIcon({ className = "" }: { className?: string }) {
         <path d="M92 100 Q100 96 108 100" {...stroke} stroke="#fff" strokeWidth="2" opacity="0.6" />
       </g>
 
-      {/* sock floating in — drops slightly offset */}
+      {/* sock floating in — drops slightly offset, plays once on mount */}
       <g>
-        <animateTransform attributeName="transform" type="translate" values="50 100; 58 138; 50 100" keyTimes="0; 0.65; 1" dur="2.8s" begin="0.4s" repeatCount="indefinite" />
+        <animateTransform attributeName="transform" type="translate" values="50 100; 58 138; 50 100" keyTimes="0; 0.65; 1" dur="2.8s" begin="0.4s" />
         <g transform="rotate(-18)">
           <path d="M0 0 H14 V18 Q14 24 8 24 H0 Z" fill="var(--accent)" />
           <path d="M0 0 H14" {...stroke} stroke="#fff" strokeWidth="2" opacity="0.6" />
         </g>
       </g>
 
-      {/* motion / drop arrows above the drum — pulse */}
+      {/* motion / drop arrows above the drum — pulse once */}
       <g {...stroke} opacity="0.7">
-        <animate attributeName="opacity" values="0.3; 0.9; 0.3" dur="2.8s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values="0.3; 0.9; 0.3" dur="2.8s" />
         <path d="M70 76 L70 92" />
         <path d="M66 86 L70 92 L74 86" />
         <path d="M130 76 L130 92" />
