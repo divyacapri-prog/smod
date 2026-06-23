@@ -83,24 +83,24 @@ function LeafIcon() {
 function PillarCard({ p }: { p: (typeof PILLARS)[number] }) {
   return (
     <article
-      className="group relative flex items-center gap-4 overflow-hidden rounded-2xl border bg-white p-4 transition-all hover:-translate-y-0.5 hover:shadow-xl"
-      style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)" }}
+      className="premium-card group relative flex items-center gap-5 overflow-hidden p-6"
     >
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-3 -top-5 text-[5rem] font-black leading-none opacity-[0.07]"
+        className="pointer-events-none absolute -right-3 -top-6 text-[6rem] font-black leading-none opacity-[0.07]"
         style={{ color: "var(--brand)" }}
       >
         {p.letter}
       </div>
       <div className="relative shrink-0">{p.svg}</div>
       <div className="relative min-w-0">
-        <div className="text-[10px] font-bold uppercase tracking-[0.25em]" style={{ color: "var(--brand)" }}>
+        <div className="eyebrow" style={{ color: "var(--brand)" }}>
           {p.word}
         </div>
-        <h3 className="text-base font-black leading-tight">{p.tag}</h3>
+        <h3 className="mt-1 text-lg font-black leading-tight">{p.tag}</h3>
       </div>
     </article>
+
   );
 }
 
@@ -148,31 +148,35 @@ function Home() {
           />
         </div>
 
-        <div className="relative mx-auto flex max-w-7xl flex-col items-center gap-6 px-5 py-16 text-center text-white md:py-24">
-          <img src={smodLogo.url} alt="SMOD" className="h-20 w-auto md:h-28" />
-          <h1 className="max-w-3xl text-4xl font-black leading-[1.05] md:text-6xl">
+        <div className="relative mx-auto flex max-w-7xl flex-col items-center gap-8 px-5 py-24 text-center text-white md:py-40">
+          <img src={smodLogo.url} alt="SMOD" className="h-24 w-auto md:h-32" />
+          <h1 className="headline-xl max-w-4xl text-5xl text-white md:text-7xl lg:text-[5.5rem]">
             No mess, <span style={{ color: "var(--accent)" }}>zero guesswork.</span>
           </h1>
-          <div className="mt-2 flex flex-wrap justify-center gap-3">
+          <p className="max-w-xl text-base text-white/80 md:text-lg">
+            Smart dosing. Maximum clean. Optimised care. Dependable freshness.
+          </p>
+          <div className="mt-4 flex flex-wrap justify-center gap-3">
             <a
               href="#variants"
               onClick={(e) => {
                 e.preventDefault();
                 document.getElementById("variants")?.scrollIntoView({ behavior: "smooth", block: "start" });
               }}
-              className="rounded-full bg-white px-7 py-3 text-sm font-bold shadow-lg transition-transform hover:scale-[1.03]"
+              className="rounded-full bg-white px-8 py-4 text-sm font-bold shadow-xl transition-transform hover:scale-[1.03]"
               style={{ color: "var(--brand)" }}
             >
               Shop the range
             </a>
             <a
               href="#pillars"
-              className="rounded-full border border-white/40 px-7 py-3 text-sm font-bold text-white hover:bg-white/10"
+              className="rounded-full border border-white/40 px-8 py-4 text-sm font-bold text-white hover:bg-white/10"
             >
               How it works
             </a>
           </div>
         </div>
+
 
         {/* trust strip — icon based */}
         <div className="relative border-t border-white/15 bg-black/10">
@@ -203,31 +207,33 @@ function Home() {
             }}
           />
         </div>
-        <div className="relative mx-auto max-w-7xl px-5 py-20 text-center">
-          <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--brand)" }}>
+        <div className="relative mx-auto max-w-7xl px-5 py-32 text-center md:py-44">
+          <p className="eyebrow" style={{ color: "var(--brand)" }}>
             Who we are
           </p>
-          <div className="mt-6 flex flex-wrap items-center justify-center text-5xl font-black md:text-7xl">
+          <div className="mt-8 flex flex-wrap items-center justify-center text-6xl font-black tracking-tight md:text-8xl">
             <span style={{ color: "var(--brand)" }}>SM</span>
             <span style={{ color: "#728198" }}>ART&nbsp;P</span>
             <span style={{ color: "var(--brand)" }}>OD</span>
           </div>
-          <p className="mx-auto mt-4 max-w-md text-sm font-medium" style={{ color: "var(--v-ink-soft)" }}>
+          <p className="mx-auto mt-6 max-w-md text-base font-medium md:text-lg" style={{ color: "var(--v-ink-soft)" }}>
             A tiny laboratory in every pod.
           </p>
         </div>
+
       </section>
 
       {/* ============ FOUR PILLARS — pack at center, pillars radiating ============ */}
-      <section id="pillars" className="relative overflow-hidden pt-32 pb-20" style={{ background: "var(--v-bg-soft)" }}>
+      <section id="pillars" className="section-pad-lg relative overflow-hidden" style={{ background: "var(--v-bg-soft)" }}>
         <WavePattern />
         <div className="relative mx-auto max-w-7xl px-5">
-          <div className="mb-12 text-center">
-            <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--v-ink)" }}>
+          <div className="mb-16 text-center md:mb-20">
+            <p className="eyebrow" style={{ color: "var(--v-ink)" }}>
               S · M · O · D
             </p>
-            <h2 className="mt-2 text-3xl font-black md:text-4xl">Four pillars. One pod.</h2>
+            <h2 className="headline-xl mt-4 text-4xl md:text-6xl">Four pillars. One pod.</h2>
           </div>
+
 
           <div className="grid items-center gap-6 md:grid-cols-[1fr_auto_1fr]">
             <div className="order-2 grid grid-cols-2 gap-4 md:order-1 md:grid-cols-1">
@@ -260,13 +266,14 @@ function Home() {
       </section>
 
       {/* ============ HOW IT WORKS — visual flow ============ */}
-      <section className="mx-auto max-w-7xl px-5 py-16">
-        <div className="mb-10 text-center">
-          <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--brand)" }}>
+      <section className="section-pad mx-auto max-w-7xl px-5">
+        <div className="mb-16 text-center md:mb-20">
+          <p className="eyebrow" style={{ color: "var(--brand)" }}>
             How it works
           </p>
-          <h2 className="mt-2 text-3xl font-black md:text-4xl">Three steps. Zero mess.</h2>
+          <h2 className="headline-xl mt-4 text-4xl md:text-6xl">Three steps. Zero mess.</h2>
         </div>
+
         <div className="relative grid gap-10 md:grid-cols-3">
           <div
             aria-hidden
@@ -303,20 +310,21 @@ function Home() {
 
       {/* ============ 4-IN-1 CONCEPT ============ */}
       <section
-        className="relative overflow-hidden py-20"
+        className="section-pad relative overflow-hidden"
         style={{ background: `linear-gradient(135deg, var(--v-bg-soft), var(--v-surface))` }}
       >
         <div className="mx-auto max-w-7xl px-5">
-          <div className="mb-10 text-center">
-            <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--brand)" }}>
+          <div className="mb-16 text-center md:mb-20">
+            <p className="eyebrow" style={{ color: "var(--brand)" }}>
               One pod. Four actions.
             </p>
-            <h2 className="mt-2 text-3xl font-black md:text-5xl">4-in-1 laundry care.</h2>
-            <p className="mt-3 text-base" style={{ color: "var(--v-ink-soft)" }}>
+            <h2 className="headline-xl mt-4 text-4xl md:text-6xl">4-in-1 laundry care.</h2>
+            <p className="mx-auto mt-5 max-w-xl text-base md:text-lg" style={{ color: "var(--v-ink-soft)" }}>
               Detergent, comforter, softener and antimicrobial — all sealed into a single pod.
             </p>
           </div>
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
                 n: "01",
@@ -328,42 +336,39 @@ function Home() {
               { n: "03", icon: "🌸", title: "Softener", body: "Long-lasting fresh scent woven into your laundry." },
               { n: "04", icon: "🛡️", title: "Anti-microbial", body: "Fights odor-causing bacteria, wash after wash." },
             ].map((f) => (
-              <div
-                key={f.title}
-                className="relative overflow-hidden rounded-3xl border bg-white p-6 transition-transform hover:-translate-y-1"
-                style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)" }}
-              >
+              <div key={f.title} className="premium-card relative overflow-hidden p-7">
                 <div
                   aria-hidden
-                  className="absolute -right-2 -top-4 text-[4rem] font-black leading-none opacity-[0.08]"
+                  className="absolute -right-2 -top-4 text-[4.5rem] font-black leading-none opacity-[0.08]"
                   style={{ color: "var(--brand)" }}
                 >
                   {f.n}
                 </div>
-                <div className="relative text-3xl">{f.icon}</div>
-                <h3 className="relative mt-3 text-lg font-black">{f.title}</h3>
-                <p className="relative mt-1 text-sm" style={{ color: "var(--v-ink-soft)" }}>
+                <div className="relative text-4xl">{f.icon}</div>
+                <h3 className="relative mt-5 text-xl font-black">{f.title}</h3>
+                <p className="relative mt-2 text-sm leading-relaxed" style={{ color: "var(--v-ink-soft)" }}>
                   {f.body}
                 </p>
               </div>
             ))}
           </div>
+
         </div>
       </section>
 
       {/* ============ WHY PODS ============ */}
 
-      <section className="mx-auto max-w-7xl px-5 py-16">
-        <div className="mb-10 text-center">
-          <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--brand)" }}>
+      <section className="section-pad mx-auto max-w-7xl px-5">
+        <div className="mb-16 text-center md:mb-20">
+          <p className="eyebrow" style={{ color: "var(--brand)" }}>
             Why pods
           </p>
-          <h2 className="mt-2 text-3xl font-black md:text-4xl">Detergent, Redesigned.</h2>
-          <p className="mt-3 text-base" style={{ color: "var(--v-ink-soft)" }}>
+          <h2 className="headline-xl mt-4 text-4xl md:text-6xl">Detergent, Redesigned.</h2>
+          <p className="mx-auto mt-5 max-w-xl text-base md:text-lg" style={{ color: "var(--v-ink-soft)" }}>
             Six reasons our customers never go back to bottles or boxes.
           </p>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {[
             { icon: "⚖️", title: "Pre-measured", body: "Exactly one pod per load. No guesswork." },
             { icon: "✈️", title: "Travel friendly", body: "No spills — sealed film dissolves only in water." },
@@ -372,14 +377,10 @@ function Home() {
             { icon: "🌿", title: "Bio-degradable", body: "Plant-derived film breaks down cleanly." },
             { icon: "⭐", title: "Premium clean", body: "Triple-action enzymes per pod." },
           ].map((w) => (
-            <div
-              key={w.title}
-              className="rounded-3xl border bg-white p-6 transition-transform hover:-translate-y-1"
-              style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)" }}
-            >
-              <div className="text-3xl">{w.icon}</div>
-              <h3 className="mt-3 text-lg font-bold">{w.title}</h3>
-              <p className="mt-1 text-sm" style={{ color: "var(--v-ink-soft)" }}>
+            <div key={w.title} className="premium-card p-7">
+              <div className="text-4xl">{w.icon}</div>
+              <h3 className="mt-5 text-xl font-black">{w.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed" style={{ color: "var(--v-ink-soft)" }}>
                 {w.body}
               </p>
             </div>
@@ -390,49 +391,49 @@ function Home() {
       {/* ============ VARIANTS ============ */}
       <section
         id="variants"
-        className="relative overflow-hidden pt-32 pb-16"
+        className="section-pad-lg relative overflow-hidden"
         style={{ background: "var(--v-bg-soft)" }}
       >
         <WavePattern />
         <div className="relative mx-auto max-w-7xl px-5">
-          <div className="mb-8 text-center">
-            <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--v-ink)" }}>
+          <div className="mb-16 text-center md:mb-20">
+            <p className="eyebrow" style={{ color: "var(--v-ink)" }}>
               The range
             </p>
-            <h2 className="mt-2 text-3xl font-black md:text-4xl">One pod for every load.</h2>
+            <h2 className="headline-xl mt-4 text-4xl md:text-6xl">One pod for every load.</h2>
           </div>
 
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+
+          <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
             {VARIANTS.map((v) => (
               <Link
                 key={v.slug}
                 to={`/${v.slug}` as string}
-                className="group relative overflow-hidden rounded-3xl border bg-white p-6 transition-transform hover:-translate-y-1"
-                style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)" }}
+                className="premium-card group relative block overflow-hidden p-8"
               >
                 <div
                   aria-hidden
-                  className="absolute -right-10 -top-10 h-40 w-40 rounded-full opacity-30 blur-2xl"
+                  className="absolute -right-12 -top-12 h-48 w-48 rounded-full opacity-30 blur-3xl transition-opacity group-hover:opacity-50"
                   style={{ background: "var(--brand)" }}
                 />
-                <div className="relative flex items-center gap-4">
-                  <div className="text-5xl">{v.emoji}</div>
-                  <div>
-                    <h3 className="text-xl font-black">{v.name}</h3>
-                    <p className="text-xs" style={{ color: "var(--v-ink-soft)" }}>
+                <div className="relative flex items-center gap-5">
+                  <div className="text-6xl">{v.emoji}</div>
+                  <div className="min-w-0">
+                    <h3 className="text-2xl font-black tracking-tight">{v.name}</h3>
+                    <p className="mt-1 text-xs font-semibold uppercase tracking-widest" style={{ color: "var(--v-ink-soft)" }}>
                       From ₹{v.packs[0].price}
                     </p>
                   </div>
                 </div>
-                <div className="relative mt-5 flex items-center justify-between">
+                <div className="relative mt-8 flex items-center justify-between">
                   <div
-                    className="flex gap-1 text-[10px] font-bold uppercase tracking-wider"
+                    className="flex gap-1.5 text-[10px] font-bold uppercase tracking-wider"
                     style={{ color: "var(--brand-deep)" }}
                   >
                     {v.packs.map((p) => (
                       <span
                         key={p.sku}
-                        className="rounded-full border px-2 py-1"
+                        className="rounded-full border px-2.5 py-1"
                         style={{ borderColor: "color-mix(in oklab, var(--brand) 25%, transparent)" }}
                       >
                         {p.size}
@@ -440,7 +441,7 @@ function Home() {
                     ))}
                   </div>
                   <span
-                    className="rounded-full px-3 py-1 text-xs font-bold text-white transition-transform group-hover:translate-x-1"
+                    className="rounded-full px-4 py-2 text-xs font-bold text-white shadow-md transition-transform group-hover:translate-x-1"
                     style={{ background: "var(--brand)" }}
                   >
                     Shop →
@@ -449,14 +450,15 @@ function Home() {
               </Link>
             ))}
           </div>
+
         </div>
       </section>
 
       {/* ============ FINAL CTA ============ */}
-      <section className="mx-auto max-w-7xl px-5 py-16">
+      <section className="section-pad mx-auto max-w-7xl px-5">
         <div
-          className="relative overflow-hidden rounded-[2.5rem] p-10 text-center text-white md:p-16"
-          style={{ background: `linear-gradient(135deg, var(--brand), var(--brand-deep))` }}
+          className="relative overflow-hidden rounded-[2.5rem] p-12 text-center text-white md:p-20"
+          style={{ background: `linear-gradient(135deg, var(--brand), var(--brand-deep))`, boxShadow: "0 60px 120px -50px var(--brand)" }}
         >
           <WavePattern color="rgba(255,255,255,0.18)" />
           <div
@@ -465,14 +467,14 @@ function Home() {
             style={{ background: "var(--accent)" }}
           />
           <div className="relative pt-24 pb-8">
-            <h2 className="text-3xl font-black md:text-5xl">Smarter wash. Starts here.</h2>
+            <h2 className="headline-xl text-4xl text-white md:text-6xl">Smarter wash. Starts here.</h2>
             <a
               href="#variants"
               onClick={(e) => {
                 e.preventDefault();
                 document.getElementById("variants")?.scrollIntoView({ behavior: "smooth", block: "start" });
               }}
-              className="mt-6 inline-block rounded-full bg-white px-8 py-4 text-sm font-bold shadow-lg transition-transform hover:scale-[1.03]"
+              className="mt-8 inline-block rounded-full bg-white px-10 py-4 text-sm font-bold shadow-xl transition-transform hover:scale-[1.03]"
               style={{ color: "var(--brand)" }}
             >
               Shop SMOD pods →
@@ -480,6 +482,7 @@ function Home() {
           </div>
         </div>
       </section>
+
 
       <Footer />
     </div>

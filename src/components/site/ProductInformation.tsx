@@ -58,18 +58,19 @@ function PackCarousel({ images, alt }: { images: string[]; alt: string }) {
 export function ProductInformation({ variant }: { variant: Variant }) {
   const p = variant.packaging;
   return (
-    <section id="product-information" className="mx-auto max-w-7xl px-5 py-16 md:py-24">
-      <div className="mx-auto mb-10 max-w-3xl text-center">
-        <p className="text-xs font-bold uppercase tracking-[0.3em]" style={{ color: "var(--brand)" }}>
+    <section id="product-information" className="section-pad mx-auto max-w-7xl px-5">
+      <div className="mx-auto mb-14 max-w-3xl text-center md:mb-20">
+        <p className="eyebrow" style={{ color: "var(--brand)" }}>
           Product Information
         </p>
-        <h2 className="mt-3 text-balance text-4xl font-black tracking-tight md:text-5xl" style={{ color: "var(--v-ink)" }}>
+        <h2 className="headline-xl mt-4 text-balance text-4xl md:text-6xl" style={{ color: "var(--v-ink)" }}>
           {p.productName}
         </h2>
-        <p className="mt-3 text-base" style={{ color: "var(--v-ink-soft)" }}>{p.subtitle}</p>
+        <p className="mx-auto mt-5 max-w-xl text-base md:text-lg" style={{ color: "var(--v-ink-soft)" }}>{p.subtitle}</p>
       </div>
 
-      <div className="grid items-start gap-6 md:grid-cols-12">
+      <div className="grid items-start gap-10 md:grid-cols-12 md:gap-14">
+
         {/* Pack images — carousel that auto-advances */}
         <div className="md:col-span-5">
           {p.imageFrontUrl || p.imageBackUrl ? (
@@ -105,21 +106,23 @@ export function ProductInformation({ variant }: { variant: Variant }) {
       </div>
 
       {/* Key benefits grid */}
-      <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4 md:mt-20">
         {p.benefits.map((b) => (
-          <div key={b.title} className="rounded-3xl border p-6" style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)", background: "var(--v-surface)" }}>
-            <div className="grid h-11 w-11 place-items-center rounded-xl text-xl" style={{ background: "color-mix(in oklab, var(--brand) 12%, transparent)" }}>
+          <div key={b.title} className="premium-card p-7">
+            <div className="grid h-12 w-12 place-items-center rounded-2xl text-2xl" style={{ background: "color-mix(in oklab, var(--brand) 12%, transparent)" }}>
               <span>{b.icon}</span>
             </div>
-            <h3 className="mt-3 text-base font-bold" style={{ color: "var(--v-ink)" }}>{b.title}</h3>
-            <p className="mt-1 text-sm" style={{ color: "var(--v-ink-soft)" }}>{b.body}</p>
+            <h3 className="mt-5 text-lg font-black" style={{ color: "var(--v-ink)" }}>{b.title}</h3>
+            <p className="mt-2 text-sm leading-relaxed" style={{ color: "var(--v-ink-soft)" }}>{b.body}</p>
           </div>
         ))}
       </div>
 
+
       {/* Directions + dosage */}
-      <div className="mt-10 grid gap-6 md:grid-cols-2">
-        <div className="rounded-3xl border p-6" style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)", background: "var(--v-surface)" }}>
+      <div className="mt-8 grid gap-6 md:grid-cols-2">
+
+        <div className="premium-card p-7">
           <p className="text-xs font-bold uppercase tracking-widest" style={{ color: "var(--brand)" }}>Directions for use</p>
           <div className="mt-5 grid gap-4 sm:grid-cols-3">
             {p.directions.map((d, i) => {
@@ -137,7 +140,7 @@ export function ProductInformation({ variant }: { variant: Variant }) {
           </div>
         </div>
 
-        <div className="rounded-3xl border p-6" style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)", background: "var(--v-surface)" }}>
+        <div className="premium-card p-7">
           <p className="text-xs font-bold uppercase tracking-widest" style={{ color: "var(--brand)" }}>Dosage guide</p>
           <div className="mt-4 divide-y" style={{ borderColor: "color-mix(in oklab, var(--v-ink) 8%, transparent)" }}>
             {p.dosage.map((d) => (
@@ -152,7 +155,8 @@ export function ProductInformation({ variant }: { variant: Variant }) {
 
       {/* Caution + certifications */}
       <div className="mt-6 grid gap-6 md:grid-cols-2">
-        <div className="rounded-3xl border p-6" style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)", background: "var(--v-surface)" }}>
+
+        <div className="premium-card p-7">
           <p className="text-xs font-bold uppercase tracking-widest" style={{ color: "var(--brand)" }}>Caution & safety</p>
           <ul className="mt-4 space-y-2 text-sm" style={{ color: "var(--v-ink)" }}>
             {p.caution.map((c) => (
@@ -164,7 +168,7 @@ export function ProductInformation({ variant }: { variant: Variant }) {
           </ul>
         </div>
 
-        <div className="rounded-3xl border p-6" style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)", background: "var(--v-surface)" }}>
+        <div className="premium-card p-7">
           <p className="text-xs font-bold uppercase tracking-widest" style={{ color: "var(--brand)" }}>Certifications</p>
           <div className="mt-4 flex flex-wrap gap-2">
             {p.certifications.map((c) => (
@@ -183,7 +187,7 @@ export function ProductInformation({ variant }: { variant: Variant }) {
 
 function FactCard({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-3xl border p-5" style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)", background: "var(--v-surface)" }}>
+    <div className="premium-card p-6">
       <p className="text-xs font-bold uppercase tracking-widest" style={{ color: "var(--v-ink-soft)" }}>{label}</p>
       <p className="mt-2 text-base font-bold" style={{ color: "var(--v-ink)" }}>{value}</p>
     </div>

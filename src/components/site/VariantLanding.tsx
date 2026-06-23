@@ -63,10 +63,10 @@ export function VariantLanding({ variant }: { variant: Variant }) {
           className="absolute -top-32 left-1/2 h-[600px] w-[900px] -translate-x-1/2 rounded-full opacity-60 blur-3xl"
           style={{ background: `radial-gradient(closest-side, var(--brand), transparent 70%)` }}
         />
-        <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-5 pt-32 pb-16 md:grid-cols-2 md:pt-40 md:pb-24">
+        <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 pt-32 pb-24 md:grid-cols-2 md:gap-16 md:pt-48 md:pb-32">
           <div>
             <div
-              className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-widest backdrop-blur-md"
+              className="inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-xs font-semibold uppercase tracking-widest backdrop-blur-md"
               style={{
                 borderColor: "color-mix(in oklab, var(--v-ink) 15%, transparent)",
                 color: "var(--v-ink)",
@@ -76,14 +76,15 @@ export function VariantLanding({ variant }: { variant: Variant }) {
               <span>{variant.emoji}</span> {variant.tagline}
             </div>
             <h1
-              className="mt-5 text-balance text-5xl font-black leading-[1.02] tracking-tight md:text-7xl"
+              className="headline-xl mt-6 text-balance text-5xl md:text-7xl lg:text-[5.5rem]"
               style={{ color: "var(--v-ink)" }}
             >
               {variant.headline}
             </h1>
-            <p className="mt-5 max-w-xl text-lg leading-relaxed" style={{ color: "var(--v-ink-soft)" }}>
+            <p className="mt-6 max-w-xl text-lg leading-relaxed md:text-xl" style={{ color: "var(--v-ink-soft)" }}>
               {variant.description}
             </p>
+
             <div className="mt-8 flex flex-wrap gap-3">
               <a
                 href="#shop"
@@ -162,26 +163,24 @@ export function VariantLanding({ variant }: { variant: Variant }) {
         title="Detergent, Redesigned."
         subtitle="Six reasons our customers never go back to bottles or boxes."
       >
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {WHY_PODS.map((w) => (
             <div
               key={w.title}
-              className="rounded-3xl border p-6 backdrop-blur-sm transition-transform hover:-translate-y-1"
-              style={{
-                borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)",
-                background: "color-mix(in oklab, var(--v-surface) 70%, transparent)",
-              }}
+              className="premium-card p-7 backdrop-blur-sm"
+              style={{ background: "color-mix(in oklab, var(--v-surface) 70%, transparent)" }}
             >
-              <div className="text-3xl">{w.icon}</div>
-              <h3 className="mt-3 text-lg font-bold" style={{ color: "var(--v-ink)" }}>
+              <div className="text-4xl">{w.icon}</div>
+              <h3 className="mt-5 text-xl font-black" style={{ color: "var(--v-ink)" }}>
                 {w.title}
               </h3>
-              <p className="mt-1 text-sm" style={{ color: "var(--v-ink-soft)" }}>
+              <p className="mt-2 text-sm leading-relaxed" style={{ color: "var(--v-ink-soft)" }}>
                 {w.body}
               </p>
             </div>
           ))}
         </div>
+
       </Section>
 
       {/* BENEFITS */}
@@ -342,19 +341,19 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section id={id} className="mx-auto max-w-7xl px-5 py-16 md:py-24">
-      <div className="mx-auto mb-10 max-w-3xl text-center">
-        <p className="text-xs font-bold uppercase tracking-[0.3em]" style={{ color: "var(--brand)" }}>
+    <section id={id} className="section-pad mx-auto max-w-7xl px-5">
+      <div className="mx-auto mb-14 max-w-3xl text-center md:mb-20">
+        <p className="eyebrow" style={{ color: "var(--brand)" }}>
           {eyebrow}
         </p>
         <h2
-          className="mt-3 text-balance text-4xl font-black tracking-tight md:text-5xl"
+          className="headline-xl mt-4 text-balance text-4xl md:text-6xl"
           style={{ color: "var(--v-ink)" }}
         >
           {title}
         </h2>
         {subtitle && (
-          <p className="mt-3 text-base" style={{ color: "var(--v-ink-soft)" }}>
+          <p className="mx-auto mt-5 max-w-xl text-base md:text-lg" style={{ color: "var(--v-ink-soft)" }}>
             {subtitle}
           </p>
         )}
@@ -362,6 +361,7 @@ function Section({
       {children}
     </section>
   );
+
 }
 
 function Row({ label, a, b }: { label: string; a: string; b: string }) {
