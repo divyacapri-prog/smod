@@ -224,15 +224,16 @@ function Home() {
       </section>
 
       {/* ============ FOUR PILLARS — pack at center, pillars radiating ============ */}
-      <section id="pillars" className="relative overflow-hidden pt-32 pb-20" style={{ background: "var(--v-bg-soft)" }}>
+      <section id="pillars" className="section-pad-lg relative overflow-hidden" style={{ background: "var(--v-bg-soft)" }}>
         <WavePattern />
         <div className="relative mx-auto max-w-7xl px-5">
-          <div className="mb-12 text-center">
-            <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--v-ink)" }}>
+          <div className="mb-16 text-center md:mb-20">
+            <p className="eyebrow" style={{ color: "var(--v-ink)" }}>
               S · M · O · D
             </p>
-            <h2 className="mt-2 text-3xl font-black md:text-4xl">Four pillars. One pod.</h2>
+            <h2 className="headline-xl mt-4 text-4xl md:text-6xl">Four pillars. One pod.</h2>
           </div>
+
 
           <div className="grid items-center gap-6 md:grid-cols-[1fr_auto_1fr]">
             <div className="order-2 grid grid-cols-2 gap-4 md:order-1 md:grid-cols-1">
