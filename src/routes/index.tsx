@@ -266,13 +266,14 @@ function Home() {
       </section>
 
       {/* ============ HOW IT WORKS — visual flow ============ */}
-      <section className="mx-auto max-w-7xl px-5 py-16">
-        <div className="mb-10 text-center">
-          <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--brand)" }}>
+      <section className="section-pad mx-auto max-w-7xl px-5">
+        <div className="mb-16 text-center md:mb-20">
+          <p className="eyebrow" style={{ color: "var(--brand)" }}>
             How it works
           </p>
-          <h2 className="mt-2 text-3xl font-black md:text-4xl">Three steps. Zero mess.</h2>
+          <h2 className="headline-xl mt-4 text-4xl md:text-6xl">Three steps. Zero mess.</h2>
         </div>
+
         <div className="relative grid gap-10 md:grid-cols-3">
           <div
             aria-hidden
