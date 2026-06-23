@@ -358,17 +358,17 @@ function Home() {
 
       {/* ============ WHY PODS ============ */}
 
-      <section className="mx-auto max-w-7xl px-5 py-16">
-        <div className="mb-10 text-center">
-          <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--brand)" }}>
+      <section className="section-pad mx-auto max-w-7xl px-5">
+        <div className="mb-16 text-center md:mb-20">
+          <p className="eyebrow" style={{ color: "var(--brand)" }}>
             Why pods
           </p>
-          <h2 className="mt-2 text-3xl font-black md:text-4xl">Detergent, Redesigned.</h2>
-          <p className="mt-3 text-base" style={{ color: "var(--v-ink-soft)" }}>
+          <h2 className="headline-xl mt-4 text-4xl md:text-6xl">Detergent, Redesigned.</h2>
+          <p className="mx-auto mt-5 max-w-xl text-base md:text-lg" style={{ color: "var(--v-ink-soft)" }}>
             Six reasons our customers never go back to bottles or boxes.
           </p>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {[
             { icon: "⚖️", title: "Pre-measured", body: "Exactly one pod per load. No guesswork." },
             { icon: "✈️", title: "Travel friendly", body: "No spills — sealed film dissolves only in water." },
@@ -377,14 +377,10 @@ function Home() {
             { icon: "🌿", title: "Bio-degradable", body: "Plant-derived film breaks down cleanly." },
             { icon: "⭐", title: "Premium clean", body: "Triple-action enzymes per pod." },
           ].map((w) => (
-            <div
-              key={w.title}
-              className="rounded-3xl border bg-white p-6 transition-transform hover:-translate-y-1"
-              style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)" }}
-            >
-              <div className="text-3xl">{w.icon}</div>
-              <h3 className="mt-3 text-lg font-bold">{w.title}</h3>
-              <p className="mt-1 text-sm" style={{ color: "var(--v-ink-soft)" }}>
+            <div key={w.title} className="premium-card p-7">
+              <div className="text-4xl">{w.icon}</div>
+              <h3 className="mt-5 text-xl font-black">{w.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed" style={{ color: "var(--v-ink-soft)" }}>
                 {w.body}
               </p>
             </div>
@@ -395,17 +391,18 @@ function Home() {
       {/* ============ VARIANTS ============ */}
       <section
         id="variants"
-        className="relative overflow-hidden pt-32 pb-16"
+        className="section-pad-lg relative overflow-hidden"
         style={{ background: "var(--v-bg-soft)" }}
       >
         <WavePattern />
         <div className="relative mx-auto max-w-7xl px-5">
-          <div className="mb-8 text-center">
-            <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--v-ink)" }}>
+          <div className="mb-16 text-center md:mb-20">
+            <p className="eyebrow" style={{ color: "var(--v-ink)" }}>
               The range
             </p>
-            <h2 className="mt-2 text-3xl font-black md:text-4xl">One pod for every load.</h2>
+            <h2 className="headline-xl mt-4 text-4xl md:text-6xl">One pod for every load.</h2>
           </div>
+
 
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {VARIANTS.map((v) => (
