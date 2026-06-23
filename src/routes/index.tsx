@@ -404,37 +404,36 @@ function Home() {
           </div>
 
 
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
             {VARIANTS.map((v) => (
               <Link
                 key={v.slug}
                 to={`/${v.slug}` as string}
-                className="group relative overflow-hidden rounded-3xl border bg-white p-6 transition-transform hover:-translate-y-1"
-                style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)" }}
+                className="premium-card group relative block overflow-hidden p-8"
               >
                 <div
                   aria-hidden
-                  className="absolute -right-10 -top-10 h-40 w-40 rounded-full opacity-30 blur-2xl"
+                  className="absolute -right-12 -top-12 h-48 w-48 rounded-full opacity-30 blur-3xl transition-opacity group-hover:opacity-50"
                   style={{ background: "var(--brand)" }}
                 />
-                <div className="relative flex items-center gap-4">
-                  <div className="text-5xl">{v.emoji}</div>
-                  <div>
-                    <h3 className="text-xl font-black">{v.name}</h3>
-                    <p className="text-xs" style={{ color: "var(--v-ink-soft)" }}>
+                <div className="relative flex items-center gap-5">
+                  <div className="text-6xl">{v.emoji}</div>
+                  <div className="min-w-0">
+                    <h3 className="text-2xl font-black tracking-tight">{v.name}</h3>
+                    <p className="mt-1 text-xs font-semibold uppercase tracking-widest" style={{ color: "var(--v-ink-soft)" }}>
                       From ₹{v.packs[0].price}
                     </p>
                   </div>
                 </div>
-                <div className="relative mt-5 flex items-center justify-between">
+                <div className="relative mt-8 flex items-center justify-between">
                   <div
-                    className="flex gap-1 text-[10px] font-bold uppercase tracking-wider"
+                    className="flex gap-1.5 text-[10px] font-bold uppercase tracking-wider"
                     style={{ color: "var(--brand-deep)" }}
                   >
                     {v.packs.map((p) => (
                       <span
                         key={p.sku}
-                        className="rounded-full border px-2 py-1"
+                        className="rounded-full border px-2.5 py-1"
                         style={{ borderColor: "color-mix(in oklab, var(--brand) 25%, transparent)" }}
                       >
                         {p.size}
@@ -442,7 +441,7 @@ function Home() {
                     ))}
                   </div>
                   <span
-                    className="rounded-full px-3 py-1 text-xs font-bold text-white transition-transform group-hover:translate-x-1"
+                    className="rounded-full px-4 py-2 text-xs font-bold text-white shadow-md transition-transform group-hover:translate-x-1"
                     style={{ background: "var(--brand)" }}
                   >
                     Shop →
@@ -451,6 +450,7 @@ function Home() {
               </Link>
             ))}
           </div>
+
         </div>
       </section>
 
