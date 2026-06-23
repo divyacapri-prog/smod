@@ -155,6 +155,7 @@ export function ProductInformation({ variant }: { variant: Variant }) {
 
       {/* Caution + certifications */}
       <div className="mt-6 grid gap-6 md:grid-cols-2">
+
         <div className="premium-card p-7">
           <p className="text-xs font-bold uppercase tracking-widest" style={{ color: "var(--brand)" }}>Caution & safety</p>
           <ul className="mt-4 space-y-2 text-sm" style={{ color: "var(--v-ink)" }}>
