@@ -7,6 +7,8 @@ import { AbstractArt } from "@/components/site/AbstractArt";
 import { HandDropPodIcon, LoadClothesIcon, SpinWashIcon, ScrollReplayIcon } from "@/components/site/StepIcons";
 import smodLogo from "@/assets/smod-logo-white.png.asset.json";
 import packFront from "@/assets/smod-pack-front.png.asset.json";
+import innerwearPack from "@/assets/smod-innerwear-pack.jpg.asset.json";
+import babyPack from "@/assets/smod-baby-pack.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -25,84 +27,13 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-// Compact pillar tiles — icon-first, minimal copy
-const PILLARS = [
-  { letter: "S", word: "Smart", tag: "Dosage", svg: <PodIcon /> },
-  { letter: "M", word: "Maximum", tag: "Clean", svg: <SplashIcon /> },
-  { letter: "O", word: "Optimised", tag: "Care", svg: <FabricIcon /> },
-  { letter: "D", word: "Dependable", tag: "Freshness", svg: <LeafIcon /> },
-];
-
-function PodIcon() {
-  return (
-    <svg viewBox="0 0 64 64" className="h-12 w-12">
-      <defs>
-        <linearGradient id="podg" x1="0" x2="1" y1="0" y2="1">
-          <stop offset="0" stopColor="var(--accent)" />
-          <stop offset="1" stopColor="var(--brand)" />
-        </linearGradient>
-      </defs>
-      <rect x="10" y="10" width="44" height="44" rx="14" fill="url(#podg)" />
-      <circle cx="24" cy="26" r="6" fill="white" opacity=".9" />
-      <circle cx="42" cy="40" r="8" fill="white" opacity=".7" />
-    </svg>
-  );
-}
-function SplashIcon() {
-  return (
-    <svg viewBox="0 0 64 64" className="h-12 w-12" fill="var(--brand)">
-      <path d="M32 4c8 12 18 20 18 32a18 18 0 11-36 0c0-12 10-20 18-32z" />
-      <circle cx="26" cy="40" r="4" fill="white" opacity=".6" />
-    </svg>
-  );
-}
-function FabricIcon() {
-  return (
-    <svg
-      viewBox="0 0 64 64"
-      className="h-12 w-12"
-      fill="none"
-      stroke="var(--brand)"
-      strokeWidth="3"
-      strokeLinecap="round"
-    >
-      <path d="M8 20 Q16 12 24 20 T40 20 T56 20" />
-      <path d="M8 34 Q16 26 24 34 T40 34 T56 34" />
-      <path d="M8 48 Q16 40 24 48 T40 48 T56 48" />
-    </svg>
-  );
-}
-function LeafIcon() {
-  return (
-    <svg viewBox="0 0 64 64" className="h-12 w-12" fill="var(--brand)">
-      <path d="M52 8C28 8 12 24 12 44c0 5 1 9 3 12C18 38 32 24 52 20c-10 8-22 18-28 36 16 0 32-14 32-36V8z" />
-    </svg>
-  );
-}
-
-function PillarCard({ p }: { p: (typeof PILLARS)[number] }) {
-  return (
-    <article
-      className="premium-card group relative flex items-center gap-5 overflow-hidden p-6"
-    >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -right-3 -top-6 text-[6rem] font-black leading-none opacity-[0.07]"
-        style={{ color: "var(--brand)" }}
-      >
-        {p.letter}
-      </div>
-      <div className="relative shrink-0">{p.svg}</div>
-      <div className="relative min-w-0">
-        <div className="eyebrow" style={{ color: "var(--brand)" }}>
-          {p.word}
-        </div>
-        <h3 className="mt-1 text-lg font-black leading-tight">{p.tag}</h3>
-      </div>
-    </article>
-
-  );
-}
+const VARIANT_IMAGES: Record<string, string> = {
+  regular: packFront.url,
+  socks: packFront.url,
+  sports: packFront.url,
+  innerwear: innerwearPack.url,
+  baby: babyPack.url,
+};
 
 const STEPS = [
   { n: "01", t: "Drop", b: "One pod in the drum.", Icon: HandDropPodIcon },
@@ -118,253 +49,204 @@ function Home() {
     >
       <Header />
 
-      {/* ============ HERO ============ */}
+      {/* ============ HERO — Dropps-style split, oversized product imagery ============ */}
       <section
         className="relative overflow-hidden"
-        style={{ background: `linear-gradient(135deg, var(--brand) 0%, var(--brand-deep) 100%)` }}
+        style={{
+          background: `linear-gradient(160deg, color-mix(in oklab, var(--brand) 92%, white) 0%, color-mix(in oklab, var(--brand-deep) 85%, black) 100%)`,
+        }}
       >
-        <WavePattern edge="bottom" color="rgba(255,255,255,0.12)" height={140} />
-        <div aria-hidden className="pointer-events-none absolute inset-0 opacity-30">
+        <div aria-hidden className="pointer-events-none absolute inset-0 opacity-40">
           <div
-            className="absolute -left-20 top-10 h-72 w-72 rounded-full"
+            className="absolute -left-32 top-10 h-[28rem] w-[28rem] rounded-full"
             style={{
               background:
-                "radial-gradient(circle at 30% 30%, color-mix(in oklab, white 60%, transparent), transparent 60%)",
+                "radial-gradient(circle, color-mix(in oklab, white 35%, transparent), transparent 65%)",
             }}
           />
           <div
-            className="absolute right-10 top-40 h-40 w-40 rounded-full"
+            className="absolute -bottom-32 right-0 h-[32rem] w-[32rem] rounded-full"
             style={{
               background:
-                "radial-gradient(circle at 30% 30%, color-mix(in oklab, white 70%, transparent), transparent 60%)",
-            }}
-          />
-          <div
-            className="absolute bottom-10 left-1/3 h-56 w-56 rounded-full"
-            style={{
-              background:
-                "radial-gradient(circle at 30% 30%, color-mix(in oklab, var(--accent) 70%, transparent), transparent 60%)",
+                "radial-gradient(circle, color-mix(in oklab, var(--accent) 60%, transparent), transparent 65%)",
             }}
           />
         </div>
 
-        <div className="relative mx-auto flex max-w-7xl flex-col items-center gap-8 px-5 py-24 text-center text-white md:py-40">
-          <img src={smodLogo.url} alt="SMOD" className="h-24 w-auto md:h-32" />
-          <h1 className="headline-xl max-w-4xl text-5xl text-white md:text-7xl lg:text-[5.5rem]">
-            No mess, <span style={{ color: "var(--accent)" }}>zero guesswork.</span>
-          </h1>
-          <p className="max-w-xl text-base text-white/80 md:text-lg">
-            Smart dosing. Maximum clean. Optimised care. Dependable freshness.
-          </p>
-          <div className="mt-4 flex flex-wrap justify-center gap-3">
-            <a
-              href="#variants"
-              onClick={(e) => {
-                e.preventDefault();
-                document.getElementById("variants")?.scrollIntoView({ behavior: "smooth", block: "start" });
-              }}
-              className="rounded-full bg-white px-8 py-4 text-sm font-bold shadow-xl transition-transform hover:scale-[1.03]"
-              style={{ color: "var(--brand)" }}
-            >
-              Shop the range
-            </a>
-            <a
-              href="#pillars"
-              className="rounded-full border border-white/40 px-8 py-4 text-sm font-bold text-white hover:bg-white/10"
-            >
-              How it works
-            </a>
-          </div>
-        </div>
-
-
-        {/* trust strip — icon based */}
-        <div className="relative border-t border-white/15 bg-black/10">
-          <div className="mx-auto grid max-w-7xl grid-cols-3 gap-4 px-5 py-5 text-center text-[10px] font-bold uppercase tracking-[0.2em] text-white/85">
-            <div className="flex flex-col items-center gap-1">
-              <span className="text-2xl">🐇</span>Cruelty Free
-            </div>
-            <div className="flex flex-col items-center gap-1">
-              <span className="text-2xl">♻️</span>Recyclable
-            </div>
-            <div className="flex flex-col items-center gap-1">
-              <span className="text-2xl">🌀</span>Top + Front Load
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ============ SMOD WORDMARK INFOGRAPHIC ============ */}
-      <section className="relative overflow-hidden">
-        {/* Abstract packaging-inspired artwork as backdrop */}
-        <div aria-hidden className="absolute inset-0 -z-0">
-          <AbstractArt opacity={0.55} />
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(180deg, color-mix(in oklab, var(--v-bg) 70%, transparent) 0%, color-mix(in oklab, var(--v-bg) 30%, transparent) 50%, color-mix(in oklab, var(--v-bg) 80%, transparent) 100%)",
-            }}
-          />
-        </div>
-        <div className="relative mx-auto max-w-7xl px-5 py-32 text-center md:py-44">
-          <p className="eyebrow" style={{ color: "var(--brand)" }}>
-            Who we are
-          </p>
-          <div className="mt-8 flex flex-wrap items-center justify-center text-6xl font-black tracking-tight md:text-8xl">
-            <span style={{ color: "var(--brand)" }}>SM</span>
-            <span style={{ color: "#728198" }}>ART&nbsp;P</span>
-            <span style={{ color: "var(--brand)" }}>OD</span>
-          </div>
-          <p className="mx-auto mt-6 max-w-md text-base font-medium md:text-lg" style={{ color: "var(--v-ink-soft)" }}>
-            A tiny laboratory in every pod.
-          </p>
-        </div>
-
-      </section>
-
-      {/* ============ FOUR PILLARS — pack at center, pillars radiating ============ */}
-      <section id="pillars" className="section-pad-lg relative overflow-hidden" style={{ background: "var(--v-bg-soft)" }}>
-        <WavePattern />
-        <div className="relative mx-auto max-w-7xl px-5">
-          <div className="mb-16 text-center md:mb-20">
-            <p className="eyebrow" style={{ color: "var(--v-ink)" }}>
-              S · M · O · D
+        <div className="relative mx-auto grid max-w-[1400px] items-center gap-12 px-6 pt-28 pb-16 md:grid-cols-2 md:gap-8 md:pt-40 md:pb-28 lg:gap-16">
+          <div className="text-white">
+            <img src={smodLogo.url} alt="SMOD" className="h-14 w-auto md:h-16" />
+            <h1 className="headline-2xl mt-8 text-balance text-[3rem] leading-[1] text-white sm:text-6xl md:text-[5rem] lg:text-[6.25rem]">
+              Made Smart.
+              <br />
+              <span style={{ color: "var(--accent)" }}>Made to Clean.</span>
+            </h1>
+            <p className="mt-7 max-w-md text-base leading-relaxed text-white/85 md:text-lg">
+              Pre-measured pods — engineered without the mess of scoops, jugs or guesswork.
+              One pod, one load, every time.
             </p>
-            <h2 className="headline-xl mt-4 text-4xl md:text-6xl">Four pillars. One pod.</h2>
+            <div className="mt-9 flex flex-wrap gap-3">
+              <a
+                href="#range"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById("range")?.scrollIntoView({ behavior: "smooth", block: "start" });
+                }}
+                className="rounded-full bg-white px-9 py-4 text-sm font-bold uppercase tracking-wider shadow-xl transition-transform hover:scale-[1.03]"
+                style={{ color: "var(--brand)" }}
+              >
+                Shop all pods
+              </a>
+            </div>
           </div>
 
+          {/* Oversized product image */}
+          <div className="relative flex items-center justify-center md:justify-end">
+            <div
+              aria-hidden
+              className="absolute inset-0 -m-12 rounded-full blur-3xl"
+              style={{
+                background:
+                  "radial-gradient(circle, color-mix(in oklab, var(--accent) 55%, transparent), transparent 65%)",
+              }}
+            />
+            <img
+              src={packFront.url}
+              alt="SMOD pod pack"
+              className="relative h-[360px] w-auto drop-shadow-[0_40px_60px_rgba(0,0,0,0.45)] md:h-[520px] lg:h-[620px]"
+            />
+          </div>
+        </div>
 
-          <div className="grid items-center gap-6 md:grid-cols-[1fr_auto_1fr]">
-            <div className="order-2 grid grid-cols-2 gap-4 md:order-1 md:grid-cols-1">
-              {PILLARS.slice(0, 2).map((p) => (
-                <PillarCard key={p.letter} p={p} />
-              ))}
-            </div>
-
-            <div className="relative order-1 flex justify-center md:order-2">
-              <div
-                aria-hidden
-                className="absolute inset-0 -m-10 rounded-full blur-3xl"
-                style={{
-                  background:
-                    "radial-gradient(circle, color-mix(in oklab, var(--accent) 40%, transparent), transparent 70%)",
-                }}
-              />
-              <div className="relative rounded-[2rem] bg-white p-6 shadow-2xl ring-1 ring-black/5 md:p-8">
-                <img src={packFront.url} alt="SMOD pack" className="block h-[280px] w-auto md:h-[420px]" />
-              </div>
-            </div>
-
-            <div className="order-3 grid grid-cols-2 gap-4 md:grid-cols-1">
-              {PILLARS.slice(2).map((p) => (
-                <PillarCard key={p.letter} p={p} />
-              ))}
-            </div>
+        {/* Trust strip — Dropps press-bar style */}
+        <div className="relative" style={{ background: "color-mix(in oklab, var(--accent) 50%, white)" }}>
+          <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-10 gap-y-3 px-5 py-4 text-[11px] font-extrabold uppercase tracking-[0.25em]" style={{ color: "var(--brand-deep)" }}>
+            <span>🐇 Cruelty Free</span>
+            <span className="opacity-30">·</span>
+            <span>♻️ Recyclable</span>
+            <span className="opacity-30">·</span>
+            <span>🌀 Top + Front Load</span>
+            <span className="opacity-30">·</span>
+            <span>🌿 Bio-degradable Film</span>
           </div>
         </div>
       </section>
 
-      {/* ============ HOW IT WORKS — visual flow ============ */}
-      <section className="section-pad mx-auto max-w-7xl px-5">
-        <div className="mb-16 text-center md:mb-20">
+      {/* ============ THE RANGE — surfaced immediately (storefront first) ============ */}
+      <section id="range" className="section-pad-lg mx-auto max-w-[1400px] px-6">
+        <div className="mb-16 text-center md:mb-24">
           <p className="eyebrow" style={{ color: "var(--brand)" }}>
-            How it works
+            Meet the SMOD crew
           </p>
-          <h2 className="headline-xl mt-4 text-4xl md:text-6xl">Three steps. Zero mess.</h2>
+          <h2 className="headline-2xl mt-5 text-4xl md:text-6xl lg:text-7xl">One pod for every load.</h2>
+          <p className="mx-auto mt-5 max-w-xl text-base md:text-lg" style={{ color: "var(--v-ink-soft)" }}>
+            Five formulas. Same pre-measured pod. Pick the load you're washing.
+          </p>
         </div>
 
-        <div className="relative grid gap-10 md:grid-cols-3">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute left-[16%] right-[16%] top-24 hidden h-px md:block"
-            style={{ background: `repeating-linear-gradient(90deg, var(--brand) 0 8px, transparent 8px 16px)` }}
-          />
-          {STEPS.map((s, i) => (
-            <div key={s.n} className="relative flex flex-col items-center text-center">
-              <div
-                className="relative grid h-48 w-48 place-items-center rounded-full shadow-xl ring-1 ring-black/5"
-                style={{ background: "var(--v-surface)", color: "var(--brand-deep)" }}
-              >
+        <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
+          {VARIANTS.map((v) => (
+            <Link
+              key={v.slug}
+              to={`/${v.slug}` as string}
+              className="product-tile group"
+              style={
+                {
+                  "--tile-bg": v.palette.bgSoft,
+                  "--brand": v.palette.brand,
+                } as React.CSSProperties
+              }
+            >
+              <div className="tile-image">
                 <span
-                  aria-hidden
-                  className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em] text-white"
-                  style={{ background: `linear-gradient(135deg, var(--brand), var(--brand-deep))` }}
+                  className="absolute left-5 top-5 rounded-full px-3 py-1 text-[10px] font-extrabold uppercase tracking-widest"
+                  style={{ background: "rgba(255,255,255,0.85)", color: v.palette.brand }}
                 >
-                  Step {i + 1}
+                  {v.emoji} {v.name}
                 </span>
-                {s.n === "03" ? (
-                  <s.Icon className="h-32 w-32" />
-                ) : (
-                  <ScrollReplayIcon Icon={s.Icon} className="h-32 w-32" />
-                )}
+                <img src={VARIANT_IMAGES[v.slug] || packFront.url} alt={`SMOD ${v.name} pack`} />
               </div>
-              <h3 className="mt-6 text-xl font-black">{s.t}</h3>
-              <p className="mt-1 text-sm" style={{ color: "var(--v-ink-soft)" }}>
-                {s.b}
-              </p>
-            </div>
+              <div className="tile-body">
+                <h3 className="text-2xl font-black tracking-tight" style={{ color: v.palette.ink }}>
+                  SMOD {v.name}
+                </h3>
+                <p className="mt-1 text-sm leading-relaxed" style={{ color: v.palette.inkSoft }}>
+                  {v.tagline}
+                </p>
+                <div className="mt-5 flex items-center justify-between">
+                  <span className="text-sm font-bold" style={{ color: v.palette.ink }}>
+                    From ₹{v.packs[0].price}
+                  </span>
+                  <span
+                    className="rounded-full px-5 py-2.5 text-xs font-extrabold uppercase tracking-wider text-white transition-transform group-hover:translate-x-1"
+                    style={{ background: v.palette.brand }}
+                  >
+                    Shop →
+                  </span>
+                </div>
+              </div>
+            </Link>
           ))}
         </div>
       </section>
 
-      {/* ============ 4-IN-1 CONCEPT ============ */}
+      {/* ============ 4-IN-1 EDITORIAL ============ */}
       <section
-        className="section-pad relative overflow-hidden"
-        style={{ background: `linear-gradient(135deg, var(--v-bg-soft), var(--v-surface))` }}
+        className="section-pad-lg relative overflow-hidden"
+        style={{ background: "var(--v-bg-soft)" }}
       >
-        <div className="mx-auto max-w-7xl px-5">
-          <div className="mb-16 text-center md:mb-20">
-            <p className="eyebrow" style={{ color: "var(--brand)" }}>
-              One pod. Four actions.
-            </p>
-            <h2 className="headline-xl mt-4 text-4xl md:text-6xl">4-in-1 laundry care.</h2>
-            <p className="mx-auto mt-5 max-w-xl text-base md:text-lg" style={{ color: "var(--v-ink-soft)" }}>
-              Detergent, comforter, softener and antimicrobial — all sealed into a single pod.
+        <div className="mx-auto max-w-[1400px] px-6">
+          <div className="mb-16 grid items-end gap-8 md:mb-20 md:grid-cols-[1.2fr_1fr]">
+            <div>
+              <p className="eyebrow" style={{ color: "var(--brand)" }}>
+                One pod. Four actions.
+              </p>
+              <h2 className="headline-2xl mt-5 text-4xl md:text-6xl lg:text-7xl">
+                4-in-1 laundry care.
+              </h2>
+            </div>
+            <p className="text-base md:text-lg" style={{ color: "var(--v-ink-soft)" }}>
+              Detergent, comforter, softener and anti-microbial — all sealed into a single pod.
+              No bottles. No measuring. No mess.
             </p>
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              {
-                n: "01",
-                icon: "🧼",
-                title: "Detergent",
-                body: "Triple-enzyme deep clean lifts dirt and tough stains.",
-              },
+              { n: "01", icon: "🧼", title: "Detergent", body: "Triple-enzyme deep clean lifts dirt and tough stains." },
               { n: "02", icon: "👕", title: "Comforter", body: "Restores softness and a cozy feel to every fibre." },
               { n: "03", icon: "🌸", title: "Softener", body: "Long-lasting fresh scent woven into your laundry." },
               { n: "04", icon: "🛡️", title: "Anti-microbial", body: "Fights odor-causing bacteria, wash after wash." },
             ].map((f) => (
-              <div key={f.title} className="premium-card relative overflow-hidden p-7">
+              <div key={f.title} className="premium-card relative overflow-hidden p-8">
                 <div
                   aria-hidden
-                  className="absolute -right-2 -top-4 text-[4.5rem] font-black leading-none opacity-[0.08]"
+                  className="absolute -right-2 -top-4 text-[5rem] font-black leading-none opacity-[0.08]"
                   style={{ color: "var(--brand)" }}
                 >
                   {f.n}
                 </div>
-                <div className="relative text-4xl">{f.icon}</div>
-                <h3 className="relative mt-5 text-xl font-black">{f.title}</h3>
+                <div className="relative text-5xl">{f.icon}</div>
+                <h3 className="relative mt-6 text-xl font-black">{f.title}</h3>
                 <p className="relative mt-2 text-sm leading-relaxed" style={{ color: "var(--v-ink-soft)" }}>
                   {f.body}
                 </p>
               </div>
             ))}
           </div>
-
         </div>
       </section>
 
       {/* ============ WHY PODS ============ */}
-
-      <section className="section-pad mx-auto max-w-7xl px-5">
-        <div className="mb-16 text-center md:mb-20">
-          <p className="eyebrow" style={{ color: "var(--brand)" }}>
-            Why pods
-          </p>
-          <h2 className="headline-xl mt-4 text-4xl md:text-6xl">Detergent, Redesigned.</h2>
-          <p className="mx-auto mt-5 max-w-xl text-base md:text-lg" style={{ color: "var(--v-ink-soft)" }}>
+      <section className="section-pad-lg mx-auto max-w-[1400px] px-6">
+        <div className="mb-16 grid items-end gap-8 md:mb-20 md:grid-cols-[1.2fr_1fr]">
+          <div>
+            <p className="eyebrow" style={{ color: "var(--brand)" }}>
+              Why pods
+            </p>
+            <h2 className="headline-2xl mt-5 text-4xl md:text-6xl lg:text-7xl">Detergent, Redesigned.</h2>
+          </div>
+          <p className="text-base md:text-lg" style={{ color: "var(--v-ink-soft)" }}>
             Six reasons our customers never go back to bottles or boxes.
           </p>
         </div>
@@ -377,9 +259,9 @@ function Home() {
             { icon: "🌿", title: "Bio-degradable", body: "Plant-derived film breaks down cleanly." },
             { icon: "⭐", title: "Premium clean", body: "Triple-action enzymes per pod." },
           ].map((w) => (
-            <div key={w.title} className="premium-card p-7">
-              <div className="text-4xl">{w.icon}</div>
-              <h3 className="mt-5 text-xl font-black">{w.title}</h3>
+            <div key={w.title} className="premium-card p-8">
+              <div className="text-5xl">{w.icon}</div>
+              <h3 className="mt-6 text-xl font-black">{w.title}</h3>
               <p className="mt-2 text-sm leading-relaxed" style={{ color: "var(--v-ink-soft)" }}>
                 {w.body}
               </p>
@@ -388,77 +270,90 @@ function Home() {
         </div>
       </section>
 
-      {/* ============ VARIANTS ============ */}
+      {/* ============ HOW IT WORKS ============ */}
       <section
-        id="variants"
         className="section-pad-lg relative overflow-hidden"
         style={{ background: "var(--v-bg-soft)" }}
       >
         <WavePattern />
-        <div className="relative mx-auto max-w-7xl px-5">
-          <div className="mb-16 text-center md:mb-20">
-            <p className="eyebrow" style={{ color: "var(--v-ink)" }}>
-              The range
+        <div className="relative mx-auto max-w-[1400px] px-6">
+          <div className="mb-16 text-center md:mb-24">
+            <p className="eyebrow" style={{ color: "var(--brand)" }}>
+              How it works
             </p>
-            <h2 className="headline-xl mt-4 text-4xl md:text-6xl">One pod for every load.</h2>
+            <h2 className="headline-2xl mt-5 text-4xl md:text-6xl lg:text-7xl">Three steps. Zero mess.</h2>
           </div>
 
-
-          <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
-            {VARIANTS.map((v) => (
-              <Link
-                key={v.slug}
-                to={`/${v.slug}` as string}
-                className="premium-card group relative block overflow-hidden p-8"
-              >
+          <div className="relative grid gap-10 md:grid-cols-3">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute left-[16%] right-[16%] top-24 hidden h-px md:block"
+              style={{ background: `repeating-linear-gradient(90deg, var(--brand) 0 8px, transparent 8px 16px)` }}
+            />
+            {STEPS.map((s, i) => (
+              <div key={s.n} className="relative flex flex-col items-center text-center">
                 <div
-                  aria-hidden
-                  className="absolute -right-12 -top-12 h-48 w-48 rounded-full opacity-30 blur-3xl transition-opacity group-hover:opacity-50"
-                  style={{ background: "var(--brand)" }}
-                />
-                <div className="relative flex items-center gap-5">
-                  <div className="text-6xl">{v.emoji}</div>
-                  <div className="min-w-0">
-                    <h3 className="text-2xl font-black tracking-tight">{v.name}</h3>
-                    <p className="mt-1 text-xs font-semibold uppercase tracking-widest" style={{ color: "var(--v-ink-soft)" }}>
-                      From ₹{v.packs[0].price}
-                    </p>
-                  </div>
-                </div>
-                <div className="relative mt-8 flex items-center justify-between">
-                  <div
-                    className="flex gap-1.5 text-[10px] font-bold uppercase tracking-wider"
-                    style={{ color: "var(--brand-deep)" }}
-                  >
-                    {v.packs.map((p) => (
-                      <span
-                        key={p.sku}
-                        className="rounded-full border px-2.5 py-1"
-                        style={{ borderColor: "color-mix(in oklab, var(--brand) 25%, transparent)" }}
-                      >
-                        {p.size}
-                      </span>
-                    ))}
-                  </div>
+                  className="relative grid h-48 w-48 place-items-center rounded-full shadow-xl ring-1 ring-black/5"
+                  style={{ background: "var(--v-surface)", color: "var(--brand-deep)" }}
+                >
                   <span
-                    className="rounded-full px-4 py-2 text-xs font-bold text-white shadow-md transition-transform group-hover:translate-x-1"
-                    style={{ background: "var(--brand)" }}
+                    aria-hidden
+                    className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em] text-white"
+                    style={{ background: `linear-gradient(135deg, var(--brand), var(--brand-deep))` }}
                   >
-                    Shop →
+                    Step {i + 1}
                   </span>
+                  {s.n === "03" ? (
+                    <s.Icon className="h-32 w-32" />
+                  ) : (
+                    <ScrollReplayIcon Icon={s.Icon} className="h-32 w-32" />
+                  )}
                 </div>
-              </Link>
+                <h3 className="mt-7 text-2xl font-black">{s.t}</h3>
+                <p className="mt-2 text-sm" style={{ color: "var(--v-ink-soft)" }}>
+                  {s.b}
+                </p>
+              </div>
             ))}
           </div>
+        </div>
+      </section>
 
+      {/* ============ WHO WE ARE — SMOD wordmark ============ */}
+      <section className="relative overflow-hidden">
+        <div aria-hidden className="absolute inset-0 -z-0">
+          <AbstractArt opacity={0.45} />
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(180deg, color-mix(in oklab, var(--v-bg) 70%, transparent) 0%, color-mix(in oklab, var(--v-bg) 30%, transparent) 50%, color-mix(in oklab, var(--v-bg) 80%, transparent) 100%)",
+            }}
+          />
+        </div>
+        <div className="relative mx-auto max-w-[1400px] px-6 py-32 text-center md:py-48">
+          <p className="eyebrow" style={{ color: "var(--brand)" }}>
+            Who we are
+          </p>
+          <div className="mt-8 flex flex-wrap items-center justify-center text-6xl font-black tracking-tight md:text-8xl lg:text-9xl">
+            <span style={{ color: "var(--brand)" }}>SM</span>
+            <span style={{ color: "#728198" }}>ART&nbsp;P</span>
+            <span style={{ color: "var(--brand)" }}>OD</span>
+          </div>
+          <p className="mx-auto mt-8 max-w-md text-base font-medium md:text-lg" style={{ color: "var(--v-ink-soft)" }}>
+            A tiny laboratory in every pod.
+          </p>
         </div>
       </section>
 
       {/* ============ FINAL CTA ============ */}
-      <section className="section-pad mx-auto max-w-7xl px-5">
+      <section className="section-pad mx-auto max-w-[1400px] px-6">
         <div
-          className="relative overflow-hidden rounded-[2.5rem] p-12 text-center text-white md:p-20"
-          style={{ background: `linear-gradient(135deg, var(--brand), var(--brand-deep))`, boxShadow: "0 60px 120px -50px var(--brand)" }}
+          className="relative overflow-hidden rounded-[2.5rem] p-12 text-center text-white md:p-24"
+          style={{
+            background: `linear-gradient(135deg, var(--brand), var(--brand-deep))`,
+            boxShadow: "0 60px 120px -50px var(--brand)",
+          }}
         >
           <WavePattern color="rgba(255,255,255,0.18)" />
           <div
@@ -466,15 +361,15 @@ function Home() {
             className="absolute -right-20 -top-20 h-80 w-80 rounded-full opacity-30"
             style={{ background: "var(--accent)" }}
           />
-          <div className="relative pt-24 pb-8">
-            <h2 className="headline-xl text-4xl text-white md:text-6xl">Smarter wash. Starts here.</h2>
+          <div className="relative pt-20 pb-6">
+            <h2 className="headline-2xl text-4xl text-white md:text-6xl lg:text-7xl">Smarter wash. Starts here.</h2>
             <a
-              href="#variants"
+              href="#range"
               onClick={(e) => {
                 e.preventDefault();
-                document.getElementById("variants")?.scrollIntoView({ behavior: "smooth", block: "start" });
+                document.getElementById("range")?.scrollIntoView({ behavior: "smooth", block: "start" });
               }}
-              className="mt-8 inline-block rounded-full bg-white px-10 py-4 text-sm font-bold shadow-xl transition-transform hover:scale-[1.03]"
+              className="mt-10 inline-block rounded-full bg-white px-10 py-4 text-sm font-bold uppercase tracking-wider shadow-xl transition-transform hover:scale-[1.03]"
               style={{ color: "var(--brand)" }}
             >
               Shop SMOD pods →
@@ -482,7 +377,6 @@ function Home() {
           </div>
         </div>
       </section>
-
 
       <Footer />
     </div>
