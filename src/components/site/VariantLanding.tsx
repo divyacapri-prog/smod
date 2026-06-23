@@ -63,10 +63,10 @@ export function VariantLanding({ variant }: { variant: Variant }) {
           className="absolute -top-32 left-1/2 h-[600px] w-[900px] -translate-x-1/2 rounded-full opacity-60 blur-3xl"
           style={{ background: `radial-gradient(closest-side, var(--brand), transparent 70%)` }}
         />
-        <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-5 pt-32 pb-16 md:grid-cols-2 md:pt-40 md:pb-24">
+        <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 pt-32 pb-24 md:grid-cols-2 md:gap-16 md:pt-48 md:pb-32">
           <div>
             <div
-              className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-widest backdrop-blur-md"
+              className="inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-xs font-semibold uppercase tracking-widest backdrop-blur-md"
               style={{
                 borderColor: "color-mix(in oklab, var(--v-ink) 15%, transparent)",
                 color: "var(--v-ink)",
@@ -76,14 +76,15 @@ export function VariantLanding({ variant }: { variant: Variant }) {
               <span>{variant.emoji}</span> {variant.tagline}
             </div>
             <h1
-              className="mt-5 text-balance text-5xl font-black leading-[1.02] tracking-tight md:text-7xl"
+              className="headline-xl mt-6 text-balance text-5xl md:text-7xl lg:text-[5.5rem]"
               style={{ color: "var(--v-ink)" }}
             >
               {variant.headline}
             </h1>
-            <p className="mt-5 max-w-xl text-lg leading-relaxed" style={{ color: "var(--v-ink-soft)" }}>
+            <p className="mt-6 max-w-xl text-lg leading-relaxed md:text-xl" style={{ color: "var(--v-ink-soft)" }}>
               {variant.description}
             </p>
+
             <div className="mt-8 flex flex-wrap gap-3">
               <a
                 href="#shop"
