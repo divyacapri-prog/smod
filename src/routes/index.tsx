@@ -83,24 +83,24 @@ function LeafIcon() {
 function PillarCard({ p }: { p: (typeof PILLARS)[number] }) {
   return (
     <article
-      className="group relative flex items-center gap-4 overflow-hidden rounded-2xl border bg-white p-4 transition-all hover:-translate-y-0.5 hover:shadow-xl"
-      style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)" }}
+      className="premium-card group relative flex items-center gap-5 overflow-hidden p-6"
     >
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-3 -top-5 text-[5rem] font-black leading-none opacity-[0.07]"
+        className="pointer-events-none absolute -right-3 -top-6 text-[6rem] font-black leading-none opacity-[0.07]"
         style={{ color: "var(--brand)" }}
       >
         {p.letter}
       </div>
       <div className="relative shrink-0">{p.svg}</div>
       <div className="relative min-w-0">
-        <div className="text-[10px] font-bold uppercase tracking-[0.25em]" style={{ color: "var(--brand)" }}>
+        <div className="eyebrow" style={{ color: "var(--brand)" }}>
           {p.word}
         </div>
-        <h3 className="text-base font-black leading-tight">{p.tag}</h3>
+        <h3 className="mt-1 text-lg font-black leading-tight">{p.tag}</h3>
       </div>
     </article>
+
   );
 }
 
