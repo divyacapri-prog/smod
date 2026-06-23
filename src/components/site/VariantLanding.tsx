@@ -448,26 +448,6 @@ function FAQItem({ q, a }: { q: string; a: string }) {
   );
 }
 
-function PackPill({ label, price, to, featured }: { label: string; price: number; to: string; featured?: boolean }) {
-  return (
-    <Link
-      to={to}
-      className="flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition-transform hover:-translate-y-0.5"
-      style={
-        featured
-          ? { background: "var(--v-ink)", color: "var(--v-surface)", borderColor: "var(--v-ink)" }
-          : {
-              background: "var(--v-surface)",
-              color: "var(--v-ink)",
-              borderColor: "color-mix(in oklab, var(--v-ink) 15%, transparent)",
-            }
-      }
-    >
-      <span>{label}</span>
-      <span className="opacity-70">₹{price}</span>
-    </Link>
-  );
-}
 
 function PurchaseCard({
   variant,
