@@ -341,19 +341,19 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section id={id} className="mx-auto max-w-7xl px-5 py-16 md:py-24">
-      <div className="mx-auto mb-10 max-w-3xl text-center">
-        <p className="text-xs font-bold uppercase tracking-[0.3em]" style={{ color: "var(--brand)" }}>
+    <section id={id} className="section-pad mx-auto max-w-7xl px-5">
+      <div className="mx-auto mb-14 max-w-3xl text-center md:mb-20">
+        <p className="eyebrow" style={{ color: "var(--brand)" }}>
           {eyebrow}
         </p>
         <h2
-          className="mt-3 text-balance text-4xl font-black tracking-tight md:text-5xl"
+          className="headline-xl mt-4 text-balance text-4xl md:text-6xl"
           style={{ color: "var(--v-ink)" }}
         >
           {title}
         </h2>
         {subtitle && (
-          <p className="mt-3 text-base" style={{ color: "var(--v-ink-soft)" }}>
+          <p className="mx-auto mt-5 max-w-xl text-base md:text-lg" style={{ color: "var(--v-ink-soft)" }}>
             {subtitle}
           </p>
         )}
@@ -361,6 +361,7 @@ function Section({
       {children}
     </section>
   );
+
 }
 
 function Row({ label, a, b }: { label: string; a: string; b: string }) {
