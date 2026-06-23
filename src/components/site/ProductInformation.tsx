@@ -120,7 +120,8 @@ export function ProductInformation({ variant }: { variant: Variant }) {
 
 
       {/* Directions + dosage */}
-      <div className="mt-10 grid gap-6 md:grid-cols-2">
+      <div className="mt-8 grid gap-6 md:grid-cols-2">
+
         <div className="premium-card p-7">
           <p className="text-xs font-bold uppercase tracking-widest" style={{ color: "var(--brand)" }}>Directions for use</p>
           <div className="mt-5 grid gap-4 sm:grid-cols-3">
