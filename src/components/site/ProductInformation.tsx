@@ -121,7 +121,7 @@ export function ProductInformation({ variant }: { variant: Variant }) {
 
       {/* Directions + dosage */}
       <div className="mt-10 grid gap-6 md:grid-cols-2">
-        <div className="rounded-3xl border p-6" style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)", background: "var(--v-surface)" }}>
+        <div className="premium-card p-7">
           <p className="text-xs font-bold uppercase tracking-widest" style={{ color: "var(--brand)" }}>Directions for use</p>
           <div className="mt-5 grid gap-4 sm:grid-cols-3">
             {p.directions.map((d, i) => {
@@ -139,7 +139,7 @@ export function ProductInformation({ variant }: { variant: Variant }) {
           </div>
         </div>
 
-        <div className="rounded-3xl border p-6" style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)", background: "var(--v-surface)" }}>
+        <div className="premium-card p-7">
           <p className="text-xs font-bold uppercase tracking-widest" style={{ color: "var(--brand)" }}>Dosage guide</p>
           <div className="mt-4 divide-y" style={{ borderColor: "color-mix(in oklab, var(--v-ink) 8%, transparent)" }}>
             {p.dosage.map((d) => (
@@ -154,7 +154,7 @@ export function ProductInformation({ variant }: { variant: Variant }) {
 
       {/* Caution + certifications */}
       <div className="mt-6 grid gap-6 md:grid-cols-2">
-        <div className="rounded-3xl border p-6" style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)", background: "var(--v-surface)" }}>
+        <div className="premium-card p-7">
           <p className="text-xs font-bold uppercase tracking-widest" style={{ color: "var(--brand)" }}>Caution & safety</p>
           <ul className="mt-4 space-y-2 text-sm" style={{ color: "var(--v-ink)" }}>
             {p.caution.map((c) => (
@@ -166,7 +166,7 @@ export function ProductInformation({ variant }: { variant: Variant }) {
           </ul>
         </div>
 
-        <div className="rounded-3xl border p-6" style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)", background: "var(--v-surface)" }}>
+        <div className="premium-card p-7">
           <p className="text-xs font-bold uppercase tracking-widest" style={{ color: "var(--brand)" }}>Certifications</p>
           <div className="mt-4 flex flex-wrap gap-2">
             {p.certifications.map((c) => (
@@ -185,7 +185,7 @@ export function ProductInformation({ variant }: { variant: Variant }) {
 
 function FactCard({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-3xl border p-5" style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)", background: "var(--v-surface)" }}>
+    <div className="premium-card p-6">
       <p className="text-xs font-bold uppercase tracking-widest" style={{ color: "var(--v-ink-soft)" }}>{label}</p>
       <p className="mt-2 text-base font-bold" style={{ color: "var(--v-ink)" }}>{value}</p>
     </div>
