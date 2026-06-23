@@ -106,17 +106,18 @@ export function ProductInformation({ variant }: { variant: Variant }) {
       </div>
 
       {/* Key benefits grid */}
-      <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4 md:mt-20">
         {p.benefits.map((b) => (
-          <div key={b.title} className="rounded-3xl border p-6" style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)", background: "var(--v-surface)" }}>
-            <div className="grid h-11 w-11 place-items-center rounded-xl text-xl" style={{ background: "color-mix(in oklab, var(--brand) 12%, transparent)" }}>
+          <div key={b.title} className="premium-card p-7">
+            <div className="grid h-12 w-12 place-items-center rounded-2xl text-2xl" style={{ background: "color-mix(in oklab, var(--brand) 12%, transparent)" }}>
               <span>{b.icon}</span>
             </div>
-            <h3 className="mt-3 text-base font-bold" style={{ color: "var(--v-ink)" }}>{b.title}</h3>
-            <p className="mt-1 text-sm" style={{ color: "var(--v-ink-soft)" }}>{b.body}</p>
+            <h3 className="mt-5 text-lg font-black" style={{ color: "var(--v-ink)" }}>{b.title}</h3>
+            <p className="mt-2 text-sm leading-relaxed" style={{ color: "var(--v-ink-soft)" }}>{b.body}</p>
           </div>
         ))}
       </div>
+
 
       {/* Directions + dosage */}
       <div className="mt-10 grid gap-6 md:grid-cols-2">
