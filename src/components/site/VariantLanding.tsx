@@ -49,6 +49,8 @@ const FAQS = [
 
 export function VariantLanding({ variant }: { variant: Variant }) {
   const [p20, p40] = variant.packs;
+  const [selectedPack, setSelectedPack] = useState<typeof p20>(p40);
+  const productImage = variant.packaging.imageUrl || variant.packaging.imageFrontUrl || packFront.url;
 
   return (
     <div
@@ -57,104 +59,144 @@ export function VariantLanding({ variant }: { variant: Variant }) {
     >
       <Header />
 
-      {/* HERO */}
-      <section className="relative overflow-hidden">
-        <WavePattern />
-        <div
-          aria-hidden
-          className="absolute -top-32 left-1/2 h-[600px] w-[900px] -translate-x-1/2 rounded-full opacity-60 blur-3xl"
-          style={{ background: `radial-gradient(closest-side, var(--brand), transparent 70%)` }}
-        />
-        <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 pt-32 pb-24 md:grid-cols-2 md:gap-16 md:pt-48 md:pb-32">
-          <div>
+      {/* HERO — Dropps-style PDP: large gallery left, sticky buy column right */}
+      <section className="relative overflow-hidden" style={{ background: "var(--v-bg-soft)" }}>
+        <div className="relative mx-auto grid max-w-[1400px] items-start gap-10 px-6 pt-28 pb-16 md:grid-cols-[1.1fr_1fr] md:gap-16 md:pt-36 md:pb-24">
+          {/* Gallery */}
+          <div className="relative">
             <div
-              className="inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-xs font-semibold uppercase tracking-widest backdrop-blur-md"
+              className="relative overflow-hidden rounded-[2.5rem]"
               style={{
-                borderColor: "color-mix(in oklab, var(--v-ink) 15%, transparent)",
-                color: "var(--v-ink)",
-                background: "color-mix(in oklab, var(--v-surface) 60%, transparent)",
+                background: `linear-gradient(160deg, color-mix(in oklab, var(--brand) 18%, var(--v-bg-soft)), var(--v-bg-soft))`,
+                aspectRatio: "4 / 5",
               }}
             >
-              <span>{variant.emoji}</span> {variant.tagline}
+              <div
+                aria-hidden
+                className="absolute inset-0"
+                style={{
+                  background: `radial-gradient(circle at 30% 30%, color-mix(in oklab, var(--accent) 40%, transparent), transparent 60%)`,
+                }}
+              />
+              <div className="relative flex h-full items-center justify-center p-10">
+                <img
+                  src={productImage}
+                  alt={`SMOD ${variant.name} pack`}
+                  className="max-h-[520px] w-auto object-contain drop-shadow-[0_30px_50px_rgba(0,0,0,0.35)]"
+                />
+              </div>
+              <span
+                className="absolute left-6 top-6 rounded-full px-4 py-1.5 text-[10px] font-extrabold uppercase tracking-widest backdrop-blur"
+                style={{ background: "rgba(255,255,255,0.85)", color: "var(--brand)" }}
+              >
+                {variant.emoji} SMOD {variant.name}
+              </span>
             </div>
+          </div>
+
+          {/* Buy column */}
+          <div className="md:sticky md:top-28">
+            <p className="eyebrow" style={{ color: "var(--brand)" }}>
+              {variant.tagline}
+            </p>
             <h1
-              className="headline-xl mt-6 text-balance text-5xl md:text-7xl lg:text-[5.5rem]"
+              className="headline-2xl mt-4 text-balance text-4xl md:text-5xl lg:text-6xl"
               style={{ color: "var(--v-ink)" }}
             >
               {variant.headline}
             </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed md:text-xl" style={{ color: "var(--v-ink-soft)" }}>
+            <p className="mt-5 text-base leading-relaxed md:text-lg" style={{ color: "var(--v-ink-soft)" }}>
               {variant.description}
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                href="#shop"
-                className="rounded-full px-6 py-3 text-sm font-bold text-white shadow-lg transition-transform hover:scale-[1.03]"
-                style={{ background: "var(--brand)", boxShadow: "0 15px 40px -15px var(--brand)" }}
-              >
-                Buy Now
-              </a>
-              <Link
-                to="/cart"
-                className="rounded-full border px-6 py-3 text-sm font-bold transition-colors"
-                style={{ borderColor: "color-mix(in oklab, var(--v-ink) 20%, transparent)", color: "var(--v-ink)" }}
-              >
-                View cart
-              </Link>
+            <div className="mt-6 flex flex-wrap gap-2">
+              {variant.benefits.slice(0, 3).map((b) => (
+                <span
+                  key={b.title}
+                  className="rounded-full border px-3.5 py-1.5 text-xs font-bold"
+                  style={{
+                    borderColor: "color-mix(in oklab, var(--v-ink) 15%, transparent)",
+                    color: "var(--v-ink)",
+                    background: "var(--v-surface)",
+                  }}
+                >
+                  ✓ {b.title}
+                </span>
+              ))}
             </div>
-            <div className="mt-8 flex gap-3">
-              <PackPill label="20 Pods" price={p20.price} to={p20.buyPath} />
-              <PackPill label="40 Pods" price={p40.price} to={p40.buyPath} featured />
-            </div>
-          </div>
 
-          {/* Product visual */}
-          <div className="relative">
+            <div className="mt-8">
+              <p className="text-xs font-extrabold uppercase tracking-[0.25em]" style={{ color: "var(--v-ink-soft)" }}>
+                Choose your pack
+              </p>
+              <div className="mt-3 grid grid-cols-2 gap-3">
+                {variant.packs.map((pack) => {
+                  const active = pack.sku === selectedPack.sku;
+                  return (
+                    <button
+                      key={pack.sku}
+                      onClick={() => setSelectedPack(pack)}
+                      className="relative rounded-2xl border-2 p-4 text-left transition-all"
+                      style={{
+                        borderColor: active ? "var(--brand)" : "color-mix(in oklab, var(--v-ink) 12%, transparent)",
+                        background: active
+                          ? "color-mix(in oklab, var(--brand) 8%, var(--v-surface))"
+                          : "var(--v-surface)",
+                      }}
+                    >
+                      {pack.size === 40 && (
+                        <span
+                          className="absolute -top-2 right-3 rounded-full px-2 py-0.5 text-[9px] font-extrabold uppercase tracking-wider text-white"
+                          style={{ background: "var(--brand)" }}
+                        >
+                          Best value
+                        </span>
+                      )}
+                      <p className="text-lg font-black" style={{ color: "var(--v-ink)" }}>
+                        {pack.size} Pods
+                      </p>
+                      <p className="text-xs" style={{ color: "var(--v-ink-soft)" }}>
+                        ₹{pack.perWash.toFixed(2)} / wash
+                      </p>
+                      <p className="mt-2 text-xl font-black" style={{ color: "var(--v-ink)" }}>
+                        ₹{pack.price}
+                      </p>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            <Link
+              to={selectedPack.buyPath}
+              className="mt-6 flex w-full items-center justify-center rounded-full px-6 py-4 text-sm font-extrabold uppercase tracking-[0.2em] text-white shadow-xl transition-transform hover:scale-[1.01]"
+              style={{ background: "var(--brand)", boxShadow: "0 20px 50px -20px var(--brand)" }}
+            >
+              Buy {selectedPack.size} Pods · ₹{selectedPack.price}
+            </Link>
+            <a
+              href="#shop"
+              className="mt-3 block text-center text-xs font-bold uppercase tracking-[0.25em] underline-offset-4 hover:underline"
+              style={{ color: "var(--v-ink-soft)" }}
+            >
+              Or scan QR to purchase ↓
+            </a>
+
             <div
-              className="relative mx-auto aspect-square w-full max-w-md overflow-hidden rounded-[2.5rem] border p-8"
+              className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 border-t pt-5 text-[10px] font-bold uppercase tracking-[0.2em]"
               style={{
-                background: `linear-gradient(135deg, var(--v-surface), var(--v-bg-soft))`,
                 borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)",
-                boxShadow: "0 40px 80px -30px color-mix(in oklab, var(--brand) 50%, transparent)",
+                color: "var(--v-ink-soft)",
               }}
             >
-              <div
-                className="absolute inset-0"
-                aria-hidden
-                style={{
-                  background: `radial-gradient(circle at 30% 20%, color-mix(in oklab, var(--brand) 35%, transparent), transparent 55%)`,
-                }}
-              />
-              <div className="relative flex h-full flex-col items-center justify-center gap-6">
-                <div className="grid grid-cols-3 gap-3">
-                  {Array.from({ length: 9 }).map((_, i) => (
-                    <div
-                      key={i}
-                      className="aspect-square w-20 rounded-2xl"
-                      style={{
-                        background:
-                          i % 2 === 0
-                            ? `radial-gradient(circle at 30% 30%, var(--accent), var(--brand))`
-                            : `radial-gradient(circle at 70% 30%, var(--brand), var(--brand-deep))`,
-                        boxShadow: "inset 0 -8px 16px rgba(0,0,0,0.15), 0 6px 14px rgba(0,0,0,0.12)",
-                      }}
-                    />
-                  ))}
-                </div>
-                <div className="text-center">
-                  <p className="text-xs font-bold uppercase tracking-[0.3em]" style={{ color: "var(--v-ink-soft)" }}>
-                    SMOD · {variant.name}
-                  </p>
-                  <p className="mt-1 text-2xl font-black" style={{ color: "var(--v-ink)" }}>
-                    {variant.emoji} {variant.name}
-                  </p>
-                </div>
-              </div>
+              <span>🐇 Cruelty Free</span>
+              <span>♻️ Recyclable</span>
+              <span>🌀 Top + Front Load</span>
             </div>
           </div>
         </div>
       </section>
+
 
       {/* PRODUCT INFORMATION — auto-rendered from packaging artwork data */}
       <ProductInformation variant={variant} />
