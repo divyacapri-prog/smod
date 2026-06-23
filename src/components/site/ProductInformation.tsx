@@ -58,18 +58,19 @@ function PackCarousel({ images, alt }: { images: string[]; alt: string }) {
 export function ProductInformation({ variant }: { variant: Variant }) {
   const p = variant.packaging;
   return (
-    <section id="product-information" className="mx-auto max-w-7xl px-5 py-16 md:py-24">
-      <div className="mx-auto mb-10 max-w-3xl text-center">
-        <p className="text-xs font-bold uppercase tracking-[0.3em]" style={{ color: "var(--brand)" }}>
+    <section id="product-information" className="section-pad mx-auto max-w-7xl px-5">
+      <div className="mx-auto mb-14 max-w-3xl text-center md:mb-20">
+        <p className="eyebrow" style={{ color: "var(--brand)" }}>
           Product Information
         </p>
-        <h2 className="mt-3 text-balance text-4xl font-black tracking-tight md:text-5xl" style={{ color: "var(--v-ink)" }}>
+        <h2 className="headline-xl mt-4 text-balance text-4xl md:text-6xl" style={{ color: "var(--v-ink)" }}>
           {p.productName}
         </h2>
-        <p className="mt-3 text-base" style={{ color: "var(--v-ink-soft)" }}>{p.subtitle}</p>
+        <p className="mx-auto mt-5 max-w-xl text-base md:text-lg" style={{ color: "var(--v-ink-soft)" }}>{p.subtitle}</p>
       </div>
 
-      <div className="grid items-start gap-6 md:grid-cols-12">
+      <div className="grid items-start gap-10 md:grid-cols-12 md:gap-14">
+
         {/* Pack images — carousel that auto-advances */}
         <div className="md:col-span-5">
           {p.imageFrontUrl || p.imageBackUrl ? (
