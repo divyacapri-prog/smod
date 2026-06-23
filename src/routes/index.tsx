@@ -310,19 +310,20 @@ function Home() {
 
       {/* ============ 4-IN-1 CONCEPT ============ */}
       <section
-        className="relative overflow-hidden py-20"
+        className="section-pad relative overflow-hidden"
         style={{ background: `linear-gradient(135deg, var(--v-bg-soft), var(--v-surface))` }}
       >
         <div className="mx-auto max-w-7xl px-5">
-          <div className="mb-10 text-center">
-            <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--brand)" }}>
+          <div className="mb-16 text-center md:mb-20">
+            <p className="eyebrow" style={{ color: "var(--brand)" }}>
               One pod. Four actions.
             </p>
-            <h2 className="mt-2 text-3xl font-black md:text-5xl">4-in-1 laundry care.</h2>
-            <p className="mt-3 text-base" style={{ color: "var(--v-ink-soft)" }}>
+            <h2 className="headline-xl mt-4 text-4xl md:text-6xl">4-in-1 laundry care.</h2>
+            <p className="mx-auto mt-5 max-w-xl text-base md:text-lg" style={{ color: "var(--v-ink-soft)" }}>
               Detergent, comforter, softener and antimicrobial — all sealed into a single pod.
             </p>
           </div>
+
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
