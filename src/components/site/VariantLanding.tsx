@@ -163,26 +163,24 @@ export function VariantLanding({ variant }: { variant: Variant }) {
         title="Detergent, Redesigned."
         subtitle="Six reasons our customers never go back to bottles or boxes."
       >
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {WHY_PODS.map((w) => (
             <div
               key={w.title}
-              className="rounded-3xl border p-6 backdrop-blur-sm transition-transform hover:-translate-y-1"
-              style={{
-                borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)",
-                background: "color-mix(in oklab, var(--v-surface) 70%, transparent)",
-              }}
+              className="premium-card p-7 backdrop-blur-sm"
+              style={{ background: "color-mix(in oklab, var(--v-surface) 70%, transparent)" }}
             >
-              <div className="text-3xl">{w.icon}</div>
-              <h3 className="mt-3 text-lg font-bold" style={{ color: "var(--v-ink)" }}>
+              <div className="text-4xl">{w.icon}</div>
+              <h3 className="mt-5 text-xl font-black" style={{ color: "var(--v-ink)" }}>
                 {w.title}
               </h3>
-              <p className="mt-1 text-sm" style={{ color: "var(--v-ink-soft)" }}>
+              <p className="mt-2 text-sm leading-relaxed" style={{ color: "var(--v-ink-soft)" }}>
                 {w.body}
               </p>
             </div>
           ))}
         </div>
+
       </Section>
 
       {/* BENEFITS */}
