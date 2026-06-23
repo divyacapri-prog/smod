@@ -10,6 +10,8 @@ import { StickyCTA } from "./StickyCTA";
 import { QRCode } from "./QRCode";
 import { ProductInformation } from "./ProductInformation";
 import { WavePattern } from "./WavePattern";
+import packFront from "@/assets/smod-pack-front.png.asset.json";
+
 
 const PURCHASE_BASE = typeof window !== "undefined" ? window.location.origin : "";
 
