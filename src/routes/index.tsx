@@ -324,7 +324,7 @@ function Home() {
             </p>
           </div>
 
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
                 n: "01",
@@ -336,26 +336,23 @@ function Home() {
               { n: "03", icon: "🌸", title: "Softener", body: "Long-lasting fresh scent woven into your laundry." },
               { n: "04", icon: "🛡️", title: "Anti-microbial", body: "Fights odor-causing bacteria, wash after wash." },
             ].map((f) => (
-              <div
-                key={f.title}
-                className="relative overflow-hidden rounded-3xl border bg-white p-6 transition-transform hover:-translate-y-1"
-                style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)" }}
-              >
+              <div key={f.title} className="premium-card relative overflow-hidden p-7">
                 <div
                   aria-hidden
-                  className="absolute -right-2 -top-4 text-[4rem] font-black leading-none opacity-[0.08]"
+                  className="absolute -right-2 -top-4 text-[4.5rem] font-black leading-none opacity-[0.08]"
                   style={{ color: "var(--brand)" }}
                 >
                   {f.n}
                 </div>
-                <div className="relative text-3xl">{f.icon}</div>
-                <h3 className="relative mt-3 text-lg font-black">{f.title}</h3>
-                <p className="relative mt-1 text-sm" style={{ color: "var(--v-ink-soft)" }}>
+                <div className="relative text-4xl">{f.icon}</div>
+                <h3 className="relative mt-5 text-xl font-black">{f.title}</h3>
+                <p className="relative mt-2 text-sm leading-relaxed" style={{ color: "var(--v-ink-soft)" }}>
                   {f.body}
                 </p>
               </div>
             ))}
           </div>
+
         </div>
       </section>
 
