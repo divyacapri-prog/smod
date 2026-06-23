@@ -455,10 +455,10 @@ function Home() {
       </section>
 
       {/* ============ FINAL CTA ============ */}
-      <section className="mx-auto max-w-7xl px-5 py-16">
+      <section className="section-pad mx-auto max-w-7xl px-5">
         <div
-          className="relative overflow-hidden rounded-[2.5rem] p-10 text-center text-white md:p-16"
-          style={{ background: `linear-gradient(135deg, var(--brand), var(--brand-deep))` }}
+          className="relative overflow-hidden rounded-[2.5rem] p-12 text-center text-white md:p-20"
+          style={{ background: `linear-gradient(135deg, var(--brand), var(--brand-deep))`, boxShadow: "0 60px 120px -50px var(--brand)" }}
         >
           <WavePattern color="rgba(255,255,255,0.18)" />
           <div
@@ -467,14 +467,14 @@ function Home() {
             style={{ background: "var(--accent)" }}
           />
           <div className="relative pt-24 pb-8">
-            <h2 className="text-3xl font-black md:text-5xl">Smarter wash. Starts here.</h2>
+            <h2 className="headline-xl text-4xl text-white md:text-6xl">Smarter wash. Starts here.</h2>
             <a
               href="#variants"
               onClick={(e) => {
                 e.preventDefault();
                 document.getElementById("variants")?.scrollIntoView({ behavior: "smooth", block: "start" });
               }}
-              className="mt-6 inline-block rounded-full bg-white px-8 py-4 text-sm font-bold shadow-lg transition-transform hover:scale-[1.03]"
+              className="mt-8 inline-block rounded-full bg-white px-10 py-4 text-sm font-bold shadow-xl transition-transform hover:scale-[1.03]"
               style={{ color: "var(--brand)" }}
             >
               Shop SMOD pods →
@@ -482,6 +482,7 @@ function Home() {
           </div>
         </div>
       </section>
+
 
       <Footer />
     </div>
