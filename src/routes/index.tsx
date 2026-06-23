@@ -207,19 +207,20 @@ function Home() {
             }}
           />
         </div>
-        <div className="relative mx-auto max-w-7xl px-5 py-20 text-center">
-          <p className="text-xs font-bold uppercase tracking-[0.35em]" style={{ color: "var(--brand)" }}>
+        <div className="relative mx-auto max-w-7xl px-5 py-32 text-center md:py-44">
+          <p className="eyebrow" style={{ color: "var(--brand)" }}>
             Who we are
           </p>
-          <div className="mt-6 flex flex-wrap items-center justify-center text-5xl font-black md:text-7xl">
+          <div className="mt-8 flex flex-wrap items-center justify-center text-6xl font-black tracking-tight md:text-8xl">
             <span style={{ color: "var(--brand)" }}>SM</span>
             <span style={{ color: "#728198" }}>ART&nbsp;P</span>
             <span style={{ color: "var(--brand)" }}>OD</span>
           </div>
-          <p className="mx-auto mt-4 max-w-md text-sm font-medium" style={{ color: "var(--v-ink-soft)" }}>
+          <p className="mx-auto mt-6 max-w-md text-base font-medium md:text-lg" style={{ color: "var(--v-ink-soft)" }}>
             A tiny laboratory in every pod.
           </p>
         </div>
+
       </section>
 
       {/* ============ FOUR PILLARS — pack at center, pillars radiating ============ */}
