@@ -240,7 +240,15 @@ function Home() {
         className="section-pad-lg relative overflow-hidden"
         style={{ background: "var(--v-bg-soft)" }}
       >
-        <div className="mx-auto max-w-[1400px] px-6">
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <div className="depth-blob depth-float" style={{ top: "-6%", right: "10%", width: "30rem", height: "30rem", background: "color-mix(in oklab, var(--accent) 55%, transparent)" }} />
+          <div className="depth-blob depth-float-slow" style={{ bottom: "-10%", left: "5%", width: "26rem", height: "26rem", background: "color-mix(in oklab, var(--brand) 18%, transparent)" }} />
+          <svg className="absolute left-1/2 top-1/2 h-[40rem] w-[40rem] -translate-x-1/2 -translate-y-1/2 opacity-[0.04]" viewBox="0 0 200 200">
+            <path d="M50,-60C62,-50,68,-32,71,-14C74,4,74,22,65,36C56,50,38,60,18,67C-2,74,-22,78,-39,71C-56,64,-70,46,-74,27C-78,8,-72,-13,-61,-28C-50,-43,-34,-52,-17,-60C0,-68,18,-75,32,-72C46,-69,38,-70,50,-60Z" transform="translate(100 100)" fill="var(--brand)"/>
+          </svg>
+        </div>
+
+        <div className="relative mx-auto max-w-[1400px] px-6">
           <div className="mb-16 grid items-end gap-8 md:mb-20 md:grid-cols-[1.2fr_1fr]">
             <div>
               <p className="eyebrow" style={{ color: "var(--brand)" }}>
@@ -262,18 +270,18 @@ function Home() {
               { n: "02", icon: "👕", title: "Comforter", body: "Restores softness and a cozy feel to every fibre." },
               { n: "03", icon: "🌸", title: "Softener", body: "Long-lasting fresh scent woven into your laundry." },
               { n: "04", icon: "🛡️", title: "Anti-microbial", body: "Fights odor-causing bacteria, wash after wash." },
-            ].map((f) => (
-              <div key={f.title} className="premium-card relative overflow-hidden p-8">
+            ].map((f, i) => (
+              <div key={f.title} className={`feature-card ${i % 2 === 1 ? "lg:translate-y-6" : ""}`}>
                 <div
                   aria-hidden
-                  className="absolute -right-2 -top-4 text-[5rem] font-black leading-none opacity-[0.08]"
+                  className="absolute -right-2 -top-4 text-[6rem] font-black leading-none opacity-[0.07]"
                   style={{ color: "var(--brand)" }}
                 >
                   {f.n}
                 </div>
-                <div className="relative text-5xl">{f.icon}</div>
-                <h3 className="relative mt-6 text-xl font-black">{f.title}</h3>
-                <p className="relative mt-2 text-sm leading-relaxed" style={{ color: "var(--v-ink-soft)" }}>
+                <div className="feature-icon">{f.icon}</div>
+                <h3 className="mt-6 text-xl font-black">{f.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed" style={{ color: "var(--v-ink-soft)" }}>
                   {f.body}
                 </p>
               </div>
@@ -283,35 +291,40 @@ function Home() {
       </section>
 
       {/* ============ WHY PODS ============ */}
-      <section className="section-pad-lg mx-auto max-w-[1400px] px-6">
-        <div className="mb-16 grid items-end gap-8 md:mb-20 md:grid-cols-[1.2fr_1fr]">
-          <div>
-            <p className="eyebrow" style={{ color: "var(--brand)" }}>
-              Why pods
-            </p>
-            <h2 className="headline-2xl mt-5 text-4xl md:text-6xl lg:text-7xl">Detergent, Redesigned.</h2>
-          </div>
-          <p className="text-base md:text-lg" style={{ color: "var(--v-ink-soft)" }}>
-            Six reasons our customers never go back to bottles or boxes.
-          </p>
+      <section className="relative overflow-hidden">
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <div className="depth-blob depth-float-slow" style={{ top: "10%", left: "60%", width: "28rem", height: "28rem", background: "color-mix(in oklab, var(--accent) 40%, transparent)" }} />
         </div>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {[
-            { icon: "⚖️", title: "Pre-measured", body: "Exactly one pod per load. No guesswork." },
-            { icon: "✈️", title: "Travel friendly", body: "No spills — sealed film dissolves only in water." },
-            { icon: "📦", title: "Easy storage", body: "Resealable ziplock pack, fits any laundry shelf." },
-            { icon: "🛡️", title: "Anti-microbial", body: "Fights odor-causing bacteria, every wash." },
-            { icon: "🌿", title: "Bio-degradable", body: "Plant-derived film breaks down cleanly." },
-            { icon: "⭐", title: "Premium clean", body: "Triple-action enzymes per pod." },
-          ].map((w) => (
-            <div key={w.title} className="premium-card p-8">
-              <div className="text-5xl">{w.icon}</div>
-              <h3 className="mt-6 text-xl font-black">{w.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed" style={{ color: "var(--v-ink-soft)" }}>
-                {w.body}
+        <div className="relative section-pad-lg mx-auto max-w-[1400px] px-6">
+          <div className="mb-16 grid items-end gap-8 md:mb-20 md:grid-cols-[1.2fr_1fr]">
+            <div>
+              <p className="eyebrow" style={{ color: "var(--brand)" }}>
+                Why pods
               </p>
+              <h2 className="headline-2xl mt-5 text-4xl md:text-6xl lg:text-7xl">Detergent, Redesigned.</h2>
             </div>
-          ))}
+            <p className="text-base md:text-lg" style={{ color: "var(--v-ink-soft)" }}>
+              Six reasons our customers never go back to bottles or boxes.
+            </p>
+          </div>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              { icon: "⚖️", title: "Pre-measured", body: "Exactly one pod per load. No guesswork." },
+              { icon: "✈️", title: "Travel friendly", body: "No spills — sealed film dissolves only in water." },
+              { icon: "📦", title: "Easy storage", body: "Resealable ziplock pack, fits any laundry shelf." },
+              { icon: "🛡️", title: "Anti-microbial", body: "Fights odor-causing bacteria, every wash." },
+              { icon: "🌿", title: "Bio-degradable", body: "Plant-derived film breaks down cleanly." },
+              { icon: "⭐", title: "Premium clean", body: "Triple-action enzymes per pod." },
+            ].map((w, i) => (
+              <div key={w.title} className={`feature-card ${i % 3 === 1 ? "lg:translate-y-8" : ""}`}>
+                <div className="feature-icon">{w.icon}</div>
+                <h3 className="mt-6 text-xl font-black">{w.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed" style={{ color: "var(--v-ink-soft)" }}>
+                  {w.body}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
