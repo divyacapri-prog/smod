@@ -49,43 +49,52 @@ function Home() {
     >
       <Header />
 
-      {/* ============ HERO — Dropps-style split, oversized product imagery ============ */}
+      {/* ============ HERO — layered, product-dominant ============ */}
       <section
         className="relative overflow-hidden"
         style={{
-          background: `linear-gradient(160deg, color-mix(in oklab, var(--brand) 92%, white) 0%, color-mix(in oklab, var(--brand-deep) 85%, black) 100%)`,
+          background: `
+            radial-gradient(70% 60% at 85% 20%, color-mix(in oklab, var(--accent) 55%, transparent), transparent 70%),
+            radial-gradient(60% 70% at 10% 90%, color-mix(in oklab, var(--brand-deep) 65%, transparent), transparent 70%),
+            linear-gradient(160deg, color-mix(in oklab, var(--brand) 92%, white) 0%, color-mix(in oklab, var(--brand-deep) 88%, black) 100%)`,
         }}
       >
-        <div aria-hidden className="pointer-events-none absolute inset-0 opacity-40">
-          <div
-            className="absolute -left-32 top-10 h-[28rem] w-[28rem] rounded-full"
-            style={{
-              background:
-                "radial-gradient(circle, color-mix(in oklab, white 35%, transparent), transparent 65%)",
-            }}
-          />
-          <div
-            className="absolute -bottom-32 right-0 h-[32rem] w-[32rem] rounded-full"
-            style={{
-              background:
-                "radial-gradient(circle, color-mix(in oklab, var(--accent) 60%, transparent), transparent 65%)",
-            }}
-          />
+        {/* Layer 2 — large abstract organic shapes */}
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <svg className="absolute -left-32 top-10 h-[34rem] w-[34rem] opacity-40 depth-float-slow" viewBox="0 0 200 200" fill="none">
+            <path
+              d="M44,-65C56,-56,63,-41,69,-25C75,-9,79,7,75,22C71,37,59,51,44,60C29,69,12,73,-5,79C-22,85,-44,93,-58,84C-72,75,-78,49,-79,26C-80,3,-76,-17,-66,-32C-56,-47,-40,-57,-24,-65C-8,-73,8,-79,22,-77C36,-75,32,-74,44,-65Z"
+              transform="translate(100 100)"
+              fill="color-mix(in oklab, white 30%, transparent)"
+            />
+          </svg>
+          <svg className="absolute -right-24 bottom-0 h-[40rem] w-[40rem] opacity-30" viewBox="0 0 200 200" fill="none">
+            <path
+              d="M52,-58C66,-46,75,-28,77,-9C79,10,74,30,62,45C50,60,31,70,11,73C-9,76,-30,72,-46,61C-62,50,-72,32,-75,12C-78,-8,-74,-29,-62,-43C-50,-57,-30,-64,-10,-67C10,-70,30,-69,52,-58Z"
+              transform="translate(100 100)"
+              fill="color-mix(in oklab, var(--accent) 70%, transparent)"
+            />
+          </svg>
+
+          {/* Layer 3 — soft blurred accent blobs */}
+          <div className="depth-blob depth-float" style={{ left: "10%", top: "20%", width: "22rem", height: "22rem", background: "color-mix(in oklab, var(--accent) 80%, transparent)" }} />
+          <div className="depth-blob depth-float-slow" style={{ right: "8%", bottom: "10%", width: "26rem", height: "26rem", background: "color-mix(in oklab, white 55%, transparent)" }} />
         </div>
 
-        <div className="relative mx-auto grid max-w-[1400px] items-center gap-12 px-6 pt-28 pb-16 md:grid-cols-2 md:gap-8 md:pt-40 md:pb-28 lg:gap-16">
+        <div className="relative mx-auto grid max-w-[1400px] items-center gap-10 px-6 pt-28 pb-20 md:grid-cols-[1fr_1.15fr] md:gap-6 md:pt-36 md:pb-32 lg:gap-12">
+          {/* Text — reduced emphasis */}
           <div className="text-white">
-            <img src={smodLogo.url} alt="SMOD" className="h-14 w-auto md:h-16" />
-            <h1 className="headline-2xl mt-8 text-balance text-[3rem] leading-[1] text-white sm:text-6xl md:text-[5rem] lg:text-[6.25rem]">
+            <img src={smodLogo.url} alt="SMOD" className="h-12 w-auto md:h-14" />
+            <h1 className="headline-2xl mt-7 text-balance text-[2.75rem] leading-[1] text-white sm:text-5xl md:text-[4.25rem] lg:text-[5.25rem]">
               Made Smart.
               <br />
               <span style={{ color: "var(--accent)" }}>Made to Clean.</span>
             </h1>
-            <p className="mt-7 max-w-md text-base leading-relaxed text-white/85 md:text-lg">
+            <p className="mt-6 max-w-md text-base leading-relaxed text-white/85 md:text-lg">
               Pre-measured pods — engineered without the mess of scoops, jugs or guesswork.
               One pod, one load, every time.
             </p>
-            <div className="mt-9 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-wrap gap-3">
               <a
                 href="#range"
                 onClick={(e) => {
@@ -98,39 +107,60 @@ function Home() {
                 Shop all pods
               </a>
             </div>
+
+            {/* Floating trust chips dispersed in hero */}
+            <div className="mt-10 flex flex-wrap gap-2.5">
+              <span className="trust-chip" style={{ color: "var(--brand-deep)" }}>🐇 Cruelty Free</span>
+              <span className="trust-chip" style={{ color: "var(--brand-deep)" }}>♻️ Recyclable</span>
+              <span className="trust-chip" style={{ color: "var(--brand-deep)" }}>🌿 Bio-degradable</span>
+            </div>
           </div>
 
-          {/* Oversized product image */}
+          {/* Layer 4 — oversized floating product render */}
           <div className="relative flex items-center justify-center md:justify-end">
+            {/* halo */}
             <div
               aria-hidden
-              className="absolute inset-0 -m-12 rounded-full blur-3xl"
+              className="absolute inset-0 -m-16 rounded-full blur-3xl"
               style={{
                 background:
-                  "radial-gradient(circle, color-mix(in oklab, var(--accent) 55%, transparent), transparent 65%)",
+                  "radial-gradient(circle at 50% 45%, color-mix(in oklab, var(--accent) 70%, transparent), transparent 60%)",
               }}
+            />
+            {/* secondary back-pack for depth layering */}
+            <img
+              src={packFront.url}
+              alt=""
+              aria-hidden
+              className="absolute h-[280px] w-auto -translate-x-16 translate-y-10 opacity-30 blur-[2px] md:h-[420px] lg:h-[500px]"
             />
             <img
               src={packFront.url}
               alt="SMOD pod pack"
-              className="relative h-[360px] w-auto drop-shadow-[0_40px_60px_rgba(0,0,0,0.45)] md:h-[520px] lg:h-[620px]"
+              className="product-float relative h-[380px] w-auto md:h-[560px] lg:h-[680px]"
             />
+            {/* floating trust chip on product */}
+            <span
+              className="trust-chip absolute right-2 top-8 hidden md:inline-flex"
+              style={{ color: "var(--brand-deep)" }}
+            >
+              ⭐ 4.8 / 5
+            </span>
+            <span
+              className="trust-chip absolute -left-2 bottom-16 hidden md:inline-flex"
+              style={{ color: "var(--brand-deep)" }}
+            >
+              ✓ 30-day clean guarantee
+            </span>
           </div>
         </div>
 
-        {/* Trust strip — Dropps press-bar style */}
-        <div className="relative" style={{ background: "color-mix(in oklab, var(--accent) 50%, white)" }}>
-          <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-10 gap-y-3 px-5 py-4 text-[11px] font-extrabold uppercase tracking-[0.25em]" style={{ color: "var(--brand-deep)" }}>
-            <span>🐇 Cruelty Free</span>
-            <span className="opacity-30">·</span>
-            <span>♻️ Recyclable</span>
-            <span className="opacity-30">·</span>
-            <span>🌀 Top + Front Load</span>
-            <span className="opacity-30">·</span>
-            <span>🌿 Bio-degradable Film</span>
-          </div>
-        </div>
+        {/* curved bottom — flow into next section */}
+        <svg aria-hidden viewBox="0 0 1440 80" preserveAspectRatio="none" className="relative block h-12 w-full md:h-20" style={{ color: "var(--v-bg)" }}>
+          <path d="M0,40 C360,90 1080,-10 1440,40 L1440,80 L0,80 Z" fill="currentColor" />
+        </svg>
       </section>
+
 
       {/* ============ THE RANGE — surfaced immediately (storefront first) ============ */}
       <section id="range" className="section-pad-lg mx-auto max-w-[1400px] px-6">
