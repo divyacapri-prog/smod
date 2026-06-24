@@ -162,63 +162,78 @@ function Home() {
       </section>
 
 
-      {/* ============ THE RANGE — surfaced immediately (storefront first) ============ */}
-      <section id="range" className="section-pad-lg mx-auto max-w-[1400px] px-6">
-        <div className="mb-16 text-center md:mb-24">
-          <p className="eyebrow" style={{ color: "var(--brand)" }}>
-            Meet the SMOD crew
-          </p>
-          <h2 className="headline-2xl mt-5 text-4xl md:text-6xl lg:text-7xl">One pod for every load.</h2>
-          <p className="mx-auto mt-5 max-w-xl text-base md:text-lg" style={{ color: "var(--v-ink-soft)" }}>
-            Five formulas. Same pre-measured pod. Pick the load you're washing.
-          </p>
+      {/* ============ THE RANGE — layered storefront ============ */}
+      <section id="range" className="relative overflow-hidden">
+        {/* depth backdrop */}
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <div className="depth-blob depth-float-slow" style={{ top: "8%", left: "-6%", width: "26rem", height: "26rem", background: "color-mix(in oklab, var(--brand) 22%, transparent)" }} />
+          <div className="depth-blob depth-float" style={{ bottom: "10%", right: "-4%", width: "22rem", height: "22rem", background: "color-mix(in oklab, var(--accent) 60%, transparent)" }} />
         </div>
 
-        <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
-          {VARIANTS.map((v) => (
-            <Link
-              key={v.slug}
-              to={`/${v.slug}` as string}
-              className="product-tile group"
-              style={
-                {
-                  "--tile-bg": v.palette.bgSoft,
-                  "--brand": v.palette.brand,
-                } as React.CSSProperties
-              }
-            >
-              <div className="tile-image">
+        <div className="relative section-pad-lg mx-auto max-w-[1400px] px-6">
+          <div className="mb-16 text-center md:mb-24">
+            <p className="eyebrow" style={{ color: "var(--brand)" }}>
+              Meet the SMOD crew
+            </p>
+            <h2 className="headline-2xl mt-5 text-4xl md:text-6xl lg:text-7xl">One pod for every load.</h2>
+            <p className="mx-auto mt-5 max-w-xl text-base md:text-lg" style={{ color: "var(--v-ink-soft)" }}>
+              Five formulas. Same pre-measured pod. Pick the load you're washing.
+            </p>
+          </div>
+
+          <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
+            {VARIANTS.map((v, idx) => (
+              <Link
+                key={v.slug}
+                to={`/${v.slug}` as string}
+                className={`product-tile group ${idx % 2 === 1 ? "lg:translate-y-8" : ""}`}
+                style={
+                  {
+                    "--tile-bg": v.palette.bgSoft,
+                    "--brand": v.palette.brand,
+                  } as React.CSSProperties
+                }
+              >
+                {/* organic backdrop shape inside tile */}
                 <span
-                  className="absolute left-5 top-5 rounded-full px-3 py-1 text-[10px] font-extrabold uppercase tracking-widest"
-                  style={{ background: "rgba(255,255,255,0.85)", color: v.palette.brand }}
-                >
-                  {v.emoji} {v.name}
-                </span>
-                <img src={VARIANT_IMAGES[v.slug] || packFront.url} alt={`SMOD ${v.name} pack`} />
-              </div>
-              <div className="tile-body">
-                <h3 className="text-2xl font-black tracking-tight" style={{ color: v.palette.ink }}>
-                  SMOD {v.name}
-                </h3>
-                <p className="mt-1 text-sm leading-relaxed" style={{ color: v.palette.inkSoft }}>
-                  {v.tagline}
-                </p>
-                <div className="mt-5 flex items-center justify-between">
-                  <span className="text-sm font-bold" style={{ color: v.palette.ink }}>
-                    From ₹{v.packs[0].price}
-                  </span>
+                  aria-hidden
+                  className="pointer-events-none absolute -right-10 -top-10 h-48 w-48 rounded-full blur-2xl"
+                  style={{ background: `color-mix(in oklab, ${v.palette.brand} 35%, transparent)` }}
+                />
+                <div className="tile-image">
                   <span
-                    className="rounded-full px-5 py-2.5 text-xs font-extrabold uppercase tracking-wider text-white transition-transform group-hover:translate-x-1"
-                    style={{ background: v.palette.brand }}
+                    className="absolute left-5 top-5 rounded-full px-3 py-1 text-[10px] font-extrabold uppercase tracking-widest backdrop-blur"
+                    style={{ background: "rgba(255,255,255,0.85)", color: v.palette.brand }}
                   >
-                    Shop →
+                    {v.emoji} {v.name}
                   </span>
+                  <img src={VARIANT_IMAGES[v.slug] || packFront.url} alt={`SMOD ${v.name} pack`} />
                 </div>
-              </div>
-            </Link>
-          ))}
+                <div className="tile-body">
+                  <h3 className="text-2xl font-black tracking-tight" style={{ color: v.palette.ink }}>
+                    SMOD {v.name}
+                  </h3>
+                  <p className="mt-1 text-sm leading-relaxed" style={{ color: v.palette.inkSoft }}>
+                    {v.tagline}
+                  </p>
+                  <div className="mt-5 flex items-center justify-between">
+                    <span className="text-sm font-bold" style={{ color: v.palette.ink }}>
+                      From ₹{v.packs[0].price}
+                    </span>
+                    <span
+                      className="rounded-full px-5 py-2.5 text-xs font-extrabold uppercase tracking-wider text-white transition-transform group-hover:translate-x-1"
+                      style={{ background: v.palette.brand }}
+                    >
+                      Shop →
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
+
 
       {/* ============ 4-IN-1 EDITORIAL ============ */}
       <section
