@@ -9,9 +9,9 @@ export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "Contact SMOD — We'd love to hear from you" },
-      { name: "description", content: "Get in touch with the SMOD team for support, partnerships, bulk orders or press enquiries." },
+      { name: "description", content: "Get in touch with the SMOD team for support, partnerships or bulk orders." },
       { property: "og:title", content: "Contact SMOD" },
-      { property: "og:description", content: "Support, partnerships and press — reach the SMOD team." },
+      { property: "og:description", content: "Support, partnerships and bulk orders — reach the SMOD team." },
     ],
   }),
   component: ContactPage,
@@ -62,7 +62,7 @@ function ContactPage() {
                 <Field label="Last name" name="lastName" required />
               </div>
               <Field label="Email" name="email" type="email" required />
-              <Field label="Subject" name="subject" placeholder="Order, partnership, press…" required />
+              <Field label="Subject" name="subject" placeholder="Order, partnership, bulk order…" required />
               <div>
                 <label className="mb-1.5 block text-xs font-bold uppercase tracking-widest" style={{ color: "var(--v-ink)" }}>Message</label>
                 <textarea
@@ -88,22 +88,17 @@ function ContactPage() {
         <div className="space-y-6">
           <InfoCard
             title="Customer support"
-            lines={["hello@smod.care", "Mon–Sat · 9am to 7pm IST"]}
+            lines={["spin@buysmod.com", "+91 98400 60082", "Mon–Sat · 9am to 7pm IST"]}
             badge="Replies in 24h"
           />
           <InfoCard
-            title="Wholesale & partnerships"
-            lines={["partners@smod.care", "+91 80 4567 1200"]}
+            title="Wholesale & bulk orders"
+            lines={["basket@buysmod.com"]}
             badge="B2B"
           />
           <InfoCard
-            title="Press & media"
-            lines={["press@smod.care", "Media kit available on request"]}
-            badge="Press"
-          />
-          <InfoCard
-            title="Head office"
-            lines={["SMOD Care Pvt. Ltd.", "4th floor, Indiqube Alpha,", "Outer Ring Road, Bengaluru 560103"]}
+            title="Registered office"
+            lines={["Vyam Trading Ventures LLP", "10, Thirunagar, Singanallur,", "Coimbatore – 641005"]}
             badge="Visit"
           />
         </div>

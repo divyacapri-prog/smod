@@ -33,7 +33,6 @@ export function Footer() {
           <ul className="space-y-2 text-sm" style={{ color: "var(--v-ink-soft)" }}>
             <li>Our science</li>
             <li>Sustainability</li>
-            <li>Press</li>
           </ul>
         </div>
       </div>

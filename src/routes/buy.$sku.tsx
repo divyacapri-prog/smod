@@ -32,6 +32,9 @@ export const Route = createFileRoute("/buy/$sku")({
 function BuyPage() {
   const { item } = Route.useLoaderData();
   const { variant } = item;
+  const packImg =
+    (item.size === 20 ? variant.packaging.imageUrl20 : variant.packaging.imageUrl40) ??
+    variant.packaging.imageUrl;
   const fullUrl = typeof window !== "undefined" ? `${window.location.origin}${item.buyPath}` : item.buyPath;
   const [added, setAdded] = useState(false);
   const { add } = useCart();
@@ -67,9 +70,9 @@ function BuyPage() {
 
         <div className="mt-6 grid gap-10 rounded-[2rem] border p-8 md:grid-cols-2 md:p-12" style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)", background: "var(--v-surface)", boxShadow: "0 40px 80px -40px var(--brand)" }}>
           <div>
-            {variant.packaging.imageUrl ? (
+            {packImg ? (
               <img
-                src={variant.packaging.imageUrl}
+                src={packImg}
                 alt={`${variant.name} pack`}
                 className="aspect-square w-full rounded-3xl object-cover"
                 loading="lazy"
@@ -87,6 +90,7 @@ function BuyPage() {
           <div className="flex flex-col justify-center">
             <p className="text-xs font-bold uppercase tracking-widest" style={{ color: "var(--brand)" }}>{variant.emoji} {variant.name}</p>
             <h1 className="mt-2 text-5xl font-black tracking-tight">{item.size} Pods</h1>
+            <p className="mt-1 text-sm font-semibold" style={{ color: "var(--v-ink-soft)" }}>Net weight · {item.size * 10} g</p>
             <p className="mt-3 text-base" style={{ color: "var(--v-ink-soft)" }}>{variant.description}</p>
             <div className="mt-6 flex items-baseline gap-3">
               <span className="text-5xl font-black" style={{ color: "var(--v-ink)" }}>₹{item.price}</span>

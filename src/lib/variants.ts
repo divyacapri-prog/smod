@@ -4,6 +4,11 @@ import innerwearPack from "@/assets/smod-innerwear-pack.jpg";
 import babyPack from "@/assets/smod-baby-pack.jpg";
 import socksPack from "@/assets/smod-socks-pack.jpg";
 import sportsPack from "@/assets/smod-sports-pack.jpg";
+import regular200 from "@/assets/smod-regular-200.jpg";
+import innerwear200 from "@/assets/smod-innerwear-200.jpg";
+import socks200 from "@/assets/smod-socks-200.jpg";
+import sports200 from "@/assets/smod-sports-200.jpg";
+import baby200 from "@/assets/smod-baby-200.jpg";
 
 export type Retailer = { name: string; url: string };
 
@@ -23,6 +28,8 @@ export type Packaging = {
   imageUrl?: string;
   imageFrontUrl?: string;
   imageBackUrl?: string;
+  imageUrl20?: string;
+  imageUrl40?: string;
 };
 
 export type Variant = {
@@ -136,7 +143,7 @@ export const VARIANTS: Variant[] = [
       productName: "smod Laundry Washing Pods",
       subtitle: "For Whole Family Clothes",
       claim: "Powerful Clean · Smart Detergent",
-      weight: "250 g",
+      weight: "200 g / 400 g",
       fragrance: "Long-lasting fresh scent",
       benefits: [
         { icon: "👕", title: "Deep Clean", body: "Powerful stain removal" },
@@ -169,6 +176,8 @@ export const VARIANTS: Variant[] = [
       highlights: ["Powerful Clean", "Smart Detergent", "20 Wash Pods"],
       imageFrontUrl: frontAsset,
       imageBackUrl: backAsset,
+      imageUrl20: regular200,
+      imageUrl40: frontAsset,
     },
   },
   {
@@ -236,7 +245,7 @@ export const VARIANTS: Variant[] = [
       productName: "smod Laundry Washing Pods",
       subtitle: "For Socks Care",
       claim: "Odor Destroyer · Anti-Microbial",
-      weight: "250 g",
+      weight: "200 g / 400 g",
       fragrance: "Fresh mint & eucalyptus",
       benefits: [
         { icon: "👕", title: "Deep Clean", body: "Powerful stain removal" },
@@ -265,6 +274,8 @@ export const VARIANTS: Variant[] = [
       machines: ["Top Load", "Front Load"],
       highlights: ["Odor Destroyer", "Anti-Microbial", "Smart Detergent"],
       imageUrl: socksPack,
+      imageUrl20: socks200,
+      imageUrl40: socksPack,
     },
   },
   {
@@ -337,7 +348,7 @@ export const VARIANTS: Variant[] = [
       productName: "smod Laundry Washing Pods",
       subtitle: "For Sports Wear",
       claim: "Performance Clean · Fiber Safe",
-      weight: "250 g",
+      weight: "200 g / 400 g",
       fragrance: "Cool citrus & marine",
       benefits: [
         { icon: "💨", title: "Sweat & Odour Removal", body: "Breaks down sweat and eliminates odour at the source." },
@@ -370,6 +381,8 @@ export const VARIANTS: Variant[] = [
       machines: ["Top Load", "Front Load"],
       highlights: ["Performance Clean", "Fiber Safe", "Smart Detergent"],
       imageUrl: sportsPack,
+      imageUrl20: sports200,
+      imageUrl40: sportsPack,
     },
   },
   {
@@ -381,14 +394,14 @@ export const VARIANTS: Variant[] = [
       "Smod Intimate Wear Cleaning Pods are specially formulated to remove tough stains, odor & bacteria while being gentle on delicate fabrics. Ideal for bras, panties and other intimate wear.",
     emoji: "🌸",
     palette: {
-      brand: "#F5398E", // Vibrant pink (kept for buttons/accents)
-      brandDeep: "#DF8CB3", // Soft rose
-      accent: "#F899C1", // Soft pink accent
-      bg: "#FDEEF4", // Very light blush page bg
-      bgSoft: "#FBDCE7", // Soft pink sections
+      brand: "#C0654A", // Deep terracotta (readable on white text)
+      brandDeep: "#9C4E38",
+      accent: "#F4C6B3", // Peach theme
+      bg: "#FDF4EF",
+      bgSoft: "#F7DFD3",
       surface: "#FFFFFF",
-      ink: "#2A3A86",
-      inkSoft: "#A77192",
+      ink: "#3A2A24",
+      inkSoft: "#8A6A5C",
     },
     benefits: [
       { title: "Deep Clean", description: "Removes tough stains and odor from intimate fabrics." },
@@ -447,7 +460,7 @@ export const VARIANTS: Variant[] = [
       productName: "smod Intimate Wear Cleaning Pods",
       subtitle: "For Your Delicate Innerwear",
       claim: "Powerful Clean Every Time · pH Balanced Gentle Formula",
-      weight: "250 g",
+      weight: "200 g / 400 g",
       fragrance: "Soft floral freshness",
       benefits: [
         { icon: "👕", title: "Deep Clean", body: "Powerful stain removal" },
@@ -479,6 +492,8 @@ export const VARIANTS: Variant[] = [
       machines: ["Top Load", "Front Load"],
       highlights: ["For Bras", "For Panties", "pH Balanced"],
       imageUrl: innerwearPack,
+      imageUrl20: innerwear200,
+      imageUrl40: innerwearPack,
     },
   },
   {
@@ -490,14 +505,14 @@ export const VARIANTS: Variant[] = [
       "Smod Baby Laundry Pods are designed to deliver a powerful clean while being extra gentle on baby's skin and clothes. Our pre-measured pods dissolve quickly in water to remove tough stains and odors, keeping fabrics soft, fresh and safe for your little one.",
     emoji: "👶",
     palette: {
-      brand: "#F5A9C5", // Soft pink
-      brandDeep: "#E89BB5", // Slightly deeper soft pink
-      accent: "#FBDCE7", // Pale blush accent
-      bg: "#FDEFF3", // Very light blush bg
-      bgSoft: "#FBE3EC", // Soft pink sections
+      brand: "#2F72C4", // Readable blue for buttons
+      brandDeep: "#1F5599",
+      accent: "#BDDAF5", // Light blue theme
+      bg: "#F3F8FE",
+      bgSoft: "#DCEBFB",
       surface: "#FFFFFF",
-      ink: "#2A3A86",
-      inkSoft: "#B58AA0",
+      ink: "#143A63",
+      inkSoft: "#5B7794",
     },
     benefits: [
       { title: "Gentle on Sensitive Skin", description: "Antimicrobial formula, kind to delicate skin." },
@@ -551,7 +566,7 @@ export const VARIANTS: Variant[] = [
       productName: "smod Baby Laundry Pods",
       subtitle: "For your baby. For your peace of mind.",
       claim: "Deep Clean. Gentle Care.",
-      weight: "250 g",
+      weight: "200 g / 400 g",
       fragrance: "Soft, baby-safe scent",
       benefits: [
         { icon: "👕", title: "Deep Clean", body: "Powerful stain removal" },
@@ -580,6 +595,8 @@ export const VARIANTS: Variant[] = [
       machines: ["Top Load", "Front Load"],
       highlights: ["Antimicrobial", "Safe for Colors & Fabrics"],
       imageUrl: babyPack,
+      imageUrl20: baby200,
+      imageUrl40: babyPack,
     },
   },
 ];
