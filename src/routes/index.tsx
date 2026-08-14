@@ -116,6 +116,7 @@ function Home() {
               <span className="trust-chip" style={{ color: "var(--brand-deep)" }}>🐇 Cruelty Free</span>
               <span className="trust-chip" style={{ color: "var(--brand-deep)" }}>♻️ Recyclable</span>
               <span className="trust-chip" style={{ color: "var(--brand-deep)" }}>🌿 Bio-degradable</span>
+              <span className="trust-chip" style={{ color: "var(--brand-deep)" }}>✓ 30-day clean guarantee</span>
             </div>
           </div>
 
@@ -144,16 +145,10 @@ function Home() {
             />
             {/* floating trust chip on product */}
             <span
-              className="trust-chip absolute right-2 top-8 hidden md:inline-flex"
+              className="trust-chip absolute right-2 -top-2 hidden md:inline-flex"
               style={{ color: "var(--brand-deep)" }}
             >
               ⭐ 4.8 / 5
-            </span>
-            <span
-              className="trust-chip absolute -left-2 bottom-16 hidden md:inline-flex"
-              style={{ color: "var(--brand-deep)" }}
-            >
-              ✓ 30-day clean guarantee
             </span>
           </div>
         </div>
