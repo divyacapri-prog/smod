@@ -20,7 +20,6 @@ const WHY_PODS = [
   { icon: "✈️", title: "Travel friendly", body: "No spills — sealed film dissolves only in water." },
   { icon: "📦", title: "Easy storage", body: "Resealable ziplock pack, fits any laundry shelf." },
   { icon: "🛡️", title: "Anti-microbial", body: "Fights odor-causing bacteria, every wash." },
-  { icon: "🌿", title: "Bio-degradable", body: "Plant-derived film breaks down cleanly." },
   { icon: "⭐", title: "Premium clean", body: "Triple-action enzymes per pod." },
 ];
 
@@ -189,8 +188,6 @@ export function VariantLanding({ variant }: { variant: Variant }) {
                 color: "var(--v-ink-soft)",
               }}
             >
-              <span>🐇 Cruelty Free</span>
-              <span>♻️ Recyclable</span>
               <span>🌀 Top + Front Load</span>
             </div>
           </div>

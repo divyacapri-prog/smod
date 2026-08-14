@@ -111,13 +111,6 @@ function Home() {
               </a>
             </div>
 
-            {/* Floating trust chips dispersed in hero */}
-            <div className="mt-10 flex flex-wrap gap-2.5">
-              <span className="trust-chip" style={{ color: "var(--brand-deep)" }}>🐇 Cruelty Free</span>
-              <span className="trust-chip" style={{ color: "var(--brand-deep)" }}>♻️ Recyclable</span>
-              <span className="trust-chip" style={{ color: "var(--brand-deep)" }}>🌿 Bio-degradable</span>
-              <span className="trust-chip" style={{ color: "var(--brand-deep)" }}>✓ 30-day clean guarantee</span>
-            </div>
           </div>
 
           {/* Layer 4 — oversized floating product render */}
@@ -311,7 +304,6 @@ function Home() {
               { icon: "✈️", title: "Travel friendly", body: "No spills — sealed film dissolves only in water." },
               { icon: "📦", title: "Easy storage", body: "Resealable ziplock pack, fits any laundry shelf." },
               { icon: "🛡️", title: "Anti-microbial", body: "Fights odor-causing bacteria, every wash." },
-              { icon: "🌿", title: "Bio-degradable", body: "Plant-derived film breaks down cleanly." },
               { icon: "⭐", title: "Premium clean", body: "Triple-action enzymes per pod." },
             ].map((w, i) => (
               <div key={w.title} className={`feature-card ${i % 3 === 1 ? "lg:translate-y-8" : ""}`}>
