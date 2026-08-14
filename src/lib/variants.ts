@@ -1,7 +1,9 @@
-import frontAsset from "@/assets/smod-regular-front.jpg.asset.json";
-import backAsset from "@/assets/smod-regular-back.jpg.asset.json";
-import innerwearPack from "@/assets/smod-innerwear-pack.jpg.asset.json";
-import babyPack from "@/assets/smod-baby-pack.jpg.asset.json";
+import frontAsset from "@/assets/smod-regular-pack.jpeg";
+import backAsset from "@/assets/smod-regular-pack.jpeg";
+import innerwearPack from "@/assets/smod-innerwear-pack.jpg";
+import babyPack from "@/assets/smod-baby-pack.jpg";
+import socksPack from "@/assets/smod-socks-pack.jpg";
+import sportsPack from "@/assets/smod-sports-pack.jpg";
 
 export type Retailer = { name: string; url: string };
 
@@ -165,8 +167,8 @@ export const VARIANTS: Variant[] = [
       certifications: ["Recyclable Packaging"],
       machines: ["Top Load", "Front Load"],
       highlights: ["Powerful Clean", "Smart Detergent", "20 Wash Pods"],
-      imageFrontUrl: frontAsset.url,
-      imageBackUrl: backAsset.url,
+      imageFrontUrl: frontAsset,
+      imageBackUrl: backAsset,
     },
   },
   {
@@ -262,6 +264,7 @@ export const VARIANTS: Variant[] = [
       certifications: ["Recyclable Packaging"],
       machines: ["Top Load", "Front Load"],
       highlights: ["Odor Destroyer", "Anti-Microbial", "Smart Detergent"],
+      imageUrl: socksPack,
     },
   },
   {
@@ -366,6 +369,7 @@ export const VARIANTS: Variant[] = [
       certifications: ["Recyclable Packaging"],
       machines: ["Top Load", "Front Load"],
       highlights: ["Performance Clean", "Fiber Safe", "Smart Detergent"],
+      imageUrl: sportsPack,
     },
   },
   {
@@ -474,7 +478,7 @@ export const VARIANTS: Variant[] = [
       certifications: ["Antimicrobial", "Recyclable Packaging"],
       machines: ["Top Load", "Front Load"],
       highlights: ["For Bras", "For Panties", "pH Balanced"],
-      imageUrl: innerwearPack.url,
+      imageUrl: innerwearPack,
     },
   },
   {
@@ -575,7 +579,7 @@ export const VARIANTS: Variant[] = [
       certifications: ["Antimicrobial", "Recyclable Packaging"],
       machines: ["Top Load", "Front Load"],
       highlights: ["Antimicrobial", "Safe for Colors & Fabrics"],
-      imageUrl: babyPack.url,
+      imageUrl: babyPack,
     },
   },
 ];

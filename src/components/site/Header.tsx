@@ -1,14 +1,14 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { VARIANTS } from "@/lib/variants";
 import { useCart } from "@/lib/cart";
-import smodLogo from "@/assets/smod-logo.png.asset.json";
-import smodLogoWhite from "@/assets/smod-logo-white.png.asset.json";
+import smodLogo from "@/assets/smod-logo.png";
+import smodLogoWhite from "@/assets/smod-logo-white.png";
 
 export function Header() {
   const { count } = useCart();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const isDark = pathname === "/sports";
-  const logoUrl = isDark ? smodLogoWhite.url : smodLogo.url;
+  const logoUrl = isDark ? smodLogoWhite : smodLogo;
   return (
     <header className="sticky top-0 z-40 backdrop-blur-xl" style={{ background: "color-mix(in oklab, var(--v-bg, #fff) 75%, transparent)", borderBottom: "1px solid color-mix(in oklab, var(--v-ink, #000) 8%, transparent)" }}>
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">

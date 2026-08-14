@@ -10,7 +10,7 @@ import { StickyCTA } from "./StickyCTA";
 import { QRCode } from "./QRCode";
 import { ProductInformation } from "./ProductInformation";
 import { WavePattern } from "./WavePattern";
-import packFront from "@/assets/smod-pack-front.png.asset.json";
+import packFront from "@/assets/smod-pack-front.png";
 
 
 const PURCHASE_BASE = typeof window !== "undefined" ? window.location.origin : "";
@@ -50,7 +50,7 @@ const FAQS = [
 export function VariantLanding({ variant }: { variant: Variant }) {
   const [p20, p40] = variant.packs;
   const [selectedPack, setSelectedPack] = useState<typeof p20>(p40);
-  const productImage = variant.packaging.imageUrl || variant.packaging.imageFrontUrl || packFront.url;
+  const productImage = variant.packaging.imageUrl || variant.packaging.imageFrontUrl || packFront;
 
   return (
     <div
