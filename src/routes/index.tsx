@@ -5,13 +5,15 @@ import { Footer } from "@/components/site/Footer";
 import { WavePattern } from "@/components/site/WavePattern";
 import { AbstractArt } from "@/components/site/AbstractArt";
 import { HandDropPodIcon, LoadClothesIcon, SpinWashIcon, ScrollReplayIcon } from "@/components/site/StepIcons";
-import smodLogo from "@/assets/smod-logo-white.png";
-import packFront from "@/assets/smod-pack-front.png";
-import innerwearPack from "@/assets/smod-innerwear-pack.jpg";
-import babyPack from "@/assets/smod-baby-pack.jpg";
-import regularPack from "@/assets/smod-regular-pack.jpeg";
-import socksPack from "@/assets/smod-socks-pack.jpg";
-import sportsPack from "@/assets/smod-sports-pack.jpg";
+import {
+  PodIcon, ClothIcon, SoftenerIcon, ShieldIcon,
+  ScaleIcon, SuitcaseIcon, BoxIcon, LeafIcon, SparkleIcon,
+  CrueltyFreeIcon, RecycleIcon,
+} from "@/components/site/FeatureIcons";
+import smodLogo from "@/assets/smod-logo-white.png.asset.json";
+import packFront from "@/assets/smod-pack-front.png.asset.json";
+import innerwearPack from "@/assets/smod-innerwear-pack.jpg.asset.json";
+import babyPack from "@/assets/smod-baby-pack.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -31,11 +33,11 @@ export const Route = createFileRoute("/")({
 });
 
 const VARIANT_IMAGES: Record<string, string> = {
-  regular: regularPack,
-  socks: socksPack,
-  sports: sportsPack,
-  innerwear: innerwearPack,
-  baby: babyPack,
+  regular: packFront.url,
+  socks: packFront.url,
+  sports: packFront.url,
+  innerwear: innerwearPack.url,
+  baby: babyPack.url,
 };
 
 const STEPS = [
@@ -52,51 +54,52 @@ function Home() {
     >
       <Header />
 
-      {/* ============ HERO — layered, product-dominant ============ */}
+      {/* ============ HERO — product-dominant, restrained ============ */}
       <section
         className="relative overflow-hidden"
         style={{
           background: `
-            radial-gradient(70% 60% at 85% 20%, color-mix(in oklab, var(--accent) 55%, transparent), transparent 70%),
-            radial-gradient(60% 70% at 10% 90%, color-mix(in oklab, var(--brand-deep) 65%, transparent), transparent 70%),
-            linear-gradient(160deg, color-mix(in oklab, var(--brand) 92%, white) 0%, color-mix(in oklab, var(--brand-deep) 88%, black) 100%)`,
+            radial-gradient(65% 55% at 82% 18%, color-mix(in oklab, var(--accent) 30%, transparent), transparent 72%),
+            linear-gradient(160deg, color-mix(in oklab, var(--brand) 92%, white) 0%, color-mix(in oklab, var(--brand-deep) 90%, black) 100%)`,
         }}
       >
-        {/* Layer 2 — large abstract organic shapes */}
+        {/* Layer 2 — a single faint organic shape for depth */}
         <div aria-hidden className="pointer-events-none absolute inset-0">
-          <svg className="absolute -left-32 top-10 h-[34rem] w-[34rem] opacity-40 depth-float-slow" viewBox="0 0 200 200" fill="none">
-            <path
-              d="M44,-65C56,-56,63,-41,69,-25C75,-9,79,7,75,22C71,37,59,51,44,60C29,69,12,73,-5,79C-22,85,-44,93,-58,84C-72,75,-78,49,-79,26C-80,3,-76,-17,-66,-32C-56,-47,-40,-57,-24,-65C-8,-73,8,-79,22,-77C36,-75,32,-74,44,-65Z"
-              transform="translate(100 100)"
-              fill="color-mix(in oklab, white 30%, transparent)"
-            />
-          </svg>
-          <svg className="absolute -right-24 bottom-0 h-[40rem] w-[40rem] opacity-30" viewBox="0 0 200 200" fill="none">
+          <svg className="absolute -right-24 bottom-0 h-[40rem] w-[40rem] opacity-[0.12]" viewBox="0 0 200 200" fill="none">
             <path
               d="M52,-58C66,-46,75,-28,77,-9C79,10,74,30,62,45C50,60,31,70,11,73C-9,76,-30,72,-46,61C-62,50,-72,32,-75,12C-78,-8,-74,-29,-62,-43C-50,-57,-30,-64,-10,-67C10,-70,30,-69,52,-58Z"
               transform="translate(100 100)"
-              fill="color-mix(in oklab, var(--accent) 70%, transparent)"
+              fill="color-mix(in oklab, white 60%, transparent)"
             />
           </svg>
-
-          {/* Layer 3 — soft blurred accent blobs */}
-          <div className="depth-blob depth-float" style={{ left: "10%", top: "20%", width: "22rem", height: "22rem", background: "color-mix(in oklab, var(--accent) 80%, transparent)" }} />
-          <div className="depth-blob depth-float-slow" style={{ right: "8%", bottom: "10%", width: "26rem", height: "26rem", background: "color-mix(in oklab, white 55%, transparent)" }} />
         </div>
 
         <div className="relative mx-auto grid max-w-[1400px] items-center gap-10 px-6 pt-28 pb-20 md:grid-cols-[1fr_1.15fr] md:gap-6 md:pt-36 md:pb-32 lg:gap-12">
           {/* Text — reduced emphasis */}
           <div className="text-white">
-            <img src={smodLogo} alt="SMOD" className="h-12 w-auto md:h-14" />
-            <h1 className="headline-2xl mt-7 text-balance text-[2.75rem] leading-[1] text-white sm:text-5xl md:text-[4.25rem] lg:text-[5.25rem]">
-              Made Smart.
+            <img src={smodLogo.url} alt="SMOD" className="h-12 w-auto md:h-14" />
+            <p className="eyebrow mt-7" style={{ color: "var(--accent)" }}>
+              Detergent, redesigned
+            </p>
+            <h1 className="headline-2xl mt-3 text-balance text-[2.75rem] leading-[1] text-white sm:text-5xl md:text-[4.25rem] lg:text-[5.25rem]">
+              No scoops. No jugs.
               <br />
-              <span style={{ color: "var(--accent)" }}>Made to Clean.</span>
+              <span style={{ color: "var(--accent)" }}>Just one pod.</span>
             </h1>
             <p className="mt-6 max-w-md text-base leading-relaxed text-white/85 md:text-lg">
-              Pre-measured pods — engineered without the mess of scoops, jugs or guesswork.
-              One pod, one load, every time.
+              Pre-measured 4-in-1 pods that dissolve right in the drum — detergent, softener,
+              freshness and anti-microbial, sealed into one. One pod, one load, every time.
             </p>
+
+            {/* replaces strip — retires the old way in plain sight */}
+            <div className="mt-7 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-white/75">
+              <span className="uppercase tracking-[0.18em] text-xs text-white/55">Replaces</span>
+              <span className="line-through decoration-white/40">measuring cups</span>
+              <span className="line-through decoration-white/40">powder scoops</span>
+              <span className="line-through decoration-white/40">liquid jugs</span>
+              <span aria-hidden className="text-white/50">→</span>
+              <span className="font-bold text-white">one pod.</span>
+            </div>
             <div className="mt-8 flex flex-wrap gap-3">
               <a
                 href="#range"
@@ -111,38 +114,30 @@ function Home() {
               </a>
             </div>
 
+            {/* Floating trust chips dispersed in hero */}
+            <div className="mt-10 flex flex-wrap gap-2.5">
+              <span className="trust-chip" style={{ color: "var(--brand-deep)" }}><CrueltyFreeIcon className="h-4 w-4" /> Cruelty Free</span>
+              <span className="trust-chip" style={{ color: "var(--brand-deep)" }}><RecycleIcon className="h-4 w-4" /> Recyclable</span>
+              <span className="trust-chip" style={{ color: "var(--brand-deep)" }}><LeafIcon className="h-4 w-4" /> Bio-degradable</span>
+            </div>
           </div>
 
-          {/* Layer 4 — oversized floating product render */}
+          {/* Layer 3 — clean product render */}
           <div className="relative flex items-center justify-center md:justify-end">
-            {/* halo */}
+            {/* soft halo */}
             <div
               aria-hidden
               className="absolute inset-0 -m-16 rounded-full blur-3xl"
               style={{
                 background:
-                  "radial-gradient(circle at 50% 45%, color-mix(in oklab, var(--accent) 70%, transparent), transparent 60%)",
+                  "radial-gradient(circle at 50% 45%, color-mix(in oklab, var(--accent) 40%, transparent), transparent 62%)",
               }}
             />
-            {/* secondary back-pack for depth layering */}
             <img
-              src={packFront}
-              alt=""
-              aria-hidden
-              className="absolute h-[280px] w-auto -translate-x-16 translate-y-10 opacity-30 blur-[2px] md:h-[420px] lg:h-[500px]"
-            />
-            <img
-              src={packFront}
+              src={packFront.url}
               alt="SMOD pod pack"
               className="product-float relative h-[380px] w-auto md:h-[560px] lg:h-[680px]"
             />
-            {/* floating trust chip on product */}
-            <span
-              className="trust-chip absolute right-2 -top-2 hidden md:inline-flex"
-              style={{ color: "var(--brand-deep)" }}
-            >
-              ⭐ 4.8 / 5
-            </span>
           </div>
         </div>
 
@@ -198,7 +193,7 @@ function Home() {
                   >
                     {v.emoji} {v.name}
                   </span>
-                  <img src={VARIANT_IMAGES[v.slug] || packFront} alt={`SMOD ${v.name} pack`} />
+                  <img src={VARIANT_IMAGES[v.slug] || packFront.url} alt={`SMOD ${v.name} pack`} />
                 </div>
                 <div className="tile-body">
                   <h3 className="text-2xl font-black tracking-tight" style={{ color: v.palette.ink }}>
@@ -257,10 +252,10 @@ function Home() {
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { n: "01", icon: "🧼", title: "Detergent", body: "Triple-enzyme deep clean lifts dirt and tough stains." },
-              { n: "02", icon: "👕", title: "Comforter", body: "Restores softness and a cozy feel to every fibre." },
-              { n: "03", icon: "🌸", title: "Softener", body: "Long-lasting fresh scent woven into your laundry." },
-              { n: "04", icon: "🛡️", title: "Anti-microbial", body: "Fights odor-causing bacteria, wash after wash." },
+              { n: "01", Icon: PodIcon, title: "Detergent", body: "Triple-enzyme deep clean lifts dirt and tough stains." },
+              { n: "02", Icon: ClothIcon, title: "Comforter", body: "Restores softness and a cozy feel to every fibre." },
+              { n: "03", Icon: SoftenerIcon, title: "Softener", body: "Long-lasting fresh scent woven into your laundry." },
+              { n: "04", Icon: ShieldIcon, title: "Anti-microbial", body: "Fights odor-causing bacteria, wash after wash." },
             ].map((f, i) => (
               <div key={f.title} className={`feature-card ${i % 2 === 1 ? "lg:translate-y-6" : ""}`}>
                 <div
@@ -270,7 +265,7 @@ function Home() {
                 >
                   {f.n}
                 </div>
-                <div className="feature-icon">{f.icon}</div>
+                <div className="feature-icon"><f.Icon className="h-8 w-8" /></div>
                 <h3 className="mt-6 text-xl font-black">{f.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed" style={{ color: "var(--v-ink-soft)" }}>
                   {f.body}
@@ -300,14 +295,15 @@ function Home() {
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {[
-              { icon: "⚖️", title: "Pre-measured", body: "Exactly one pod per load. No guesswork." },
-              { icon: "✈️", title: "Travel friendly", body: "No spills — sealed film dissolves only in water." },
-              { icon: "📦", title: "Easy storage", body: "Resealable ziplock pack, fits any laundry shelf." },
-              { icon: "🛡️", title: "Anti-microbial", body: "Fights odor-causing bacteria, every wash." },
-              { icon: "⭐", title: "Premium clean", body: "Triple-action enzymes per pod." },
+              { Icon: ScaleIcon, title: "Pre-measured", body: "Exactly one pod per load. No guesswork." },
+              { Icon: SuitcaseIcon, title: "Travel friendly", body: "No spills — sealed film dissolves only in water." },
+              { Icon: BoxIcon, title: "Easy storage", body: "Resealable ziplock pack, fits any laundry shelf." },
+              { Icon: ShieldIcon, title: "Anti-microbial", body: "Fights odor-causing bacteria, every wash." },
+              { Icon: LeafIcon, title: "Bio-degradable", body: "Plant-derived film breaks down cleanly." },
+              { Icon: SparkleIcon, title: "Premium clean", body: "Triple-action enzymes per pod." },
             ].map((w, i) => (
               <div key={w.title} className={`feature-card ${i % 3 === 1 ? "lg:translate-y-8" : ""}`}>
-                <div className="feature-icon">{w.icon}</div>
+                <div className="feature-icon"><w.Icon className="h-8 w-8" /></div>
                 <h3 className="mt-6 text-xl font-black">{w.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed" style={{ color: "var(--v-ink-soft)" }}>
                   {w.body}
