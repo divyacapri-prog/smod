@@ -14,6 +14,9 @@ import smodLogo from "@/assets/smod-logo-white.png";
 import packFront from "@/assets/smod-pack-front.png";
 import innerwearPack from "@/assets/smod-innerwear-pack.jpg";
 import babyPack from "@/assets/smod-baby-pack.jpg";
+import regularPack from "@/assets/smod-regular-pack.jpeg";
+import socksPack from "@/assets/smod-socks-pack.jpg";
+import sportsPack from "@/assets/smod-sports-pack.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -33,9 +36,9 @@ export const Route = createFileRoute("/")({
 });
 
 const VARIANT_IMAGES: Record<string, string> = {
-  regular: packFront,
-  socks: packFront,
-  sports: packFront,
+  regular: regularPack,
+  socks: socksPack,
+  sports: sportsPack,
   innerwear: innerwearPack,
   baby: babyPack,
 };
