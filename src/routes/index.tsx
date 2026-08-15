@@ -199,14 +199,14 @@ function Home() {
                   <img src={VARIANT_IMAGES[v.slug] || packFront} alt={`SMOD ${v.name} pack`} />
                 </div>
                 <div className="tile-body">
-                  <h3 className="text-2xl font-black tracking-tight" style={{ color: v.palette.ink }}>
+                  <h3 className="text-2xl font-black tracking-tight" style={{ color: "#1D2029" }}>
                     SMOD {v.name}
                   </h3>
-                  <p className="mt-1 text-sm leading-relaxed" style={{ color: v.palette.inkSoft }}>
+                  <p className="mt-1 text-sm leading-relaxed" style={{ color: "#5B6472" }}>
                     {v.tagline}
                   </p>
                   <div className="mt-5 flex items-center justify-between">
-                    <span className="text-sm font-bold" style={{ color: v.palette.ink }}>
+                    <span className="text-sm font-bold" style={{ color: "#1D2029" }}>
                       From ₹{v.packs[0].price}
                     </span>
                     <span
