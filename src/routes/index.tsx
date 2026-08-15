@@ -1,5 +1,4 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Splash } from "@/components/site/Splash";
 import { VARIANTS, BRAND_PALETTE, paletteToCssVars } from "@/lib/variants";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
@@ -56,7 +55,6 @@ function Home() {
       style={{ ...paletteToCssVars(BRAND_PALETTE), background: "var(--v-bg)", color: "var(--v-ink)" }}
       className="min-h-screen scroll-smooth"
     >
-      <Splash />
       <Header />
 
       {/* ============ HERO — product-dominant, restrained ============ */}
@@ -367,6 +365,40 @@ function Home() {
         </div>
       </section>
 
+      {/* ============ DOSAGE GUIDE (self-contained — delete this block to remove) ============ */}
+      <section className="section-pad-lg relative overflow-hidden" style={{ background: "var(--v-bg-soft)" }}>
+        <div className="relative mx-auto max-w-[1100px] px-6">
+          <div className="mx-auto mb-14 max-w-2xl text-center">
+            <p className="eyebrow" style={{ color: "var(--brand)" }}>Dosage guide</p>
+            <h2 className="headline-2xl mt-5 text-4xl md:text-6xl">One pod goes a long way.</h2>
+            <p className="mx-auto mt-5 max-w-xl text-base md:text-lg" style={{ color: "var(--v-ink-soft)" }}>
+              Match the number of pods to your load size — no measuring, no guesswork.
+            </p>
+          </div>
+          <div className="grid gap-6 sm:grid-cols-3">
+            {[
+              { load: "0–5 kg", pods: "1 pod", n: 1 },
+              { load: "5–8 kg", pods: "2 pods", n: 2 },
+              { load: "8 kg or more", pods: "3 pods", n: 3 },
+            ].map((d) => (
+              <div
+                key={d.load}
+                className="rounded-3xl border p-8 text-center"
+                style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)", background: "var(--v-surface, #fff)" }}
+              >
+                <div className="text-sm font-bold uppercase tracking-widest" style={{ color: "var(--v-ink-soft)" }}>{d.load}</div>
+                <div className="mt-5 flex items-center justify-center gap-2">
+                  {Array.from({ length: d.n }).map((_, i) => (
+                    <PodIcon key={i} className="h-9 w-9" />
+                  ))}
+                </div>
+                <div className="mt-5 text-2xl font-black" style={{ color: "var(--brand)" }}>{d.pods}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ============ ECO ============ */}
       <section className="section-pad-lg relative overflow-hidden" style={{ background: "var(--brand-deep)" }}>
         <div aria-hidden className="pointer-events-none absolute inset-0 opacity-25">
@@ -376,7 +408,7 @@ function Home() {
         <div className="relative mx-auto max-w-[1000px] px-6 text-center text-white">
           <p className="eyebrow" style={{ color: "var(--accent)" }}>🌍 Eco-friendly by design</p>
           <h2 className="headline-2xl mx-auto mt-5 max-w-3xl text-balance text-4xl leading-[1.05] md:text-6xl">
-            Our POD dissolves in water, not our Earth.
+            Our pod dissolves — but doesn't dissolve our Earth.
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-base text-white/85 md:text-lg">
             The water-soluble film dissolves completely in every wash, and the pack is fully recyclable. Clean clothes, lighter footprint.
@@ -420,6 +452,35 @@ function Home() {
           <p className="mx-auto mt-8 max-w-md text-base font-medium md:text-lg" style={{ color: "var(--v-ink-soft)" }}>
             A tiny laboratory in every pod.
           </p>
+        </div>
+      </section>
+
+      {/* ============ PRODUCT INFO (self-contained — delete this block to remove) ============ */}
+      <section className="section-pad relative overflow-hidden" style={{ background: "var(--v-bg)" }}>
+        <div className="relative mx-auto max-w-[1000px] px-6">
+          <div className="grid gap-6 md:grid-cols-2">
+            <div className="rounded-3xl border p-8" style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)", background: "var(--v-surface, #fff)" }}>
+              <p className="eyebrow" style={{ color: "var(--brand)" }}>What's inside</p>
+              <h3 className="mt-3 text-2xl font-black">Ingredients</h3>
+              <p className="mt-3 text-sm leading-relaxed" style={{ color: "var(--v-ink-soft)" }}>
+                Anionic &amp; Non-Ionic Surfactants, Enzymes, Glycerin, Colorant, Polyethylene Glycol, Propylene Glycol, Fragrance &amp; Water.
+              </p>
+            </div>
+            <div className="rounded-3xl border p-8" style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)", background: "var(--v-surface, #fff)" }}>
+              <p className="eyebrow" style={{ color: "var(--brand)" }}>Product information</p>
+              <h3 className="mt-3 text-2xl font-black">Imported &amp; marketed by</h3>
+              <p className="mt-3 text-sm leading-relaxed" style={{ color: "var(--v-ink-soft)" }}>
+                Vyam Trading Ventures LLP
+                <br />
+                10, Thirunagar, Singanallur, Coimbatore – 641005
+                <br />
+                Made in China · Recyclable packaging ♻️
+              </p>
+              <Link to="/contact" className="mt-4 inline-block text-sm font-bold" style={{ color: "var(--brand)" }}>
+                Contact us →
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 
