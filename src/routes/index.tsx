@@ -1,5 +1,4 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState, useEffect } from "react";
 import { Splash } from "@/components/site/Splash";
 import { VARIANTS, BRAND_PALETTE, paletteToCssVars } from "@/lib/variants";
 import { Header } from "@/components/site/Header";
@@ -52,21 +51,12 @@ const STEPS = [
 ];
 
 function Home() {
-  const [showSplash, setShowSplash] = useState(false);
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    if (!sessionStorage.getItem("smod_splash_v1")) {
-      setShowSplash(true);
-      sessionStorage.setItem("smod_splash_v1", "1");
-    }
-  }, []);
   return (
-    <>
-      {showSplash && <Splash onDone={() => setShowSplash(false)} />}
     <div
       style={{ ...paletteToCssVars(BRAND_PALETTE), background: "var(--v-bg)", color: "var(--v-ink)" }}
       className="min-h-screen scroll-smooth"
     >
+      <Splash />
       <Header />
 
       {/* ============ HERO — product-dominant, restrained ============ */}
@@ -467,6 +457,5 @@ function Home() {
 
       <Footer />
     </div>
-    </>
   );
 }
