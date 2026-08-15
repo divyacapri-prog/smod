@@ -148,7 +148,7 @@ export const VARIANTS: Variant[] = [
       benefits: [
         { icon: "👕", title: "Deep Clean", body: "Powerful stain removal" },
         { icon: "🌸", title: "Fresh Scent", body: "Long lasting freshness" },
-        { icon: "🌿", title: "Eco Friendly", body: "Biodegradable film" },
+        { icon: "🌿", title: "Eco Friendly", body: "Dissolves in water, recyclable pack" },
         { icon: "✨", title: "Safe for Colors", body: "Gentle on fabrics" },
       ],
       directions: [
@@ -250,7 +250,7 @@ export const VARIANTS: Variant[] = [
       benefits: [
         { icon: "👕", title: "Deep Clean", body: "Powerful stain removal" },
         { icon: "🌸", title: "Fresh Scent", body: "Long lasting freshness" },
-        { icon: "🌿", title: "Eco Friendly", body: "Biodegradable film" },
+        { icon: "🌿", title: "Eco Friendly", body: "Dissolves in water, recyclable pack" },
         { icon: "✨", title: "Safe for Colors", body: "Gentle on fabrics" },
       ],
       directions: [
@@ -465,7 +465,7 @@ export const VARIANTS: Variant[] = [
       benefits: [
         { icon: "👕", title: "Deep Clean", body: "Powerful stain removal" },
         { icon: "🌸", title: "Fresh Scent", body: "Long lasting freshness" },
-        { icon: "🌿", title: "Eco Friendly", body: "Biodegradable film" },
+        { icon: "🌿", title: "Eco Friendly", body: "Dissolves in water, recyclable pack" },
         { icon: "✨", title: "Safe for Colors", body: "Gentle on fabrics" },
       ],
       directions: [
@@ -571,7 +571,7 @@ export const VARIANTS: Variant[] = [
       benefits: [
         { icon: "👕", title: "Deep Clean", body: "Powerful stain removal" },
         { icon: "🌸", title: "Fresh Scent", body: "Long lasting freshness" },
-        { icon: "🌿", title: "Eco Friendly", body: "Biodegradable film" },
+        { icon: "🌿", title: "Eco Friendly", body: "Dissolves in water, recyclable pack" },
         { icon: "✨", title: "Safe for Colors", body: "Gentle on fabrics" },
       ],
       directions: [

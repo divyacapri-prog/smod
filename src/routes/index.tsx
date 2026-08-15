@@ -1,4 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState, useEffect } from "react";
+import { Splash } from "@/components/site/Splash";
 import { VARIANTS, BRAND_PALETTE, paletteToCssVars } from "@/lib/variants";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
@@ -50,7 +52,17 @@ const STEPS = [
 ];
 
 function Home() {
+  const [showSplash, setShowSplash] = useState(false);
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (!sessionStorage.getItem("smod_splash_v1")) {
+      setShowSplash(true);
+      sessionStorage.setItem("smod_splash_v1", "1");
+    }
+  }, []);
   return (
+    <>
+      {showSplash && <Splash onDone={() => setShowSplash(false)} />}
     <div
       style={{ ...paletteToCssVars(BRAND_PALETTE), background: "var(--v-bg)", color: "var(--v-ink)" }}
       className="min-h-screen scroll-smooth"
@@ -117,12 +129,6 @@ function Home() {
               </a>
             </div>
 
-            {/* Floating trust chips dispersed in hero */}
-            <div className="mt-10 flex flex-wrap gap-2.5">
-              <span className="trust-chip" style={{ color: "var(--brand-deep)" }}><CrueltyFreeIcon className="h-4 w-4" /> Cruelty Free</span>
-              <span className="trust-chip" style={{ color: "var(--brand-deep)" }}><RecycleIcon className="h-4 w-4" /> Recyclable</span>
-              <span className="trust-chip" style={{ color: "var(--brand-deep)" }}><LeafIcon className="h-4 w-4" /> Bio-degradable</span>
-            </div>
           </div>
 
           {/* Layer 3 — clean product render */}
@@ -141,6 +147,12 @@ function Home() {
               alt="SMOD pod pack"
               className="product-float relative h-[380px] w-auto md:h-[560px] lg:h-[680px]"
             />
+            <span
+              className="trust-chip absolute right-1 top-1 hidden md:inline-flex"
+              style={{ color: "var(--brand-deep)" }}
+            >
+              ⭐ 4.8 / 5
+            </span>
           </div>
         </div>
 
@@ -302,7 +314,6 @@ function Home() {
               { Icon: SuitcaseIcon, title: "Travel friendly", body: "No spills — sealed film dissolves only in water." },
               { Icon: BoxIcon, title: "Easy storage", body: "Resealable ziplock pack, fits any laundry shelf." },
               { Icon: ShieldIcon, title: "Anti-microbial", body: "Fights odor-causing bacteria, every wash." },
-              { Icon: LeafIcon, title: "Bio-degradable", body: "Plant-derived film breaks down cleanly." },
               { Icon: SparkleIcon, title: "Premium clean", body: "Triple-action enzymes per pod." },
             ].map((w, i) => (
               <div key={w.title} className={`feature-card ${i % 3 === 1 ? "lg:translate-y-8" : ""}`}>
@@ -362,6 +373,35 @@ function Home() {
                 </p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============ ECO ============ */}
+      <section className="section-pad-lg relative overflow-hidden" style={{ background: "var(--brand-deep)" }}>
+        <div aria-hidden className="pointer-events-none absolute inset-0 opacity-25">
+          <div className="absolute -right-16 -top-10 h-72 w-72 rounded-full blur-3xl" style={{ background: "radial-gradient(circle at 50% 50%, var(--accent), transparent 65%)" }} />
+          <div className="absolute -left-16 bottom-0 h-72 w-72 rounded-full blur-3xl" style={{ background: "radial-gradient(circle at 50% 50%, var(--accent), transparent 65%)" }} />
+        </div>
+        <div className="relative mx-auto max-w-[1000px] px-6 text-center text-white">
+          <p className="eyebrow" style={{ color: "var(--accent)" }}>🌍 Eco-friendly by design</p>
+          <h2 className="headline-2xl mx-auto mt-5 max-w-3xl text-balance text-4xl leading-[1.05] md:text-6xl">
+            Our POD dissolves in water, not our Earth.
+          </h2>
+          <p className="mx-auto mt-5 max-w-xl text-base text-white/85 md:text-lg">
+            The water-soluble film dissolves completely in every wash, and the pack is fully recyclable. Clean clothes, lighter footprint.
+          </p>
+          <div className="mt-10 grid gap-5 sm:grid-cols-2">
+            <div className="rounded-3xl border border-white/15 bg-white/5 p-7 text-left backdrop-blur">
+              <div className="text-3xl">💧</div>
+              <h3 className="mt-4 text-xl font-black">Dissolves completely in water</h3>
+              <p className="mt-2 text-sm text-white/80">No plastic scoops, no residue — the film disappears in the wash.</p>
+            </div>
+            <div className="rounded-3xl border border-white/15 bg-white/5 p-7 text-left backdrop-blur">
+              <div className="text-3xl">♻️</div>
+              <h3 className="mt-4 text-xl font-black">Recyclable packaging</h3>
+              <p className="mt-2 text-sm text-white/80">The outer pack is fully recyclable, so less ends up in landfill.</p>
+            </div>
           </div>
         </div>
       </section>
@@ -427,5 +467,6 @@ function Home() {
 
       <Footer />
     </div>
+    </>
   );
 }
