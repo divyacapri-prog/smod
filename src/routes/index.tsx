@@ -10,10 +10,10 @@ import {
   ScaleIcon, SuitcaseIcon, BoxIcon, LeafIcon, SparkleIcon,
   CrueltyFreeIcon, RecycleIcon,
 } from "@/components/site/FeatureIcons";
-import smodLogo from "@/assets/smod-logo-white.png.asset.json";
-import packFront from "@/assets/smod-pack-front.png.asset.json";
-import innerwearPack from "@/assets/smod-innerwear-pack.jpg.asset.json";
-import babyPack from "@/assets/smod-baby-pack.jpg.asset.json";
+import smodLogo from "@/assets/smod-logo-white.png";
+import packFront from "@/assets/smod-pack-front.png";
+import innerwearPack from "@/assets/smod-innerwear-pack.jpg";
+import babyPack from "@/assets/smod-baby-pack.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -33,11 +33,11 @@ export const Route = createFileRoute("/")({
 });
 
 const VARIANT_IMAGES: Record<string, string> = {
-  regular: packFront.url,
-  socks: packFront.url,
-  sports: packFront.url,
-  innerwear: innerwearPack.url,
-  baby: babyPack.url,
+  regular: packFront,
+  socks: packFront,
+  sports: packFront,
+  innerwear: innerwearPack,
+  baby: babyPack,
 };
 
 const STEPS = [
@@ -77,7 +77,7 @@ function Home() {
         <div className="relative mx-auto grid max-w-[1400px] items-center gap-10 px-6 pt-28 pb-20 md:grid-cols-[1fr_1.15fr] md:gap-6 md:pt-36 md:pb-32 lg:gap-12">
           {/* Text — reduced emphasis */}
           <div className="text-white">
-            <img src={smodLogo.url} alt="SMOD" className="h-12 w-auto md:h-14" />
+            <img src={smodLogo} alt="SMOD" className="h-12 w-auto md:h-14" />
             <p className="eyebrow mt-7" style={{ color: "var(--accent)" }}>
               Detergent, redesigned
             </p>
@@ -134,7 +134,7 @@ function Home() {
               }}
             />
             <img
-              src={packFront.url}
+              src={packFront}
               alt="SMOD pod pack"
               className="product-float relative h-[380px] w-auto md:h-[560px] lg:h-[680px]"
             />
@@ -193,7 +193,7 @@ function Home() {
                   >
                     {v.emoji} {v.name}
                   </span>
-                  <img src={VARIANT_IMAGES[v.slug] || packFront.url} alt={`SMOD ${v.name} pack`} />
+                  <img src={VARIANT_IMAGES[v.slug] || packFront} alt={`SMOD ${v.name} pack`} />
                 </div>
                 <div className="tile-body">
                   <h3 className="text-2xl font-black tracking-tight" style={{ color: v.palette.ink }}>
