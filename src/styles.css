@@ -382,6 +382,92 @@
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
 }
 
+/* =====================================================================
+   Hero water FX — bubbles, swirl, ripple rings and splash droplets.
+   Rendered by src/components/site/HeroWaterFX.tsx. Positions and delays are
+   hard-coded there (no randomness) so SSR and client output always match.
+   ===================================================================== */
 
+.smod-fx {
+  position: absolute;
+  inset: -14% -6%;
+  pointer-events: none;
+  overflow: visible;
+}
+.smod-fx-back  { z-index: 1; }
+.smod-fx-front { z-index: 3; }
 
+.smod-bubble {
+  position: absolute;
+  bottom: 6%;
+  border-radius: 50%;
+  opacity: 0;
+  background:
+    radial-gradient(circle at 30% 26%, rgba(255,255,255,.98) 0%, rgba(255,255,255,.55) 14%,
+      rgba(255,255,255,.10) 34%, rgba(255,255,255,.03) 62%, transparent 70%),
+    radial-gradient(circle at 68% 76%, rgba(201,190,242,.45) 0%, transparent 46%);
+  border: 1px solid rgba(255,255,255,.42);
+  box-shadow: inset -2px -3px 7px rgba(255,255,255,.30), 0 0 10px rgba(180,196,255,.28);
+  animation: smod-rise linear infinite;
+}
+@keyframes smod-rise {
+  0%   { transform: translate3d(0,0,0) scale(.45); opacity: 0; }
+  10%  { opacity: 1; }
+  72%  { opacity: .85; }
+  100% { transform: translate3d(var(--dx, 0px), -380px, 0) scale(1.15); opacity: 0; }
+}
 
+.smod-ring {
+  position: absolute;
+  left: 50%; top: 52%;
+  translate: -50% -50%;
+  border-radius: 50%;
+  border: 1.5px solid rgba(201,190,242,.5);
+  opacity: 0;
+  animation: smod-ripple 5s ease-out infinite;
+}
+@keyframes smod-ripple {
+  0%   { width: 120px; height: 120px; opacity: 0; }
+  15%  { opacity: .55; }
+  100% { width: 560px; height: 560px; opacity: 0; }
+}
+
+.smod-swirl {
+  position: absolute;
+  left: 50%; top: 52%;
+  width: 520px; height: 520px;
+  translate: -50% -50%;
+  opacity: .34;
+}
+.smod-swirl svg { width: 100%; height: 100%; display: block; }
+.smod-swirl-a { animation: smod-turn 26s linear infinite; transform-origin: 50% 50%; }
+.smod-swirl-b { animation: smod-turn 34s linear infinite reverse; transform-origin: 50% 50%; }
+@keyframes smod-turn { to { transform: rotate(360deg); } }
+
+.smod-drop {
+  position: absolute;
+  width: 13px; height: 17px;
+  border-radius: 50% 50% 50% 50% / 64% 64% 36% 36%;
+  background: linear-gradient(180deg, #fff, rgba(198,212,255,.8));
+  box-shadow: 0 0 14px rgba(200,214,255,.8), inset -2px -3px 5px rgba(255,255,255,.9);
+  opacity: 0;
+  animation: smod-splash cubic-bezier(.15,.75,.4,1) infinite;
+}
+@keyframes smod-splash {
+  0%   { transform: translate(0,0) scale(.35) rotate(0deg); opacity: 0; }
+  6%   { transform: translate(calc(var(--sx) * .18), calc(var(--sy) * .18)) scale(1) rotate(10deg); opacity: 1; }
+  55%  { opacity: .9; }
+  100% { transform: translate(var(--sx), var(--sy)) scale(.28) rotate(var(--sr, 40deg)); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .smod-bubble,
+  .smod-ring,
+  .smod-drop { animation: none; opacity: 0; }
+  .smod-swirl-a,
+  .smod-swirl-b { animation: none; }
+}
+
+@media (max-width: 767px) {
+  .smod-swirl { width: 320px; height: 320px; }
+}

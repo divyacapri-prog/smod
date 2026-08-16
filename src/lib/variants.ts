@@ -9,6 +9,16 @@ import innerwear200 from "@/assets/smod-innerwear-200.jpg";
 import socks200 from "@/assets/smod-socks-200.jpg";
 import sports200 from "@/assets/smod-sports-200.jpg";
 import baby200 from "@/assets/smod-baby-200.jpg";
+import pouchRegular40 from "@/assets/pouch-regular-40.png";
+import pouchRegular20 from "@/assets/pouch-regular-20.png";
+import pouchSocks40 from "@/assets/pouch-socks-40.png";
+import pouchSocks20 from "@/assets/pouch-socks-20.png";
+import pouchSports40 from "@/assets/pouch-sports-40.png";
+import pouchSports20 from "@/assets/pouch-sports-20.png";
+import pouchInnerwear40 from "@/assets/pouch-innerwear-40.png";
+import pouchInnerwear20 from "@/assets/pouch-innerwear-20.png";
+import pouchBaby40 from "@/assets/pouch-baby-40.png";
+import pouchBaby20 from "@/assets/pouch-baby-20.png";
 
 export type Retailer = { name: string; url: string };
 
@@ -39,6 +49,11 @@ export type Variant = {
   headline: string;
   description: string;
   emoji: string;
+  /** Best-seller rank. 1 = top seller. Omit for unranked variants. */
+  rank?: number;
+  /** Stand-up pouch renders used on tiles, galleries, search and cart. */
+  pouch40?: string;
+  pouch20?: string;
   palette: {
     brand: string;
     brandDeep: string;
@@ -85,6 +100,9 @@ export const VARIANTS: Variant[] = [
     description:
       "Smod Laundry Washing Pods are convenient, effective and safe for the whole family's clothes. Suitable for all fabrics and colors.",
     emoji: "🧺",
+    rank: 1,
+    pouch40: pouchRegular40,
+    pouch20: pouchRegular20,
     palette: BRAND_PALETTE,
     benefits: [
       { title: "Deep Clean", description: "Powerful stain removal in a single cycle." },
@@ -188,6 +206,8 @@ export const VARIANTS: Variant[] = [
     description:
       "An enzyme-loaded pod engineered for the toughest sweat odors and ground-in grime. Bring tired socks back to life.",
     emoji: "🧦",
+    pouch40: pouchSocks40,
+    pouch20: pouchSocks20,
     palette: {
       brand: "#2A4B9B", // Cobalt Blue (logo)
       brandDeep: "#1E3870", // Rich dark cobalt
@@ -286,6 +306,9 @@ export const VARIANTS: Variant[] = [
     description:
       "A technical pod tuned for moisture-wicking polyester, spandex and merino. Removes sweat, salts and odor without damaging fibers.",
     emoji: "🏃",
+    rank: 2,
+    pouch40: pouchSports40,
+    pouch20: pouchSports20,
     palette: {
       brand: "#0074E1", // Deep Cobalt Blue — graphic mid-tones
       brandDeep: "#1A1A1A", // Matte Black — container body & text panel
@@ -393,6 +416,8 @@ export const VARIANTS: Variant[] = [
     description:
       "Smod Intimate Wear Cleaning Pods are specially formulated to remove tough stains, odor & bacteria while being gentle on delicate fabrics. Ideal for bras, panties and other intimate wear.",
     emoji: "🌸",
+    pouch40: pouchInnerwear40,
+    pouch20: pouchInnerwear20,
     palette: {
       brand: "#C0654A", // Deep terracotta (readable on white text)
       brandDeep: "#9C4E38",
@@ -504,6 +529,9 @@ export const VARIANTS: Variant[] = [
     description:
       "Smod Baby Laundry Pods are designed to deliver a powerful clean while being extra gentle on baby's skin and clothes. Our pre-measured pods dissolve quickly in water to remove tough stains and odors, keeping fabrics soft, fresh and safe for your little one.",
     emoji: "👶",
+    rank: 3,
+    pouch40: pouchBaby40,
+    pouch20: pouchBaby20,
     palette: {
       brand: "#2F72C4", // Readable blue for buttons
       brandDeep: "#1F5599",
@@ -618,3 +646,48 @@ export const paletteToCssVars = (p: Variant["palette"]): React.CSSProperties =>
     "--v-ink": p.ink,
     "--v-ink-soft": p.inkSoft,
   }) as React.CSSProperties;
+
+/**
+ * Products that are not on sale yet. They render as non-clickable cards in the
+ * Shop page and are skipped by the search index until `available` flips to true.
+ */
+export type ComingSoonProduct = {
+  slug: string;
+  name: string;
+  status: string;
+  emoji: string;
+  gradient: string;
+  body: string;
+  available: boolean;
+};
+
+export const COMING_SOON: ComingSoonProduct[] = [
+  {
+    slug: "dishwasher",
+    name: "Dishwasher pods",
+    status: "In production",
+    emoji: "\u{1F37D}\uFE0F",
+    gradient: "linear-gradient(135deg,#EAF3EE,#D7E9DF)",
+    body: "13.8 g per pod \u00B7 50 pods per pack \u00B7 690 g net. Cream and citrus pack with photographic product imagery.",
+    available: false,
+  },
+  {
+    slug: "floor-cleaner",
+    name: "Floor cleaner",
+    status: "In development",
+    emoji: "\u{1F9F4}",
+    gradient: "linear-gradient(135deg,#E8EDF9,#D2DAF0)",
+    body: "Water-soluble pod format. One pod, one bucket \u2014 the same zero-guesswork dosing, moved to the mop.",
+    available: false,
+  },
+];
+
+/** Best sellers, ordered by rank. Used by the home page. */
+export const BEST_SELLERS: Variant[] = VARIANTS
+  .filter((v) => typeof v.rank === "number")
+  .sort((a, b) => (a.rank ?? 99) - (b.rank ?? 99));
+
+/** Pouch render for a given variant and pack size, with a safe fallback. */
+export function pouchFor(v: Variant, size: 20 | 40): string | undefined {
+  return size === 20 ? (v.pouch20 ?? v.pouch40) : (v.pouch40 ?? v.pouch20);
+}
