@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { useNavigate } from "@tanstack/react-router";
 import { VARIANTS, COMING_SOON, pouchFor } from "@/lib/variants";
 
@@ -17,6 +18,10 @@ type Row = {
  * The index is built from VARIANTS at render time, so adding a variant to
  * lib/variants.ts is all that's needed for it to become searchable.
  * Coming-soon products appear but are not selectable until `available` is true.
+ *
+ * Portalled into document.body for the same reason as Splash: PageTransition
+ * leaves a `filter: blur(0px)` on its wrapper, which captures `position: fixed`
+ * descendants and would anchor this overlay to the page instead of the viewport.
  */
 export function SearchDialog({ open, onClose }: { open: boolean; onClose: () => void }) {
   const [term, setTerm] = useState("");
@@ -82,7 +87,7 @@ export function SearchDialog({ open, onClose }: { open: boolean; onClose: () => 
     navigate({ to: `/${r.slug}` as string });
   };
 
-  return (
+  return createPortal(
     <div
       className="fixed inset-0 z-[200] flex items-start justify-center px-5 pt-[9vh] backdrop-blur-sm"
       style={{ background: "rgba(15,17,24,.5)" }}
@@ -136,6 +141,7 @@ export function SearchDialog({ open, onClose }: { open: boolean; onClose: () => 
           )}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }

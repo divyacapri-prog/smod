@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { HeroWaterFX } from "./HeroWaterFX";
 import logoWhite from "@/assets/smod-logo-white.png";
 import pods from "@/assets/pods-hero.png";
@@ -15,6 +16,13 @@ const SEEN_KEY = "smod:entered";
  *
  * Shown once per browser session. Renders nothing on the server and on the
  * first client paint, so SSR markup and hydration always agree.
+ *
+ * Rendered through a portal into document.body. PageTransition wraps every
+ * page in a motion.div that animates `filter: blur(6px) -> blur(0px)`, and
+ * framer-motion leaves `filter: blur(0px)` on the element afterwards. A filter
+ * — even a zero-value one — makes that element the containing block for
+ * `position: fixed` descendants, so `inset: 0` was resolving to the full-height
+ * page wrapper instead of the viewport. The portal escapes it.
  */
 export function Splash() {
   const [ready, setReady] = useState(false);
@@ -73,7 +81,7 @@ export function Splash() {
 
   if (!ready || !open) return null;
 
-  return (
+  return createPortal(
     <div
       className={`smod-gate${leaving ? " is-leaving" : ""}`}
       role="dialog"
@@ -111,6 +119,7 @@ export function Splash() {
           Enter site →
         </button>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
