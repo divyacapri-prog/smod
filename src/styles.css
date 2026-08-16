@@ -526,8 +526,12 @@
   position: fixed;
   inset: 0;
   z-index: 300;
+  display: flex;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+  /* stop a scroll that runs past the end of the gate from chaining into the
+     page underneath — that is what showed the home page below the landing. */
+  overscroll-behavior: contain;
   background:
     radial-gradient(65% 55% at 78% 18%, color-mix(in oklab, var(--accent, #756CA1) 34%, transparent), transparent 72%),
     linear-gradient(160deg, color-mix(in oklab, var(--brand, #2A3A86) 92%, white) 0%,
@@ -538,8 +542,12 @@
 @keyframes smod-gate-in  { from { opacity: 0; } to { opacity: 1; } }
 @keyframes smod-gate-out { from { opacity: 1; } to { opacity: 0; visibility: hidden; } }
 
-/* `margin: auto` centres the column when it fits and lets it scroll from the
-   top when it doesn't — flex centring would clip the top on short screens. */
+/* Centring inside a scroll container: the gate is a flex parent and the column
+   centres with `margin: auto`. `justify-content: center` must NOT be used here
+   — when the content is taller than the viewport it overflows in BOTH
+   directions and the top (the pods) becomes unreachable, which is what pushed
+   the image off the top of the screen. `margin: auto` centres when there is
+   room and falls back to top-aligned + scrollable when there isn't. */
 .smod-gate-inner {
   display: flex;
   flex-direction: column;
@@ -547,9 +555,8 @@
   text-align: center;
   width: min(680px, 100%);
   margin: auto;
-  padding: clamp(1.5rem, 5vh, 3.5rem) 1.5rem;
-  min-height: 100%;
-  justify-content: center;
+  padding: clamp(1.25rem, 4vh, 3rem) 1.5rem;
+  flex: 0 0 auto;
 }
 
 /* The box takes its height from the image, not the other way round.
@@ -570,9 +577,9 @@
   position: relative;
   z-index: 2;
   display: block;
-  height: min(27vh, 235px);
+  height: min(34vh, 310px);
   width: auto;
-  max-width: min(60vw, 260px);
+  max-width: min(62vw, 320px);
   object-fit: contain;
   filter: drop-shadow(0 30px 46px rgba(0, 0, 0, .45));
   animation: smod-gate-bob 7s ease-in-out infinite;
@@ -664,4 +671,19 @@
   .smod-step-disc { width: 9.5rem; height: 9.5rem; }
   .smod-step-disc > svg,
   .smod-step-disc .h-32 { width: 6.5rem; height: 6.5rem; }
+}
+
+/* Short viewports (most phones in portrait, and laptops at 720p) — scale the
+   gate down so it never needs to scroll at all. */
+@media (max-height: 700px) {
+  .smod-gate-inner { padding-top: 1rem; padding-bottom: 1rem; }
+  .smod-gate-pods  { height: min(26vh, 195px); }
+  .smod-gate-logo  { height: 24px; }
+  .smod-gate-title { font-size: clamp(1.45rem, 5vw, 2.1rem); }
+  .smod-gate-sub   { font-size: .82rem; line-height: 1.55; max-width: 40ch; margin-top: .6rem; }
+  .smod-gate-btn   { margin-top: .9rem; padding: .75rem 1.9rem; }
+}
+@media (max-height: 560px) {
+  .smod-gate-art  { display: none; }
+  .smod-gate-sub  { display: none; }
 }
