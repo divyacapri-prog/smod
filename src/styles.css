@@ -572,6 +572,8 @@
   align-items: center;
   justify-content: center;
   margin-bottom: clamp(.4rem, 1.5vh, 1rem);
+  /* keeps the composition from collapsing if the artwork ever fails to load */
+  min-height: min(26vh, 200px);
 }
 .smod-gate-pods {
   position: relative;

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { HeroWaterFX } from "./HeroWaterFX";
 import logoWhite from "@/assets/smod-logo-white.png";
-import pods from "@/assets/smod-pack-front.png";
+import pods from "@/assets/pods-hero.png";
 
 const SEEN_KEY = "smod:entered";
 
@@ -83,7 +83,12 @@ export function Splash() {
       <div className="smod-gate-inner">
         <div className="smod-gate-art">
           <HeroWaterFX layer="back" />
-          <img src={pods} alt="SMOD laundry pods" className="smod-gate-pods" />
+          <img
+          src={pods}
+          alt="SMOD laundry pods"
+          className="smod-gate-pods"
+          onError={(e) => { e.currentTarget.style.display = "none"; }}
+        />
           <HeroWaterFX layer="front" />
         </div>
 

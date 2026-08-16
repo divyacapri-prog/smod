@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import type { Variant } from "@/lib/variants";
 import { pouchFor } from "@/lib/variants";
-import podMacro from "@/assets/smod-pack-front.png";
+import podMacro from "@/assets/pods-hero.png";
 
 type Shot = { src: string; label: string; size?: 20 | 40 };
 

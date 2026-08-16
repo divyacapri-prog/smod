@@ -7,7 +7,7 @@ import { HeroWaterFX } from "@/components/site/HeroWaterFX";
 import { ProductTileGrid } from "@/components/site/ProductTiles";
 import { PodIcon, ClothIcon, SoftenerIcon, ShieldIcon } from "@/components/site/FeatureIcons";
 import { Splash } from "@/components/site/Splash";
-import packFront from "@/assets/smod-pack-front.png";
+import packFront from "@/assets/pods-hero.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
