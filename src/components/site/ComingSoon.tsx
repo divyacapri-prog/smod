@@ -12,9 +12,9 @@ export function ComingSoon() {
 
   return (
     <section id="coming-soon" className="section-pad relative overflow-hidden" style={{ background: "var(--v-bg-soft)" }}>
-      <div className="relative mx-auto max-w-[1200px] px-6">
+      <div className="relative mx-auto max-w-[1200px] px-5 sm:px-6">
         <p className="eyebrow" style={{ color: "var(--brand)" }}>Coming soon</p>
-        <h2 className="headline-2xl mt-4 text-4xl md:text-5xl">The range is growing.</h2>
+        <h2 className="headline-2xl mt-4 text-3xl sm:text-4xl md:text-5xl">The range is growing.</h2>
         <p className="mt-4 max-w-xl text-base md:text-lg" style={{ color: "var(--v-ink-soft)" }}>
           Same pre-measured pod thinking, new jobs around the house.
         </p>

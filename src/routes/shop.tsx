@@ -37,12 +37,12 @@ function Shop() {
             style={{ top: "4%", left: "-6%", width: "26rem", height: "26rem", background: "color-mix(in oklab, var(--brand) 18%, transparent)" }}
           />
         </div>
-        <div className="relative mx-auto max-w-[1200px] px-6">
+        <div className="relative mx-auto max-w-[1200px] px-5 sm:px-6">
           <p className="text-[12.5px]" style={{ color: "var(--v-ink-soft)" }}>
             <Link to="/" className="hover:underline">Home</Link> · Shop
           </p>
           <p className="eyebrow mt-6" style={{ color: "var(--brand)" }}>Shop products</p>
-          <h1 className="headline-2xl mt-4 text-4xl md:text-6xl">One pod for every load.</h1>
+          <h1 className="headline-2xl mt-4 text-3xl sm:text-4xl md:text-6xl">One pod for every load.</h1>
           <p className="mt-5 max-w-xl text-base md:text-lg" style={{ color: "var(--v-ink-soft)" }}>
             Five formulas. Same pre-measured pod. Both pack sizes on every product — pick the load
             you&rsquo;re washing.

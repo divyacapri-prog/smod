@@ -6,8 +6,8 @@ import { ClaimRotator } from "@/components/site/ClaimRotator";
 import { HeroWaterFX } from "@/components/site/HeroWaterFX";
 import { ProductTileGrid } from "@/components/site/ProductTiles";
 import { PodIcon, ClothIcon, SoftenerIcon, ShieldIcon } from "@/components/site/FeatureIcons";
-import { HeroPods } from "@/components/site/HeroPods";
 import { Splash } from "@/components/site/Splash";
+import packFront from "@/assets/smod-pack-front.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -66,7 +66,7 @@ function Home() {
           </svg>
         </div>
 
-        <div className="relative mx-auto grid max-w-[1400px] items-center gap-10 px-6 pb-20 pt-16 md:grid-cols-[1fr_1.05fr] md:gap-6 md:pb-28 md:pt-20">
+        <div className="relative mx-auto grid max-w-[1400px] items-center gap-8 px-5 pb-14 pt-10 sm:px-6 md:grid-cols-[1fr_1.05fr] md:gap-6 md:pb-28 md:pt-20">
           {/* Text — no logo here; the header already carries the mark */}
           <div className="text-white">
             <p className="text-[15px] font-black uppercase tracking-[0.16em] md:text-[20px]" style={{ color: "var(--accent)" }}>
@@ -97,7 +97,7 @@ function Home() {
             </div>
           </div>
 
-          {/* Pods — scattered at different sizes, over splash and bubbles */}
+          {/* Original pod render, over splash and bubbles */}
           <div className="relative flex items-center justify-center">
             <div
               aria-hidden
@@ -109,7 +109,11 @@ function Home() {
             />
             <div className="relative flex w-full items-center justify-center">
               <HeroWaterFX layer="back" />
-              <HeroPods />
+              <img
+                src={packFront}
+                alt="SMOD pods"
+                className="product-float relative z-[2] h-[230px] w-auto sm:h-[300px] md:h-[420px] lg:h-[480px]"
+              />
               <HeroWaterFX layer="front" />
             </div>
           </div>
@@ -126,9 +130,9 @@ function Home() {
           <div className="depth-blob depth-float-slow" style={{ top: "8%", left: "-6%", width: "26rem", height: "26rem", background: "color-mix(in oklab, var(--brand) 22%, transparent)" }} />
           <div className="depth-blob depth-float" style={{ bottom: "10%", right: "-4%", width: "22rem", height: "22rem", background: "color-mix(in oklab, var(--accent) 60%, transparent)" }} />
         </div>
-        <div className="relative mx-auto max-w-[1200px] px-6">
+        <div className="relative mx-auto max-w-[1200px] px-5 sm:px-6">
           <p className="eyebrow" style={{ color: "var(--brand)" }}>Best sellers</p>
-          <h2 className="headline-2xl mt-4 text-4xl md:text-6xl">What people reorder.</h2>
+          <h2 className="headline-2xl mt-4 text-3xl sm:text-4xl md:text-6xl">What people reorder.</h2>
           <p className="mt-5 max-w-xl text-base md:text-lg" style={{ color: "var(--v-ink-soft)" }}>
             Ranked by repeat purchase. Same pre-measured pod in every pack.
           </p>
@@ -140,7 +144,7 @@ function Home() {
       <section className="section-pad relative overflow-hidden text-center" style={{ background: "var(--v-bg-soft)" }}>
         <div className="relative mx-auto max-w-[900px] px-6">
           <p className="eyebrow" style={{ color: "var(--brand)" }}>The full range</p>
-          <h2 className="headline-2xl mt-4 text-4xl md:text-5xl">A formula for every load.</h2>
+          <h2 className="headline-2xl mt-4 text-3xl sm:text-4xl md:text-5xl">A formula for every load.</h2>
           <p className="mx-auto mt-5 max-w-xl text-base md:text-lg" style={{ color: "var(--v-ink-soft)" }}>
             Everyday, gym kit, baby clothes, socks, delicates — one pod each, and more on the way.
           </p>
@@ -156,9 +160,9 @@ function Home() {
 
       {/* ============ 4-IN-1 (short) ============ */}
       <section className="section-pad relative overflow-hidden">
-        <div className="relative mx-auto max-w-[1200px] px-6">
+        <div className="relative mx-auto max-w-[1200px] px-5 sm:px-6">
           <div className="flex flex-wrap items-baseline gap-x-5 gap-y-2">
-            <h2 className="headline-2xl text-3xl md:text-4xl">4-in-1 laundry care.</h2>
+            <h2 className="headline-2xl text-2xl sm:text-3xl md:text-4xl">4-in-1 laundry care.</h2>
             <p className="text-base" style={{ color: "var(--v-ink-soft)" }}>
               One pod. Four actions. No bottles, no measuring.
             </p>
@@ -185,29 +189,6 @@ function Home() {
                 </span>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ============ FINAL CTA ============ */}
-      <section className="section-pad mx-auto max-w-[1400px] px-6">
-        <div
-          className="relative overflow-hidden rounded-[2.5rem] p-12 text-center text-white md:p-24"
-          style={{
-            background: "linear-gradient(135deg, var(--brand), var(--brand-deep))",
-            boxShadow: "0 60px 120px -50px var(--brand)",
-          }}
-        >
-          <div aria-hidden className="absolute -right-20 -top-20 h-80 w-80 rounded-full opacity-30" style={{ background: "var(--accent)" }} />
-          <div className="relative">
-            <h2 className="headline-2xl text-4xl text-white md:text-6xl">Smarter wash. Starts here.</h2>
-            <Link
-              to="/shop"
-              className="mt-10 inline-block rounded-full bg-white px-10 py-4 text-sm font-bold uppercase tracking-wider shadow-xl transition-transform hover:scale-[1.03]"
-              style={{ color: "var(--brand)" }}
-            >
-              Shop SMOD pods →
-            </Link>
           </div>
         </div>
       </section>

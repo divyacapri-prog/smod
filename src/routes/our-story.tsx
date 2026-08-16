@@ -50,9 +50,9 @@ function OurStory() {
             linear-gradient(160deg, color-mix(in oklab, var(--brand) 92%, white) 0%, color-mix(in oklab, var(--brand-deep) 90%, black) 100%)`,
         }}
       >
-        <div className="relative mx-auto max-w-[1200px] px-6 py-24 md:py-32">
+        <div className="relative mx-auto max-w-[1200px] px-5 sm:px-6 py-24 md:py-32">
           <p className="eyebrow" style={{ color: "var(--accent)" }}>Our story</p>
-          <h1 className="headline-2xl mt-5 text-balance text-4xl leading-[1.02] md:text-6xl lg:text-7xl">
+          <h1 className="headline-2xl mt-5 text-balance text-3xl leading-[1.05] sm:text-4xl md:text-6xl lg:text-7xl">
             A tiny laboratory
             <br />
             in every pod.
@@ -69,7 +69,7 @@ function OurStory() {
 
       {/* ---- The two ideas ---- */}
       <section className="section-pad relative overflow-hidden">
-        <div className="relative mx-auto max-w-[1200px] px-6">
+        <div className="relative mx-auto max-w-[1200px] px-5 sm:px-6">
           <div className="grid gap-6 md:grid-cols-2">
             <article className="premium-card p-9">
               <p className="text-[11px] font-black uppercase tracking-[0.18em]" style={{ color: "var(--brand)" }}>
@@ -122,7 +122,7 @@ function OurStory() {
             }}
           />
         </div>
-        <div className="relative mx-auto max-w-[1200px] px-6 py-28 text-center md:py-40">
+        <div className="relative mx-auto max-w-[1200px] px-5 sm:px-6 py-28 text-center md:py-40">
           <p className="eyebrow" style={{ color: "var(--brand)" }}>Who we are</p>
           <div className="mt-8 flex flex-wrap items-center justify-center text-5xl font-black tracking-tight md:text-8xl lg:text-9xl">
             <span style={{ color: "var(--brand)" }}>SM</span>

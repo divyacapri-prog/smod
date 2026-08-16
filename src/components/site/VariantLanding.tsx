@@ -60,7 +60,7 @@ export function VariantLanding({ variant }: { variant: Variant }) {
 
       {/* HERO — Dropps-style PDP: large gallery left, sticky buy column right */}
       <section className="relative overflow-hidden" style={{ background: "var(--v-bg-soft)" }}>
-        <div className="relative mx-auto grid max-w-[1400px] items-start gap-10 px-6 pt-14 pb-16 md:grid-cols-[1.05fr_1fr] md:gap-14 md:pt-20 md:pb-24">
+        <div className="relative mx-auto grid max-w-[1400px] items-start gap-8 px-5 pt-8 pb-12 sm:px-6 md:grid-cols-[1.05fr_1fr] md:gap-14 md:pt-20 md:pb-24">
           {/* Gallery — pouch renders, thumbnails, synced to the pack selector */}
           <div className="relative md:sticky md:top-32">
             <ProductGallery variant={variant} packSize={selectedPack.size} />
@@ -72,7 +72,7 @@ export function VariantLanding({ variant }: { variant: Variant }) {
               {variant.tagline}
             </p>
             <h1
-              className="headline-2xl mt-4 text-balance text-4xl md:text-5xl lg:text-6xl"
+              className="headline-2xl mt-4 text-balance text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
               style={{ color: "var(--v-ink)" }}
             >
               {variant.headline}

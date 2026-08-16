@@ -519,17 +519,15 @@
 
 /* =====================================================================
    Landing gate — src/components/site/Splash.tsx
-   Full-screen intro carrying "Smarter wash. Starts here."
+   Single centred column so it survives short viewports and phones.
    ===================================================================== */
 
 .smod-gate {
   position: fixed;
   inset: 0;
   z-index: 300;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   background:
     radial-gradient(65% 55% at 78% 18%, color-mix(in oklab, var(--accent, #756CA1) 34%, transparent), transparent 72%),
     linear-gradient(160deg, color-mix(in oklab, var(--brand, #2A3A86) 92%, white) 0%,
@@ -540,24 +538,130 @@
 @keyframes smod-gate-in  { from { opacity: 0; } to { opacity: 1; } }
 @keyframes smod-gate-out { from { opacity: 1; } to { opacity: 0; visibility: hidden; } }
 
+/* `margin: auto` centres the column when it fits and lets it scroll from the
+   top when it doesn't — flex centring would clip the top on short screens. */
 .smod-gate-inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 3rem;
-  width: min(1180px, 100%);
-  padding: 3rem 1.75rem;
+  text-align: center;
+  width: min(680px, 100%);
+  margin: auto;
+  padding: clamp(1.5rem, 5vh, 3.5rem) 1.5rem;
+  min-height: 100%;
+  justify-content: center;
 }
-.smod-gate-art  { position: relative; display: flex; justify-content: center; }
-.smod-gate-copy { position: relative; z-index: 5; }
 
-@media (max-width: 900px) {
-  .smod-gate-inner { grid-template-columns: 1fr; gap: 1.5rem; text-align: center; }
-  .smod-gate-copy  { display: flex; flex-direction: column; align-items: center; }
-  .smod-gate-art   { order: -1; max-width: 300px; margin-inline: auto; }
+/* The box takes its height from the image, not the other way round.
+   An aspect-ratio box with a `max-height: 100%` child does NOT clamp the
+   image — it renders at natural size and pushes everything below it off
+   screen, which is what made the gate look blank on phones. */
+/* Size the pods by HEIGHT so the whole gate is bounded by the viewport —
+   width-driven sizing let a portrait image eat the vertical space and push
+   the button below the fold. */
+.smod-gate-art {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: clamp(.4rem, 1.5vh, 1rem);
 }
+.smod-gate-pods {
+  position: relative;
+  z-index: 2;
+  display: block;
+  height: min(27vh, 235px);
+  width: auto;
+  max-width: min(60vw, 260px);
+  object-fit: contain;
+  filter: drop-shadow(0 30px 46px rgba(0, 0, 0, .45));
+  animation: smod-gate-bob 7s ease-in-out infinite;
+}
+@keyframes smod-gate-bob {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50%      { transform: translate3d(0, -14px, 0) rotate(2deg); }
+}
+
+.smod-gate-logo {
+  height: clamp(26px, 5vw, 40px);
+  width: auto;
+  /* the 'white' logo asset is light grey — force it to pure white here */
+  filter: brightness(0) invert(1);
+}
+
+.smod-gate-eyebrow {
+  margin-top: clamp(.75rem, 2vh, 1.25rem);
+  font-size: clamp(10.5px, 2.4vw, 15px);
+  font-weight: 900;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--accent, #C9BEF2);
+}
+
+.smod-gate-title {
+  margin-top: .5rem;
+  font-size: clamp(1.65rem, 5.4vw, 3rem);
+  font-weight: 900;
+  letter-spacing: -.035em;
+  line-height: 1.04;
+  color: #fff;
+  text-wrap: balance;
+}
+
+.smod-gate-sub {
+  margin-top: clamp(.6rem, 1.6vh, .95rem);
+  max-width: 46ch;
+  font-size: clamp(.85rem, 2.3vw, 1rem);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, .85);
+}
+
+.smod-gate-btn {
+  margin-top: clamp(.95rem, 2.4vh, 1.6rem);
+  border: 0;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--brand, #2A3A86);
+  padding: clamp(.85rem, 2.4vw, 1.05rem) clamp(2rem, 7vw, 2.9rem);
+  font-size: clamp(.75rem, 2.2vw, .875rem);
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 24px 50px -22px rgba(0, 0, 0, .7);
+  transition: transform .2s ease;
+}
+.smod-gate-btn:hover { transform: scale(1.04); }
 
 @media (prefers-reduced-motion: reduce) {
   .smod-pod, .smod-splash-a, .smod-splash-b { animation: none; }
-  .smod-gate, .smod-gate.is-leaving { animation: none; }
+  .smod-gate, .smod-gate.is-leaving, .smod-gate-pods { animation: none; }
+}
+
+/* =====================================================================
+   Responsive pass — phone-first corrections for the wider layouts
+   ===================================================================== */
+
+/* the hero water FX is sized for a desktop-width column */
+@media (max-width: 767px) {
+  .smod-fx { inset: -8% -4%; }
+  .smod-swirl { width: 300px; height: 300px; }
+  .smod-drop { width: 9px; height: 12px; }
+}
+
+/* product gallery thumbnails scroll rather than wrap on narrow screens */
+.smod-thumbs {
+  display: flex;
+  gap: .625rem;
+  overflow-x: auto;
+  padding-bottom: .25rem;
+  scrollbar-width: none;
+}
+.smod-thumbs::-webkit-scrollbar { display: none; }
+
+/* the three "how it works" discs are 192px — too wide for a 320px phone */
+@media (max-width: 480px) {
+  .smod-step-disc { width: 9.5rem; height: 9.5rem; }
+  .smod-step-disc > svg,
+  .smod-step-disc .h-32 { width: 6.5rem; height: 6.5rem; }
 }

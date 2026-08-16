@@ -25,7 +25,7 @@ export function ProductInformation({ variant }: { variant: Variant }) {
         </h2>
       </div>
 
-      <div className="relative mt-14 grid gap-10 md:grid-cols-3">
+      <div className="relative mt-12 grid gap-12 sm:grid-cols-2 md:mt-14 md:grid-cols-3 md:gap-10">
         <div
           aria-hidden
           className="pointer-events-none absolute left-[16%] right-[16%] top-24 hidden h-px md:block"
@@ -36,7 +36,7 @@ export function ProductInformation({ variant }: { variant: Variant }) {
           return (
             <div key={d.step} className="relative flex flex-col items-center text-center">
               <div
-                className="relative grid h-48 w-48 place-items-center rounded-full shadow-xl ring-1 ring-black/5"
+                className="smod-step-disc relative grid h-48 w-48 place-items-center rounded-full shadow-xl ring-1 ring-black/5"
                 style={{ background: "var(--v-surface)", color: "var(--brand-deep)" }}
               >
                 <span
@@ -66,7 +66,7 @@ export function ProductInformation({ variant }: { variant: Variant }) {
           Match the number of pods to your load size — no measuring, no guesswork.
         </p>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-3">
+        <div className="mt-10 grid gap-5 sm:grid-cols-3 md:mt-12 md:gap-6">
           {p.dosage.map((d, i) => (
             <div
               key={d.load}

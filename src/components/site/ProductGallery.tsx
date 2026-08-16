@@ -67,7 +67,7 @@ export function ProductGallery({ variant, packSize }: { variant: Variant; packSi
         </AnimatePresence>
       </div>
 
-      <div className="mt-4 flex gap-2.5">
+      <div className="smod-thumbs mt-4">
         {shots.map((s, i) => (
           <button
             key={s.label}
