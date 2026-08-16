@@ -9,8 +9,9 @@ import { Footer } from "./Footer";
 import { StickyCTA } from "./StickyCTA";
 import { QRCode } from "./QRCode";
 import { ProductInformation } from "./ProductInformation";
+import { ProductGallery } from "./ProductGallery";
+import { ProductDetails } from "./ProductDetails";
 import { WavePattern } from "./WavePattern";
-import packFront from "@/assets/smod-pack-front.png";
 
 
 const PURCHASE_BASE = typeof window !== "undefined" ? window.location.origin : "";
@@ -49,7 +50,6 @@ const FAQS = [
 export function VariantLanding({ variant }: { variant: Variant }) {
   const [p20, p40] = variant.packs;
   const [selectedPack, setSelectedPack] = useState<typeof p20>(p40);
-  const productImage = variant.packaging.imageUrl || variant.packaging.imageFrontUrl || packFront;
 
   return (
     <div
@@ -60,41 +60,14 @@ export function VariantLanding({ variant }: { variant: Variant }) {
 
       {/* HERO — Dropps-style PDP: large gallery left, sticky buy column right */}
       <section className="relative overflow-hidden" style={{ background: "var(--v-bg-soft)" }}>
-        <div className="relative mx-auto grid max-w-[1400px] items-start gap-10 px-6 pt-28 pb-16 md:grid-cols-[1.1fr_1fr] md:gap-16 md:pt-36 md:pb-24">
-          {/* Gallery */}
-          <div className="relative">
-            <div
-              className="relative overflow-hidden rounded-[2.5rem]"
-              style={{
-                background: `linear-gradient(160deg, color-mix(in oklab, var(--brand) 18%, var(--v-bg-soft)), var(--v-bg-soft))`,
-                aspectRatio: "4 / 5",
-              }}
-            >
-              <div
-                aria-hidden
-                className="absolute inset-0"
-                style={{
-                  background: `radial-gradient(circle at 30% 30%, color-mix(in oklab, var(--accent) 40%, transparent), transparent 60%)`,
-                }}
-              />
-              <div className="relative flex h-full items-center justify-center p-10">
-                <img
-                  src={productImage}
-                  alt={`SMOD ${variant.name} pack`}
-                  className="max-h-[520px] w-auto object-contain drop-shadow-[0_30px_50px_rgba(0,0,0,0.35)]"
-                />
-              </div>
-              <span
-                className="absolute left-6 top-6 rounded-full px-4 py-1.5 text-[10px] font-extrabold uppercase tracking-widest backdrop-blur"
-                style={{ background: "rgba(255,255,255,0.85)", color: "var(--brand)" }}
-              >
-                {variant.emoji} SMOD {variant.name}
-              </span>
-            </div>
+        <div className="relative mx-auto grid max-w-[1400px] items-start gap-10 px-6 pt-14 pb-16 md:grid-cols-[1.05fr_1fr] md:gap-14 md:pt-20 md:pb-24">
+          {/* Gallery — pouch renders, thumbnails, synced to the pack selector */}
+          <div className="relative md:sticky md:top-32">
+            <ProductGallery variant={variant} packSize={selectedPack.size} />
           </div>
 
           {/* Buy column */}
-          <div className="md:sticky md:top-28">
+          <div>
             <p className="eyebrow" style={{ color: "var(--brand)" }}>
               {variant.tagline}
             </p>
@@ -189,7 +162,12 @@ export function VariantLanding({ variant }: { variant: Variant }) {
               }}
             >
               <span>🌀 Top + Front Load</span>
+              <span>♻️ Recyclable pack</span>
+              <span>🔒 Child-safe closure</span>
             </div>
+
+            {/* Spec detail, collapsed — one section open at a time */}
+            <ProductDetails variant={variant} />
           </div>
         </div>
       </section>
@@ -202,7 +180,7 @@ export function VariantLanding({ variant }: { variant: Variant }) {
       <Section
         eyebrow="Why pods"
         title="Detergent, Redesigned."
-        subtitle="Six reasons our customers never go back to bottles or boxes."
+        subtitle="Five reasons our customers never go back to bottles or boxes."
       >
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {WHY_PODS.map((w) => (

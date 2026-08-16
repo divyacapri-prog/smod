@@ -1,19 +1,38 @@
 import { useEffect, useState } from "react";
-import logo from "@/assets/smod-logo.png";
-import pods from "@/assets/smod-pack-front.png";
-import regular from "@/assets/smod-regular-pack.jpeg";
-import socks from "@/assets/smod-socks-pack.jpg";
-import sports from "@/assets/smod-sports-pack.jpg";
-import innerwear from "@/assets/smod-innerwear-pack.jpg";
-import baby from "@/assets/smod-baby-pack.jpg";
+import { HeroPods } from "./HeroPods";
+import { HeroWaterFX } from "./HeroWaterFX";
+import logoWhite from "@/assets/smod-logo-white.png";
 
-const PACKS = [regular, socks, sports, innerwear, baby];
+const SEEN_KEY = "smod:entered";
 
+/**
+ * Landing gate — full-screen intro shown before the site.
+ *
+ * Carries the "Smarter wash. Starts here." line; clicking Enter reveals the
+ * main page underneath. Shown once per browser session (sessionStorage), so
+ * returning to the home page mid-visit doesn't re-gate the user.
+ *
+ * Renders nothing on the server and on the first client paint — mounting is
+ * deferred to an effect so SSR markup and hydration always agree.
+ */
 export function Splash() {
-  const [open, setOpen] = useState(true);
+  const [ready, setReady] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [leaving, setLeaving] = useState(false);
 
   useEffect(() => {
-    if (typeof document === "undefined" || !open) return;
+    let seen = false;
+    try {
+      seen = window.sessionStorage.getItem(SEEN_KEY) === "1";
+    } catch {
+      // Private mode or storage disabled — just show it.
+    }
+    setOpen(!seen);
+    setReady(true);
+  }, []);
+
+  useEffect(() => {
+    if (!open) return;
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
@@ -21,84 +40,68 @@ export function Splash() {
     };
   }, [open]);
 
-  if (!open) return null;
+  const enter = () => {
+    try {
+      window.sessionStorage.setItem(SEEN_KEY, "1");
+    } catch {
+      // ignore
+    }
+    setLeaving(true);
+    window.setTimeout(() => setOpen(false), 520);
+  };
+
+  if (!ready || !open) return null;
 
   return (
     <div
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        zIndex: 200,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        overflowY: "auto",
-        background: "linear-gradient(180deg,#ffffff 0%,#eaf0ff 100%)",
-      }}
+      className={`smod-gate${leaving ? " is-leaving" : ""}`}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Welcome to SMOD"
     >
-      <style>{`
-        @keyframes smod-drum { to { transform: translate(-50%, -50%) rotate(360deg); } }
-        @keyframes smod-pop { 0% { opacity: 0; transform: translateY(14px) scale(.85); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
-      `}</style>
-
-      {/* close */}
-      <button
-        type="button"
-        onClick={() => setOpen(false)}
-        aria-label="Close"
-        style={{ position: "absolute", top: 16, right: 16 }}
-        className="grid h-10 w-10 place-items-center rounded-full bg-black/10 text-[#1D2029] transition-colors hover:bg-black/20"
-      >
-        <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
-          <path d="M6 6l12 12M18 6L6 18" />
-        </svg>
-      </button>
-
-      <div className="flex w-full max-w-lg flex-col items-center px-6 py-10 text-center">
-        <img src={logo} alt="SMOD" className="h-8 w-auto md:h-9" />
-        <h2 className="mt-6 text-2xl font-black text-[#1D2029] md:text-3xl">Meet the SMOD family</h2>
-        <p className="mt-2 text-sm text-[#5B6472] md:text-base">One smart pod for every load.</p>
-
-        {/* five packs — the showcase */}
-        <div className="mt-7 flex flex-wrap items-end justify-center gap-3">
-          {PACKS.map((p, i) => (
-            <img
-              key={i}
-              src={p}
-              alt=""
-              className="h-20 w-auto rounded-xl shadow-lg sm:h-24 md:h-28"
-              style={{ opacity: 0, animation: `smod-pop .5s ease ${0.1 + i * 0.12}s both` }}
-            />
-          ))}
+      <div className="smod-gate-inner">
+        <div className="smod-gate-art">
+          <HeroWaterFX layer="back" />
+          <HeroPods />
+          <HeroWaterFX layer="front" />
         </div>
 
-        {/* washing machine with tumbling pods */}
-        <div className="relative mt-8" style={{ width: 150 }}>
-          <div className="relative rounded-2xl p-3 shadow-xl" style={{ background: "linear-gradient(160deg,#eef2fb,#d6dff2)", aspectRatio: "1 / 1.08" }}>
-            <div className="mb-2 flex items-center justify-end gap-1.5 pr-1">
-              <span className="h-2 w-2 rounded-full" style={{ background: "#2A3A86" }} />
-              <span className="h-2 w-2 rounded-full" style={{ background: "#756CA1" }} />
-              <span className="h-2 w-6 rounded-full" style={{ background: "#b9c4dd" }} />
-            </div>
-            <div className="relative mx-auto grid place-items-center rounded-full" style={{ width: "80%", aspectRatio: "1", background: "#c3cee6", boxShadow: "inset 0 0 0 7px #eef2f9, inset 0 0 0 10px #aab8d6" }}>
-              <div className="relative overflow-hidden rounded-full" style={{ width: "76%", aspectRatio: "1", background: "radial-gradient(circle at 40% 34%, #eaf0ff, #9db1d8)" }}>
-                <img src={pods} alt="" className="absolute left-1/2 top-1/2 h-[82%] w-auto" style={{ animation: "smod-drum 3.6s linear infinite" }} />
-              </div>
-            </div>
-          </div>
-        </div>
+        <div className="smod-gate-copy">
+          <img src={logoWhite} alt="SMOD" className="h-11 w-auto md:h-14" />
+          <p
+            className="mt-7 text-[15px] font-black uppercase tracking-[0.16em] md:text-[19px]"
+            style={{ color: "var(--accent, #C9BEF2)" }}
+          >
+            Detergent, redesigned
+          </p>
+          <h1 className="headline-2xl mt-4 text-balance text-4xl leading-[1.02] text-white md:text-6xl lg:text-7xl">
+            Smarter wash.
+            <br />
+            Starts here.
+          </h1>
+          <p className="mt-6 max-w-md text-base leading-relaxed text-white/85 md:text-lg">
+            Pre-measured 4-in-1 pods that dissolve right in the drum — detergent, softener,
+            freshness and anti-microbial, sealed into one. No measure, no mess.
+          </p>
 
-        <button
-          type="button"
-          onClick={() => setOpen(false)}
-          className="mt-9 rounded-full px-8 py-3.5 text-sm font-bold uppercase tracking-wider text-white shadow-xl transition-transform hover:scale-[1.03]"
-          style={{ background: "#2A3A86" }}
-        >
-          Enter site →
-        </button>
+          <button
+            type="button"
+            onClick={enter}
+            autoFocus
+            className="mt-10 rounded-full bg-white px-11 py-4 text-sm font-bold uppercase tracking-wider shadow-2xl transition-transform hover:scale-[1.04]"
+            style={{ color: "var(--brand, #2A3A86)" }}
+          >
+            Enter site →
+          </button>
+
+          <button
+            type="button"
+            onClick={enter}
+            className="mt-5 block text-xs font-bold uppercase tracking-[0.25em] text-white/60 underline-offset-4 transition-colors hover:text-white"
+          >
+            Skip
+          </button>
+        </div>
       </div>
     </div>
   );

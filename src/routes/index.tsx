@@ -6,7 +6,8 @@ import { ClaimRotator } from "@/components/site/ClaimRotator";
 import { HeroWaterFX } from "@/components/site/HeroWaterFX";
 import { ProductTileGrid } from "@/components/site/ProductTiles";
 import { PodIcon, ClothIcon, SoftenerIcon, ShieldIcon } from "@/components/site/FeatureIcons";
-import packFront from "@/assets/smod-pack-front.png";
+import { HeroPods } from "@/components/site/HeroPods";
+import { Splash } from "@/components/site/Splash";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -27,10 +28,14 @@ export const Route = createFileRoute("/")({
 });
 
 const FOUR_IN_ONE = [
-  { Icon: PodIcon, title: "Detergent", sub: "Triple-enzyme deep clean" },
-  { Icon: ClothIcon, title: "Comforter", sub: "Softness restored" },
-  { Icon: SoftenerIcon, title: "Softener", sub: "Long-lasting freshness" },
-  { Icon: ShieldIcon, title: "Anti-microbial", sub: "Odor-causing bacteria, gone" },
+  { Icon: PodIcon, title: "Detergent", sub: "Triple-enzyme deep clean",
+    tint: "#E8ECFA", ink: "#2A3A86", art: "linear-gradient(160deg,#EEF1FC,#DCE3F7)" },
+  { Icon: ClothIcon, title: "Comforter", sub: "Softness restored",
+    tint: "#F3ECF8", ink: "#6B4C9A", art: "linear-gradient(160deg,#F6EFFB,#E7DCF3)" },
+  { Icon: SoftenerIcon, title: "Softener", sub: "Long-lasting freshness",
+    tint: "#FBEDF3", ink: "#A8477A", art: "linear-gradient(160deg,#FDF1F6,#F4DEE9)" },
+  { Icon: ShieldIcon, title: "Anti-microbial", sub: "Odor-causing bacteria, gone",
+    tint: "#E6F3EF", ink: "#1F7A63", art: "linear-gradient(160deg,#EDF7F4,#D8ECE5)" },
 ];
 
 function Home() {
@@ -39,6 +44,7 @@ function Home() {
       style={{ ...paletteToCssVars(BRAND_PALETTE), background: "var(--v-bg)", color: "var(--v-ink)" }}
       className="min-h-screen scroll-smooth"
     >
+      <Splash />
       <Header />
 
       {/* ============ HERO ============ */}
@@ -91,23 +97,19 @@ function Home() {
             </div>
           </div>
 
-          {/* Product render, wrapped in water FX */}
-          <div className="relative flex items-center justify-center md:justify-end">
+          {/* Pods — scattered at different sizes, over splash and bubbles */}
+          <div className="relative flex items-center justify-center">
             <div
               aria-hidden
-              className="absolute inset-0 -m-16 rounded-full blur-3xl"
+              className="absolute inset-0 -m-10 rounded-full blur-3xl"
               style={{
                 background:
                   "radial-gradient(circle at 50% 45%, color-mix(in oklab, var(--accent) 40%, transparent), transparent 62%)",
               }}
             />
-            <div className="relative flex items-center justify-center">
+            <div className="relative flex w-full items-center justify-center">
               <HeroWaterFX layer="back" />
-              <img
-                src={packFront}
-                alt="SMOD pods"
-                className="product-float relative z-[2] h-[300px] w-auto md:h-[420px] lg:h-[480px]"
-              />
+              <HeroPods />
               <HeroWaterFX layer="front" />
             </div>
           </div>
@@ -138,9 +140,9 @@ function Home() {
       <section className="section-pad relative overflow-hidden text-center" style={{ background: "var(--v-bg-soft)" }}>
         <div className="relative mx-auto max-w-[900px] px-6">
           <p className="eyebrow" style={{ color: "var(--brand)" }}>The full range</p>
-          <h2 className="headline-2xl mt-4 text-4xl md:text-5xl">Five formulas. One pod each.</h2>
+          <h2 className="headline-2xl mt-4 text-4xl md:text-5xl">A formula for every load.</h2>
           <p className="mx-auto mt-5 max-w-xl text-base md:text-lg" style={{ color: "var(--v-ink-soft)" }}>
-            Regular, Sports, Baby, Socks and Intimate Wear — plus what&rsquo;s coming next.
+            Everyday, gym kit, baby clothes, socks, delicates — one pod each, and more on the way.
           </p>
           <Link
             to="/shop"
@@ -162,24 +164,25 @@ function Home() {
             </p>
           </div>
 
-          <div
-            className="mt-8 flex flex-wrap rounded-[20px] border p-2"
-            style={{ borderColor: "color-mix(in oklab, var(--v-ink) 10%, transparent)", background: "var(--v-surface, #fff)" }}
-          >
-            {FOUR_IN_ONE.map((f, i) => (
+          <div className="mt-9 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {FOUR_IN_ONE.map((f) => (
               <div
                 key={f.title}
-                className="relative flex min-w-[45%] flex-1 flex-col items-center gap-3 px-4 py-6 text-center"
-                style={i > 0 ? { boxShadow: "inset 1px 0 0 color-mix(in oklab, var(--v-ink) 8%, transparent)" } : undefined}
+                className="flex flex-col items-center rounded-[24px] p-8 text-center transition-transform duration-200 hover:-translate-y-1.5"
+                style={{ background: f.art, border: `1px solid ${f.tint}` }}
               >
                 <span
-                  className="grid h-12 w-12 place-items-center rounded-[13px]"
-                  style={{ background: "color-mix(in oklab, var(--brand) 10%, transparent)", color: "var(--brand)" }}
+                  className="grid h-24 w-24 place-items-center rounded-[26px] shadow-sm"
+                  style={{ background: "rgba(255,255,255,.75)", color: f.ink }}
                 >
-                  <f.Icon className="h-7 w-7" />
+                  <f.Icon className="h-14 w-14" />
                 </span>
-                <b className="text-[15px] font-black tracking-tight">{f.title}</b>
-                <span className="text-[12.5px]" style={{ color: "var(--v-ink-soft)" }}>{f.sub}</span>
+                <b className="mt-6 text-[19px] font-black tracking-tight" style={{ color: f.ink }}>
+                  {f.title}
+                </b>
+                <span className="mt-2 text-[13.5px] leading-relaxed" style={{ color: "#5B6472" }}>
+                  {f.sub}
+                </span>
               </div>
             ))}
           </div>

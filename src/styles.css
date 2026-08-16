@@ -471,3 +471,93 @@
 @media (max-width: 767px) {
   .smod-swirl { width: 320px; height: 320px; }
 }
+
+/* =====================================================================
+   Hero pods — individual pods at different sizes, drifting over a splash.
+   Rendered by src/components/site/HeroPods.tsx.
+   ===================================================================== */
+
+.smod-pods {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  aspect-ratio: 1 / 1;
+  margin-inline: auto;
+  z-index: 2;
+}
+
+.smod-pod {
+  position: absolute;
+  height: auto;
+  transform: rotate(var(--rot, 0deg));
+  filter: drop-shadow(0 26px 34px rgba(0, 0, 0, .42));
+  animation-name: smod-pod-float;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  will-change: transform;
+}
+@keyframes smod-pod-float {
+  0%   { transform: rotate(var(--rot, 0deg)) translate3d(0, 0, 0); }
+  50%  { transform: rotate(calc(var(--rot, 0deg) + 4deg)) translate3d(0, -16px, 0); }
+  100% { transform: rotate(var(--rot, 0deg)) translate3d(0, 0, 0); }
+}
+
+.smod-splash {
+  position: absolute;
+  inset: -6%;
+  width: 112%;
+  height: 112%;
+  z-index: 0;
+  pointer-events: none;
+}
+.smod-splash-a { animation: smod-splash-drift 7s ease-in-out infinite; transform-origin: 50% 50%; }
+.smod-splash-b { animation: smod-splash-drift 9s ease-in-out infinite reverse; transform-origin: 50% 50%; }
+@keyframes smod-splash-drift {
+  0%, 100% { opacity: .5; transform: scale(1) rotate(0deg); }
+  50%      { opacity: .95; transform: scale(1.05) rotate(6deg); }
+}
+
+/* =====================================================================
+   Landing gate — src/components/site/Splash.tsx
+   Full-screen intro carrying "Smarter wash. Starts here."
+   ===================================================================== */
+
+.smod-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  background:
+    radial-gradient(65% 55% at 78% 18%, color-mix(in oklab, var(--accent, #756CA1) 34%, transparent), transparent 72%),
+    linear-gradient(160deg, color-mix(in oklab, var(--brand, #2A3A86) 92%, white) 0%,
+      color-mix(in oklab, var(--brand-deep, #1D2029) 92%, black) 100%);
+  animation: smod-gate-in .5s ease both;
+}
+.smod-gate.is-leaving { animation: smod-gate-out .5s ease both; }
+@keyframes smod-gate-in  { from { opacity: 0; } to { opacity: 1; } }
+@keyframes smod-gate-out { from { opacity: 1; } to { opacity: 0; visibility: hidden; } }
+
+.smod-gate-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 3rem;
+  width: min(1180px, 100%);
+  padding: 3rem 1.75rem;
+}
+.smod-gate-art  { position: relative; display: flex; justify-content: center; }
+.smod-gate-copy { position: relative; z-index: 5; }
+
+@media (max-width: 900px) {
+  .smod-gate-inner { grid-template-columns: 1fr; gap: 1.5rem; text-align: center; }
+  .smod-gate-copy  { display: flex; flex-direction: column; align-items: center; }
+  .smod-gate-art   { order: -1; max-width: 300px; margin-inline: auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .smod-pod, .smod-splash-a, .smod-splash-b { animation: none; }
+  .smod-gate, .smod-gate.is-leaving { animation: none; }
+}
